@@ -1,10 +1,16 @@
-import './style.css';
+// import './style.css';
 // import typescriptLogo from './typescript.svg';
 // import viteLogo from '/vite.svg';
 import "./components/nav-container";
+import "./components/hero-container";
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <main>
+  <header>
     <nav-container></nav-container>
+  </header>
+  <main>
+    <hero-container></hero-container>
   </main>
+  <footer>
+  </footer>
 `;
