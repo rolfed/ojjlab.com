@@ -19,7 +19,7 @@ class HeroContainer extends HTMLElement {
           justify-center
           items-center
           text-white
-          bg-black
+          bg-cover
           px-6
         "
       >
