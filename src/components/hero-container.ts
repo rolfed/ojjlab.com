@@ -32,8 +32,8 @@ class HeroContainer extends HTMLElement {
             aria-label="Hero"
           >
             <hero-header delay="0.00">Strength for kids.</hero-header>
-            <hero-header delay="0.15">Confidence for adults.</hero-header>
-            <hero-header delay="0.30">Community for everyone.</hero-header>
+            <hero-header delay="0.45">Confidence for adults.</hero-header>
+            <hero-header delay="0.80">Community for everyone.</hero-header>
             <p>American Jiu Jitsu, Wrestling, and Kickboxing programs -- built
                   for kids (4+) and adults at every level.</p>
           </section>

@@ -53,7 +53,6 @@ class HeroHeader extends HTMLElement {
         }
 
         // if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        //     console.log('test');
         //     this.showEndState();
         //     this.teardownAnimation();
         //     return;
@@ -110,12 +109,13 @@ class HeroHeader extends HTMLElement {
                         pointer-events-none
                         absolute
                         inset-0
-                        border-2
-                        rounded-md
-                        opacity-90
+                        opacity-30
                         origin-left
                         scale-x-0
-                "></span>
+                        bg-accent
+                "
+                aria-hidden="true"i
+                ></span>
                 <h1 data-animation-id=${this.TITLE_ANIMATION_ID}
                     class="
                         title
@@ -126,6 +126,9 @@ class HeroHeader extends HTMLElement {
                         leading-tight
                         opacity-0
                         will-change-[transform, opacity]
+                        text-white
+                        px-2
+                        py-1
                     ">
                     <slot></slot>
                 </h1>

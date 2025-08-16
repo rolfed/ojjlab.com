@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@theme {
+    --color-brand:   #166273; /* deep teal */
+    --color-accent:  #F2D649; /* gold */
+    --color-warm:    #D98825; /* amber/orange */
+    --color-alert:   #F23838; /* red */
+    --color-deep:    #A63F3F; /* maroon */
+}
