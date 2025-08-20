@@ -15,12 +15,9 @@
 //   <!-- </footer> -->
 // `;
 
-import { toggleCalandarView } from "./functionality/calendar";
+import { toggleCalendarView } from "./functionality/calendar";
 
 
-const app = () => {
-    console.log('App Loaded');
-    toggleCalandarView(document);
-};
-
-app();
+document.addEventListener("DOMContentLoaded", () => {
+    toggleCalendarView(document);
+});
