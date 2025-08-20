@@ -14,3 +14,13 @@
 //   <!-- <footer> -->
 //   <!-- </footer> -->
 // `;
+
+import { toggleCalandarView } from "./functionality/calendar";
+
+
+const app = () => {
+    console.log('App Loaded');
+    toggleCalandarView(document);
+};
+
+app();

@@ -1,12 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/svg+xml" href="/vite.svg">
         <link href="/src/style.css" rel="stylesheet">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>OJJLab</title>
     </head>
 
@@ -32,54 +32,54 @@
                 absolute
                 inset-0
                 -z-10
-                bg-gradient-to-black
+                bg-gradient-to-b
                 from-black/100
                 to-transparent
                 object-cover
                 blur-sm
                 "
             >
-            <!-- Background Image -->
-            <picture>
-                <source
-                    type="image/avif"
-                    srcset="
-                    /images/hero/hero-480.avif   480w,
-                    /images/hero/hero-768.avif   768w,
-                    /images/hero/hero-1280.avif 1280w
-                    "
-                    sizes="100vw"
-                />
-                <source
-                    type="image/webp"
-                    srcset="
-                    /images/hero/hero-480.webp   480w,
-                    /images/hero/hero-768.webp   768w,
-                    /images/hero/hero-1280.webp 1280w
-                    "
-                    sizes="100vw"
-                />
-                <img
-                    src="/images/hero/hero-768.jpg"
-                    srcset="
-                    /images/hero/hero-480.jpg   480w,
-                    /images/hero/hero-768.jpg   768w,
-                    /images/hero/hero-1280.jpg 1280w
-                    "
-                    sizes="100vw"
-                    alt=""
-                    decoding="async"
-                    fetchpriority="high"
-                    class="
-                    absolute
-                    inset-0
-                    -z-10
-                    h-full
-                    w-full
-                    object-cover
-                    "
-                />
-            </picture>
+                <!-- Background Image -->
+                <picture>
+                    <source
+                        type="image/avif"
+                        srcset="
+                        /images/hero/hero-480.avif   480w,
+                        /images/hero/hero-768.avif   768w,
+                        /images/hero/hero-1280.avif 1280w
+                        "
+                        sizes="100vw"
+                    >
+                    <source
+                        type="image/webp"
+                        srcset="
+                        /images/hero/hero-480.webp   480w,
+                        /images/hero/hero-768.webp   768w,
+                        /images/hero/hero-1280.webp 1280w
+                        "
+                        sizes="100vw"
+                    >
+                    <img
+                        src="/images/hero/hero-768.jpg"
+                        srcset="
+                        /images/hero/hero-480.jpg   480w,
+                        /images/hero/hero-768.jpg   768w,
+                        /images/hero/hero-1280.jpg 1280w
+                        "
+                        sizes="100vw"
+                        alt=""
+                        decoding="async"
+                        fetchpriority="high"
+                        class="
+                        absolute
+                        inset-0
+                        -z-10
+                        h-full
+                        w-full
+                        object-cover
+                        "
+                    >
+                </picture>
             </div>
 
             <!-- Navigation -->
@@ -247,7 +247,7 @@
                 items-end
                 justify-center
                 text-right
-                min-h-screen
+                min-h-[70vh]
                 px-32
                 "
             >
@@ -316,6 +316,285 @@
 
 
         <main id="main-content" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+            <section
+                id="schedule"
+                aria-labelledby="schedule-title"
+                class="
+                bg-black
+                py-32
+                sm:px-6
+                lg:px-8
+                "
+            >
+                <div
+                    class="
+                    mx-auto
+                    max-w-5xl
+                    "
+                >
+                    <!-- Title -->
+                    <h2
+                        id="schedule-title"
+                        class="
+                        text-2xl
+                        sm:text-5xl
+                        font-bold
+                        uppercase
+                        tracking-tight
+                        text-alert
+                        mb-16
+                        "
+                    >
+                        Schedule
+                    </h2>
+
+                    <div class="inline-flex rounded-md mb-8" id="scheduleButtons">
+                        <button
+                            aria-pressed="true"
+                            aria-controls="day-view"
+                            type="button"
+                            id="dayViewBtn"
+                            class="
+                            px-8
+                            py-2
+                            rounded-l-md
+
+                            text-md
+                            text-black
+                            font-semibold
+                            uppercase
+                            bg-white
+
+                            transition-colors
+
+                            hover:bg-alert
+                            hover:text-white
+
+                            focus:outline-none
+                            focus:ring-2
+                            focus:ring-alert
+
+                            active:bg-alert
+                            active:text-white
+
+                            aria-[pressed=false]:bg-white
+                            aria-[pressed=false]:text-white
+                            aria-[pressed=true]:bg-alert
+                            aria-[pressed=true]:text-white
+                            "
+                        >
+                            Day 
+                        </button>
+                        <button
+                            aria-pressed="false"
+                            aria-controls="week-view"
+                            id="weekViewBtn"
+                            type="button"
+                            class="
+                            px-8
+                            py-2
+
+                            text-sm
+                            text-black
+                            font-semibold
+                            uppercase
+
+                            bg-white
+                            transition-colors
+
+                            hover:bg-alert
+                            hover:text-white
+
+                            focus:outline-none
+                            focus:ring-2
+                            focus:ring-alert
+
+                            active:bg-alert
+                            active:text-white
+                            active:outline-1
+                            active:ring-2
+                            active:ring-alert
+
+                            aria-[pressed=false]:bg-white
+                            aria-[pressed=false]:text-black
+                            aria-[pressed=true]:bg-alert
+                            aria-[pressed=true]:text-white
+
+                            rounded-r-md
+
+                            border-l
+                            border-black
+                            "
+                        >
+                            Week 
+                        </button>
+                    </div>
+
+                    <!-- WEEK VIEW -->
+                    <div
+                        id="schedule"
+                        class="
+                        mt-8
+                        text-white
+                        space-y-6
+                        "
+                    >
+                        <!-- Monday -->
+                        <div data-schedule="1" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                            <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                                Monday
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                    <span>Kids No-Gi</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="18:30">6:30–7:30pm</time>
+                                    <span>Adult No-Gi Jiu Jitsu 101</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="19:30">7:30–8:00pm</time>
+                                    <span>Adult Advanced No-Gi</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="20:00">8:00–9:00pm</time>
+                                    <span>Adult Live Training</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tuesday -->
+                        <div data-schedule="2" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                            <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                                Tuesday
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                    <span>Kids Gi</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="18:30">6:30–7:45pm</time>
+                                    <span>Adult Gi Jiu Jitsu</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="19:45">7:45pm</time>
+                                    <span>Adult Kickboxing</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wednesday -->
+                        <div data-schedule="3" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                            <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                                Wednesday
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                    <span>Kids Wrestling</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="18:30">6:30–7:30pm</time>
+                                    <span>Adult No-Gi Jiu Jitsu 101</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="19:30">7:30–8:00pm</time>
+                                    <span>Adult Advanced No-Gi</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="20:00">8:00–9:00pm</time>
+                                    <span>Adult Live Training</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thursday -->
+                        <div data-schedule="4" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                            <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                                Thursday
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                    <span>Kids Gi</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="18:30">6:30–7:45pm</time>
+                                    <span>Adult Gi Jiu Jitsu</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="19:45">7:45pm</time>
+                                    <span>Adult Kickboxing</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Friday -->
+                        <div data-schedule="5" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                            <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                                Friday
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                    <span>Kids No-Gi</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="18:30">6:30–7:30pm</time>
+                                    <span>Adult No-Gi Jiu Jitsu 101</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="19:30">7:30–8:00pm</time>
+                                    <span>Adult Advanced No-Gi</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="20:00">8:00–9:00pm</time>
+                                    <span>Adult Live Training</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saturday -->
+                        <div data-schedule="6" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                            <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                                Saturday
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="10:00">10:00–11:00am</time>
+                                    <span>Adult Gi Jiu Jitsu 101</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="11:00">11:00–12:00pm</time>
+                                    <span>Adult Advanced No-Gi</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sunday -->
+                        <div data-schedule="7" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                            <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                                Sunday
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="10:00">10:00–11:00am</time>
+                                    <span>Adult Gi Jiu Jitsu 101</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <time class="text-gray-300 w-28" datetime="11:00">11:00–12:00pm</time>
+                                    <span>Adult Advanced No-Gi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
 
             <section aria-labelledby="features-title">
                 <!-- Features section -->
