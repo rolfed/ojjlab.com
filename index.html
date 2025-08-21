@@ -233,6 +233,16 @@
                                 Contact Us
                             </a>
                         </li>
+                        <li>
+                            <a 
+                                href="/login"
+                                class="
+                                hover:text-gray-200
+                                "
+                            >
+                                Login
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -296,7 +306,7 @@
                         Schedule Trial Class
                     </a>
                     <a
-                        href="/programs"
+                        href="/schedule"
                         class="
                         rounded
                         border
@@ -315,23 +325,18 @@
         </header>
 
 
-        <main id="main-content" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <main id="main-content" class="w-full">
 
             <section
                 aria-labelledby="schedule-title"
                 class="
-                bg-black
-                py-32
-                sm:px-6
-                lg:px-8
+                    container-partial
+                    bg-black
+                    py-32
+                    sm:px-6
+                    lg:px-8
                 "
             >
-                <div
-                    class="
-                    mx-auto
-                    max-w-5xl
-                    "
-                >
                     <!-- Title -->
                     <h2
                         id="schedule-title"
@@ -590,13 +595,285 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
             </section>
 
 
-            <section aria-labelledby="features-title">
+            <section aria-labelledby="programs-title" class="container-full">
                 <!-- Features section -->
+                    <!-- Title -->
+                    <h2
+                        id="schedule-title"
+                        class="
+                        text-2xl
+                        sm:text-5xl
+                        font-bold
+                        uppercase
+                        tracking-tight
+                        text-alert
+                        mb-16
+                        "
+                    >
+                        Programs 
+                    </h2>
+
+
+
+
+
+                    <!-- American Jiu Jitsu -->
+                    <article
+                        id="programAmericanJiuJitsu"
+                        class="
+                        flex
+                        items-stretch
+                        gap-8
+                        mb-24
+                        "
+                    >
+                        <!-- Media (30%) -->
+                        <div
+                            class="
+                            basis-[40%]
+                            shrink-0
+                            overflow-hidden
+                            bg-white/5
+                            border
+                            border-white/10
+                            "
+                        >
+                            <!-- Image option -->
+                            <img
+                                src="/images/programs/american-jiu-jitsu.jpg"
+                                alt="American Jiu Jitsu training at OJJ Lab"
+                                loading="lazy"
+                                decoding="async"
+                                class="
+                                w-full
+                                h-auto
+                                aspect-[16/9]
+                                object-cover
+                                "
+                            />
+
+                            <!-- Video option (use instead of the image when available)
+                                <video
+                                src="/videos/programs/american-jiu-jitsu.mp4"
+                                controls
+                                playsinline
+                                class="
+                                w-full
+                                h-auto
+                                aspect-[16/9]
+                                object-cover
+                                "
+                                ></video>
+                            -->
+                        </div>
+
+                        <!-- Content (70%) -->
+                        <div
+                            class="
+                            basis-[60%]
+                            min-w-0
+                            "
+                        >
+                            <h3
+                                class="
+                                text-2xl
+                                sm:text-3xl
+                                font-semibold
+                                tracking-tight
+                                text-white
+                                "
+                            >
+                                American Jiu Jitsu
+                            </h3>
+
+                            <p
+                                class="
+                                mt-3
+                                text-gray-300
+                                leading-relaxed
+                                "
+                            >
+                                A martial art rooted in tradition, evolved for today.
+                            </p>
+
+                            <p
+                                class="
+                                mt-3
+                                text-gray-300
+                                leading-relaxed
+                                "
+                            >
+                                Our lineage traces back to Master Rigan Machado through Coach Chris Haueter, one of the original black belts in the United States. But Jiu Jitsu has grown far beyond its beginnings.
+                            </p>
+
+                            <p
+                                class="
+                                mt-3
+                                text-gray-300
+                                leading-relaxed
+                                "
+                            >
+                                At OJJ Lab, we call our style American Jiu Jitsu — shaped by Brazilian roots, but influenced by Judo, Wrestling, and Catch Wrestling. We honor our heritage while embracing the evolution led by American athletes pushing the art forward.
+                            </p>
+
+                            <div
+                                class="
+                                mt-6
+                                flex
+                                gap-4
+                                "
+                            >
+                                <a
+                                    href="/programs/american-jiu-jitsu"
+                                    class="
+                                    inline-flex
+                                    items-center
+                                    justify-center
+                                    rounded-md
+                                    bg-alert
+                                    px-5
+                                    py-3
+                                    font-medium
+                                    text-white
+                                    hover:opacity-90
+                                    focus:outline-none
+                                    focus:ring-2
+                                    focus:ring-alert
+                                    "
+                                >
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+
+
+
+
+                    <!-- Kickboxing  -->
+                    <article
+                        id="program-kickboxing"
+                        class="
+                        flex
+                        items-stretch
+                        gap-8
+                        "
+                    >
+                        <!-- Content (70%) -->
+                        <div
+                            class="
+                            basis-[60%]
+                            min-w-0
+                            "
+                        >
+                            <h3
+                                class="
+                                text-2xl
+                                sm:text-3xl
+                                font-semibold
+                                tracking-tight
+                                text-white
+                                "
+                            >
+                                Kickboxing
+                            </h3>
+
+                            <p
+                                class="
+                                mt-3
+                                text-gray-300
+                                leading-relaxed
+                                "
+                            >
+                                High-intensity striking that builds confidence, conditioning, and powerful self-defense skills.
+                            </p>
+
+                            <p
+                                class="
+                                mt-3
+                                text-gray-300
+                                leading-relaxed
+                                "
+                            >
+                                Our Kickboxing classes combine technique, cardio, and conditioning. Whether you’re sharpening your stand-up for competition or training for fitness, our coaches will guide you through fundamentals, combos, and pad work that push both body and mind.
+                            </p>
+
+                            <div
+                                class="
+                                mt-6
+                                flex
+                                gap-4
+                                "
+                            >
+                                <a
+                                    href="/programs/kickboxing"
+                                    class="
+                                    inline-flex
+                                    items-center
+                                    justify-center
+                                    rounded-md
+                                    bg-alert
+                                    px-5
+                                    py-3
+                                    font-medium
+                                    text-white
+                                    hover:opacity-90
+                                    focus:outline-none
+                                    focus:ring-2
+                                    focus:ring-alert
+                                    "
+                                >
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Media (30%) -->
+                        <div
+                            class="
+                            basis-[40%]
+                            shrink-0
+                            overflow-hidden
+                            bg-white/5
+                            border
+                            border-white/10
+                            "
+                        >
+                            <!-- Image option -->
+                            <img
+                                src="/images/programs/kickboxing.jpg"
+                                alt="Kickboxing training at OJJ Lab"
+                                loading="lazy"
+                                decoding="async"
+                                class="
+                                w-full
+                                h-auto
+                                aspect-[16/9]
+                                object-cover
+                                "
+                            />
+
+                            <!-- Video option
+                                <video
+                                src="/videos/programs/kickboxing.mp4"
+                                controls
+                                playsinline
+                                class="
+                                w-full
+                                h-auto
+                                aspect-[16/9]
+                                object-cover
+                                "
+                                ></video>
+                            -->
+                        </div>
+                    </article>
+
             </section>
 
             <section aria-labelledby="testimonials-title">

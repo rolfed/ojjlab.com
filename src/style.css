@@ -6,3 +6,15 @@
     --color-alert:   #F23838; /* red */
     --color-deep:    #A63F3F; /* maroon */
 }
+
+@layer components {
+  /* Centered container with a max width (content doesn’t stretch too wide) */
+  .container-partial {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Full-bleed container (spans edge-to-edge but keeps padding) */
+  .container-full {
+    @apply w-full px-0;
+  }
+}

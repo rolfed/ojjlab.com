@@ -1,52 +1,59 @@
 export const toggleCalendarView = (document: Document) => {
   const dayButton = document.querySelector<HTMLButtonElement>("#dayViewBtn");
   const weekButton = document.querySelector<HTMLButtonElement>("#weekViewBtn");
-  const scheduleElement = document.querySelector<HTMLElement>("#schedule");
+  const scheduleEl = document.querySelector<HTMLElement>("#schedule");
 
-  if (!scheduleElement || !dayButton || !weekButton) {
+  if (!scheduleEl || !dayButton || !weekButton) {
     console.error("Unable to find schedule elements");
     return;
   }
 
-  // Collect nodes and keep original DOM order
-  const nodeList = scheduleElement.querySelectorAll<HTMLElement>("[data-schedule]");
-  const dayMap = new Map<number, HTMLElement>();
-  const inDomOrder: HTMLElement[] = [];
+  const todayIndex = getPacificDayNameIndex(); // 1..7
 
-  nodeList.forEach((el) => {
-    const n = Number(el.dataset.schedule);
-    if (Number.isFinite(n) && n >= 1 && n <= 7) {
-      dayMap.set(n, el);
-      inDomOrder.push(el); // preserve original order for week view
-    }
-  });
+  const getItems = (): HTMLElement[] =>
+    Array.from(scheduleEl.querySelectorAll<HTMLElement>("[data-schedule]"))
+      // ensure Mon..Sun sort by data-schedule
+      .sort((a, b) => Number(a.dataset.schedule) - Number(b.dataset.schedule));
 
-  // Compute today's index and element
-  const todayIndex = getPacificDayNameIndex();
-  // Fallback to the first card if a matching element isn't found
-  const todayEl = dayMap.get(todayIndex) ?? inDomOrder[0] ?? null;
+  const showOnlyToday = () => {
+    const items = getItems();
+    const todayEl = items.find((el) => Number(el.dataset.schedule) === todayIndex) ?? items[0] ?? null;
+    // Hide all except today
+    items.forEach((el) => el.toggleAttribute("hidden", el !== todayEl));
+    // Ensure today is first visually (optional)
+    if (todayEl) scheduleEl.prepend(todayEl);
+  };
 
-  // Ensure "today" card is first in the DOM once
-  if (todayEl) {
-    scheduleElement.prepend(todayEl);
-  }
+  const showRotatedWeek = () => {
+    const items = getItems();
+    const rotated = rotateByToday(items, todayIndex);
+    // Rebuild DOM in rotated order
+    scheduleEl.replaceChildren(...rotated);
+    // Unhide all
+    rotated.forEach((el) => el.removeAttribute("hidden"));
+  };
+
+  const setPressed = (pressedBtn: HTMLButtonElement, otherBtn: HTMLButtonElement) => {
+    pressedBtn.setAttribute("aria-pressed", "true");
+    otherBtn.setAttribute("aria-pressed", "false");
+  };
 
   // Initial render based on current aria-pressed
   if (dayButton.getAttribute("aria-pressed") === "true") {
-    showOnlyToday(todayEl, nodeList, scheduleElement);
+    showOnlyToday();
   } else {
-    showAllWeek(todayEl, inDomOrder, scheduleElement);
+    showRotatedWeek();
   }
 
-  // Wire events
+  // Events
   dayButton.addEventListener("click", () => {
     setPressed(dayButton, weekButton);
-    showOnlyToday(todayEl, nodeList, scheduleElement);
+    showOnlyToday();
   });
 
   weekButton.addEventListener("click", () => {
     setPressed(weekButton, dayButton);
-    showAllWeek(todayEl, inDomOrder, scheduleElement);
+    showRotatedWeek();
   });
 };
 
@@ -69,36 +76,10 @@ const getPacificDayNameIndex = (date: Date = new Date()): number => {
   return map[dayName] ?? 1;
 };
 
-const showOnlyToday = (
-  todayEl: HTMLElement | null,
-  nodeList: NodeListOf<HTMLElement>,
-  scheduleEl: HTMLElement
-) => {
-  if (todayEl) scheduleEl.prepend(todayEl);
-  nodeList.forEach((el) => {
-    el.toggleAttribute("hidden", el !== todayEl);
-  });
-};
-
-const showAllWeek = (
-  todayEl: HTMLElement | null,
-  inDomOrder: HTMLElement[],
-  scheduleEl: HTMLElement
-) => {
-  if (todayEl) {
-    // Put today first
-    scheduleEl.prepend(todayEl);
-  }
-  // Append the rest in original order (skipping today so we don't duplicate/move it again)
-  inDomOrder.forEach((el) => {
-    if (el !== todayEl) scheduleEl.append(el);
-  });
-  // Unhide all
-  inDomOrder.forEach((el) => el.removeAttribute("hidden"));
-};
-
-const setPressed = (pressedBtn: HTMLButtonElement, otherBtn: HTMLButtonElement) => {
-  pressedBtn.setAttribute("aria-pressed", "true");
-  otherBtn.setAttribute("aria-pressed", "false");
+const rotateByToday = (items: HTMLElement[], todayIndex: number): HTMLElement[] => {
+  const pos = items.findIndex((el) => Number(el.dataset.schedule) === todayIndex);
+  if (pos === -1) return items; // no rotation fallback
+  // e.g., Tue → [Tue, Wed, Thu, Fri, Sat, Sun, Mon]
+  return [...items.slice(pos), ...items.slice(0, pos)];
 };
 
