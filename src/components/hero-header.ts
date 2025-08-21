@@ -109,7 +109,7 @@ class HeroHeader extends HTMLElement {
                         pointer-events-none
                         absolute
                         inset-0
-                        opacity-30
+                        opacity-100
                         origin-left
                         scale-x-0
                         bg-accent
@@ -120,14 +120,13 @@ class HeroHeader extends HTMLElement {
                     class="
                         title
                         relative
-                        text-4xl
-                        md:text-6xl
+                        text-2xl
+                        md:text-7xl
                         font-semibold
                         leading-tight
                         opacity-0
                         will-change-[transform, opacity]
                         text-white
-                        px-2
                         py-1
                     ">
                     <slot></slot>

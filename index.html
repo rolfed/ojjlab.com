@@ -1,18 +1,42 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <link href="/src/style.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <link href="/src/style.css" rel="stylesheet">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OJJLab</title>
-</head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OJJLab</title>
+        <meta
+            name="description"
+            content="American Jiu Jitsu, Wrestling, and Kickboxing programs — built for kids (4+) and adults at every level."
+        />
 
-<body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
+        <!-- Preload only the likely LCP hero variant -->
+        <link
+            rel="preload"
+            as="image"
+            href="/images/hero-1280.avif"
+            imagesrcset="/images/hero-480.avif 480w, /images/hero-768.avif 768w, /images/hero-1280.avif 1280w"
+            imagesizes="(min-width:1024px) 900px, (min-width:640px) 70vw, 100vw"
+            fetchpriority="high"
+        />
+
+        <!-- Social -->
+        <meta property="og:title" content="OJJLab" />
+        <meta
+            property="og:description"
+            content="High-performance training for kids and adults."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="/" />
+        <meta name="twitter:card" content="summary_large_image" />
+    </head>
+
+    <body>
+        <div id="app"></div>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
 
 </html>
