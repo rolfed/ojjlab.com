@@ -37,7 +37,7 @@
     }
 
     .section-media {
-        @apply flex items-stretch gap-8 mb-24; 
+        /* @apply flex items-stretch gap-8 mb-24;  */
     }
 
     .section-media-element {
