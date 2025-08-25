@@ -1,13 +1,12 @@
 import css from '../style.css?inline';
-import type { gsap } from 'gsap';
-type GsapTimeline = gsap.core.Timeline;
+import gsap from 'gsap';
 
 const sheet = new CSSStyleSheet();
 sheet.replaceSync(css);
 
 class HeroHeader extends HTMLElement {
     private root: ShadowRoot; 
-    private timeline?: GsapTimeline;
+    private timeline?: gsap.core.Timeline;
     private boxElement?: HTMLElement;
     private titleElement?: HTMLElement;
 
@@ -43,7 +42,7 @@ class HeroHeader extends HTMLElement {
         }
     }
 
-    public async play(): Promise<GsapTimeline> | void {
+    public async play(): Promise<any> {
         if (!this.boxElement || !this.titleElement) {
             this.cacheElements();
         }
@@ -58,17 +57,13 @@ class HeroHeader extends HTMLElement {
         //     return;
         // }
 
-        const { gsap } = await import('gsap');
-        console.log('Timeline: ', this.timeline);
-
         this.teardownAnimation();
         this.timeline = gsap.timeline({
             defaults: { ease: 'power2.out' },
             delay: this.delaySeconds,
-            onStart: () => console.debug('[hero-header] timeline:start'),
-            onUpdate: () => console.debug('[hero-header] timeline:update'),
-            onComplete: () => console.debug('[hero-header] timeline:complete'),
-        })
+        });
+
+        console.log('TIMELINE', this.timeline);
 
         this.timeline
             .fromTo(

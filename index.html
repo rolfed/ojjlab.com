@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -34,8 +34,721 @@
         <meta name="twitter:card" content="summary_large_image" />
     </head>
 
-    <body>
-        <div id="app"></div>
+    <body class="bg-black m-0 p-0">
+        <!-- <div id="app"></div> -->
+
+        <!-- Skip link -->
+
+        <header
+            id="hero"
+            aria-labelledby="hero-title"
+            class="
+            relative
+            w-full
+            max-h-[70vh]
+            isolate
+            "
+        >
+            <!-- <a href="#main-content">Skip to content</a> -->
+
+            <div
+                class="
+                absolute
+                inset-0
+                -z-10
+                bg-gradient-to-b
+                from-black/100
+                to-transparent
+                object-cover
+                blur-sm
+                "
+            >
+                <!-- Background Image -->
+                <picture>
+                    <source
+                        type="image/avif"
+                        srcset="
+                        /images/hero/hero-480.avif   480w,
+                        /images/hero/hero-768.avif   768w,
+                        /images/hero/hero-1280.avif 1280w
+                        "
+                        sizes="100vw"
+                    >
+                    <source
+                        type="image/webp"
+                        srcset="
+                        /images/hero/hero-480.webp   480w,
+                        /images/hero/hero-768.webp   768w,
+                        /images/hero/hero-1280.webp 1280w
+                        "
+                        sizes="100vw"
+                    >
+                    <img
+                        src="/images/hero/hero-768.jpg"
+                        srcset="
+                        /images/hero/hero-480.jpg   480w,
+                        /images/hero/hero-768.jpg   768w,
+                        /images/hero/hero-1280.jpg 1280w
+                        "
+                        sizes="100vw"
+                        alt=""
+                        decoding="async"
+                        fetchpriority="high"
+                        class="
+                        absolute
+                        inset-0
+                        -z-10
+                        h-full
+                        w-full
+                        object-cover
+                        "
+                    >
+                </picture>
+            </div>
+
+            <!-- Navigation -->
+            <nav
+                aria-label="Primary"
+                class="
+                absolute
+                top-0
+                left-0
+                w-full
+                z-20
+                bg-gradient-to-b
+                from-black/50
+                to-black/0
+                ">
+                <div
+                    class="
+                    mx-auto
+                    flex
+                    items-center
+                    justify-between
+                    px-32
+                    py-4
+                    "
+                >
+                    <!-- Logo -->
+                    <a
+                        href="/"
+                        aria-label="Oregon Jiu Jitsu Lab Home"
+                        class="
+                        inline-flex
+                        items-center
+                        "
+                    >
+                        <img
+                            src="/images/brand/oregon-jiu-jitsu-lab-light.svg"
+                            alt="Oregon Jiu Jitsu Lab"
+                            decoding="async"
+                            fetchpriority="high"
+                            class="
+                            h-8
+                            w-auto
+                            md:h-10
+                            lg:h-12
+                            "
+                        />
+                    </a>
+
+                    <!-- Hamburger (mobile only) -->
+                    <button
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="primary-menu"
+                        class="
+                        inline-flex
+                        items-center
+                        justify-center
+                        rounded
+                        p-2
+                        text-black
+                        hover:bg-white/10
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-inset
+                        focus:ring-white
+                        lg:hidden
+                        "
+                    >
+                        <svg
+                            class="
+                            h-6
+                            w-6
+                            "
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                        </svg>
+                        <span class="sr-only">Open menu</span>
+                    </button>
+
+                    <!-- Desktop Menu -->
+                    <ul
+                        id="primary-menu"
+                        class="
+                        hidden
+                        lg:flex
+                        items-center
+                        gap-x-10
+                        uppercase
+                        text-sm
+                        font-medium
+                        text-white
+                        "
+                    >
+                        <li>
+                            <a
+                                href="/schedule"
+                                class="
+                                hover:text-gray-200
+                                "
+                            >
+                                Schedule
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/programs"
+                                class="
+                                hover:text-gray-200
+                                "
+                            >
+                                Programs
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/instructors"
+                                class="
+                                hover:text-gray-200
+                                "
+                            >
+                                Instructors
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/shop"
+                                class="
+                                hover:text-gray-200
+                                "
+                            >
+                                Shop
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/contact"
+                                class="
+                                hover:text-gray-200
+                                "
+                            >
+                                Contact Us
+                            </a>
+                        </li>
+                        <li>
+                            <a 
+                                href="/login"
+                                class="
+                                hover:text-gray-200
+                                "
+                            >
+                                Login
+                            </a>
+                        </li>
+                        <li>
+                            <a 
+                                href="/login"
+                                class="
+                                rounded-md
+                                border
+                                borer-alert
+                                px-4
+                                py-2
+
+                                text-alert
+                                font-semibold
+                                uppercase
+
+                                hover:text-gray-200
+                                hover:bg-alert
+                                hover:border-alert
+
+                                focus:outline-none
+                                focus:ring-2
+                                focus:ring-alert
+                                "
+                            >
+                                Join
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Hero Overlay Content -->
+            <div
+                class="
+                relative
+                z-10
+                flex
+                flex-col
+                items-end
+                justify-center
+                text-right
+                min-h-[70vh]
+                px-32
+                "
+            >
+                <h1
+                    id="hero-title"
+                    class="
+                    text-white
+                    text-4xl
+                    sm:text-6xl
+                    font-bold
+                    "
+                >
+                    <span class="block">American Jiu Jitsu</span>
+                    <span class="block">Wrestling</span> 
+                    <span class="block">Kickboxing</span>
+                </h1>
+                <p
+                    class="
+                    mt-4
+                    max-w-xl
+                    text-white
+                    text-xl
+                    "
+                >
+                    Strength for kids. Confidence for adults. Community for everyone.
+                </p>
+                <div
+                    class="
+                    mt-6
+                    flex
+                    gap-4
+                    "
+                >
+                    <a
+                        href="/schedule"
+                        class="
+                        rounded
+                        bg-alert
+                        px-5
+                        py-3
+                        font-medium
+                        text-white
+                        hover:opacity-90
+                        "
+                    >
+                        Schedule Trial Class
+                    </a>
+                    <a
+                        href="/schedule"
+                        class="
+                        rounded
+                        border
+                        border-white
+                        px-5
+                        py-3
+                        font-medium
+                        text-white
+                        hover:bg-white/10
+                        "
+                    >
+                        View Schedule
+                    </a>
+                </div>
+            </div>
+        </header>
+
+
+        <main id="main-content" class="w-full">
+
+            <section
+                aria-labelledby="schedule-title"
+                class="
+                container-partial
+                bg-black
+                py-32
+                sm:px-6
+                lg:px-8
+                "
+            >
+                <!-- Title -->
+                <h2
+                    id="schedule-title"
+                    class="
+                    text-2xl
+                    sm:text-5xl
+                    font-bold
+                    uppercase
+                    tracking-tight
+                    text-alert
+                    mb-16
+                    "
+                >
+                    Schedule
+                </h2>
+
+                <div class="inline-flex rounded-md mb-8" id="scheduleButtons">
+                    <button
+                        aria-pressed="true"
+                        aria-controls="day-view"
+                        type="button"
+                        id="dayViewBtn"
+                        class="
+                        px-8
+                        py-2
+                        rounded-l-md
+
+                        text-md
+                        text-black
+                        font-semibold
+                        uppercase
+                        bg-white
+
+                        transition-colors
+
+                        hover:bg-alert
+                        hover:text-white
+
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-alert
+
+                        active:bg-alert
+                        active:text-white
+
+                        aria-[pressed=false]:bg-white
+                        aria-[pressed=false]:text-black
+                        aria-[pressed=true]:bg-alert
+                        aria-[pressed=true]:text-white
+                        "
+                    >
+                        Day 
+                    </button>
+                    <button
+                        aria-pressed="false"
+                        aria-controls="week-view"
+                        id="weekViewBtn"
+                        type="button"
+                        class="
+                        px-8
+                        py-2
+
+                        text-sm
+                        text-black
+                        font-semibold
+                        uppercase
+
+                        bg-white
+                        transition-colors
+
+                        hover:bg-alert
+                        hover:text-white
+
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-alert
+
+                        active:bg-alert
+                        active:text-white
+                        active:outline-1
+                        active:ring-2
+                        active:ring-alert
+
+                        aria-[pressed=false]:bg-white
+                        aria-[pressed=false]:text-black
+                        aria-[pressed=true]:bg-alert
+                        aria-[pressed=true]:text-white
+
+                        rounded-r-md
+
+                        border-l
+                        border-black
+                        "
+                    >
+                        Week 
+                    </button>
+                </div>
+
+                <!-- WEEK VIEW -->
+                <div
+                    id="schedule"
+                    class="
+                    mt-8
+                    text-white
+                    space-y-6
+                    "
+                >
+                    <!-- Monday -->
+                    <div data-schedule="1" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                        <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                            Monday
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                <span>Kids No-Gi</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:30pm</time>
+                                <span>Adult No-Gi Jiu Jitsu 101</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="19:30">7:30–8:00pm</time>
+                                <span>Adult Advanced No-Gi</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="20:00">8:00–9:00pm</time>
+                                <span>Adult Live Training</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tuesday -->
+                    <div data-schedule="2" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                        <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                            Tuesday
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                <span>Kids Gi</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:45pm</time>
+                                <span>Adult Gi Jiu Jitsu</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="19:45">7:45pm</time>
+                                <span>Adult Kickboxing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wednesday -->
+                    <div data-schedule="3" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                        <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                            Wednesday
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                <span>Kids Wrestling</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:30pm</time>
+                                <span>Adult No-Gi Jiu Jitsu 101</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="19:30">7:30–8:00pm</time>
+                                <span>Adult Advanced No-Gi</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="20:00">8:00–9:00pm</time>
+                                <span>Adult Live Training</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thursday -->
+                    <div data-schedule="4" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                        <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                            Thursday
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                <span>Kids Gi</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:45pm</time>
+                                <span>Adult Gi Jiu Jitsu</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="19:45">7:45pm</time>
+                                <span>Adult Kickboxing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Friday -->
+                    <div data-schedule="5" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                        <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                            Friday
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                                <span>Kids No-Gi</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:30pm</time>
+                                <span>Adult No-Gi Jiu Jitsu 101</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="19:30">7:30–8:00pm</time>
+                                <span>Adult Advanced No-Gi</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="20:00">8:00–9:00pm</time>
+                                <span>Adult Live Training</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Saturday -->
+                    <div data-schedule="6" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                        <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                            Saturday
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="10:00">10:00–11:00am</time>
+                                <span>Adult Gi Jiu Jitsu 101</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="11:00">11:00–12:00pm</time>
+                                <span>Adult Advanced No-Gi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sunday -->
+                    <div data-schedule="7" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                        <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                            Sunday
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="10:00">10:00–11:00am</time>
+                                <span>Adult Gi Jiu Jitsu 101</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <time class="text-gray-300 w-28" datetime="11:00">11:00–12:00pm</time>
+                                <span>Adult Advanced No-Gi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- American Jiu Jitsu -->
+            <section aria-labelledby="programs" class="container-full">
+                <div class="container-partial"> 
+                    <h2
+                        id="programs-title"
+                        class="section-title"
+                    >
+                        Programs 
+                    </h2>
+                </div>
+
+                <!-- Media -->
+                <div class="section-media">
+                    <div class="section-media-container">
+                        <video
+                            src="/videos/programs/test.mp4"
+                            playsinline
+                            class="secion-media-element"
+                            autoplay
+                        ></video>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="section-content-container">
+                        <h2 class="section-sub-title">American Jiu Jitsu</h2>
+                        <p class="section-content">
+                            A martial art rooted in tradition, evolved for today.
+                        </p>
+                        <p class="section-content">
+                            Our lineage traces back to Master Rigan Machado through Coach 
+                            Chris Haueter, one of the original black belts in the United States. 
+                            But Jiu Jitsu has grown far beyond its beginnings.
+                        </p>
+                        <p class="section-content">
+                            At OJJ Lab, we call our style American Jiu Jitsu — 
+                            shaped by Brazilian roots, but influenced by Judo, 
+                            Wrestling, and Catch Wrestling. We honor our heritage 
+                            while embracing the evolution led by American 
+                            athletes pushing the art forward.
+                        </p>
+                    </div>
+                </div>
+
+                <button>Learn More</button>
+            </section>
+
+            <!-- KickBoxing -->
+            <section aria-labelledby="programs" class="container-full">
+                <div class="section-media">
+                    <!-- Content -->
+                    <div class="section-content-container">
+                        <h2 class="section-sub-title">American Jiu Jitsu</h2>
+                        <p class="section-content">
+                            A martial art rooted in tradition, evolved for today.
+                        </p>
+                        <p class="section-content">
+                            Our lineage traces back to Master Rigan Machado through Coach 
+                            Chris Haueter, one of the original black belts in the United States. 
+                            But Jiu Jitsu has grown far beyond its beginnings.
+                        </p>
+                        <p class="section-content">
+                            At OJJ Lab, we call our style American Jiu Jitsu — 
+                            shaped by Brazilian roots, but influenced by Judo, 
+                            Wrestling, and Catch Wrestling. We honor our heritage 
+                            while embracing the evolution led by American 
+                            athletes pushing the art forward.
+                        </p>
+                    </div>
+
+                    <!-- Media -->
+                    <div class="section-media-container">
+                        <video
+                            src="/videos/programs/test.mp4"
+                            playsinline
+                            class="secion-media-element"
+                            autoplay
+                        ></video>
+                    </div>
+
+                </div>
+            </section>
+
+
+
+            <section aria-labelledby="testimonials-title">
+                <!-- Testimonials / Stories -->
+            </section>
+
+            <section aria-labelledby="pricing-title">
+                <!-- Pricing section -->
+            </section>
+
+            <section aria-labelledby="cta-title">
+                <!-- Call-to-action section -->
+            </section>
+        </main>
+
+        <footer class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <!-- Footer links, credits -->
+        </footer>
+
         <script type="module" src="/src/main.ts"></script>
     </body>
 

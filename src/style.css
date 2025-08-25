@@ -1,9 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-    --color-brand:   #166273; /* deep teal */
     --color-accent:  #F2D649; /* gold */
     --color-warm:    #D98825; /* amber/orange */
     --color-alert:   #F23838; /* red */
     --color-deep:    #A63F3F; /* maroon */
+}
+
+@layer components {
+    /* Centered container with a max width (content doesn’t stretch too wide) */
+    .container-partial {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+    /* Full-bleed container (spans edge-to-edge but keeps padding) */
+    .container-full {
+        @apply w-full px-0;
+    }
+
+    /* Section */
+
+    .section-title {
+        @apply text-2xl sm:text-5xl font-bold uppercase tracking-tight text-alert mb-16;
+    }
+
+    .section-sub-title {
+        @apply text-2xl sm:text-3xl font-semibold tracking-tight text-white;
+    }
+
+    .section-content {
+        @apply mt-3 text-white leading-relaxed;
+    }
+
+    .section-content-container {
+        @apply max-w-xl;
+    }
+
+    .section-media {
+        @apply flex items-stretch gap-8 mb-24; 
+    }
+
+    .section-media-element {
+        @apply w-full h-auto aspect-[16/9] object-cover;
+    }
+
+    .section-media-container {
+        @apply basis-[40%] shrink-0 overflow-hidden bg-white/5 border border-white/10;
+    } 
 }
