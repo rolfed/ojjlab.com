@@ -12,6 +12,7 @@
         @apply bg-black m-0 p-0 w-screen h-screen;
     }
 
+    /* Hero */
     .hero {
         @apply relative w-full max-h-[70vh] isolate;
     }
@@ -23,6 +24,20 @@
     .hero-image {
         @apply absolute inset-0 -z-10 h-full w-full object-cover;
     }
+
+
+
+    /* Navigation */
+    .nav {
+        @apply absolute top-0 left-0 w-full z-20 bg-gradient-to-b from-black/50 to-black/0;
+    }
+
+    .nav-logo {
+        @apply mx-auto flex items-center justify-between px-32 py-4;
+    }
+
+
+
 
     /* Centered container with a max width (content doesn’t stretch too wide) */
     .container-partial {
