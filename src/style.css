@@ -8,12 +8,20 @@
 }
 
 @layer components {
-    .container {
-        @apply bg-black m-0 p-0;
+    .ojjlab  {
+        @apply bg-black m-0 p-0 w-screen h-screen;
     }
 
     .hero {
         @apply relative w-full max-h-[70vh] isolate;
+    }
+
+    .hero-container {
+        @apply absolute w-full inset-0 -z-10 bg-gradient-to-b from-black/100 to-transparent object-cover;
+    }
+
+    .hero-image {
+        @apply absolute inset-0 -z-10 h-full w-full object-cover;
     }
 
     /* Centered container with a max width (content doesn’t stretch too wide) */
