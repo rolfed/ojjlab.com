@@ -12,9 +12,12 @@
         @apply bg-black m-0 p-0 w-screen h-screen;
     }
 
+
+
+
     /* Hero */
     .hero {
-        @apply relative w-full max-h-[70vh] isolate;
+        @apply relative w-full max-h-[80vh] isolate;
     }
 
     .hero-container {
@@ -24,6 +27,24 @@
     .hero-image {
         @apply absolute inset-0 -z-10 h-full w-full object-cover;
     }
+
+    .hero-overlay {
+        @apply relative z-10 flex flex-col items-end justify-center text-right min-h-[95vh] px-32;
+    }
+
+    .hero-title {
+        @apply text-white text-4xl sm:text-6xl font-bold; 
+    }
+
+    .hero-content {
+        @apply mt-4 max-w-xl text-white text-xl;
+    }
+
+    .hero-cta-container {
+        @apply flex gap-4 mt-6;
+    }
+
+
 
 
 
@@ -36,7 +57,37 @@
         @apply mx-auto flex items-center justify-between px-32 py-4;
     }
 
+    .nav-logo-link {
+        @apply inline-flex items-center;
+    }
 
+    .nav-logo-image {
+        @apply w-auto h-8 md:h-10 lg:h-12;
+    }
+
+    .nav-hamburger {
+        @apply inline-flex items-center justify-center rounded p-2 text-black; 
+        @apply hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white lg:hidden; 
+    }
+    
+    .nav-hamburger-image {
+        @apply h-6 w-6;
+    }
+
+    .nav-menu {
+        @apply hidden lg:flex items-center gap-x-10 uppercase font-semibold text-sm text-white;
+    }
+
+    .nav-menu li a {
+        @apply hover:text-alert;
+    }
+
+    .menu-cta {
+        @apply uppercase text-white font-semibold bg-alert;
+        @apply rounded-md border border-alert;
+        @apply px-4 py-2;
+        @apply hover:text-alert hover:bg-transparent;
+    }
 
 
     /* Centered container with a max width (content doesn’t stretch too wide) */
@@ -49,6 +100,9 @@
         @apply w-full px-0;
     }
 
+
+
+
     /* CTA */
     .cta-primary {
         @apply rounded bg-alert px-5 py-3 font-semibold text-white hover:opacity-95;
@@ -57,6 +111,36 @@
     .cta-secondary {
         @apply rounded border border-white px-5 py-3 font-medium text-white hover:bg-white/10;
     }
+
+    .cta-button-group {
+        @apply inline-flex rounded-md mb-8;
+    }
+
+    .cta-button-group-item-active {
+        @apply px-8 py-2 rounded-l-md;
+        @apply text-black font-semibold uppercase;
+        @apply bg-white;
+        @apply transition-colors;
+        @apply hover:bg-alert hover:text-white;
+        @apply focus:outline-none focus:ring-2 focus:ring-alert;
+        @apply active:bg-alert active:text-white;
+        @apply aria-[pressed=false]:bg-white aria-[pressed=false]:text-black aria-[pressed=true]:bg-alert aria-[pressed=true]:text-white;
+    }
+
+    .cta-button-group-item-active {
+        @apply px-8 py-2 rounded-l-md;
+        @apply text-black font-semibold uppercase;
+        @apply bg-white;
+        @apply transition-colors;
+        @apply hover:bg-alert hover:text-white;
+        @apply focus:outline-none focus:ring-2 focus:ring-alert;
+        @apply active:bg-alert active:text-white;
+        @apply aria-[pressed=false]:bg-white aria-[pressed=false]:text-black aria-[pressed=true]:bg-alert aria-[pressed=true]:text-white;
+    }
+
+
+
+
 
     /* Section */
 

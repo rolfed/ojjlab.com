@@ -91,25 +91,15 @@
 
                 <div class="nav-logo">
                     <!-- Logo -->
-                    <a
-                        href="/"
+                    <a href="/"
                         aria-label="Oregon Jiu Jitsu Lab Home"
-                        class="
-                        inline-flex
-                        items-center
-                        "
-                    >
+                        class="nav-logo-link">
                         <img
                             src="/images/brand/oregon-jiu-jitsu-lab-light.svg"
                             alt="Oregon Jiu Jitsu Lab"
                             decoding="async"
                             fetchpriority="high"
-                            class="
-                            h-8
-                            w-auto
-                            md:h-10
-                            lg:h-12
-                            "
+                            class="nav-logo-image"
                         />
                     </a>
 
@@ -118,26 +108,10 @@
                         type="button"
                         aria-expanded="false"
                         aria-controls="primary-menu"
-                        class="
-                        inline-flex
-                        items-center
-                        justify-center
-                        rounded
-                        p-2
-                        text-black
-                        hover:bg-white/10
-                        focus:outline-none
-                        focus:ring-2
-                        focus:ring-inset
-                        focus:ring-white
-                        lg:hidden
-                        "
+                        class="nav-hamburger"
                     >
                         <svg
-                            class="
-                            h-6
-                            w-6
-                            "
+                            class="nav-hamburger-image"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -157,165 +131,35 @@
                     <!-- Desktop Menu -->
                     <ul
                         id="primary-menu"
-                        class="
-                        hidden
-                        lg:flex
-                        items-center
-                        gap-x-10
-                        uppercase
-                        text-sm
-                        font-medium
-                        text-white
-                        "
+                        class="nav-menu"
                     >
-                        <li>
-                            <a
-                                href="/schedule"
-                                class="
-                                hover:text-gray-200
-                                "
-                            >
-                                Schedule
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/programs"
-                                class="
-                                hover:text-gray-200
-                                "
-                            >
-                                Programs
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/instructors"
-                                class="
-                                hover:text-gray-200
-                                "
-                            >
-                                Instructors
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/shop"
-                                class="
-                                hover:text-gray-200
-                                "
-                            >
-                                Shop
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/contact"
-                                class="
-                                hover:text-gray-200
-                                "
-                            >
-                                Contact Us
-                            </a>
-                        </li>
-                        <li>
-                            <a 
-                                href="/login"
-                                class="
-                                hover:text-gray-200
-                                "
-                            >
-                                Login
-                            </a>
-                        </li>
-                        <li>
-                            <a 
-                                href="/login"
-                                class="
-                                rounded-md
-                                border
-                                border-alert
-                                px-4
-                                py-2
-
-                                text-alert
-                                font-semibold
-                                uppercase
-
-                                hover:text-gray-200
-                                hover:bg-alert
-                                hover:border-alert
-
-                                focus:outline-none
-                                focus:ring-2
-                                focus:ring-alert
-                                "
-                            >
-                                Join
-                            </a>
-                        </li>
+                        <li><a href="/schedule">Schedule</a></li>
+                        <li><a href="/programs">Schedule</a></li>
+                        <li><a href="/schedule">Instructors</a></li>
+                        <li><a href="/shop">Instructors</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/login" class="menu-cta">Join</a></li>
                     </ul>
                 </div>
             </nav>
 
             <!-- Hero Overlay Content -->
-            <div
-                class="
-                relative
-                z-10
-                flex
-                flex-col
-                items-end
-                justify-center
-                text-right
-                min-h-[70vh]
-                px-32
-                "
-            >
-                <h1
-                    id="hero-title"
-                    class="
-                    text-white
-                    text-4xl
-                    sm:text-6xl
-                    font-bold
-                    "
-                >
+            <div class="hero-overlay">
+                <h1 id="hero-title" class="hero-title" >
                     <span class="block">American Jiu Jitsu</span>
                     <span class="block">Wrestling</span> 
                     <span class="block">Kickboxing</span>
                 </h1>
-                <p
-                    class="
-                    mt-4
-                    max-w-xl
-                    text-white
-                    text-xl
-                    "
-                >
+                <p class="hero-content">
                     Strength for kids. Confidence for adults. Community for everyone.
                 </p>
-                <div
-                    class="
-                    mt-6
-                    flex
-                    gap-4
-                    "
-                >
-                    <a
-                        href="/schedule"
-                        class="cta-primary"
-                    >
-                        Schedule Trial Class
-                    </a>
-                    <a
-                        href="/schedule"
-                        class="cta-secondary"
-                    >
-                        View Schedule
-                    </a>
+                <div class="hero-cta-container">
+                    <a href="/schedule" class="cta-primary">Join Today</a>
+                    <a href="/schedule-trial-class" class="cta-secondary">Schedule Trial Class</a>
                 </div>
             </div>
+
         </header>
 
 
@@ -333,84 +177,19 @@
                     Schedule
                 </h2>
 
-                <div class="inline-flex rounded-md mb-8" id="scheduleButtons">
-                    <button
-                        aria-pressed="true"
-                        aria-controls="day-view"
+                <div class="cta-button-group" id="scheduleButtons" role="group">
+                    <button aria-pressed="true"
                         type="button"
+                        aria-controls="day-view"
                         id="dayViewBtn"
-                        class="
-                        px-8
-                        py-2
-                        rounded-l-md
-
-                        text-md
-                        text-black
-                        font-semibold
-                        uppercase
-                        bg-white
-
-                        transition-colors
-
-                        hover:bg-alert
-                        hover:text-white
-
-                        focus:outline-none
-                        focus:ring-2
-                        focus:ring-alert
-
-                        active:bg-alert
-                        active:text-white
-
-                        aria-[pressed=false]:bg-white
-                        aria-[pressed=false]:text-black
-                        aria-[pressed=true]:bg-alert
-                        aria-[pressed=true]:text-white
-                        "
-                    >
-                        Day 
-                    </button>
+                        class="cta-button-group-item-active"
+                    >Day</button>
                     <button
+                        type="button"
                         aria-pressed="false"
                         aria-controls="week-view"
                         id="weekViewBtn"
-                        type="button"
-                        class="
-                        px-8
-                        py-2
-
-                        text-sm
-                        text-black
-                        font-semibold
-                        uppercase
-
-                        bg-white
-                        transition-colors
-
-                        hover:bg-alert
-                        hover:text-white
-
-                        focus:outline-none
-                        focus:ring-2
-                        focus:ring-alert
-
-                        active:bg-alert
-                        active:text-white
-                        active:outline-1
-                        active:ring-2
-                        active:ring-alert
-
-                        aria-[pressed=false]:bg-white
-                        aria-[pressed=false]:text-black
-                        aria-[pressed=true]:bg-alert
-                        aria-[pressed=true]:text-white
-
-                        rounded-r-md
-
-                        border-l
-                        border-black
-                        "
-                    >
+                        class="cta-button-group-item">
                         Week 
                     </button>
                 </div>
