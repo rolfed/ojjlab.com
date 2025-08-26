@@ -34,7 +34,7 @@
         <meta name="twitter:card" content="summary_large_image" />
     </head>
 
-    <body class="bg-black m-0 p-0">
+    <body class="container">
         <!-- <div id="app"></div> -->
 
         <!-- Skip link -->
@@ -42,12 +42,7 @@
         <header
             id="hero"
             aria-labelledby="hero-title"
-            class="
-            relative
-            w-full
-            max-h-[70vh]
-            isolate
-            "
+            class="hero"
         >
             <!-- <a href="#main-content">Skip to content</a> -->
 
@@ -273,7 +268,7 @@
                                 class="
                                 rounded-md
                                 border
-                                borer-alert
+                                border-alert
                                 px-4
                                 py-2
 
@@ -362,26 +357,12 @@
 
             <section
                 aria-labelledby="schedule-title"
-                class="
-                container-partial
-                bg-black
-                py-32
-                sm:px-6
-                lg:px-8
-                "
+                class="container-partial"
             >
                 <!-- Title -->
                 <h2
                     id="schedule-title"
-                    class="
-                    text-2xl
-                    sm:text-5xl
-                    font-bold
-                    uppercase
-                    tracking-tight
-                    text-alert
-                    mb-16
-                    "
+                    class="section-title"
                 >
                     Schedule
                 </h2>
@@ -632,14 +613,12 @@
             </section>
 
             <!-- American Jiu Jitsu -->
-            <section aria-labelledby="programs" class="container-full">
+            <section aria-labelledby="programs-title" class="container-full">
                 <div class="container-partial"> 
                     <h2
                         id="programs-title"
                         class="section-title"
-                    >
-                        Programs 
-                    </h2>
+                    >Programs</h2>
                 </div>
 
 
@@ -665,85 +644,83 @@
                     <div class="video-layout">
                         <div class="video-content text-right">
                             <h2>American Jiu Jitsu</h2>
-                            <p>
-                                A martial art rooted in tradition, evolved for today.
-                            </p>
-                            <p>
-                                Our lineage traces back to Master Rigan Machado through Coach 
+                            <p>A martial art rooted in tradition, evolved for 
+                                today.</p>
+                            <p>Our lineage traces back to Master Rigan Machado through Coach 
                                 Chris Haueter, one of the original black belts in the United States. 
-                                But Jiu Jitsu has grown far beyond its beginnings.
-                            </p>
-                            <p>
-                                At OJJ Lab, we call our style American Jiu Jitsu — 
-                                shaped by Brazilian roots, but influenced by Brazilian Jiu Jitsu, Judo, 
+                                But Jiu Jitsu has grown far beyond its beginnings.</p>
+                            <p>At OJJ Lab, we call our style American Jiu Jitsu — 
+                                shaped by Brazilian roots, but influenced by Judo, 
                                 and Wrestling. We honor our heritage 
                                 while embracing the evolution led by American 
-                                practictioners pushing the art forward.
-                            </p>
-
+                                practictioners pushing the art forward. </p>
                             <div class="flex-none py-5">
                                 <a class="cta-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
 
             <!-- Jiu Jitsu Programs -->
-            <section aria-labelledby="programs" class="container-full">
-                <div class="column-container">
+            <section aria-label="programs" class="bg-warm">
+                <div class="container-partial">
+                    <div class="column">
+                        <div class="column-item">
+                            <h2>Kids Jiu Jitsu (Ages 4+)</h2>
+                            <h3>Confidence starts young.</h3>
+                            <p>Our kids’ program builds focus, discipline, and respect
+                                — while keeping training fun and engaging. From 
+                                learning the basics to building lifelong habits, 
+                                Jiu Jitsu gives kids tools that go far beyond the 
+                                mats.
+                            </p>
+                            <a class="cta-secondary">Learn More</a>
+                        </div>
+
+                        <div class="column-item">
+                            <h2>Adult Jiu Jitsu</h2>
+                            <h3>Train hard. Grow stronger.</h3>
+                            <p>Whether you’re stepping onto the mats for the first 
+                                time or looking to sharpen your skills, 
+                                our adult program balances technique, 
+                                fitness, and strategy. Jiu Jitsu is a practice that 
+                                builds resilience, community, and strength at 
+                                every stage of life.
+                            </p>
+                            <a href="" class="cta-secondary">Learn More</a>
+                        </div>
+
+                        <div class="column-item">
+                            <h2>Competition Team</h2>
+                            <h3>For those who want to test themselves.</h3>
+
+                            <p>Our competition program prepares athletes to push 
+                                past limits — with advanced techniques, focused 
+                                coaching, and training partners who match your 
+                                intensity. Designed for serious practitioners 
+                                ready to take their game to the next level.
+                            </p>
+                            <a href="" class="cta-secondary">Learn More</a>
+                        </div>
+
+                    </div>
+
                 </div>
             </section>
 
-            <!-- KickBoxing -->
-            <!-- <section aria-labelledby="programs" class="container-full"> -->
-            <!--     <div class="section-media"> -->
-            <!--         <!-- Content --> -->
-            <!--         <div class="section-content-container"> -->
-            <!--             <h2 class="section-sub-title">Kickboxing</h2> -->
-            <!--             <p class="section-content"> -->
-            <!--                 A martial art rooted in tradition, evolved for today. -->
-            <!--             </p> -->
-            <!--             <p class="section-content"> -->
-            <!--                 Our lineage traces back to Master Rigan Machado through Coach  -->
-            <!--                 Chris Haueter, one of the original black belts in the United States.  -->
-            <!--                 But Jiu Jitsu has grown far beyond its beginnings. -->
-            <!--             </p> -->
-            <!--             <p class="section-content"> -->
-            <!--                 At OJJ Lab, we call our style American Jiu Jitsu —  -->
-            <!--                 shaped by Brazilian roots, but influenced by Judo,  -->
-            <!--                 Wrestling, and Catch Wrestling. We honor our heritage  -->
-            <!--                 while embracing the evolution led by American  -->
-            <!--                 athletes pushing the art forward. -->
-            <!--             </p> -->
-            <!--         </div> -->
-            <!---->
-            <!--         <!-- Media --> -->
-            <!--         <div class="section-media-container"> -->
-            <!--             <video -->
-            <!--                 src="/videos/programs/test.mp4" -->
-            <!--                 playsinline -->
-            <!--                 class="secion-media-element" -->
-            <!--                 autoplay -->
-            <!--             ></video> -->
-            <!--         </div> -->
-            <!---->
-            <!--     </div> -->
+            <!-- <section aria-label="testimonials-title"> -->
+            <!--     <!-- Testimonials / Stories --> -->
             <!-- </section> -->
-
-
-
-            <section aria-labelledby="testimonials-title">
-                <!-- Testimonials / Stories -->
-            </section>
-
-            <section aria-labelledby="pricing-title">
-                <!-- Pricing section -->
-            </section>
-
-            <section aria-labelledby="cta-title">
-                <!-- Call-to-action section -->
-            </section>
+            <!---->
+            <!-- <section aria-label="pricing-title"> -->
+            <!--     <!-- Pricing section --> -->
+            <!-- </section> -->
+            <!---->
+            <!-- <section aria-label="cta-title"> -->
+            <!--     <!-- Call-to-action section --> -->
+            <!-- </section> -->
         </main>
 
         <footer class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
