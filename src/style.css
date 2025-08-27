@@ -270,4 +270,17 @@
     footer {
         min-height: 400px;
     }
+
+    /* Animations */
+    .text-reveal {
+      @apply relative inline-block overflow-hidden;
+    }
+    .reveal-text {
+      @apply invisible relative z-[1];
+    }
+
+    .reveal-bar {
+      @apply absolute top-0 left-0 h-full bg-alert z-[2];
+    }
+
 }

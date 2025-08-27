@@ -16,8 +16,11 @@
 // `;
 
 import { toggleCalendarView } from "./functionality/calendar";
+import { heroTitleAnimation } from "./animations/title";
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    toggleCalendarView(document);
+  toggleCalendarView(document);
+
+  heroTitleAnimation();
 });
