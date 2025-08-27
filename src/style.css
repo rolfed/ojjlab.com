@@ -14,10 +14,9 @@
 
 
 
-
     /* Hero */
     .hero {
-        @apply relative w-full max-h-[80vh] isolate;
+        @apply relative w-full max-h-[70vh] isolate border-b border-warm;
     }
 
     .hero-container {
@@ -29,7 +28,7 @@
     }
 
     .hero-overlay {
-        @apply relative z-10 flex flex-col items-end justify-center text-right min-h-[95vh] px-32;
+        @apply relative z-10 flex flex-col items-end justify-center text-right min-h-[70vh] px-32;
     }
 
     .hero-title {
@@ -101,6 +100,38 @@
     }
 
 
+    /* Schedule */
+
+    .schedule {
+        @apply grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6;
+    }
+
+    .schedule-day {
+        @apply border border-white/30 rounded-lg p-6 bg-black/5 backdrop-blur-sm;
+    }
+
+    .schedule-title {
+        @apply text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3;
+    }
+
+    .schedule-times {
+        @apply space-y-2;
+    }
+
+    .schedule-times-item {
+        @apply flex gap-2;
+    }
+
+    .schedule-times-item time {
+        @apply text-gray-500 text-sm;
+    }
+
+    .schedule-times-item span {
+        @apply text-white text-sm uppercase;
+    }
+
+
+
 
 
     /* CTA */
@@ -124,7 +155,7 @@
         @apply hover:bg-alert hover:text-white;
         @apply focus:outline-none focus:ring-2 focus:ring-alert;
         @apply active:bg-alert active:text-white;
-        @apply aria-[pressed=false]:bg-white aria-[pressed=false]:text-black aria-[pressed=true]:bg-alert aria-[pressed=true]:text-white;
+        @apply aria-[pressed=true]:bg-alert aria-[pressed=true]:text-white aria-[pressed=true]:bg-alert aria-[pressed=true]:text-white;
     }
 
     .cta-button-group-item-active {
@@ -145,7 +176,8 @@
     /* Section */
 
     .section-title {
-        @apply text-2xl sm:text-5xl font-bold uppercase tracking-tight text-alert mb-16;
+        @apply text-3xl sm:text-5xl font-bold uppercase;
+        @apply tracking-tight text-alert pt-32 pb-8;
     }
 
     .video-container {
@@ -157,11 +189,7 @@
     }
 
     .video-layout {
-        @apply absolute inset-0 z-10; 
-    }
-
-    .video-layout {
-        @apply absolute inset-0 z-10; 
+        @apply absolute inset-0 z-10 border-t border-warm; 
     }
 
     .section-content {
@@ -185,15 +213,15 @@
     }
 
     .column {
-        @apply flex gap-2 h-full;
+        @apply flex gap-8 py-10;
     }
 
     .column-item {
-        @apply flex-1 mt-5 px-4 text-white;
+        @apply flex-1 text-white;
     }
 
     .column-item h2 {
-        @apply text-2xl font-semibold tracking-tight text-white;
+        @apply text-2xl font-semibold tracking-tight uppercase text-white py-6;
     }
 
     .column-item p {
@@ -201,6 +229,10 @@
     }
 
     .column-item a {
-        @apply py-3;
+        @apply py-3 mt-12 inline-block;
+    }
+
+    footer {
+        min-height: 400px;
     }
 }

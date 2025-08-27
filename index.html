@@ -30,7 +30,7 @@
             content="High-performance training for kids and adults."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="/" />
+        <meta property="og:url" content="https://ojjlab.com" />
         <meta name="twitter:card" content="summary_large_image" />
     </head>
 
@@ -134,9 +134,9 @@
                         class="nav-menu"
                     >
                         <li><a href="/schedule">Schedule</a></li>
-                        <li><a href="/programs">Schedule</a></li>
-                        <li><a href="/schedule">Instructors</a></li>
-                        <li><a href="/shop">Instructors</a></li>
+                        <li><a href="/programs">Programs</a></li>
+                        <li><a href="/Instructors">Instructors</a></li>
+                        <li><a href="/shop">Shop</a></li>
                         <li><a href="/contact">Contact</a></li>
                         <li><a href="/login">Login</a></li>
                         <li><a href="/login" class="menu-cta">Join</a></li>
@@ -170,24 +170,17 @@
                 class="container-partial"
             >
                 <!-- Title -->
-                <h2
-                    id="schedule-title"
-                    class="section-title"
-                >
-                    Schedule
-                </h2>
+                <h2 id="schedule-title" class="section-title">Schedule</h2>
 
                 <div class="cta-button-group" id="scheduleButtons" role="group">
                     <button aria-pressed="true"
                         type="button"
-                        aria-controls="day-view"
                         id="dayViewBtn"
                         class="cta-button-group-item-active"
                     >Day</button>
                     <button
                         type="button"
                         aria-pressed="false"
-                        aria-controls="week-view"
                         id="weekViewBtn"
                         class="cta-button-group-item">
                         Week 
@@ -195,166 +188,160 @@
                 </div>
 
                 <!-- WEEK VIEW -->
-                <div
-                    id="schedule"
-                    class="
-                    mt-8
-                    text-white
-                    space-y-6
-                    "
-                >
+                <div id="schedule"
+                    class="schedule">
+
                     <!-- Monday -->
-                    <div data-schedule="1" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
-                        <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                    <div data-schedule="1" class="schedule-day">
+                        <h3 class="schedule-title">
                             Monday
                         </h3>
-                        <div class="space-y-2">
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                        <div class="schedule-times">
+                            <div class="schedule-times-item">
+                                <time datetime="17:30">5:30–6:30pm</time>
                                 <span>Kids No-Gi</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:30pm</time>
+                            <div class="schedule-times-item">
+                                <time datetime="18:30">6:30–7:30pm</time>
                                 <span>Adult No-Gi Jiu Jitsu 101</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="19:30">7:30–8:00pm</time>
+                            <div class="schedule-times-item">
+                                <time datetime="19:30">7:30–8:00pm</time>
                                 <span>Adult Advanced No-Gi</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="20:00">8:00–9:00pm</time>
+                            <div class="schedule-times-item">
+                                <time datetime="20:00">8:00–9:00pm</time>
                                 <span>Adult Live Training</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Tuesday -->
-                    <div data-schedule="2" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
-                        <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
+                    <div data-schedule="2" class="schedule-day">
+                        <h3 class="schedule-title">
                             Tuesday
                         </h3>
-                        <div class="space-y-2">
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                        <div class="schedule-times">
+                            <div class="schedule-times-item">
+                                <time  datetime="17:30">5:30–6:30pm</time>
                                 <span>Kids Gi</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:45pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="18:30">6:30–7:45pm</time>
                                 <span>Adult Gi Jiu Jitsu</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="19:45">7:45pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="19:45">7:45pm</time>
                                 <span>Adult Kickboxing</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Wednesday -->
-                    <div data-schedule="3" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                    <div data-schedule="3" class="schedule-day">
                         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
                             Wednesday
                         </h3>
-                        <div class="space-y-2">
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                        <div class="schedule-times">
+                            <div class="schedule-times-item">
+                                <time  datetime="17:30">5:30–6:30pm</time>
                                 <span>Kids Wrestling</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:30pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="18:30">6:30–7:30pm</time>
                                 <span>Adult No-Gi Jiu Jitsu 101</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="19:30">7:30–8:00pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="19:30">7:30–8:00pm</time>
                                 <span>Adult Advanced No-Gi</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="20:00">8:00–9:00pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="20:00">8:00–9:00pm</time>
                                 <span>Adult Live Training</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Thursday -->
-                    <div data-schedule="4" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                    <div data-schedule="4" class="schedule-day">
                         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
                             Thursday
                         </h3>
-                        <div class="space-y-2">
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                        <div class="schedule-times">
+                            <div class="schedule-times-item">
+                                <time  datetime="17:30">5:30–6:30pm</time>
                                 <span>Kids Gi</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:45pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="18:30">6:30–7:45pm</time>
                                 <span>Adult Gi Jiu Jitsu</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="19:45">7:45pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="19:45">7:45pm</time>
                                 <span>Adult Kickboxing</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Friday -->
-                    <div data-schedule="5" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                    <div data-schedule="5" class="schedule-day">
                         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
                             Friday
                         </h3>
-                        <div class="space-y-2">
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="17:30">5:30–6:30pm</time>
+                        <div class="schedule-times">
+                            <div class="schedule-times-item">
+                                <time  datetime="17:30">5:30–6:30pm</time>
                                 <span>Kids No-Gi</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="18:30">6:30–7:30pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="18:30">6:30–7:30pm</time>
                                 <span>Adult No-Gi Jiu Jitsu 101</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="19:30">7:30–8:00pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="19:30">7:30–8:00pm</time>
                                 <span>Adult Advanced No-Gi</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="20:00">8:00–9:00pm</time>
+                            <div class="schedule-times-item">
+                                <time datetime="20:00">8:00–9:00pm</time>
                                 <span>Adult Live Training</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Saturday -->
-                    <div data-schedule="6" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                    <div data-schedule="6" class="schedule-day">
                         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
                             Saturday
                         </h3>
-                        <div class="space-y-2">
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="10:00">10:00–11:00am</time>
+                        <div class="schedule-times">
+                            <div class="schedule-times-item">
+                                <time  datetime="10:00">10:00–11:00am</time>
                                 <span>Adult Gi Jiu Jitsu 101</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="11:00">11:00–12:00pm</time>
+                            <div class="schedule-times-item">
+                                <time  datetime="11:00">11:00–12:00pm</time>
                                 <span>Adult Advanced No-Gi</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Sunday -->
-                    <div data-schedule="7" class="border border-white/10 rounded-lg p-6 bg-white/5 backdrop-blur-sm">
+                    <div data-schedule="7" class="schedule-day">
                         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3">
                             Sunday
                         </h3>
-                        <div class="space-y-2">
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="10:00">10:00–11:00am</time>
+                        <div class="schedule-times">
+                            <div class="schedule-times-item">
+                                <time datetime="10:00">10:00–11:00am</time>
                                 <span>Adult Gi Jiu Jitsu 101</span>
                             </div>
-                            <div class="flex gap-4">
-                                <time class="text-gray-300 w-28" datetime="11:00">11:00–12:00pm</time>
+                            <div class="schedule-times-item">
+                                <time datetime="11:00">11:00–12:00pm</time>
                                 <span>Adult Advanced No-Gi</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </section>
 
             <!-- American Jiu Jitsu -->
@@ -455,20 +442,44 @@
                 </div>
             </section>
 
-            <!-- <section aria-label="testimonials-title"> -->
-            <!--     <!-- Testimonials / Stories --> -->
-            <!-- </section> -->
-            <!---->
-            <!-- <section aria-label="pricing-title"> -->
-            <!--     <!-- Pricing section --> -->
-            <!-- </section> -->
-            <!---->
-            <!-- <section aria-label="cta-title"> -->
-            <!--     <!-- Call-to-action section --> -->
-            <!-- </section> -->
+            <section aria-labelledby="programs-title" class="container-full">
+                <div class="container-partial"> 
+                    <h2
+                        id="programs-title"
+                        class="section-title"
+                    >Wrestling</h2>
+                </div>
+            </section>
+
+            <section aria-labelledby="programs-title" class="container-full">
+                <div class="container-partial"> 
+                    <h2
+                        id="programs-title"
+                        class="section-title"
+                    >Kickboxing</h2>
+                </div>
+            </section>
+
+            <section aria-labelledby="programs-title" class="container-full">
+                <div class="container-partial"> 
+                    <h2
+                        id="programs-title"
+                        class="section-title"
+                    >Instructors</h2>
+                </div>
+            </section>
+
+            <section aria-labelledby="programs-title" class="container-full">
+                <div class="container-partial"> 
+                    <h2
+                        id="programs-title"
+                        class="section-title"
+                    >Testimonials</h2>
+                </div>
+            </section>
         </main>
 
-        <footer class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <footer>
             <!-- Footer links, credits -->
         </footer>
 
