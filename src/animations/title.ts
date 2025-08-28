@@ -7,36 +7,65 @@ export interface TitleSelectors {
   textSelector: string;
 };
 
-const titleAnimation = (elements: TitleSelectors) => {
+type Timeline = gsap.core.Timeline;
+
+const titleAnimation = (elements: TitleSelectors): Timeline => {
   const { containerSelector, barSelector, textSelector } = elements;
   const container = document.querySelector(containerSelector)
   const bar = document.querySelector(barSelector);
   const text = document.querySelector(textSelector);
 
+  const containerWidth = container.getBoundingClientRect().width.toString();
+  const tl = gsap.timeline({
+    defaults: { ease: 'power2.out', smoothChildTiming: true }
+  });
+
   if (!container) {
     console.warn('Title Animation: container element not found');
-    return;
+    return tl;
   }
 
   if (!text) {
     console.warn('Title Animation: text element not found');
-    return;
+    return tl;
   }
 
+  let timeline = tl.to(
+      bar, { x: 0, duration: 0.25, delay: 0.25, ease: 'elastic' },
+    )
+    .to(
+      bar, { x: containerWidth, opacity: 0, width: "7rem" }
+    )
+    .to(
+      bar, { x: 0, width: containerWidth, opacity: 100, duration: 0.01 }
+    )
+    .to(
+      bar, { opacity: 0, duration: 0.01 }
+    )
+    .to(text, { opacity: "100%", duration: 1 });
 
-  const containerWidth = container.getBoundingClientRect().width.toString();
-  console.log('test: ', containerWidth);
-  const tl = gsap.timeline({
-    defaults: { ease: 'power2.out' }
-  });
+  return timeline;
+};
 
-  tl.to(
-    bar, { x: 0, duration: 0.25, delay: 0.15 },
-  )
-  .to(
-    bar, { x: containerWidth, opacity: 0,  width: "7rem" }
-  )
-  .to(text, { opacity: "100%", duration: 0.25 });
+const titleOffsetAnimation = (elements: TitleSelectors): Timeline => {
+  const { textSelector } = elements;
+  const text = document.querySelector<HTMLElement>(textSelector);
+  const timeline = gsap.timeline();
+
+  if (!text) {
+    console.warn('Title Animation: text element not found');
+    return timeline;
+  } 
+
+  const lines = Array.from(text.querySelectorAll<HTMLElement>('span'));
+
+  timeline.from(lines, {
+    xPercent: 10,
+    opacity: 0,
+    stagger: 0.12
+  })
+
+  return timeline;
 };
 
 export const heroTitleAnimation = () => {
@@ -51,5 +80,8 @@ export const heroTitleAnimation = () => {
     textSelector
   };
 
-  return titleAnimation(heroTitle);
+  gsap.timeline() 
+    .add(titleAnimation(heroTitle))
+    .add(titleOffsetAnimation(heroTitle), "-=1");
+  
 }
