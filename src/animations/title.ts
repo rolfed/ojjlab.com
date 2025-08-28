@@ -60,9 +60,9 @@ const titleOffsetAnimation = (elements: TitleSelectors): Timeline => {
   const lines = Array.from(text.querySelectorAll<HTMLElement>('span'));
 
   timeline.from(lines, {
-    xPercent: 10,
+    xPercent: 2,
     opacity: 0,
-    stagger: 0.12
+    stagger: 0.15
   })
 
   return timeline;
