@@ -272,15 +272,17 @@
     }
 
     /* Animations */
-    .text-reveal {
-      @apply relative inline-block overflow-hidden;
+    .reveal {
+      @apply relative z-[1];
     }
+
     .reveal-text {
-      @apply invisible relative z-[1];
+      @apply relative inline-block overflow-hidden opacity-0;
     }
 
     .reveal-bar {
-      @apply absolute top-0 left-0 h-full bg-alert z-[2];
+      @apply absolute;
+      @apply bg-white h-full w-1 top-0 left-0 z-[2];
     }
 
 }
