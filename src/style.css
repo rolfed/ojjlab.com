@@ -9,9 +9,8 @@
 
 @layer components {
     .ojjlab  {
-        @apply bg-black m-0 p-0 w-screen h-screen;
+        @apply bg-black m-0 p-0 w-screen h-screen overflow-x-hidden;
     }
-
 
 
     /* Hero */

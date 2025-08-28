@@ -47,7 +47,7 @@
       <!-- <a href="#main-content">Skip to content</a> -->
 
       <div
-        class="hero-container"
+        class="hero-container overflow-hidden"
       >
         <!-- Background Image -->
         <picture>
@@ -70,6 +70,7 @@
             sizes="100vw"
           >
           <img
+            data-animation="hero-image"
             src="/images/hero/hero-768.jpg"
             srcset="
             /images/hero/hero-480.jpg   480w,
@@ -162,11 +163,13 @@
           </h1>
         </div>
 
-        <p class="hero-content">
-          Strength for kids. Confidence for adults. Community for everyone.
+        <p data-animation="hero-content" class="hero-content">
+          <span>Strength for kids.</span>
+          <span>Confidence for adults.</span>
+          <span>Community for everyone.</span>
         </p>
 
-        <div class="hero-cta-container">
+        <div class="hero-cta-container" data-animation="">
           <a href="/schedule" class="cta-primary">Join Today</a>
           <a href="/schedule-trial-class" class="cta-secondary">Schedule Trial Class</a>
         </div>

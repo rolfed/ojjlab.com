@@ -11,22 +11,24 @@ type Timeline = gsap.core.Timeline;
 
 const titleAnimation = (elements: TitleSelectors): Timeline => {
   const { containerSelector, barSelector, textSelector } = elements;
-  const container = document.querySelector(containerSelector)
+  const container = document.querySelector<HTMLElement>(containerSelector)
   const bar = document.querySelector(barSelector);
   const text = document.querySelector(textSelector);
-
-  const containerWidth = container.getBoundingClientRect().width.toString();
   const tl = gsap.timeline({
     defaults: { ease: 'power2.out', smoothChildTiming: true }
   });
 
   if (!container) {
-    console.warn('Title Animation: container element not found');
+    console.warn('Title Animation: container selector not found');
     return tl;
   }
 
+  const containerWidth = container.getBoundingClientRect().width;
+
+
+
   if (!text) {
-    console.warn('Title Animation: text element not found');
+    console.warn('Title Animation: text selector not found');
     return tl;
   }
 
@@ -53,14 +55,14 @@ const titleOffsetAnimation = (elements: TitleSelectors): Timeline => {
   const timeline = gsap.timeline();
 
   if (!text) {
-    console.warn('Title Animation: text element not found');
+    console.warn('Title Animation: text selector not found');
     return timeline;
   } 
 
   const lines = Array.from(text.querySelectorAll<HTMLElement>('span'));
 
   timeline.from(lines, {
-    xPercent: 2,
+    xPercent: 10,
     opacity: 0,
     stagger: 0.15
   })
@@ -68,11 +70,50 @@ const titleOffsetAnimation = (elements: TitleSelectors): Timeline => {
   return timeline;
 };
 
+const subTitleAnimation = (selector: string): Timeline => {
+  const timeline: Timeline = gsap.timeline();
+  const content = document.querySelector<HTMLElement>(selector);
+
+  if (!content) {
+    console.warn('Sub Title Animation: text selector not found');
+    return timeline;
+  } 
+
+  const lines = Array.from(content.querySelectorAll<HTMLElement>('span'));
+
+  timeline.from(lines, {
+    yPercent: 20,
+    autoAlpha: 0,
+    stagger: 0.5
+  });
+
+  return timeline;
+};
+
+const heroImageAnimation = (selector: string): Timeline => {
+  const timeline: Timeline = gsap.timeline();
+  const image = document.querySelector<HTMLElement>(selector);
+
+  if (!image) {
+    console.warn('Image Animation: text selector not found');
+    return timeline;
+  } 
+
+  timeline.set(image, { force3D: true });
+
+  timeline.fromTo(image, { scale: 1 }, { scale: 1.15, duration: 100, ease: 'power1.out' })
+  
+
+  return timeline;
+}
+
 export const heroTitleAnimation = () => {
 
+  const heroImage = getAnimationSelector('hero-image');
   const containerSelector = getAnimationSelector('hero-reveal-container');
   const textSelector = getAnimationSelector('hero-title');
   const barSelector = getAnimationSelector('hero-reveal-bar');
+  const heroImageSelector = getAnimationSelector('hero-content');
 
   const heroTitle: TitleSelectors = {
     containerSelector,
@@ -82,6 +123,7 @@ export const heroTitleAnimation = () => {
 
   gsap.timeline() 
     .add(titleAnimation(heroTitle))
-    .add(titleOffsetAnimation(heroTitle), "-=1");
-  
-}
+    .add(titleOffsetAnimation(heroTitle))
+    .add(subTitleAnimation(heroImageSelector))
+    .add(heroImageAnimation(heroImage))
+};
