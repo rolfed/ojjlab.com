@@ -21,6 +21,5 @@ import { heroTitleAnimation } from "./animations/title";
 
 document.addEventListener("DOMContentLoaded", () => {
   toggleCalendarView(document);
-
   heroTitleAnimation();
 });
