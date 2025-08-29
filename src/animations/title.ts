@@ -160,7 +160,7 @@ export const heroTitleAnimation = (): void => {
         .add(revealTitleAnimation(), 'start')    
         .add(heroTitleStaggerAnimation(), 'start+=0.74')
         .add(heroSubTitleAnimation(), 'start+=1')
-        .add(heroCtaAnimation(), 'start+=1.2')
-        .add(heroImageAnimaton(), 'start+=5');     
+        .add(heroCtaAnimation(), 'start+=2')
+        .add(heroImageAnimaton(), 'start');     
 
 };

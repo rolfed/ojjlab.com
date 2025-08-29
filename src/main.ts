@@ -17,9 +17,11 @@
 
 import { toggleCalendarView } from "./functionality/calendar";
 import { heroTitleAnimation } from "./animations/title";
+import { navAnimation } from './animations/nav.ts';
 
 
 document.addEventListener("DOMContentLoaded", () => {
   toggleCalendarView(document);
+  navAnimation(document);
   heroTitleAnimation();
 });
