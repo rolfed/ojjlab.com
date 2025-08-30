@@ -173,7 +173,6 @@
 
 
     /* Section */
-
     .section-title {
         @apply text-3xl sm:text-5xl font-bold uppercase;
         @apply tracking-tight text-alert pt-32 pb-8;
@@ -182,10 +181,6 @@
     .video-container {
         @apply relative basis-[40%] shrink-0 overflow-hidden; 
     } 
-
-    .video-content-left {
-
-    }
 
     .video-element {
         @apply w-full h-auto aspect-[16/9] object-cover;
@@ -197,6 +192,10 @@
 
     .video-border-bottom {
         @apply border-b border-warm; 
+    }
+
+    .video-border-top {
+        @apply border-t border-warm; 
     }
 
     .section-content {

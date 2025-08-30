@@ -82,10 +82,10 @@ const subTitleAnimation = (selector: string): Timeline => {
     const lines = Array.from(content.querySelectorAll<HTMLElement>('span'));
 
     timeline.from(lines, {
-        yPercent: 20,
+        yPercent: 10,
         opacity: 0,
         ease: 'power2.out',
-        stagger: 0.5,
+        stagger: 1,
     });
 
     return timeline;
@@ -104,7 +104,7 @@ const heroImageAnimation = (selector: string): Timeline => {
 
     timeline.set(image, { transformOrigin: 'center center', force3D: true });
 
-    timeline.fromTo(image, { scale: 1 }, { scale: 1.10, duration: 3, ease: 'power1.out' })
+    timeline.fromTo(image, { scale: 1 }, { scale: 2, duration: 100, ease: 'power1.out' })
 
 
     return timeline;
@@ -158,9 +158,9 @@ export const heroTitleAnimation = (): void => {
     master
         .addLabel('start', 0)
         .add(revealTitleAnimation(), 'start')    
-        .add(heroTitleStaggerAnimation(), 'start+=0.74')
-        .add(heroSubTitleAnimation(), 'start+=1')
-        .add(heroCtaAnimation(), 'start+=1.2')
-        .add(heroImageAnimaton(), 'start+=5');     
+        .add(heroTitleStaggerAnimation(), 'start+=0.75')
+        .add(heroSubTitleAnimation(), 'start+=2')
+        .add(heroCtaAnimation(), 'start+=3.5')
+        .add(heroImageAnimaton(), 'start');     
 
 };
