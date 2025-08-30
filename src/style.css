@@ -130,9 +130,6 @@
     }
 
 
-
-
-
     /* CTA */
     .cta-primary {
         @apply rounded bg-alert px-5 py-3 font-semibold text-white hover:opacity-95;
@@ -283,4 +280,21 @@
       @apply bg-white h-full w-1 top-0 left-0 z-[2];
     }
 
+}
+
+@layer utilities {
+  /* Make container stack children in one grid cell (no abs-pos needed for content) */
+  .u-stack       { @apply grid; }
+  .u-stack-child { @apply col-start-1 row-start-1; }
+
+  /* Full-bleed layer that fills the parent (good for bg/overlay) */
+  .u-fill        { @apply absolute inset-0 w-full h-full aspect-auto; }
+
+  /* Keep content in flow so it dictates height (overrides absolute/inset from components) */
+  .u-content-flow{ @apply relative inset-auto z-20; }
+
+  /* Extras */
+  .u-object-cover{ @apply object-cover; }
+  .u-pointer-none{ @apply pointer-events-none; }
+  .u-img-block   { @apply block w-full h-auto; }
 }
