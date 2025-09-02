@@ -1,15 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-    --color-accent:  #F2D649; /* gold */
-    --color-warm:    #D98825; /* amber/orange */
-    --color-alert:   #F23838; /* red */
-    --color-deep:    #A63F3F; /* maroon */
+    /* COLORS */
+    --color-accent:  #F2D680;
+    --color-warm:    #A68A56;
+    --color-alert:   #F23838;
+    --color-deep:    #BF7839;
+
+    /* Secondary Colors */
+     --color-sec-1: #164038; 
+     --color-sec-2: #22594F; 
+     --color-sec-4: #261414; 
+     --color-sec-5: #735D5D; 
+
+    /* FONTS */
+    --font-title:    "Hind", ui-sans-serif, system-ui, sans-serif;
+    --font-content:  "Montserrat", sans-serif; 
+
+    /* Color Theme Swatches in Hex */
+
 }
 
 @layer components {
     .ojjlab  {
         @apply bg-black m-0 p-0 w-screen h-screen overflow-x-hidden;
+    }
+
+    /* Defaults */
+    h1, h2, h3, h4, h5 {
+        @apply font-title;
+    }
+
+    h2 {
+        @apply uppercase;
+    }
+
+    p, a, span {
+        @apply font-content;
     }
 
 
@@ -31,11 +58,11 @@
     }
 
     .hero-title {
-        @apply text-white text-4xl sm:text-6xl font-bold; 
+        @apply text-white text-4xl sm:text-6xl font-bold font-title; 
     }
 
     .hero-content {
-        @apply mt-4 max-w-xl text-white text-xl;
+        @apply mt-4 max-w-2xl text-white text-lg;
     }
 
     .hero-cta-container {
@@ -77,7 +104,7 @@
     }
 
     .nav-menu li a {
-        @apply hover:text-alert;
+        @apply hover:text-warm;
     }
 
     .menu-cta {
@@ -172,7 +199,7 @@
     /* Section */
     .section-title {
         @apply text-3xl sm:text-5xl font-bold uppercase;
-        @apply tracking-tight text-alert pt-32 pb-8;
+        @apply tracking-tight text-warm pt-32 pb-8;
     }
 
     .video-container {
