@@ -1,27 +1,27 @@
-// // import './style.css';
-// // import typescriptLogo from './typescript.svg';
-// // import viteLogo from '/vite.svg';
-// import "./components/nav-container";
-// import "./components/hero-container";
-//
-// document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-//   <!-- <header> -->
-//   <!--   <nav-container></nav-container> -->
-//   <!-- </header> -->
-//   <!-- <main> -->
-//   <!--   <hero-container></hero-container> -->
-//   <!-- </main> -->
-//   <!-- <footer> -->
-//   <!-- </footer> -->
-// `;
-
 import { toggleCalendarView } from "./functionality/calendar";
 import { heroTitleAnimation } from "./animations/title";
 import { navAnimation } from './animations/nav.ts';
+import { loaderAnimation } from "./animations/load-animation.ts";
 
+let booted = false;
+const _loader = loaderAnimation(document);
+_loader.play();
 
-document.addEventListener("DOMContentLoaded", () => {
-  toggleCalendarView(document);
-  navAnimation(document);
-  heroTitleAnimation();
-});
+const init = (callback: () => void) => {
+    if (booted) { return; };
+    booted = true;
+    callback();
+}
+
+const executedFeatures = () => {
+    // TODO fix document reference
+    toggleCalendarView(document);
+    navAnimation(document);
+    heroTitleAnimation();
+}
+
+const isLoaded = document.readyState === "loading";
+
+isLoaded 
+    ? document.addEventListener("DOMContentLoaded", () => init(executedFeatures), { once: true }) 
+    : init(executedFeatures);

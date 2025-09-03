@@ -8,17 +8,22 @@
     --color-deep:    #BF7839;
 
     /* Secondary Colors */
-     --color-sec-1: #164038; 
-     --color-sec-2: #22594F; 
-     --color-sec-4: #261414; 
-     --color-sec-5: #735D5D; 
+    --color-sec-1: #164038; 
+    --color-sec-2: #22594F; 
+    --color-sec-4: #261414; 
+    --color-sec-5: #735D5D; 
 
     /* FONTS */
     --font-title:    "Hind", ui-sans-serif, system-ui, sans-serif;
     --font-content:  "Montserrat", sans-serif; 
 
-    /* Color Theme Swatches in Hex */
 
+    /* Icons */
+    --font-icons: "Material Symbols Outlined";
+    --icon-fill: 1;   /* 0 = outline, 1 = filled */
+    --icon-wght: 300; /* 100..700 */
+    --icon-grad: 0;   /* -50..200 */
+    --icon-opsz: 24;  /* 24..48 */
 }
 
 @layer components {
@@ -38,7 +43,6 @@
     p, a, span {
         @apply font-content;
     }
-
 
     /* Hero */
     .hero {
@@ -66,11 +70,24 @@
     }
 
     .hero-cta-container {
-        @apply flex gap-4 mt-6;
+        @apply flex items-center gap-4 mt-6;
     }
 
+    /* Location */
 
+    .location-item {
+        @apply flex flex-row mb-6;
+    }
 
+    .location-cta {
+        @apply flex flex-row items-center gap-3 py-1 px-3 mr-2; 
+        @apply rounded-md hover:bg-white/5 focus-visible:outline focus-visible:outline-2; 
+        @apply focus-visible:outline-offset-2 focus-visible:outline-alert;
+    }
+
+    .location-cta-border {
+        @apply border-1 border-white; 
+    }
 
 
     /* Navigation */
@@ -94,7 +111,7 @@
         @apply inline-flex items-center justify-center rounded p-2 text-black; 
         @apply hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white lg:hidden; 
     }
-    
+
     .nav-hamburger-image {
         @apply h-6 w-6;
     }
@@ -293,35 +310,69 @@
         min-height: 400px;
     }
 
+    .notify-container {
+        @apply fixed inset-x-0 bottom-0 z-50 pointer-events-none bg-warm;
+        @apply border-t-1 border-black;
+        @apply transform-gpu translate-y-full [will-change:transform];
+    }
+
+    .notify-element {
+        @apply text-white px-5 py-4;
+    }
+
+
     /* Animations */
     .reveal {
-      @apply relative z-[1];
+        @apply relative z-[1];
     }
 
     .reveal-text {
-      @apply relative inline-block overflow-hidden opacity-0;
+        @apply relative inline-block overflow-hidden opacity-0;
     }
 
     .reveal-bar {
-      @apply absolute;
-      @apply bg-white h-full w-1 top-0 left-0 z-[2];
+        @apply absolute;
+        @apply bg-white h-full w-1 top-0 left-0 z-[2];
     }
 
 }
 
 @layer utilities {
-  /* Make container stack children in one grid cell (no abs-pos needed for content) */
-  .u-stack       { @apply grid; }
-  .u-stack-child { @apply col-start-1 row-start-1; }
+    /* Make container stack children in one grid cell (no abs-pos needed for content) */
+    .u-stack       { @apply grid; }
+    .u-stack-child { @apply col-start-1 row-start-1; }
 
-  /* Full-bleed layer that fills the parent (good for bg/overlay) */
-  .u-fill        { @apply absolute inset-0 w-full h-full aspect-auto; }
+    /* Full-bleed layer that fills the parent (good for bg/overlay) */
+    .u-fill        { @apply absolute inset-0 w-full h-full aspect-auto; }
 
-  /* Keep content in flow so it dictates height (overrides absolute/inset from components) */
-  .u-content-flow{ @apply relative inset-auto z-20; }
+    /* Keep content in flow so it dictates height (overrides absolute/inset from components) */
+    .u-content-flow{ @apply relative inset-auto z-20; }
 
-  /* Extras */
-  .u-object-cover{ @apply object-cover; }
-  .u-pointer-none{ @apply pointer-events-none; }
-  .u-img-block   { @apply block w-full h-auto; }
+    /* Extras */
+    .u-object-cover{ @apply object-cover; }
+    .u-pointer-none{ @apply pointer-events-none; }
+    .u-img-block   { @apply block w-full h-auto; }
+
+    /* Icons */
+    /* Fill */
+    .icon-fill-0 { --icon-fill: 0; }
+    .icon-fill-1 { --icon-fill: 1; }
+
+    /* Weight */
+    .icon-wght-200 { --icon-wght: 200; }
+    .icon-wght-300 { --icon-wght: 300; }
+    .icon-wght-400 { --icon-wght: 400; }
+    .icon-wght-500 { --icon-wght: 500; }
+    .icon-wght-600 { --icon-wght: 600; }
+    .icon-wght-700 { --icon-wght: 700; }
+
+    /* Grade */
+    .icon-grad--50 { --icon-grad: -50; }
+    .icon-grad-0   { --icon-grad: 0; }
+    .icon-grad-200 { --icon-grad: 200; }
+
+    /* Optical size */
+    .icon-opsz-24 { --icon-opsz: 24; }
+    .icon-opsz-40 { --icon-opsz: 40; }
+    .icon-opsz-48 { --icon-opsz: 48; }
 }

@@ -28,6 +28,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@0,6..96;1,6..96&family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
         <!-- Social -->
         <meta property="og:title" content="OJJLab" />
@@ -43,7 +44,26 @@
     </head>
 
     <body class="ojjlab">
-        <!-- <div id="app"></div> -->
+        <!-- Loader overlay: visible by default before any JS runs -->
+        <div data-animation="loader-container"
+            class="fixed inset-0 z-50 grid place-items-center bg-black/95 text-white"
+            role="status" aria-live="polite" aria-atomic="true">
+            <div class="text-center select-none">
+                <h2 data-animation="loader-count" 
+                    class="text-9xl font-bold tabular-nums tracking-tight leading-none">
+                    0%
+                </h2>
+                <div class="mt-3 text-white/80 text-sm sm:text-base" id="loader-subtext">
+                    Loading…
+                </div>
+
+                <!-- Optional progress bar -->
+                <div data-animation="loader-bar" 
+                    class="mt-6 w-64 h-2 bg-white/10 rounded-full overflow-hidden mx-auto">
+                        <div  class="h-full w-0 bg-alert"></div>
+                </div>
+            </div>
+        </div>
 
         <!-- Skip link -->
 
@@ -189,22 +209,62 @@
             <div class="container-partial">
                 <div class="column">
                     <div class="column-item">
-                    <h2>Location</h2>
-                        <address>
-                            <a href="">503-308-8455</a>
-                            <p>3691 NE John Olsen Ave,</p>
-                            <p>Hillsboro, OR 97124</p>
+                        <h2 class="mb-0 pb-0">Location</h2>
+                        <p class="mb-6">Interested in learning more about our programs? Call or text us anytime. You’re also welcome to stop by during training hours.</p>
+                        <address class="not-italic">
+                            <div class="location-item">
+                                <span class="material-symbols-outlined mr-6">phone</span> 
+                                <span>(503) 308-8455</span>
+                            </div>
+                            <div class="location-item">
+                                <a
+                                    href="tel:+15033088455"
+                                    class="location-cta location-cta-border"
+                                    aria-label="Call Oregon Jiu Jitsu Lab at 503-308-8455"
+                                >
+                                    <span class="material-symbols-outlined text-xl" aria-hidden="true">phone_in_talk</span>
+                                    <span class="font-medium tracking-wide whitespace-nowrap">Call</span>
+                                </a>
+                                <a
+                                    href="sms:+15033088455"
+                                    class="location-cta location-cta-border"
+                                    aria-label="Call Oregon Jiu Jitsu Lab at 503-308-8455"
+                                >
+                                    <span class="material-symbols-outlined text-xl" aria-hidden="true">sms</span>
+                                    <span class="font-medium tracking-wide whitespace-nowrap">Text</span>
+                                </a>
+                                <button 
+                                    type="button"
+                                    data-animation="location-phone-copy"
+                                    class="location-cta location-cta-border"
+                                    onclick="navigator.clipboard?.writeText('(503) 308-8455')">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                    <span class="font-medium tracking-wide whitespace-nowrap">Copy</span>
+                                </button>
+                            </div>
+
+                            <div class="location-item">
+                                <a
+                                    href="https://maps.google.com/?q=3691%20NE%20John%20Olsen%20Ave%2C%20Hillsboro%2C%20OR%2097124"
+                                    target="_blank" rel="noopener"
+                                    class="location-cta"
+                                    aria-label="Open address in Maps"
+                                >
+                                    <span class="material-symbols-outlined text-xl mt-0.5" aria-hidden="true">location_on</span>
+                                    <p class="p-0">3691 NE John Olsen Ave</p>
+                                    <p class="p-0">Hillsboro, OR 97124</p>
+                                </a>
+                            </div>
                         </address>
                     </div>
+
                     <div class="column-item">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.2248049838026!2d-122.88340428692602!3d45.5458030709547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950f766c38f8ed%3A0x6ca2e3d54969fcb2!2sOregon%20Jiu%20Jitsu%20Lab!5e0!3m2!1sen!2sus!4v1756832474897!5m2!1sen!2sus" 
-                            width="400" 
-                            height="200" 
-                            style="border:0;" 
-                            allowfullscreen="" 
+                        <iframe 
+                            class="w-full h-full border-0"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.2248049838026!2d-122.88340428692602!3d45.5458030709547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950f766c38f8ed%3A0x6ca2e3d54969fcb2!2sOregon%20Jiu%20Jitsu%20Lab!5e0!3m2!1sen!2sus!4v1756832474897!5m2!1sen!2sus" 
+                            allowfullscreen="false" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade">
-
                         </iframe>
                     </div>
                 </div>
@@ -213,7 +273,6 @@
 
 
         <main id="main-content" class="w-full">
-
             <section
                 aria-labelledby="schedule-title"
                 class="container-partial"
@@ -654,6 +713,20 @@
                     <div class="maonrails-form" attr-ref="Ddq9L" attr-gym="AbZWO"></div>
                 </div>
             </section>
+
+            <div data-animation="notify" class="notify-container">
+                <div class="container-partial">
+                    <div
+                        data-animation="notify-container"
+                        class="notify-element"  
+                        role="status" 
+                        aria-live="polite" 
+                        aria-atomic="true"
+                    >
+                    </div>
+                </div>
+            </div>
+
         </main>
 
         <footer>

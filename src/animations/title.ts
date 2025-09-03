@@ -14,7 +14,7 @@ const titleAnimation = (elements: TitleSelectors): Timeline => {
     const container = document.querySelector<HTMLElement>(containerSelector)
     const bar = document.querySelector(barSelector);
     const text = document.querySelector(textSelector);
-    const timeline = gsap.timeline({
+    const timeline: Timeline = gsap.timeline({
         // paused: true,
     });
 
