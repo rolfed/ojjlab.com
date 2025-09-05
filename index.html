@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-hidden">
 
     <head>
         <meta charset="UTF-8" />
@@ -57,10 +57,9 @@
                     Loading…
                 </div>
 
-                <!-- Optional progress bar -->
-                <div data-animation="loader-bar" 
-                    class="mt-6 w-64 h-2 bg-white/10 rounded-full overflow-hidden mx-auto">
-                        <div  class="h-full w-0 bg-alert"></div>
+                <!-- progress bar -->
+                <div class="mt-6 w-64 h-2 bg-white/10 rounded-full overflow-hidden mx-auto">
+                    <div data-animation="loader-bar" lass="h-full w-0 bg-alert"></div>
                 </div>
             </div>
         </div>
@@ -236,9 +235,8 @@
                                 <button 
                                     type="button"
                                     data-animation="location-phone-copy"
-                                    class="location-cta location-cta-border"
-                                    onclick="navigator.clipboard?.writeText('(503) 308-8455')">
-                                    <span class="material-symbols-outlined">content_copy</span>
+                                    class="location-cta location-cta-border">
+                                    <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
                                     <span class="font-medium tracking-wide whitespace-nowrap">Copy</span>
                                 </button>
                             </div>

@@ -3,6 +3,7 @@ import { toggleCalendarView } from "./functionality/calendar";
 import { heroTitleAnimation } from "./animations/title";
 import { navAnimation } from "./animations/nav";
 import { loaderAnimation } from "./animations/load-animation"; // play(): Promise<void>
+import { copyPhone } from "./functionality/copy";
 
 declare global {
     interface Window { __app_booted__?: boolean }
@@ -18,6 +19,7 @@ const init = async () => {
   toggleCalendarView(document);
   navAnimation(document);
   heroTitleAnimation();
+  copyPhone(document);
 }
 
 if (!window.__app_booted__) {

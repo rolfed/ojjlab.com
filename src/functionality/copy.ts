@@ -21,9 +21,8 @@ export const copyPhone = (document: Document) => {
 }
 
 type Timeline = gsap.core.Timeline;
-export const notifyAnimation = (document: Document, element: HTMLElement) => {
-    console.log('notify animation');
 
+export const notifyAnimation = (document: Document, element: HTMLElement) => {
     const notifySelector = getAnimationSelector('notify');
     const notifyElement = document.querySelector<HTMLElement>(notifySelector);
     const notifyContainerSelector = getAnimationSelector('notify-container');
