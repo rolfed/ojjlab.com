@@ -98,12 +98,16 @@ const heroOnLoadAnimation = (): Timeline => {
     const navSelector = getAnimationSelector('nav');
     const heroCtaSelector = getAnimationSelector('hero-cta');
     const heroContentSelector = getAnimationSelector('hero-content'); 
-    const heroRevealContainer = getAnimationSelector('hero-reveal-container');
+    const heroRevealContainerSelector = getAnimationSelector('hero-reveal-container');
+    const heroOverlaySelector = getAnimationSelector('hero-overlay');
+    const barSelector = getAnimationSelector('hero-reveal-bar');
+    const textSelector = getAnimationSelector('hero-title');
 
     const navElement = validateElement<HTMLElement>(navSelector);
     const heroCtaElement = validateElement<HTMLElement>(heroCtaSelector);
     const heroContentElement = validateElement<HTMLElement>(heroContentSelector);
-    const heroRevealElement = validateElement<HTMLElement>(heroRevealContainer);
+    const heroRevealElement = validateElement<HTMLElement>(heroRevealContainerSelector);
+    const heroOverlayElement = validateElement<HTMLElement>(heroOverlaySelector);
 
     const elements = [
         navElement, 
@@ -120,9 +124,12 @@ const heroOnLoadAnimation = (): Timeline => {
     const containerSelector = getAnimationSelector('hero-container');
     const heroContainerElement = validateElement<HTMLElement>(containerSelector);
     timeline.set(heroContainerElement, { width: '100%', height: '100vh'});
+    timeline.set('.hero-overlay', {
+        alignItems: "center",
+        textAlign: "center",
+        minHeight: "100vh"
+    });
 
-    const barSelector = getAnimationSelector('hero-reveal-bar');
-    const textSelector = getAnimationSelector('hero-title');
     const heroTitle: TitleSelectors = {
         containerSelector,
         barSelector,
@@ -135,7 +142,7 @@ const heroOnLoadAnimation = (): Timeline => {
     timeline
         .addLabel('onLoad')
         .to(heroRevealElement, { autoAlpha: 1}, 'start')
-        .add(revealTitleAnimation(), 'start+=0.5');  
+        .add(revealTitleAnimation(), '+=0.5');  
 
     return timeline;
 };
