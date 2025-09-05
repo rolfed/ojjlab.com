@@ -12,8 +12,6 @@ type LoaderControls = {
 type Timeline = gsap.core.Timeline;
 
 export const loaderAnimation = (doc: Document): LoaderControls => {
-    // TODO disabl scrolling
-    
     const loaderContainerSelector = getAnimationSelector('loader-container');
     const countSelector = getAnimationSelector('loader-count');
     const barSelector = getAnimationSelector('loader-bar');
@@ -56,7 +54,7 @@ export const loaderAnimation = (doc: Document): LoaderControls => {
         countElement.textContent = `${val}%`
 
         if (barElement) {
-            gsap.set(barElement, { width: `0%`});
+            gsap.set(barElement, { width: `${val}%`});
         }
     }
 
