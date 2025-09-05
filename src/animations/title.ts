@@ -91,6 +91,69 @@ const subTitleAnimation = (selector: string): Timeline => {
     return timeline;
 };
 
+const heroOnLoadAnimation = (): Timeline => {
+    const timeline: Timeline = gsap.timeline({ defaults: { ease: "power2.out"}});
+
+    /* Hide Elements on load */
+    const navSelector = getAnimationSelector('nav');
+    const heroCtaSelector = getAnimationSelector('hero-cta');
+    const heroContentSelector = getAnimationSelector('hero-content'); 
+    const heroRevealContainer = getAnimationSelector('hero-reveal-container');
+
+    const navElement = validateElement<HTMLElement>(navSelector);
+    const heroCtaElement = validateElement<HTMLElement>(heroCtaSelector);
+    const heroContentElement = validateElement<HTMLElement>(heroContentSelector);
+    const heroRevealElement = validateElement<HTMLElement>(heroRevealContainer);
+
+    const elements = [
+        navElement, 
+        heroCtaElement,
+        heroContentElement,
+        heroRevealElement
+    ];
+
+    elements.forEach((element) => {
+        timeline.set(element, { autoAlpha: 0 }, 0);
+    });
+
+    /* Hero configuration on load */
+    const containerSelector = getAnimationSelector('hero-container');
+    const heroContainerElement = validateElement<HTMLElement>(containerSelector);
+    timeline.set(heroContainerElement, { width: '100%', height: '100vh'});
+
+    const barSelector = getAnimationSelector('hero-reveal-bar');
+    const textSelector = getAnimationSelector('hero-title');
+    const heroTitle: TitleSelectors = {
+        containerSelector,
+        barSelector,
+        textSelector
+    };
+
+    const revealTitleAnimation = () =>  titleAnimation(heroTitle);
+
+    /* Start Animation */
+    timeline
+        .addLabel('onLoad')
+        .to(heroRevealElement, { autoAlpha: 1}, 'start')
+        .add(revealTitleAnimation(), 'start+=0.5');  
+
+    return timeline;
+};
+
+
+const validateElement = <T extends Element>(
+    selector: string,
+): T | null => {
+    const navElement = document.querySelector<T>(selector);
+
+    if (!navElement) {
+        console.error(`Hero Animation: unable to fine ${selector}`)
+        return null;
+    }
+
+    return navElement;
+}
+
 const heroImageAnimation = (selector: string): Timeline => {
     const timeline: Timeline = gsap.timeline({
         // paused: true
@@ -136,10 +199,12 @@ const ctaAnimation = (selector: string): Timeline => {
 export const heroTitleAnimation = (): void => {
 
     const heroImage = getAnimationSelector('hero-image');
+    const heroContainer = getAnimationSelector('hero-container');
+    const heroImageSelector = getAnimationSelector('hero-content');
+
     const containerSelector = getAnimationSelector('hero-reveal-container');
     const textSelector = getAnimationSelector('hero-title');
     const barSelector = getAnimationSelector('hero-reveal-bar');
-    const heroImageSelector = getAnimationSelector('hero-content');
     const ctaSelector = getAnimationSelector('hero-cta');
 
     const heroTitle: TitleSelectors = {
@@ -150,6 +215,7 @@ export const heroTitleAnimation = (): void => {
 
     const master = gsap.timeline({ defaults: { ease: 'power2.out' }, smoothChildTiming: true });
     const revealTitleAnimation = () =>  titleAnimation(heroTitle);
+    const onLoad = () => heroOnLoadAnimation(heroContainer);
     const heroImageAnimaton = () => heroImageAnimation(heroImage);
     const heroTitleStaggerAnimation = () => titleStaggerAnimation(heroTitle);
     const heroSubTitleAnimation = () => subTitleAnimation(heroImageSelector);
@@ -157,10 +223,11 @@ export const heroTitleAnimation = (): void => {
 
     master
         .addLabel('start', 0)
-        .add(revealTitleAnimation(), 'start')    
-        .add(heroTitleStaggerAnimation(), 'start+=0.75')
-        .add(heroSubTitleAnimation(), 'start+=2')
-        .add(heroCtaAnimation(), 'start+=3.5')
-        .add(heroImageAnimaton(), 'start');     
+        .add(onLoad(), 'start')
+        // .add(revealTitleAnimation(), 'start')    
+        // .add(heroTitleStaggerAnimation(), 'start+=0.75')
+        // .add(heroSubTitleAnimation(), 'start+=2')
+        // .add(heroCtaAnimation(), 'start+=3.5')
+        // .add(heroImageAnimaton(), 'start');     
 
 };
