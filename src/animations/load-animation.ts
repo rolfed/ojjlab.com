@@ -3,17 +3,16 @@ import gsap from 'gsap';
 import { loader } from "../functionality/loader";
 
 type LoaderControls = {
-    play: () => void;
+    play: () => Promise<any>;
     set: (percent: number) => void;
     done: () => void;
     kill: () => void;
+    onComplete: () => Promise<void>;
 }
 
 type Timeline = gsap.core.Timeline;
 
 export const loaderAnimation = (doc: Document): LoaderControls => {
-    console.log('loader loaded');
-
     // TODO disabl scrolling
     
     const loaderContainerSelector = getAnimationSelector('loader-container');
@@ -27,9 +26,11 @@ export const loaderAnimation = (doc: Document): LoaderControls => {
 
     const timeline: Timeline = gsap.timeline({});
 
+
     if (!loaderContainerElement || !countElement) {
+        const resolved = Promise.resolve();
         // fail-safe no-ops so app won't crash if markup isn't present
-        return { play(){}, set(){}, done(){}, kill(){} };
+        return { play(){}, set(){}, done(){}, kill(){}, onComplete: () => resolved };
     }
 
     // Respect reduced motion
@@ -54,6 +55,12 @@ export const loaderAnimation = (doc: Document): LoaderControls => {
     timeline.to(countElement, { yPercent: 0, autoAlpha: 1, duration: 0.4, ease: "power2.out"})
     timeline.to(barElement, { yPercent: 0, autoAlpha: 1, duration: 0.4, ease: "power2.out"})
 
+    let resolveDone: () => void;
+    let finished = new Promise<void>((res) => (resolveDone = res));
+    const resetFinished = () => {
+        finished = new Promise<void>((res) => (resolveDone = res));
+    };
+
     const timelineTwo: Timeline = gsap.timeline(({ paused: true }));
 
     const setTiming = prefersReduce ? 0.2 : 1.2;
@@ -73,10 +80,13 @@ export const loaderAnimation = (doc: Document): LoaderControls => {
     }, "+=0.1");
 
 
-    const play = () => {
+    const onComplete = async () => finished;
+
+    const play = async (): Promise<void> => {
         counter.value = 0;
         render();
         timelineTwo.restart();
+        return finished;
     };
 
     const set = () => {
@@ -96,7 +106,8 @@ export const loaderAnimation = (doc: Document): LoaderControls => {
         play,
         set,
         done,
-        kill
+        kill,
+        onComplete
     };
 
 }

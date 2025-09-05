@@ -1,27 +1,50 @@
+// main.ts
 import { toggleCalendarView } from "./functionality/calendar";
 import { heroTitleAnimation } from "./animations/title";
-import { navAnimation } from './animations/nav.ts';
-import { loaderAnimation } from "./animations/load-animation.ts";
+import { navAnimation } from "./animations/nav";
+import { loaderAnimation } from "./animations/load-animation"; // play(): Promise<void>
 
-let booted = false;
-const _loader = loaderAnimation(document);
-_loader.play();
-
-const init = (callback: () => void) => {
-    if (booted) { return; };
-    booted = true;
-    callback();
+declare global {
+    interface Window { __app_booted__?: boolean }
 }
 
-const executedFeatures = () => {
-    // TODO fix document reference
-    toggleCalendarView(document);
-    navAnimation(document);
-    heroTitleAnimation();
+// One time boot logic
+const boot = async () => {
+    const loadAnimation = loaderAnimation(document);
+    loadAnimation.play();
+};
+
+const init = async () => {
+  toggleCalendarView(document);
+  navAnimation(document);
+  heroTitleAnimation();
 }
 
-const isLoaded = document.readyState === "loading";
+if (!window.__app_booted__) {
+    console.log('huh');
+    window.__app_booted__ = true;
+    await boot();
+};
 
-isLoaded 
-    ? document.addEventListener("DOMContentLoaded", () => init(executedFeatures), { once: true }) 
-    : init(executedFeatures);
+await init();
+
+/**
+ * HMR cleanup (development only).
+ *
+ * When using a dev server with Hot Module Replacement (Vite, etc.), `import.meta.hot`
+ * is defined. The `dispose` callback runs right BEFORE this module is replaced,
+ * giving us a chance to undo side-effects from the previous version.
+ *
+ * We delete the global boot guard (`window.__app_booted__`) so that when the updated
+ * module is re-evaluated, the app can run its init logic again EXACTLY ONCE instead
+ * of being skipped due to the stale flag.
+ *
+ * In production builds `import.meta.hot` is undefined, so this block never runs.
+ *
+ * Tip: also remove event listeners, cancel intervals/timeouts, and kill GSAP timelines here.
+ */
+if (import.meta.hot) {
+    import.meta.hot.dispose(() => {
+        delete window.__app_booted__;
+    });
+}
