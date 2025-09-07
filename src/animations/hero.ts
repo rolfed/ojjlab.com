@@ -23,7 +23,7 @@ export const heroAnimation = (doc: Document): Timeline => {
   tl
     .addLabel("Hero")
     .add(barAnimation(revealBarElement, containerWidth), "start")
-    .add(logoAnimation(logoElement), "start+=0.5")
+    .add(logoInAnimation(logoElement), "start+=0.5")
     .add(logoOutAnimation(logoElement), "start+=2")
     .add(titleAnimation(location), "start+=2.15")
     .add(contentAnimation(location), "start+=4");
@@ -39,19 +39,15 @@ const barAnimation = (element: HTMLElement, containerWidth: number): Timeline =>
     .to(element, { opacity: 0, duration: 0.01 });
 };
 
-const logoAnimation = (element: HTMLElement): Timeline => {
+const logoInAnimation = (element: HTMLElement): Timeline => {
   const tl = gsap.timeline({});
-  gsap.set(element, { y: -50 });
 
   return tl
     .to(element, {
       opacity: 1,
       scale: 1.2,
-      duration: 0.5,
+      duration: 1,
       ease: "power1.in"
-    })
-    .to(element, {
-      yPercent: -50,
     });
 };
 
@@ -64,13 +60,13 @@ const titleAnimation = (location: string): Timeline => {
   const tl = gsap.timeline({});
   const titleElement = getElementByDataAnimation<HTMLElement>(location, "hero-title-cta");
 
-  gsap.set(titleElement, { y: -50 });
+  //gsap.set(titleElement, { y: -50 });
 
   const children = titleElement?.querySelectorAll('div');
 
   return tl.to(children, {
     opacity: "100%",
-    y: -100,
+    //y: -100,
     duration: 0.75,
     scale: 1.5,
     ease: "power1.in",

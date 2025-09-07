@@ -6,6 +6,10 @@
   --onload-logo-size-md: calc(var(--onload-logo-size) * var(--ratio));
   --onload-logo-size-lg: calc(var(--onload-logo-size-md) * var(--ratio));
   --onload-logo-size-xl: calc(var(--onload-logo-size-lg) * var(--ratio));
+
+
+   /* Hero Animation Clamp */
+    
 }
 
 @theme {
