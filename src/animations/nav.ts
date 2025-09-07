@@ -14,7 +14,7 @@ const animateNavElementOnHover = (element: HTMLLinkElement): Timeline  => {
   console.log(element);
 
   timeline.to(element, {
-    scale: 2,
+    scale: .2,
     ease: 'power2.ou'
   });
 

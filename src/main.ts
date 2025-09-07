@@ -4,18 +4,28 @@ import { heroTitleAnimation } from "./animations/title";
 import { navAnimation } from "./animations/nav";
 import { loaderAnimation } from "./animations/load-animation"; // play(): Promise<void>
 import { copyPhone } from "./functionality/copy";
+import { heroAnimation } from "./animations/hero";
 
 declare global {
     interface Window { __app_booted__?: boolean }
 }
 
+const loadAnimation = loaderAnimation(document);
+
 // One time boot logic
 const boot = async () => {
-    const loadAnimation = loaderAnimation(document);
     loadAnimation.play();
 };
 
 const init = async () => {
+  /* Onload */
+
+
+  /* Post Load */
+  await loadAnimation.onComplete().then(() => {
+    heroAnimation(document);
+  });
+
   toggleCalendarView(document);
   navAnimation(document);
   heroTitleAnimation();
@@ -23,7 +33,6 @@ const init = async () => {
 }
 
 if (!window.__app_booted__) {
-    console.log('huh');
     window.__app_booted__ = true;
     await boot();
 };

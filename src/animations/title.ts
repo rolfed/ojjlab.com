@@ -1,13 +1,12 @@
 import gsap from 'gsap';
 import { getAnimationSelector } from './data-animation';
+import type { Timeline } from '../model/gsap';
 
 export interface TitleSelectors {
     containerSelector: string;
     barSelector: string;
     textSelector: string;
 };
-
-type Timeline = gsap.core.Timeline;
 
 const titleAnimation = (elements: TitleSelectors): Timeline => {
     const { containerSelector, barSelector, textSelector } = elements;
@@ -99,21 +98,22 @@ const heroOnLoadAnimation = (): Timeline => {
     const heroCtaSelector = getAnimationSelector('hero-cta');
     const heroContentSelector = getAnimationSelector('hero-content'); 
     const heroRevealContainerSelector = getAnimationSelector('hero-reveal-container');
-    const heroOverlaySelector = getAnimationSelector('hero-overlay');
     const barSelector = getAnimationSelector('hero-reveal-bar');
     const textSelector = getAnimationSelector('hero-title');
+    const heroRevealLogoSelector = getAnimationSelector('hero-reveal-logo');
 
     const navElement = validateElement<HTMLElement>(navSelector);
     const heroCtaElement = validateElement<HTMLElement>(heroCtaSelector);
     const heroContentElement = validateElement<HTMLElement>(heroContentSelector);
     const heroRevealElement = validateElement<HTMLElement>(heroRevealContainerSelector);
-    const heroOverlayElement = validateElement<HTMLElement>(heroOverlaySelector);
+    const heroRevealLogoElement = validateElement<HTMLElement>(heroRevealLogoSelector);
 
     const elements = [
         navElement, 
         heroCtaElement,
         heroContentElement,
-        heroRevealElement
+        heroRevealElement,
+        heroRevealLogoElement
     ];
 
     elements.forEach((element) => {
@@ -141,8 +141,9 @@ const heroOnLoadAnimation = (): Timeline => {
     /* Start Animation */
     timeline
         .addLabel('onLoad')
-        .to(heroRevealElement, { autoAlpha: 1}, 'start')
-        .add(revealTitleAnimation(), '+=0.5');  
+        .to(heroRevealLogoElement, { autoAlpha: 1 }, 'start')
+        // .to(heroRevealElement, { autoAlpha: 1}, 'start')
+        // .add(revealTitleAnimation(), '+=0.5');  
 
     return timeline;
 };
