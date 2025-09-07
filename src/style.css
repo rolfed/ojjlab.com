@@ -5,7 +5,7 @@
     --onload-logo-size: 150px;
     --onload-logo-size-md: calc(var(--onload-logo-size) * var(--ratio));
     --onload-logo-size-lg: calc(var(--onload-logo-size-md) * var(--ratio));
-    --onload-logo-size-xl: calc(var(--onload-logo-size-lg) * var(--ratio));
+    --onload-logo-size-xl: calc(var(--onload-logo-size-md) * var(--ratio));
 
 }
 
@@ -79,22 +79,23 @@
         /* mobile */    @apply mt-6 w-40;
         /* table */     @apply sm:mt-8 sm:w-100;
         /* desktop */   @apply md:mt-10 md:w-100;
-        /* xldesktop */ @apply lg:mt-12 lg:w-250;
+        /* xldesktop */ @apply lg:mt-12 lg:w-100;
     }
 
 
     /* Hero */
+    /* Animation */
     .hero {
         @apply w-screen h-screen bg-black;
     }
 
     .hero-overlay {
-        @apply absolute inset-0 bg-black/30 z-10;
+        @apply absolute inset-0 bg-deep/20 z-10 h-full;
     }
 
     .hero-overlay-content {
         /* Grid */
-        @apply grid grid-rows-3 grid-cols-1 items-center justify-items-center;  
+        @apply grid grid-rows-4 grid-cols-1 items-center justify-items-center;  
 
         /* Default */   @apply relative w-full h-full overflow-hidden; 
         /* Mobile */    @apply gap-2;
@@ -107,8 +108,11 @@
         @apply row-start-2 col-start-1;
     }
 
-    .hero-overlay-content h1 {
-        /* general */ @apply text-white uppercase;   
+    .hero-overlay-content h1 { @apply opacity-0; }
+
+    .hero-overlay-content h1, 
+    .hero-content h1 {
+        /* general */ @apply text-white uppercase mb-2;   
         /* mobile */  @apply text-2xl; 
         /* tablet */  @apply sm:text-4xl; 
         /* desktop */ @apply lg:text-7xl;
@@ -118,19 +122,22 @@
         @apply opacity-0;
     }
 
-    .hero-overlay-content p span {
-        /* Default */   @apply mt-4 text-white opacity-0;
-        /* Mobile */    @apply max-w-sm text-sm block m-1;
-        /* Tablet */    @apply max-w-xl md:text-sm;
-        /* Desktop */   @apply max-w-2xl md:text-sm;
+    .hero-overlay-content p span { @apply opacity-0 block; };
+
+    .hero-overlay-content p span,
+    .hero-content p span {
+        /* Default */   @apply mt-4 text-white;
+        /* Mobile */    @apply max-w-sm text-base m-1;
+        /* Tablet */    @apply max-w-xl md:text-2xl;
+        /* Desktop */   @apply max-w-2xl md:text-2xl;
     }
 
     .hero-overlay-content img {
-        /* default */ @apply opacity-0;
-        /* mobile */  @apply w-[var(--onload-logo-size)]; 
-        /* tablet */  @apply sm:w-[var(--onload-logo-size-md)]; 
-        /* desktop */ @apply lg:w-[var(--onload-logo-size-lg)];
-        /* XL desktop */ @apply xl:w-[var(--onload-logo-size-xl)];
+        /* default */       @apply opacity-0;
+        /* mobile */        @apply w-[var(--onload-logo-size)]; 
+        /* tablet */        @apply sm:w-[var(--onload-logo-size-md)]; 
+        /* desktop */       @apply lg:w-[var(--onload-logo-size-lg)];
+        /* XL desktop */    @apply xl:w-[var(--onload-logo-size-xl)];
     }
 
     .hero-cover {
@@ -138,7 +145,7 @@
     }
 
     .hero-image {
-        @apply absolute inset-0 w-full h-full object-cover;
+        @apply absolute inset-0 w-full h-full object-cover blur-xs;
     }
 
     .hero-reveal-bar {
@@ -146,35 +153,34 @@
         @apply bg-white h-full w-1 top-0 left-0 z-50;
     }
 
+    /* /Animation */
 
-    /* Hero */
-    /* .hero { */
-    /*   @apply relative w-full max-h-[70vh] isolate border-b border-warm; */
-    /* } */
-    /**/
-    /* .hero-container { */
-    /*   @apply absolute w-full inset-0 -z-10 bg-gradient-to-b from-black/100 to-transparent object-cover; */
-    /* } */
-    /**/
-    /* .hero-image { */
-    /*   @apply absolute inset-0 -z-10 h-full w-full object-cover; */
-    /* } */
-    /**/
-    /* .hero-overlay { */
-    /*   @apply relative z-10 flex flex-col items-end justify-center text-right min-h-[70vh] px-32; */
-    /* } */
-    /**/
-    /* .hero-title { */
-    /*   @apply text-white text-4xl sm:text-6xl font-bold font-title;  */
-    /* } */
-    /**/
-    /* .hero-content { */
-    /*   @apply mt-4 max-w-2xl text-white text-lg; */
-    /* } */
-    /**/
-    /* .hero-cta-container { */
-    /*   @apply flex items-center gap-4 mt-6; */
-    /* } */
+    /* Content */
+    .hero-content {
+        @apply absolute inset-0 z-10 opacity-0;
+        @apply flex flex-col justify-center;  
+
+        /* Mobile */ @apply mx-8 text-center;
+        /* Tablet */ @apply sm:mx-16 sm:text-right;
+        /* Desktop */ @apply sm:mx-24;
+    }
+
+    .hero-content h1 {
+        @apply mb-4;
+    }
+
+    .hero-content p {
+        @apply mb-8;
+    }
+
+    .hero-content-cta {
+        /* Mobile */ @apply flex flex-col justify-center;
+        /* Tablet */ @apply flex sm:flex-row sm:justify-end;
+    }
+
+    .hero-content-cta > * {
+        @apply mb-2; 
+    }
 
     /* Location */
 
@@ -195,11 +201,15 @@
 
     /* Navigation */
     .nav {
-        @apply absolute top-0 left-0 w-full z-20 bg-gradient-to-b from-black/50 to-black/0;
+        @apply absolute top-0 left-0 w-full z-20; 
+        @appy opacity-0;
     }
 
     .nav-logo {
-        @apply mx-auto flex items-center justify-between px-32 py-4;
+        /* @apply mt-5 mx-auto flex flex-row items-center justify-between px-32 py-4; */
+        /* Default */   @apply m-4;
+        /* Mobiler */   @apply grid grid-cols-3 items-center h-16; 
+        /* Tablet */    @apply md:flex md:justify-evenly; 
     }
 
     .nav-logo-link {
@@ -211,7 +221,7 @@
     }
 
     .nav-hamburger {
-        @apply inline-flex items-center justify-center rounded p-2 text-black; 
+        @apply inline-flex items-center justify-center rounded p-2 text-white; 
         @apply hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white lg:hidden; 
     }
 
@@ -280,10 +290,14 @@
     /* CTA */
     .cta-primary {
         @apply rounded bg-alert px-5 py-3 font-semibold text-white hover:opacity-95;
+        /* Mobile */ @apply w-full;
+        /* Tablet */ @apply sm:w-auto;
     }
 
     .cta-secondary {
         @apply rounded border border-white px-5 py-3 font-medium text-white hover:bg-white/10;
+        /* Mobile */ @apply w-full;
+        /* Tablet */ @apply sm:w-auto;
     }
 
     .cta-button-group {
@@ -437,6 +451,15 @@
 }
 
 @layer utilities {
+    /* Hero Animation */
+    .hero-entered {
+        --hero-h: 100dvh;
+    }
+
+    @screen md {
+        --hero-h: 70svh;
+    }
+
     /* Make container stack children in one grid cell (no abs-pos needed for content) */
     .u-stack       { @apply grid; }
     .u-stack-child { @apply col-start-1 row-start-1; }
