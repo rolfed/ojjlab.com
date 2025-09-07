@@ -12,12 +12,15 @@ export const heroAnimation = (doc: Document): Timeline => {
   const logoElement = getElementByDataAnimation<HTMLElement>(location, 'hero-logo');
   const revealBarElement = getElementByDataAnimation<HTMLElement>(location, 'hero-reveal-bar');
 
+
   const tl: Timeline = gsap.timeline({});
 
   if (!logoElement || !revealBarElement) {
     console.warn("Missing hero elements");
     return tl;
   }
+
+  // setHeroTransformDefaults('heroAnimation', ['hero-logo', 'hero-title-cta', 'hero-content-cta'])
 
   /* Animations */
   tl
@@ -29,6 +32,28 @@ export const heroAnimation = (doc: Document): Timeline => {
     .add(contentAnimation(location), "start+=4");
 
   return tl;
+};
+
+const setHeroTransformDefaults = (
+    location: string, 
+    elements: Array<string>,
+    vars: gsap.TweenVars = {}
+): Array<HTMLElement> => {
+    const _elements = elements
+        .map((key) => getElementByDataAnimation<HTMLElement>(location, key))
+        .filter((element): element is HTMLElement => !!element)
+
+    if (_elements.length) {
+        gsap.set(_elements, {
+            transformOrigin: "50% 50%",
+            willChange: "transfrom,opacity",
+            ...vars
+        });
+    } else {
+        console.warn("[setHeroTransofrmDefaults] No elements resolved for", elements)
+    }
+
+    return _elements;
 };
 
 const barAnimation = (element: HTMLElement, containerWidth: number): Timeline => {
@@ -80,12 +105,12 @@ const contentAnimation = (location: string): Timeline => {
   const contentElement = getElementByDataAnimation<HTMLElement>(location, "hero-content-cta");
   const children = contentElement?.querySelectorAll('span');
 
-  gsap.set(contentElement, { y: -75 });
+  // gsap.set(contentElement, { y: -75 });
 
   return tl.to(children, {
     opacity: "100%",
     scale: 1.5,
-    y: -100,
+    // y: -100,
     duration: 0.75,
     ease: "power1.in",
     stagger: 0.75

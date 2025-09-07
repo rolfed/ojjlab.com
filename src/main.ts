@@ -18,18 +18,17 @@ const boot = async () => {
 };
 
 const init = async () => {
-  /* Onload */
+    /* Onload */
 
+    /* Post Load */
+    await loadAnimation.onComplete().then(() => {
+        heroAnimation(document);
+    });
 
-  /* Post Load */
-  await loadAnimation.onComplete().then(() => {
-    heroAnimation(document);
-  });
-
-  toggleCalendarView(document);
-  navAnimation(document);
-  heroTitleAnimation();
-  copyPhone(document);
+    toggleCalendarView(document);
+    navAnimation(document);
+    heroTitleAnimation();
+    copyPhone(document);
 }
 
 if (!window.__app_booted__) {
