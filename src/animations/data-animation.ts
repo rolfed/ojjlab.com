@@ -37,6 +37,6 @@ export const getElementByDataAnimation = <T extends Element>(location: string, s
 
 export const getAllElementsByDataAnimation = <T extends Element>(location: string, selector: string): T | null => {
   const _selector = getAnimationSelector(selector);
-  return getAllElements(location, _selector) as T | null; 
+  return getAllElements(location, _selector) as T | null;  
 }
 

@@ -109,7 +109,7 @@ const heroEnterLayout = (location: string): Timeline => {
         || !revealBar
     ) { return tl; }
 
-    const getHeight = window.innerWidth >= 768 ? "70vh" : "100dvh";
+    const getHeight = window.innerWidth >= 768 ? "100vh" : "100dvh";
 
     tl.to(hero, {
         ["height"]: () => getHeight,
