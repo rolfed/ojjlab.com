@@ -1,634 +1,218 @@
 <!DOCTYPE html>
 <html lang="en" class="overflow-hidden">
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <link href="/src/style.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <link href="/src/style.css" rel="stylesheet">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OJJLab</title>
-  <meta name="description"
-    content="American Jiu Jitsu, Wrestling, and Kickboxing programs — built for kids (4+) and adults at every level." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OJJLab</title>
+        <meta name="description"
+            content="American Jiu Jitsu, Wrestling, and Kickboxing programs — built for kids (4+) and adults at every level." />
 
-  <!-- Preload only the likely LCP hero variant -->
-  <link rel="preload" as="image" href="/images/hero-1280.avif"
-    imagesrcset="/images/hero-480.avif 480w, /images/hero-768.avif 768w, /images/hero-1280.avif 1280w"
-    imagesizes="(min-width:1024px) 900px, (min-width:640px) 70vw, 100vw" fetchpriority="high" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap"
-    rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@0,6..96;1,6..96&family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <!-- Preload only the likely LCP hero variant -->
+        <link rel="preload" as="image" href="/images/hero-1280.avif"
+            imagesrcset="/images/hero-480.avif 480w, /images/hero-768.avif 768w, /images/hero-1280.avif 1280w"
+            imagesizes="(min-width:1024px) 900px, (min-width:640px) 70vw, 100vw" fetchpriority="high" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@0,6..96;1,6..96&family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-  <!-- Social -->
-  <meta property="og:title" content="OJJLab" />
-  <meta property="og:description" content="High-performance training for kids and adults." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ojjlab.com" />
-  <meta name="twitter:card" content="summary_large_image" />
+        <!-- Social -->
+        <meta property="og:title" content="OJJLab" />
+        <meta property="og:description" content="High-performance training for kids and adults." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ojjlab.com" />
+        <meta name="twitter:card" content="summary_large_image" />
 
-  <script src="https://www.gymdesk.com/js/widgets.js"></script>
-</head>
+        <!-- <script src="https://www.gymdesk.com/js/widgets.js"></script> -->
+    </head>
 
-<body class="ojjlab">
-  <!-- Loader overlay: visible by default before any JS runs -->
-  <div data-animation="loader-container" 
-       class="loader"
-    role="status" aria-live="polite" aria-atomic="true">
-    <div class="text-center select-none">
-      <h1 data-animation="loader-count" 
-          class="loader-title">
-        0%
-      </h1>
-      <div class="loader-text" id="loader-subtext">
-        <p>Loading…</p>
-      </div>
+    <body class="ojjlab overflow-hidden" data-animation="root">
+        <!-- Loader overlay: visible by default before any JS runs -->
+        <div data-animation="loader-container" 
+            class="loader"
+            role="status" aria-live="polite" aria-atomic="true">
+            <div class="text-center select-none">
+                <h1 data-animation="loader-count" 
+                    class="loader-title">
+                    0%
+                </h1>
+                <div class="loader-text" id="loader-subtext">
+                    <p>Loading…</p>
+                </div>
 
-      <!-- progress bar -->
-      <div class="loader-bar">
-        <div data-animation="loader-bar" class="h-full w-0 bg-alert"></div>
-      </div>
-    </div>
-  </div>
+                <!-- progress bar -->
+                <div class="loader-bar">
+                    <div data-animation="loader-bar" class="h-full w-0 bg-alert"></div>
+                </div>
+            </div>
+        </div>
 
-  <!-- Skip link -->
+        <!-- Skip link -->
 
-  <header id="hero" aria-labelledby="heroTitle" class="hero" data-animation="hero">
-    <!-- <a href="#main-content">Skip to content</a> -->
+        <header id="hero" aria-labelledby="heroTitle" class="hero" data-animation="hero">
 
-    <!-- HERO -->
+            <!-- HERO -->
+            <!-- OVERLAY -->
+            <div class="hero-overlay" data-animation="hero-overlay">
+                <!-- TODO add skip content-->
+                <!-- <a class="text-white text-sm" href="#main-content">Skip to content</a> -->
 
-    <!-- OVERLAY -->
-  <div class="hero-overlay">
-    <div class="hero-overlay-content">
+                <!-- Reveal Bar -->
+                <svg class="hero-reveal-bar" 
+                    data-animation="hero-reveal-bar" 
+                    viewBox="0 0 0 0" preserveAspectRatio="none">
+                    <rect class="reveal-bar" x="0" y="0" width="0" height="0" fill="white" />
+                </svg>
 
-      <!-- LOGO  -->
-      <img src="/images/brand/oregon-jiu-jitsu-lab-light.svg" data-animation="hero-logo"
-        alt="Oregon Jiu Jitsu Lab Logo" 
-      />
-      <svg class="hero-reveal-bar" 
-        data-animation="hero-reveal-bar" 
-        viewBox="0 0 0 0" preserveAspectRatio="none">
-        <rect class="reveal-bar" x="0" y="0" width="0" height="0" fill="white" />
-      </svg>
+                <!-- Animation -->
+                <div class="hero-overlay-content" data-animation="hero-overlay-content">
+                    <!-- LOGO  -->
+                    <img src="/images/brand/oregon-jiu-jitsu-lab-light.svg" data-animation="hero-logo"
+                        alt="Oregon Jiu Jitsu Lab Logo" 
+                    />
+
+                    <!-- Title  -->
+                    <h1 data-animation="hero-title-cta">
+                        <div>American Jiu Jitsu</div>
+                        <div>Wrestling</div>
+                        <div>Kickboxing</div>
+                    </h1>
+
+                    <p data-animation="hero-content-cta">
+                        <span>Strength for kids.</span>
+                        <span>Confidence for adults.</span>
+                        <span>Community for everyone.</span>
+                    </p>
+                </div>
+
+                <!-- Hero Content after animation -->
+                <div class="hero-content" data-animation="hero-content">
+                    <h1>
+                        <div>American Jiu Jitsu</div>
+                        <div>Wrestling</div>
+                        <div>Kickboxing</div>
+                    </h1>
+                    <p>
+                        <span>Strength for kids.</span>
+                        <span>Confidence for adults.</span>
+                        <span>Community for everyone.</span>
+                    </p>
+                    <div class="hero-content-cta">
+                        <a class="cta-primary mr-6" href="">Join Today</a>
+                        <a class="cta-secondary" href="">View Schedule</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hero-cover" data-animation="cover">
+                <!-- BG Image -->
+                <picture class="cover-image">
+                    <source type="image/avif" srcset="
+                        /images/hero/hero-480.avif   480w,
+                        /images/hero/hero-768.avif   768w,
+                        /images/hero/hero-1280.avif 1280w
+                        " sizes="100vw">
+                    <source type="image/webp" srcset="
+                        /images/hero/hero-480.webp   480w,
+                        /images/hero/hero-768.webp   768w,
+                        /images/hero/hero-1280.webp 1280w
+                        " sizes="100vw">
+                    <img data-animation="hero-image" src="/images/hero/hero-768.jpg" srcset="
+                        /images/hero/hero-480.jpg   480w,
+                        /images/hero/hero-768.jpg   768w,
+                        /images/hero/hero-1280.jpg 1280w
+                        " sizes="100vw" alt="oregon jiu jitsu lab" decoding="async" fetchpriority="high" class="hero-image">
+                </picture>
+
+            </div>
+
+            <!-- Navigation -->
+            <nav aria-label="Primary" data-animation="nav" class="nav" hidden>
+
+                <div class="nav-logo">
+                    <div class="flex justify-start">
+                        <!-- Hamburger (mobile only) -->
+                        <button type="button" 
+                            aria-expanded="false" 
+                            aria-controls="primary-menu" 
+                            class="nav-hamburger">
+                            <svg class="nav-hamburger-image" 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                fill="none" 
+                                viewBox="0 0 24 24"
+                                stroke="currentColor" 
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <span class="sr-only">Open menu</span>
+                        </button>
+                    </div>
+
+                    <!-- Logo -->
+                    <div class="flex justify-center md:justify-start w-full ">
+                        <a href="/" aria-label="Oregon Jiu Jitsu Lab Home" class="nav-logo-link">
+                            <img src="/images/brand/oregon-jiu-jitsu-lab-light.svg" alt="Oregon Jiu Jitsu Lab" decoding="async"
+                                fetchpriority="high" class="nav-logo-image" />
+                        </a>
+                    </div>
+
+                    <!-- Desktop Menu -->
+                    <ul id="primary-menu" class="nav-menu" data-animation="nav">
+                        <li><a href="/schedule" aria-label="nav-schedule">Schedule</a></li>
+                        <li><a href="/programs" aria-label="nav-programs">Programs</a></li>
+                        <li><a href="/Instructors" aria-label="nav-instructors">Instructors</a></li>
+                        <li><a href="/shop" aria-label="nav-shop">Shop</a></li>
+                        <li><a href="/contact" aria-label="nav-contact">Contact</a></li>
+                        <li><a href="/login" aria-label="nav-login">Login</a></li>
+                        <li><a href="/join" class="menu-cta" aria-label="nav-join">Join</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- WHY WE EXIST -->
+        <section class="__media_container __media_container-m" 
+            data-animation="why-we-exist">
+            <img alt="Oregon Jiu Jitsu Programs" src="/images/programs/programs.jpg"/>
+            <div class="__media_container-partial __content_layout">
+                <div class="__media_container-content __content_left">
+                    <div class="__bg-dark __content" data-animation="why-we-exist-content">
+
+                        <h2 data-animation="why-we-exist-title">Why We Exist</h2>
+                        <p data-animation="why-we-exist-paragraph">
+                            We help students learn faster and train smarter with a system built for real growth. 
+                        </p>
+
+                        <p data-animation="why-we-exist-paragraph"><strong>More training, less standing around.</strong> Our curriculum uses constraint-based coaching so skills are learned under real conditions.</p>
+                        <p data-animation="why-we-exist-paragraph"><strong>Growth through challenge.</strong> We believe failure is part of learning and push students physically and mentally to grow as leaders.</p>
+                        <p data-animation="why-we-exist-paragraph"><strong>Measured by results.</strong> If skills aren’t showing up in live training, we refine until they do.</p>
+
+                        <p data-animation="why-we-exist-paragraph">
+                            Our focus is on building grapplers of every level through efficient, effective coaching that delivers results on the mats. 
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
 
 
-      <!-- Title  -->
-      <h1 data-animation="hero-title-cta">
-        <div>American Jiu Jitsu</div>
-        <div>Wrestling</div>
-        <div>Kickboxing</div>
-      </h1>
+        <section class="h-1500"></section>
 
-      <p data-animation="hero-content-cta">
-        <span>Strength for kids.</span>
-        <span>Confidence for adults.</span>
-        <span>Community for everyone.</span>
-      </p>
-    </div>
-  </div>
-
-    <div class="hero-cover" data-animation="cover">
-      <!-- BG Image -->
-      <picture class="cover-image">
-        <source type="image/avif" srcset="
-              /images/hero/hero-480.avif   480w,
-              /images/hero/hero-768.avif   768w,
-              /images/hero/hero-1280.avif 1280w
-            " sizes="100vw">
-        <source type="image/webp" srcset="
-            /images/hero/hero-480.webp   480w,
-            /images/hero/hero-768.webp   768w,
-            /images/hero/hero-1280.webp 1280w
-            " sizes="100vw">
-        <img data-animation="hero-image" src="/images/hero/hero-768.jpg" srcset="
-            /images/hero/hero-480.jpg   480w,
-            /images/hero/hero-768.jpg   768w,
-            /images/hero/hero-1280.jpg 1280w
-            " sizes="100vw" alt="oregon jiu jitsu lab" decoding="async" fetchpriority="high" class="hero-image">
-      </picture>
-
-    </div>
-
-    <!-- Navigation -->
-    <nav aria-label="Primary" data-animation="nav" class="nav" hidden>
-
-      <div class="nav-logo">
-        <!-- Logo -->
-        <a href="/" aria-label="Oregon Jiu Jitsu Lab Home" class="nav-logo-link">
-          <img src="/images/brand/oregon-jiu-jitsu-lab-light.svg" alt="Oregon Jiu Jitsu Lab" decoding="async"
-            fetchpriority="high" class="nav-logo-image" />
-        </a>
-
-        <!-- Hamburger (mobile only) -->
-        <button type="button" aria-expanded="false" aria-controls="primary-menu" class="nav-hamburger">
-          <svg class="nav-hamburger-image" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <span class="sr-only">Open menu</span>
-        </button>
-
-        <!-- Desktop Menu -->
-        <ul id="primary-menu" class="nav-menu" data-animation="nav">
-          <li><a href="/schedule" aria-label="nav-schedule">Schedule</a></li>
-          <li><a href="/programs" aria-label="nav-programs">Programs</a></li>
-          <li><a href="/Instructors" aria-label="nav-instructors">Instructors</a></li>
-          <li><a href="/shop" aria-label="nav-shop">Shop</a></li>
-          <li><a href="/contact" aria-label="nav-contact">Contact</a></li>
-          <li><a href="/login" aria-label="nav-login">Login</a></li>
-          <li><a href="/join" class="menu-cta" aria-label="nav-join">Join</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <!-- <section aria-label="programs" class="bg-warm"> -->
-  <!--   <div class="container-partial"> -->
-  <!--     <div class="column"> -->
-  <!--       <div class="column-item"> -->
-  <!--         <h2 class="mb-0 pb-0">Location</h2> -->
-  <!--         <p class="mb-6">Interested in learning more about our programs? Call or text us anytime. You’re also welcome -->
-  <!--           to stop by during training hours.</p> -->
-  <!--         <address class="not-italic"> -->
-  <!--           <div class="location-item"> -->
-  <!--             <span class="material-symbols-outlined mr-6">phone</span> -->
-  <!--             <span>(503) 308-8455</span> -->
-  <!--           </div> -->
-  <!--           <div class="location-item"> -->
-  <!--             <a href="tel:+15033088455" class="location-cta location-cta-border" -->
-  <!--               aria-label="Call Oregon Jiu Jitsu Lab at 503-308-8455"> -->
-  <!--               <span class="material-symbols-outlined text-xl" aria-hidden="true">phone_in_talk</span> -->
-  <!--               <span class="font-medium tracking-wide whitespace-nowrap">Call</span> -->
-  <!--             </a> -->
-  <!--             <a href="sms:+15033088455" class="location-cta location-cta-border" -->
-  <!--               aria-label="Call Oregon Jiu Jitsu Lab at 503-308-8455"> -->
-  <!--               <span class="material-symbols-outlined text-xl" aria-hidden="true">sms</span> -->
-  <!--               <span class="font-medium tracking-wide whitespace-nowrap">Text</span> -->
-  <!--             </a> -->
-  <!--             <button type="button" data-animation="location-phone-copy" class="location-cta location-cta-border"> -->
-  <!--               <span class="material-symbols-outlined" aria-hidden="true">content_copy</span> -->
-  <!--               <span class="font-medium tracking-wide whitespace-nowrap">Copy</span> -->
-  <!--             </button> -->
-  <!--           </div> -->
-  <!---->
-  <!--           <div class="location-item"> -->
-  <!--             <a href="https://maps.google.com/?q=3691%20NE%20John%20Olsen%20Ave%2C%20Hillsboro%2C%20OR%2097124" -->
-  <!--               target="_blank" rel="noopener" class="location-cta" aria-label="Open address in Maps"> -->
-  <!--               <span class="material-symbols-outlined text-xl mt-0.5" aria-hidden="true">location_on</span> -->
-  <!--               <p class="p-0">3691 NE John Olsen Ave</p> -->
-  <!--               <p class="p-0">Hillsboro, OR 97124</p> -->
-  <!--             </a> -->
-  <!--           </div> -->
-  <!--         </address> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <div class="column-item"> -->
-  <!--         <iframe class="w-full h-full border-0" -->
-  <!--           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.2248049838026!2d-122.88340428692602!3d45.5458030709547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950f766c38f8ed%3A0x6ca2e3d54969fcb2!2sOregon%20Jiu%20Jitsu%20Lab!5e0!3m2!1sen!2sus!4v1756832474897!5m2!1sen!2sus" -->
-  <!--           allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade"> -->
-  <!--         </iframe> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </div> -->
-  <!-- </section> -->
-  <!---->
-  <!---->
-  <!-- <main id="main-content" class="w-full"> -->
-  <!--   <section aria-labelledby="schedule-title" class="container-partial"> -->
-  <!--     <!-- Title --> -->
-  <!--     <h2 id="schedule-title" class="section-title">Schedule</h2> -->
-  <!---->
-  <!--     <div class="cta-button-group" id="scheduleButtons" role="group"> -->
-  <!--       <button aria-pressed="true" type="button" id="dayViewBtn" class="cta-button-group-item-active">Day</button> -->
-  <!--       <button type="button" aria-pressed="false" id="weekViewBtn" class="cta-button-group-item"> -->
-  <!--         Week -->
-  <!--       </button> -->
-  <!--     </div> -->
-  <!---->
-  <!--     <!-- WEEK VIEW --> -->
-  <!--     <div id="schedule" class="schedule"> -->
-  <!---->
-  <!--       <!-- Monday --> -->
-  <!--       <div data-schedule="1" class="schedule-day"> -->
-  <!--         <h3 class="schedule-title"> -->
-  <!--           Monday -->
-  <!--         </h3> -->
-  <!--         <div class="schedule-times"> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="17:30">5:30–6:30pm</time> -->
-  <!--             <span>Kids No-Gi</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="18:30">6:30–7:30pm</time> -->
-  <!--             <span>Adult No-Gi Jiu Jitsu 101</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="19:30">7:30–8:00pm</time> -->
-  <!--             <span>Adult Advanced No-Gi</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="20:00">8:00–9:00pm</time> -->
-  <!--             <span>Adult Live Training</span> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <!-- Tuesday --> -->
-  <!--       <div data-schedule="2" class="schedule-day"> -->
-  <!--         <h3 class="schedule-title"> -->
-  <!--           Tuesday -->
-  <!--         </h3> -->
-  <!--         <div class="schedule-times"> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="17:30">5:30–6:30pm</time> -->
-  <!--             <span>Kids Gi</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="18:30">6:30–7:45pm</time> -->
-  <!--             <span>Adult Gi Jiu Jitsu</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="19:45">7:45pm</time> -->
-  <!--             <span>Adult Kickboxing</span> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <!-- Wednesday --> -->
-  <!--       <div data-schedule="3" class="schedule-day"> -->
-  <!--         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3"> -->
-  <!--           Wednesday -->
-  <!--         </h3> -->
-  <!--         <div class="schedule-times"> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="17:30">5:30–6:30pm</time> -->
-  <!--             <span>Kids Wrestling</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="18:30">6:30–7:30pm</time> -->
-  <!--             <span>Adult No-Gi Jiu Jitsu 101</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="19:30">7:30–8:00pm</time> -->
-  <!--             <span>Adult Advanced No-Gi</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="20:00">8:00–9:00pm</time> -->
-  <!--             <span>Adult Live Training</span> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <!-- Thursday --> -->
-  <!--       <div data-schedule="4" class="schedule-day"> -->
-  <!--         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3"> -->
-  <!--           Thursday -->
-  <!--         </h3> -->
-  <!--         <div class="schedule-times"> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="17:30">5:30–6:30pm</time> -->
-  <!--             <span>Kids Gi</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="18:30">6:30–7:45pm</time> -->
-  <!--             <span>Adult Gi Jiu Jitsu</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="19:45">7:45pm</time> -->
-  <!--             <span>Adult Kickboxing</span> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <!-- Friday --> -->
-  <!--       <div data-schedule="5" class="schedule-day"> -->
-  <!--         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3"> -->
-  <!--           Friday -->
-  <!--         </h3> -->
-  <!--         <div class="schedule-times"> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="17:30">5:30–6:30pm</time> -->
-  <!--             <span>Kids No-Gi</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="18:30">6:30–7:30pm</time> -->
-  <!--             <span>Adult No-Gi Jiu Jitsu 101</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="19:30">7:30–8:00pm</time> -->
-  <!--             <span>Adult Advanced No-Gi</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="20:00">8:00–9:00pm</time> -->
-  <!--             <span>Adult Live Training</span> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <!-- Saturday --> -->
-  <!--       <div data-schedule="6" class="schedule-day"> -->
-  <!--         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3"> -->
-  <!--           Saturday -->
-  <!--         </h3> -->
-  <!--         <div class="schedule-times"> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="10:00">10:00–11:00am</time> -->
-  <!--             <span>Adult Gi Jiu Jitsu 101</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="11:00">11:00–12:00pm</time> -->
-  <!--             <span>Adult Advanced No-Gi</span> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <!-- Sunday --> -->
-  <!--       <div data-schedule="7" class="schedule-day"> -->
-  <!--         <h3 class="text-lg font-semibold uppercase tracking-wide text-gray-300 mb-3"> -->
-  <!--           Sunday -->
-  <!--         </h3> -->
-  <!--         <div class="schedule-times"> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="10:00">10:00–11:00am</time> -->
-  <!--             <span>Adult Gi Jiu Jitsu 101</span> -->
-  <!--           </div> -->
-  <!--           <div class="schedule-times-item"> -->
-  <!--             <time datetime="11:00">11:00–12:00pm</time> -->
-  <!--             <span>Adult Advanced No-Gi</span> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </section> -->
-  <!---->
-  <!--   <!-- American Jiu Jitsu --> -->
-  <!--   <section aria-labelledby="programs-title" class="container-full"> -->
-  <!--     <div class="container-partial"> -->
-  <!--       <h2 id="programs-title" class="section-title">Programs</h2> -->
-  <!--     </div> -->
-  <!---->
-  <!---->
-  <!--     <!-- Media --> -->
-  <!--     <div class="video-container"> -->
-  <!---->
-  <!--       <video autoplay muted loop playsinline poster="/images/jiu-jitus-fallback.jpg" src="/videos/programs/test.mp4" -->
-  <!--         class="video-element"> -->
-  <!--         Your browser does not support video tag. -->
-  <!--       </video> -->
-  <!---->
-  <!--       <!-- Optional gradient overlay for contrast --> -->
-  <!--       <div class="video-overlay"></div> -->
-  <!---->
-  <!--       <!-- Content --> -->
-  <!--       <div class="video-layout"> -->
-  <!--         <div class="video-content video-content-left text-left"> -->
-  <!--           <h2>American Jiu Jitsu</h2> -->
-  <!--           <p>Jiu Jitsu is rooted in tradition, but it has evolved.</p> -->
-  <!--           <p>Our lineage goes back to Master Rigan Machado -->
-  <!--             through Professor Chris Haueter, one of the -->
-  <!--             first black belts in the United States. At OJJ -->
-  <!--             Lab, we call our style American Jiu Jitsu -->
-  <!--             because we build on Brazilian roots while -->
-  <!--             also learning from Judo and Wrestling. We -->
-  <!--             honor where Jiu Jitsu began, but we embrace how -->
-  <!--             American practitioners continue to push it -->
-  <!--             forward.</p> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!---->
-  <!--     </div> -->
-  <!--   </section> -->
-  <!---->
-  <!--   <!-- Jiu Jitsu Programs --> -->
-  <!--   <section aria-label="programs" class="bg-warm"> -->
-  <!--     <div class="container-partial"> -->
-  <!--       <div class="column"> -->
-  <!--         <div class="column-item"> -->
-  <!--           <h2>Kids Jiu Jitsu (Ages 4+)</h2> -->
-  <!---->
-  <!--           <div class="column-overlay"> -->
-  <!--             <img alt="Kids Jiu Jitsu (Ages 4+)" src="/images/programs/kids.jpeg" /> -->
-  <!---->
-  <!--             <div class="column-overlay-cover"></div> -->
-  <!---->
-  <!--             <h3>Confidence starts young.</h3> -->
-  <!--           </div> -->
-  <!--           <p>We believe in setting kids up for success on and -->
-  <!--             off the mats. Our classes build focus, give -->
-  <!--             immediate feedback, and encourage steady growth. -->
-  <!--             Kids are challenged physically and mentally, -->
-  <!--             and we also guide them to grow as leaders.</p> -->
-  <!--           <a class="cta-secondary">Learn More</a> -->
-  <!--         </div> -->
-  <!---->
-  <!--         <div class="column-item"> -->
-  <!--           <h2>Adult Jiu Jitsu</h2> -->
-  <!--           <div class="column-overlay"> -->
-  <!--             <img alt="Kids Jiu Jitsu (Ages 4+)" src="/images/programs/adult.jpg" /> -->
-  <!---->
-  <!--             <div class="column-overlay-cover"></div> -->
-  <!---->
-  <!--             <h3>Train hard. Grow stronger.</h3> -->
-  <!--           </div> -->
-  <!--           <p>Whether you’re stepping onto the mats for the first -->
-  <!--             time or looking to sharpen your skills, -->
-  <!--             our adult program balances technique, -->
-  <!--             fitness, and strategy. Jiu Jitsu is a practice that -->
-  <!--             builds resilience, community, and strength at -->
-  <!--             every stage of life. -->
-  <!--           </p> -->
-  <!--           <a href="" class="cta-secondary">Learn More</a> -->
-  <!--         </div> -->
-  <!---->
-  <!--         <div class="column-item"> -->
-  <!--           <h2>Competition Team</h2> -->
-  <!--           <div class="column-overlay"> -->
-  <!--             <img alt="Kids Jiu Jitsu (Ages 4+)" src="/images/programs/comp.jpeg" /> -->
-  <!---->
-  <!--             <div class="column-overlay-cover"></div> -->
-  <!---->
-  <!--             <h3>For those who want to test themselves.</h3> -->
-  <!--           </div> -->
-  <!---->
-  <!--           <p>We believe in teaching systems, not just one-off -->
-  <!--             moves. Our competition program gives athletes -->
-  <!--             advanced techniques, focused coaching, and -->
-  <!--             training partners who push them to improve. -->
-  <!--             It is built for serious practitioners who -->
-  <!--             want to take their skills to the next level.</p> -->
-  <!--           <a href="" class="cta-secondary">Learn More</a> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!---->
-  <!--     </div> -->
-  <!--   </section> -->
-  <!---->
-  <!--   <section aria-labelledby="kickboxing-program" class="container-full"> -->
-  <!--     <!-- Media --> -->
-  <!--     <div class="video-container"> -->
-  <!---->
-  <!--       <video autoplay muted loop playsinline poster="/images/jiu-jitus-fallback.jpg" -->
-  <!--         src="/videos/programs/test-kickboxing.mp4" class="video-element"> -->
-  <!--         Your browser does not support video tag. -->
-  <!--       </video> -->
-  <!---->
-  <!--       <!-- Optional gradient overlay for contrast --> -->
-  <!--       <div class="video-overlay"></div> -->
-  <!---->
-  <!--       <!-- Content --> -->
-  <!--       <div class="video-layout video-border-bottom"> -->
-  <!--         <div class="video-content text-left video-content-right"> -->
-  <!--           <h2 id="kickboxing-program">Kickboxing</h2> -->
-  <!--           <p>Our kickboxing program builds striking skills for -->
-  <!--             fitness, self-defense, and competition. Classes -->
-  <!--             focus on proper technique, conditioning, and -->
-  <!--             confidence. Training is open to beginners and -->
-  <!--             experienced athletes alike.</p> -->
-  <!--           <div class="flex-none py-5"> -->
-  <!--             <a class="cta-secondary">Learn More</a> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!---->
-  <!--     </div> -->
-  <!--   </section> -->
-  <!--   <section aria-label="programs" class="bg-warm"> -->
-  <!--     <div class="container-partial"> -->
-  <!--       <div class="column"> -->
-  <!--         <div class="column-item flex flex-column md:flex-row gap-16 md:gap-16"> -->
-  <!--           <img src="/images/reviews/brittany_lee.jpg" class="flex-1 rounded-full" /> -->
-  <!--           <div class="flex-4"> -->
-  <!--             <h2>Brittany Lee</h2> -->
-  <!--             <p>Ojjl has been great for our son who is on the younger side of the class age range. There’s something to -->
-  <!--               be said about the coaches and how great they are with children.</p> -->
-  <!--             <p>We appreciate their approach to building confidence and philosophy of self responsibility. We’ve done -->
-  <!--               one private lesson and the rest with mixed-age.</p> -->
-  <!--             <p>ou can tell they have a great community established; it’s been nice to meet parents who are also -->
-  <!--               regulars in taking their kids. Coach Adam and Danniel have been so great to work with for our kiddo.</p> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--         <div class="column-item flex flex-row gap-16" hidden> -->
-  <!--           <img src="/images/reviews/brittany_lee.jpg" class="flex-1 rounded-full" /> -->
-  <!--           <div class="flex-2"> -->
-  <!--             <h2>Brittany Lee</h2> -->
-  <!--             <p>Ojjl has been great for our son who is on the younger side of the class age range. There’s something to -->
-  <!--               be said about the coaches and how great they are with children.</p> -->
-  <!--             <p>We appreciate their approach to building confidence and philosophy of self responsibility. We’ve done -->
-  <!--               one private lesson and the rest with mixed-age.</p> -->
-  <!--             <p>ou can tell they have a great community established; it’s been nice to meet parents who are also -->
-  <!--               regulars in taking their kids. Coach Adam and Danniel have been so great to work with for our kiddo.</p> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--         <div class="column-item flex flex-row gap-16" hidden> -->
-  <!--           <img src="/images/reviews/brittany_lee.jpg" class="flex-1 rounded-full" /> -->
-  <!--           <div class="flex-2"> -->
-  <!--             <h2>Brittany Lee</h2> -->
-  <!--             <p>Ojjl has been great for our son who is on the younger side of the class age range. There’s something to -->
-  <!--               be said about the coaches and how great they are with children.</p> -->
-  <!--             <p>We appreciate their approach to building confidence and philosophy of self responsibility. We’ve done -->
-  <!--               one private lesson and the rest with mixed-age.</p> -->
-  <!--             <p>ou can tell they have a great community established; it’s been nice to meet parents who are also -->
-  <!--               regulars in taking their kids. Coach Adam and Danniel have been so great to work with for our kiddo.</p> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </section> -->
-  <!---->
-  <!---->
-  <!--   <section aria-labelledby="programs-title" class="container-full"> -->
-  <!--     <div class="container-partial"> -->
-  <!--       <h2 id="programs-title" class="section-title">Instructors</h2> -->
-  <!--     </div> -->
-  <!---->
-  <!--     <!-- Row 1 --> -->
-  <!--     <div class="video-container instructors-section u-stack"> -->
-  <!--       <img src="/images/coaches/coaches-background.jpg" class="video-element u-stack-child u-fill u-object-cover" /> -->
-  <!---->
-  <!--       <!-- Optional gradient overlay for contrast --> -->
-  <!--       <div class="video-overlay u-stack-child u-fill u-pointer-none"></div> -->
-  <!---->
-  <!--       <!-- Content stays in flow so it dictates container height --> -->
-  <!--       <div class="video-layout u-stack-child u-content-flow"> -->
-  <!--         <div class="container-partial"> -->
-  <!--           <div class="column p-0 pt-24"> -->
-  <!--             <div class="column-item"> -->
-  <!--               <h2 class="text-center mb-0 pb-0">Adam Fox</h2> -->
-  <!--               <h3 class="text-center">Head Coach</h3> -->
-  <!--               <img class="u-img-block" src="/images/coaches/adam-fox@3x.png" /> -->
-  <!--             </div> -->
-  <!--             <div class="column-item"> -->
-  <!--               <h2 class="text-center mb-0 pb-0">Danniel Rolfe</h2> -->
-  <!--               <h3 class="text-center">Manager</h3> -->
-  <!--               <img class="u-img-block" src="/images/coaches/danniel-rolfe@3x.png" /> -->
-  <!--             </div> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!---->
-  <!--     <!-- Row 2 --> -->
-  <!--     <div class="video-container video-border-bottom instructors-section u-stack"> -->
-  <!--       <img src="/images/coaches/coaches-background.jpg" class="video-element u-stack-child u-fill u-object-cover" /> -->
-  <!---->
-  <!--       <!-- Optional gradient overlay for contrast --> -->
-  <!--       <div class="video-overlay u-stack-child u-fill u-pointer-none"></div> -->
-  <!---->
-  <!--       <!-- Content stays in flow so it dictates container height --> -->
-  <!--       <div class="video-layout u-stack-child u-content-flow"> -->
-  <!--         <div class="container-partial"> -->
-  <!--           <div class="column pb-0 pt-12"> -->
-  <!--             <div class="column-item"> -->
-  <!--               <h2 class="text-center mb-0 pb-0">Ray Herrera</h2> -->
-  <!--               <h3 class="text-center">Relationship Manager</h3> -->
-  <!--               <img class="u-img-block" src="/images/coaches/adam-fox.png" /> -->
-  <!--             </div> -->
-  <!--             <div class="column-item"> -->
-  <!--               <h2 class="text-center mb-0 pb-0">Justin Koreis</h2> -->
-  <!--               <h3 class="text-center">Kickboxing Coach</h3> -->
-  <!--               <img class="u-img-block" src="/images/coaches/adam-fox@3x.png" /> -->
-  <!--             </div> -->
-  <!--             <div class="column-item"> -->
-  <!--               <h2 class="text-center mb-0 pb-0">Jacob Marical</h2> -->
-  <!--               <h3 class="text-center">Wrestling Coach</h3> -->
-  <!--               <img class="u-img-block" src="/images/coaches/danniel-rolfe@3x.png" /> -->
-  <!--             </div> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </section> -->
-  <!---->
-  <!--   <section aria-labelledby="programs-title" class="container-full"> -->
-  <!--     <div class="container-partial"> -->
-  <!--       <h2 id="programs-title" class="section-title">Contact Us</h2> -->
-  <!--       <div class="maonrails-form" attr-ref="Ddq9L" attr-gym="AbZWO"></div> -->
-  <!--     </div> -->
-  <!--   </section> -->
-  <!---->
-  <!--   <div data-animation="notify" class="notify-container"> -->
-  <!--     <div class="container-partial"> -->
-  <!--       <div data-animation="notify-container" class="notify-element" role="status" aria-live="polite" -->
-  <!--         aria-atomic="true"> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </div> -->
-  <!---->
-  <!-- </main> -->
-  <!---->
-  <!-- <footer> -->
-  <!--   <!-- Footer links, credits --> -->
-  <!-- </footer> -->
-
-  <script type="module" src="/src/main.ts"></script>
-</body>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
 
 </html>

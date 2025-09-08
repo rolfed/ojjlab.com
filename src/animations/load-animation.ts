@@ -24,7 +24,6 @@ export const loaderAnimation = (doc: Document): LoaderControls => {
         gsap.set(barElement, { width: "0%" });
     }
 
-
     if (!loaderContainerElement || !countElement) {
         const resolved = Promise.resolve();
         // fail-safe no-ops so app won't crash if markup isn't present
