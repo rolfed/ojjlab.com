@@ -5,6 +5,7 @@ import { navAnimation } from "./animations/nav";
 import { loaderAnimation } from "./animations/load-animation"; // play(): Promise<void>
 import { copyPhone } from "./functionality/copy";
 import { heroAnimation } from "./animations/hero";
+import { whyWeExistAnimation } from "./animations/content";
 
 declare global {
     interface Window { __app_booted__?: boolean }
@@ -25,10 +26,13 @@ const init = async () => {
         heroAnimation(document);
     });
 
-    toggleCalendarView(document);
-    navAnimation(document);
-    heroTitleAnimation();
-    copyPhone(document);
+    /* Section Animations */
+    whyWeExistAnimation();
+
+    // toggleCalendarView(document);
+    // navAnimation(document);
+    // heroTitleAnimation();
+    // copyPhone(document);
 }
 
 if (!window.__app_booted__) {

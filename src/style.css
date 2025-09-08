@@ -6,7 +6,6 @@
     --onload-logo-size-md: calc(var(--onload-logo-size) * var(--ratio));
     --onload-logo-size-lg: calc(var(--onload-logo-size-md) * var(--ratio));
     --onload-logo-size-xl: calc(var(--onload-logo-size-md) * var(--ratio));
-
 }
 
 @theme {
@@ -36,8 +35,12 @@
 }
 
 @layer components {
+    html, body {
+        scroll-behaviour: auto; /* Prevent smooth scroll during loader */
+    }
+
     .ojjlab  {
-        /* @apply bg-black m-0 p-0 w-screen h-screen overflow-x-hidden; */
+        /* Default */   @apply bg-black;
     }
 
     /* Defaults */
@@ -82,6 +85,85 @@
         /* xldesktop */ @apply lg:mt-12 lg:w-100;
     }
 
+    /* General */
+    .__border-b {
+        @apply border-b border-deep;
+    }
+
+    .__bg-dark {
+        /* Default */   @apply bg-gradient-to-r bg-sec-1/50 to-black/2;
+    }
+
+    .__content {
+        /* Mobile */    @apply px-4 py-4 h-full;
+        /* Table */     @apply sm:px-24 sm:py-24;
+    }
+
+    .__content_layout {
+        /* Default */   @apply grid place-items-center grid-rows-1;
+        /* Mobile */    @apply grid-cols-1 place-items-center; 
+        /* Tablet */    @apply sm:grid-cols-7; 
+    }
+
+    .__content_right {
+        /* Mobile */ @apply col-span-full;
+        /* Tablet */ @apply sm:col-start-2 sm:col-span-5 sm:row-start-1 sm:row-end-2;
+    }
+
+    .__content_left {
+        /* Mobile */ @apply col-span-full;
+        /* Tablet */ @apply sm:col-start-1 sm:col-span-5 sm:row-start-1 sm:row-end-2;
+    }
+
+    .__media_container {
+        @apply relative bg-cover bg-center w-full overflow-hidden; 
+    }
+
+    .__media_container-partial {
+        /* Default */   @apply relative z-10 h-full; 
+        /* Mobile */    @apply mx-12 my-8;
+        /* Tablet */    @apply sm:mx-0 sm:my-0;
+    };
+
+    .__media_container-content {
+        /* Default */   @apply container h-full; 
+        /* Mobile */    @apply mx-auto;
+        /* Tablet */    @apply sm:mx-0;
+    }
+
+    .__media_container-m {
+        /* Mobile */    @apply h-dvh;
+        /* Table */     @apply sm:h-[70svh];
+    }
+
+    .__media_container img,
+    .__media_container video {
+        @apply absolute inset-0 h-full w-full object-cover object-center;
+    }
+
+    .__media_container h2 {
+        /* Default */ @apply text-deep;
+    } 
+
+    .__media_container p {
+        /* Default */ @apply text-white;
+    }
+
+    .__media_container h2 {
+        /* Default */   @apply font-bold leading-none uppercase leading-loose tracking-tighter;
+        /* Mobile */    @apply text-4xl;
+        /* Tablet */    @apply sm:text-5xl;
+        /* Desktop */   @apply md:text-9xl;
+    }
+
+    .__media_container p {
+        /* Default */   @apply leading-[1.75] mb-4;
+        /* Mobile */    @apply text-base;
+        /* Tablet */    @apply sm:text-base;
+        /* Desktop */   @apply md:text-2xl;
+    }
+
+
 
     /* Hero */
     /* Animation */
@@ -108,7 +190,7 @@
         @apply row-start-2 col-start-1;
     }
 
-    .hero-overlay-content h1 { @apply opacity-0; }
+    .hero-overlay-content h1 { @apply opacity-0 text-center; }
 
     .hero-overlay-content h1, 
     .hero-content h1 {
@@ -207,8 +289,8 @@
 
     .nav-logo {
         /* @apply mt-5 mx-auto flex flex-row items-center justify-between px-32 py-4; */
-        /* Default */   @apply m-4;
-        /* Mobiler */   @apply grid grid-cols-3 items-center h-16; 
+        /* Default */   @apply mx-12 my-4;
+        /* Mobiler */   @apply sm:mx-36 grid grid-cols-3 items-center h-16; 
         /* Tablet */    @apply md:flex md:justify-evenly; 
     }
 
@@ -452,13 +534,14 @@
 
 @layer utilities {
     /* Hero Animation */
-    .hero-entered {
-        --hero-h: 100dvh;
-    }
+    /* .hero-entered { */
+    /*     --hero-h: 100dvh; */
+    /* } */
+    /**/
+    /* @screen md { */
+    /*     --hero-h: 70svh; */
+    /* } */
 
-    @screen md {
-        --hero-h: 70svh;
-    }
 
     /* Make container stack children in one grid cell (no abs-pos needed for content) */
     .u-stack       { @apply grid; }

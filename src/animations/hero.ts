@@ -13,7 +13,9 @@ export const heroAnimation = (doc: Document): Timeline => {
   const revealBarElement = getElementByDataAnimation<HTMLElement>(location, 'hero-reveal-bar');
 
 
-  const tl: Timeline = gsap.timeline({});
+  const tl: Timeline = gsap.timeline({
+    onStart: () => window.scrollTo({ top: 0, behavior: "auto" })
+  });
 
   if (!logoElement || !revealBarElement) {
     console.warn("Missing hero elements");
@@ -116,10 +118,12 @@ const heroEnterLayout = (location: string): Timeline => {
     }).add(() => {
         container.style.setProperty('height', getHeight);
         container.style.setProperty('min-height', getHeight);
+
         nav.removeAttribute('hidden');
         revealBar.classList.add('hidden');
+
         overlayContent.classList.add('hidden');
-        hero.classList.add("hero-entered");
+        hero.classList.add("hero-entered", "__border-b");
         root.classList.remove("overflow-hidden");
     }).to([heroContent, nav], {
         opacity: "100%",
