@@ -204,7 +204,7 @@
         @apply opacity-0;
     }
 
-    .hero-overlay-content p span { @apply opacity-0 block; };
+    .hero-overlay-content p span { @apply opacity-0 block text-center; };
 
     .hero-overlay-content p span,
     .hero-content p span {
