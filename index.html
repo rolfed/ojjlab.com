@@ -1,218 +1,285 @@
 <!DOCTYPE html>
-<html lang="en" class="overflow-hidden">
+<html lang="en">
 
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-        <link href="/src/style.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Oregon Jiu Jitsu Lab | Jiu Jitsu, Wrestling & Kickboxing in Hillsboro</title>
+        <meta name="description" content="American Jiu Jitsu, Wrestling, and Kickboxing for kids (5+) and adults. Train smarter with systems-based coaching in Hillsboro, Oregon." />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>OJJLab</title>
-        <meta name="description"
-            content="American Jiu Jitsu, Wrestling, and Kickboxing programs — built for kids (4+) and adults at every level." />
+        <!-- Canonical & robots -->
+        <link rel="canonical" href="https://ojjlab.com/" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
 
-        <!-- Preload only the likely LCP hero variant -->
+        <!-- Theme & color scheme -->
+        <meta name="theme-color" content="#0b0b0b" media="(prefers-color-scheme: dark)">
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+        <meta name="color-scheme" content="light dark" />
+
+        <!-- Preload LCP hero (same srcset as <img>) -->
         <link rel="preload" as="image" href="/images/hero-1280.avif"
             imagesrcset="/images/hero-480.avif 480w, /images/hero-768.avif 768w, /images/hero-1280.avif 1280w"
-            imagesizes="(min-width:1024px) 900px, (min-width:640px) 70vw, 100vw" fetchpriority="high" />
+            imagesizes="(min-width:1024px) 900px, (min-width:640px) 70vw, 100vw"
+            fetchpriority="high" />
+
+        <!-- CSS (critical file only) -->
+        <link rel="stylesheet" href="/src/style.css" />
+
+        <!-- Fonts (remove duplicates; swap to prevent FOIT). Consider self-hosting later. -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap"
-            rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@0,6..96;1,6..96&family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap"
-            rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@0,6..96;1,6..96&family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
 
         <!-- Social -->
-        <meta property="og:title" content="OJJLab" />
-        <meta property="og:description" content="High-performance training for kids and adults." />
+        <meta property="og:title" content="Oregon Jiu Jitsu Lab" />
+        <meta property="og:description" content="High-performance training for kids and adults in Hillsboro, Oregon." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ojjlab.com" />
+        <meta property="og:url" content="https://ojjlab.com/" />
+        <meta property="og:image" content="https://ojjlab.com/og/ojjlab-1200x630.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Oregon Jiu Jitsu Lab" />
+        <meta name="twitter:description" content="American Jiu Jitsu, Wrestling, and Kickboxing for kids and adults." />
+        <meta name="twitter:image" content="https://ojjlab.com/og/ojjlab-1200x630.jpg" />
 
-        <!-- <script src="https://www.gymdesk.com/js/widgets.js"></script> -->
+        <!-- Structured Data: LocalBusiness (customize values) -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SportsActivityLocation",
+                "name": "Oregon Jiu Jitsu Lab",
+                "image": "https://ojjlab.com/og/ojjlab-1200x630.jpg",
+                "url": "https://ojjlab.com/",
+                "telephone": "+1-503-308-8455",
+                "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "3691 NE John Olsen Ave",
+                "addressLocality": "Hillsboro",
+                "addressRegion": "OR",
+                "postalCode": "97124",
+                "addressCountry": "US"
+                },
+                "geo": { "@type": "GeoCoordinates", "latitude": 45.5458031 "longitude": -122.8833989},
+                "openingHours": "Mo-Fr 16:00-21:00, Sa 10:00-12:00, Su 10:00-12:00",
+                "priceRange": "$$"
+            }
+        </script>
+
+        <script rel="modulepreload" type="module" src="/src/main.ts"></script>
     </head>
 
-    <body class="ojjlab overflow-hidden" data-animation="root">
-        <!-- Loader overlay: visible by default before any JS runs -->
-        <div data-animation="loader-container" 
-            class="loader"
-            role="status" aria-live="polite" aria-atomic="true">
-            <div class="text-center select-none">
-                <h1 data-animation="loader-count" 
-                    class="loader-title">
-                    0%
-                </h1>
-                <div class="loader-text" id="loader-subtext">
-                    <p>Loading…</p>
-                </div>
 
-                <!-- progress bar -->
-                <div class="loader-bar">
-                    <div data-animation="loader-bar" class="h-full w-0 bg-alert"></div>
-                </div>
-            </div>
-        </div>
+    <body class="ojjlab" data-animation="root">
 
-        <!-- Skip link -->
-
-        <header id="hero" aria-labelledby="heroTitle" class="hero" data-animation="hero">
-
-            <!-- HERO -->
-            <!-- OVERLAY -->
-            <div class="hero-overlay" data-animation="hero-overlay">
-                <!-- TODO add skip content-->
-                <!-- <a class="text-white text-sm" href="#main-content">Skip to content</a> -->
-
-                <!-- Reveal Bar -->
-                <svg class="hero-reveal-bar" 
-                    data-animation="hero-reveal-bar" 
-                    viewBox="0 0 0 0" preserveAspectRatio="none">
-                    <rect class="reveal-bar" x="0" y="0" width="0" height="0" fill="white" />
-                </svg>
-
-                <!-- Animation -->
-                <div class="hero-overlay-content" data-animation="hero-overlay-content">
-                    <!-- LOGO  -->
-                    <img src="/images/brand/oregon-jiu-jitsu-lab-light.svg" data-animation="hero-logo"
-                        alt="Oregon Jiu Jitsu Lab Logo" 
-                    />
-
-                    <!-- Title  -->
-                    <h1 data-animation="hero-title-cta">
-                        <div>American Jiu Jitsu</div>
-                        <div>Wrestling</div>
-                        <div>Kickboxing</div>
-                    </h1>
-
-                    <p data-animation="hero-content-cta">
-                        <span>Strength for kids.</span>
-                        <span>Confidence for adults.</span>
-                        <span>Community for everyone.</span>
-                    </p>
-                </div>
-
-                <!-- Hero Content after animation -->
-                <div class="hero-content" data-animation="hero-content">
-                    <h1>
-                        <div>American Jiu Jitsu</div>
-                        <div>Wrestling</div>
-                        <div>Kickboxing</div>
-                    </h1>
-                    <p>
-                        <span>Strength for kids.</span>
-                        <span>Confidence for adults.</span>
-                        <span>Community for everyone.</span>
-                    </p>
-                    <div class="hero-content-cta">
-                        <a class="cta-primary mr-6" href="">Join Today</a>
-                        <a class="cta-secondary" href="">View Schedule</a>
+        <!-- HERO -->
+        <header>
+            <nav>
+                <div>
+                    <img src="/images/brand/oregon-jiu-jitsu-lab.svg"/>
+                    <div>
+                        <a href="">About Us</a>
+                        <a href="">Programs</a>
+                        <a href="">Instructors</a>
+                        <a href="">Schedule</a>
+                        <a href="">Contact</a>
+                        <a href="">Shop</a>
+                        <a href="">Join</a>
                     </div>
-                </div>
-
-            </div>
-
-            <div class="hero-cover" data-animation="cover">
-                <!-- BG Image -->
-                <picture class="cover-image">
-                    <source type="image/avif" srcset="
-                        /images/hero/hero-480.avif   480w,
-                        /images/hero/hero-768.avif   768w,
-                        /images/hero/hero-1280.avif 1280w
-                        " sizes="100vw">
-                    <source type="image/webp" srcset="
-                        /images/hero/hero-480.webp   480w,
-                        /images/hero/hero-768.webp   768w,
-                        /images/hero/hero-1280.webp 1280w
-                        " sizes="100vw">
-                    <img data-animation="hero-image" src="/images/hero/hero-768.jpg" srcset="
-                        /images/hero/hero-480.jpg   480w,
-                        /images/hero/hero-768.jpg   768w,
-                        /images/hero/hero-1280.jpg 1280w
-                        " sizes="100vw" alt="oregon jiu jitsu lab" decoding="async" fetchpriority="high" class="hero-image">
-                </picture>
-
-            </div>
-
-            <!-- Navigation -->
-            <nav aria-label="Primary" data-animation="nav" class="nav" hidden>
-
-                <div class="nav-logo">
-                    <div class="flex justify-start">
-                        <!-- Hamburger (mobile only) -->
-                        <button type="button" 
-                            aria-expanded="false" 
-                            aria-controls="primary-menu" 
-                            class="nav-hamburger">
-                            <svg class="nav-hamburger-image" 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                fill="none" 
-                                viewBox="0 0 24 24"
-                                stroke="currentColor" 
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                            <span class="sr-only">Open menu</span>
-                        </button>
-                    </div>
-
-                    <!-- Logo -->
-                    <div class="flex justify-center md:justify-start w-full ">
-                        <a href="/" aria-label="Oregon Jiu Jitsu Lab Home" class="nav-logo-link">
-                            <img src="/images/brand/oregon-jiu-jitsu-lab-light.svg" alt="Oregon Jiu Jitsu Lab" decoding="async"
-                                fetchpriority="high" class="nav-logo-image" />
-                        </a>
-                    </div>
-
-                    <!-- Desktop Menu -->
-                    <ul id="primary-menu" class="nav-menu" data-animation="nav">
-                        <li><a href="/schedule" aria-label="nav-schedule">Schedule</a></li>
-                        <li><a href="/programs" aria-label="nav-programs">Programs</a></li>
-                        <li><a href="/Instructors" aria-label="nav-instructors">Instructors</a></li>
-                        <li><a href="/shop" aria-label="nav-shop">Shop</a></li>
-                        <li><a href="/contact" aria-label="nav-contact">Contact</a></li>
-                        <li><a href="/login" aria-label="nav-login">Login</a></li>
-                        <li><a href="/join" class="menu-cta" aria-label="nav-join">Join</a></li>
-                    </ul>
-                </div>
             </nav>
+
+            <div>
+                <img alt="Oregen Jiu Jitsu Lab" src="/images/hero/hero.jpeg" />
+
+                <h1>
+                    <div>American Jiu Jitsu</div>
+                    <div>Wrestling</div>
+                    <div>Kickboxing</div>
+                </h1>
+
+                <p>
+                    <span>Strength for kids.</span>
+                    <span>Confidence for adults.</span>
+                    <span>Commmunity for everyone.</span>
+                </p>
+            </div>
+
+            <div>
+                <a href="">Join Today</a>
+                <a href="">View Schedule</a>
+            </div>
         </header>
 
-        <!-- WHY WE EXIST -->
-        <section class="__media_container __media_container-m" 
-            data-animation="why-we-exist">
-            <img alt="Oregon Jiu Jitsu Programs" src="/images/programs/programs.jpg"/>
-            <div class="__media_container-partial __content_layout">
-                <div class="__media_container-content __content_left">
-                    <div class="__bg-dark __content" data-animation="why-we-exist-content">
 
-                        <h2 data-animation="why-we-exist-title">Why We Exist</h2>
-                        <p data-animation="why-we-exist-paragraph">
-                            We help students learn faster and train smarter with a system built for real growth. 
-                        </p>
 
-                        <p data-animation="why-we-exist-paragraph"><strong>More training, less standing around.</strong> Our curriculum uses constraint-based coaching so skills are learned under real conditions.</p>
-                        <p data-animation="why-we-exist-paragraph"><strong>Growth through challenge.</strong> We believe failure is part of learning and push students physically and mentally to grow as leaders.</p>
-                        <p data-animation="why-we-exist-paragraph"><strong>Measured by results.</strong> If skills aren’t showing up in live training, we refine until they do.</p>
-
-                        <p data-animation="why-we-exist-paragraph">
-                            Our focus is on building grapplers of every level through efficient, effective coaching that delivers results on the mats. 
-                        </p>
-
-                    </div>
-                </div>
+        <!-- About -->
+        <section>
+            <div>
+                <h2>Why We Exist</h2>
             </div>
+            <div>
+                <p>
+                    We help students learn faster and train smarter with a 
+                    system built for real growth. 
+                </p>
+
+                <p>
+                    <strong>More training, less standing around.</strong> 
+                    Our curriculum uses constraint-based coaching so skills 
+                    are learned under real conditions.
+                </p>
+
+                <p>
+                    <strong>Growth through challenge.</strong> We believe failure 
+                    is part of learning and push students physically and 
+                    mentally to grow as leaders.
+                </p>
+
+                <p>
+                    <strong>Measured by results.</strong> If skills aren’t 
+                    showing up in live training, we refine until they do.
+                </p>
+
+                <p>Our focus is on building grapplers of every level through 
+                    efficient, effective coaching that delivers results on the mats. 
+                </p>
 
         </section>
 
 
-        <section class="h-1500"></section>
 
-        <script type="module" src="/src/main.ts"></script>
+        <!-- Programs -->
+        <section>
+            <div>
+                <h2>Programs</h2>
+                <img alt="Oregon Jiu Jitsu Lab Programs" src=""/>
+                <p>We offer training for kids and adults with programs built 
+                    to develop skills, fitness, and confidence at every level.
+                </p>
+            </div>
+
+            <div>
+                <h2>Jiu Jitsu</h2>
+                <h3>Kids (ages 5+) + Adults</h3>
+                <img alt="Oregon Jiu Jitsu Lab Jiu Jitsu " src=""/>
+                <p>Jiu Jitsu is a grappling art where the goal is to achieve a dominant position and apply submissions. Submissions are techniques such as chokes and joint locks that give smaller, skilled practitioners the ability to overcome larger opponents. Our kids’ and adult classes build both technical skill and confidence on the mats.</p>
+            </div>
+
+            <div>
+                <h2>Wrestling</h2>
+                <h3>Kids (ages 5+) + Adults</h3>
+                <img alt="Oregon Jiu Jitsu Lab Wrestling" src=""/>
+                <p>Wrestling focuses on takedowns, control, and dominant 
+                    positioning. It is one of the oldest combat sports and a 
+                    foundation for modern grappling arts. Our classes 
+                    teach explosive movement, balance, and control — skills 
+                    that benefit both kids learning discipline and adults 
+                    looking to sharpen their grappling game.</p>
+            </div>
+
+            <div>
+                <h2>Kickboxing</h2>
+                <h3>Adults</h3>
+                <img alt="Oregon Jiu Jitsu Lab Kickboxing" src=""/>
+                <p>Kickboxing is a striking art that combines punches, kicks, 
+                    knees, and footwork. Training builds power, speed, and 
+                    conditioning while teaching practical self-defense skills. 
+                    Our program is designed for adults who want to improve 
+                    fitness and develop effective stand-up striking.</p>
+            </div>
+
+            <div>
+                <h2>Compition Team</h2>
+                <h3>Kids (ages 5+) + Adults</h3>
+                <p>For students who want to test themselves in tournaments, 
+                    our competition team provides advanced training and coaching. 
+                    Practices focus on systems, strategy, and high-intensity 
+                    drilling with training partners who match your drive. 
+                    Built for kids and adults ready to push their limits.</p>
+            </div>
+        </section>
+
+
+        <!-- Instructors -->
+        <section>
+            <div>
+                <h2>Adam Fox</h2>
+                <h3>Head Coach</h3>
+                <p>Adam Fox is a 2nd degree Black Belt under Eric Hemphill with 
+                    more than 24 years of Jiu Jitsu experience. He has coached 
+                    at the highest levels, including serving as head coach for 
+                    the Kazakhstan National Jiu Jitsu Team and Golden Eagle 
+                    Jiu Jitsu and Wrestling in Kyrgyzstan.</p>
+                <p>Adam’s coaching focuses on clear systems, efficient learning, 
+                    and developing both the body and mind. His students include 
+                    IBJJF World Champions and UFC fighters, proof of his 
+                    ability to create success at every level.</p>
+                <p>At Oregon Jiu Jitsu Lab, Adam brings his extensive experience 
+                    to help each student, from kids to competitors, 
+                    grow faster and smarter on the mats.</p>
+            </div>
+
+            <div>
+                <h2>Danniel Rolfe</h2>
+                <h3>Coach</h3>
+                <p>Danniel is a Brown Belt under Professor Eric Hemphill, 
+                    with Adam Fox also playing an important role in his 
+                    development as a coach and practitioner. His journey has 
+                    taken him from São Paulo to Oregon, giving him a broad 
+                    perspective on the art.</p>
+                <p>For more than eight years, Danniel has taught students of all 
+                    levels with an approachable style that makes Jiu Jitsu 
+                    accessible to everyone. His focus is on helping each 
+                    student grow while continuing his own path as both a 
+                    teacher and lifelong student of the art.
+                </p>
+            </div>
+
+            <div>
+                <h2>Ray Herrera</h2>
+                <h3>Assistant Coach</h3>
+                <p></p>
+            </div>
+
+            <div>
+                <h2>Justin Koreis</h2>
+                <h3>Kickboxing Coach</h3>
+                <p>Justin has more than 20 years of experience in striking arts, 
+                    with a strong background in kickboxing. 
+                    He began in the competitive Taekwondo circuit before 
+                    moving to full-contact kickboxing in 2005 under UFC veteran 
+                    Ivan Salaverry, where he trained students from beginners to 
+                    professional fighters.</p>
+                <p>His teaching style focuses on building confidence and 
+                    technique together. Justin blends modern kickboxing with 
+                    Muay Thai and other traditional martial arts, giving 
+                    students practical skills and a clear path for growth.</p>
+            </div>
+
+            <div>
+                <h2>Justin Marical</h2>
+                <h3>Wrestling Coach</h3>
+                <p></p>
+            </div>
+        </section>
+
+        <!-- SCHEDULE -->
+        <section>
+        </section>
+
+        <!-- CONTACT -->
+        <section>
+            <!-- CONTACT CTA -->
+
+            <!-- GOOGLE MAP -->
+
+            <!-- CONTACT FORM-->
+        </section>
+
+        <footer>
+        </footer>
+
     </body>
 
 </html>
