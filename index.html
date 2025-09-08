@@ -46,25 +46,25 @@
 
         <!-- Structured Data: LocalBusiness (customize values) -->
         <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "SportsActivityLocation",
-                "name": "Oregon Jiu Jitsu Lab",
-                "image": "https://ojjlab.com/og/ojjlab-1200x630.jpg",
-                "url": "https://ojjlab.com/",
-                "telephone": "+1-503-308-8455",
-                "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "3691 NE John Olsen Ave",
-                "addressLocality": "Hillsboro",
-                "addressRegion": "OR",
-                "postalCode": "97124",
-                "addressCountry": "US"
-                },
-                "geo": { "@type": "GeoCoordinates", "latitude": 45.5458031 "longitude": -122.8833989},
-                "openingHours": "Mo-Fr 16:00-21:00, Sa 10:00-12:00, Su 10:00-12:00",
-                "priceRange": "$$"
-            }
+        {
+        "@context": "https://schema.org",
+        "@type": "SportsActivityLocation",
+        "name": "Oregon Jiu Jitsu Lab",
+        "image": "https://ojjlab.com/og/ojjlab-1200x630.jpg",
+        "url": "https://ojjlab.com/",
+        "telephone": "+1-503-308-8455",
+        "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3691 NE John Olsen Ave",
+        "addressLocality": "Hillsboro",
+        "addressRegion": "OR",
+        "postalCode": "97124",
+        "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 45.5458031 "longitude": -122.8833989},
+        "openingHours": "Mo-Fr 16:00-21:00, Sa 10:00-12:00, Su 10:00-12:00",
+        "priceRange": "$$"
+        }
         </script>
 
         <script rel="modulepreload" type="module" src="/src/main.ts"></script>
@@ -277,8 +277,114 @@
             <!-- CONTACT FORM-->
         </section>
 
-        <footer>
-        </footer>
+
+        <!-- Loader overlay: visible by default before any JS runs -->
+        <div data-animation="loader-container" 
+            class="loader"
+            role="status" aria-live="polite" aria-atomic="true">
+            <div class="text-center select-none">
+                <h1 data-animation="loader-count" 
+                    class="loader-title">
+                    0%
+                </h1>
+                <div class="loader-text" id="loader-subtext">
+                    <p>Loading…</p>
+                </div>
+
+                <!-- progress bar -->
+                <div class="loader-bar">
+                    <div data-animation="loader-bar" class="h-full w-0 bg-alert"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer role="contentinfo" aria-labelledby="site-footer-title">
+            <h2 id="site-footer-title">Oregon Jiu Jitsu Lab — Site Footer</h2>
+
+            <!-- Brand / Contact -->
+            <section aria-labelledby="footer-contact-title">
+                <h3 id="footer-contact-title">Contact</h3>
+                <a href="/" aria-label="Oregon Jiu Jitsu Lab home">
+                    <img src="/images/brand/oregon-jiu-jitsu-lab.svg" alt="Oregon Jiu Jitsu Lab logo">
+                </a>
+                <address>
+                    <p>
+                        Oregon Jiu Jitsu Lab<br>
+                        <span>1234 Example St</span><br>
+                        <span>[City], OR 97xxx</span><br>
+                        <a href="https://maps.google.com/?q=Oregon+Jiu+Jitsu+Lab" target="_blank" rel="noopener">View on Google Maps</a>
+                    </p>
+                    <p>
+                        <a href="tel:+15555555555" aria-label="Call Oregon Jiu Jitsu Lab">+1 (555) 555-5555</a><br>
+                        <a href="mailto:hello@ojjlab.com" aria-label="Email Oregon Jiu Jitsu Lab">hello@ojjlab.com</a>
+                    </p>
+                    <p aria-label="Opening hours">
+                        <span>Hours:</span> Mon–Fri 4:00–9:00 PM, Sat 10:00 AM–12:00 PM
+                    </p>
+                </address>
+            </section>
+
+            <!-- New People -->
+            <section aria-labelledby="footer-new-people-title">
+                <h3 id="footer-new-people-title">New People</h3>
+                <nav aria-label="New People">
+                    <ul>
+                        <li><a href="/trial" data-cta="trial">Start a Free Trial</a></li>
+                        <li><a href="/waiver" data-cta="waiver">Sign Waiver</a></li>
+                        <li><a href="/join" data-cta="join">Join the Academy</a></li>
+                    </ul>
+                </nav>
+                <p>Questions about getting started? <a href="/contact">Contact us</a> or <a href="/schedule">see the schedule</a>.</p>
+            </section>
+
+            <!-- Programs -->
+            <section aria-labelledby="footer-programs-title">
+                <h3 id="footer-programs-title">Programs</h3>
+                <nav aria-label="Programs">
+                    <ul>
+                        <li><a href="/programs/jiu-jitsu">Jiu Jitsu — Kids &amp; Adults</a></li>
+                        <li><a href="/programs/wrestling">Wrestling — Kids &amp; Adults</a></li>
+                        <li><a href="/programs/kickboxing">Kickboxing — Adults</a></li>
+                        <li><a href="/programs/competition-team">Competition Team</a></li>
+                    </ul>
+                </nav>
+            </section>
+
+            <!-- Company -->
+            <section aria-labelledby="footer-company-title">
+                <h3 id="footer-company-title">Company</h3>
+                <nav aria-label="Company">
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/instructors">Instructors</a></li>
+                        <li><a href="/schedule">Schedule</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </section>
+
+            <!-- Resources / Policies -->
+            <section aria-labelledby="footer-resources-title">
+                <h3 id="footer-resources-title">Resources</h3>
+                <nav aria-label="Resources and Policies">
+                    <ul>
+                        <li><a href="/policies/membership">Membership Policy</a></li>
+                        <li><a href="/policies/faq">FAQ</a></li>
+                        <li><a href="/legal/privacy">Privacy Policy</a></li>
+                        <li><a href="/legal/terms">Terms of Service</a></li>
+                        <li><a href="/accessibility">Accessibility Statement</a></li>
+                    </ul>
+                </nav>
+            </section>
+
+            <!-- Social -->
+            <section aria-labelledby="footer-social-title">
+                <h3 id="footer-social-title">Connect</h3>
+                <ul>
+                    <li><a href="https://www.instagram.com/ojjlab" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@ojjlab" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a></li>
+                    <li><a href="https://www.tiktok.com/@ojjlab" target="_blank" rel=_
 
     </body>
 
