@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, [data-theme=dark], .dark * , [data-theme=dark] *));
+
 :root {
+    color-scheme: light dark;
+
+
     --ratio: 1.618;
     --onload-logo-size: 150px;
     --onload-logo-size-md: calc(var(--onload-logo-size) * var(--ratio));
@@ -10,16 +15,26 @@
 
 @theme {
     /* COLORS */
-    --color-brand:          #F23838;
-    --color-text-dark:      #000000;
-    --color-text-light:     #ffffff;
 
     /* Color Accents */
     --color-accent-light:   #F2D680;
     --color-accent-dark:    #A67C53;
 
-    --color-surface-dark:   #1A1A1A;
-    --color-surface-light:  #22594F;
+    --color-bg-dark:   #172601;
+    --color-bg-light:  #365902;
+
+    --color-pop-dark:   #ffffff;
+    --color-pop-light:  #000000;
+
+    --color-brand:          #F23838;
+    --color-brand-dark:     color-mix(in oklab, var(--color-brand), black 30%);
+    --color-brand-light:    color-mix(in oklab, var(--color-brand-dark), var(--color-pop-dark) 15%);
+    --color-dark:           #000000;
+    --color-light:          #ffffff;
+
+    /* .light, [data-theme="light"] { */
+    /*     --color-bg: var(--color-light); */
+    /* } */
 
     /* FONTS */
     --font-title:    "Hind", ui-sans-serif, system-ui, sans-serif;
@@ -35,4 +50,199 @@
 }
 
 @layer components {
+
+    a, button {
+        @apply text-black dark:text-white;
+    }
+
+    p, h1, h2, h3, h4, h5, h6,  span, strong {
+        /* Default */
+        @apply text-black dark:text-white;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-title;
+    }
+
+    h1 {
+       /* Mobile */
+       @apply text-3xl;
+
+       /* Tablet */
+       @apply sm:text-3xl;
+
+       /* Desktop */
+       @apply md:text-7xl;
+    }
+
+    p, span, strong {
+        @apply font-content;
+    } 
+
+    /* Elements */
+    .primary-btn {
+        @apply tracking-wider uppercase;
+        @apply py-2 px-4 rounded-sm;
+
+        @apply bg-brand dark:bg-brand-dark text-white; 
+
+        /* @apply inline-flex items-center justify-center */
+        /*  w-12 h-12 rounded-lg */
+        /*  bg-brand text-white tracking-wider */
+        /*  transition-colors duration-200 */
+        /*  hover:[background-color:color-mix(in_oklab,var(--color-brand),black_12%)] */
+        /*  active:[background-color:color-mix(in_oklab,var(--color-brand),black_20%)] */
+        /*  focus-visible:outline-none */
+        /*  focus-visible:ring-2 focus-visible:ring-white/60 */
+        /*  focus-visible:ring-offset-2 focus-visible:ring-offset-black */
+        /*  dark:focus-visible:ring-offset-white; */
+    }
+
+    .secondary-btn {
+        @apply tracking-wider uppercase;
+        @apply py-2 px-4 rounded-sm;
+
+        @apply bg-white dark:bg-white text-brand-dark; 
+    }
+
+    .border-b {
+        @apply border-b border-b-2 border-accent-dark dark:border-accent-light;
+    }
+
+    .border-t {
+        @apply border-t border-b-2 border-accent-dark dark:border-accent-light;
+    }
+
+    .hero {
+        /* Mobile */
+        @apply h-dvh;
+
+        /* Tablet */
+        @apply sm:h-[100svh];
+
+    }
+
+    .hero-overlay {
+        @apply absolute inset-0 h-full w-full object-cover object-center z-[-1];
+    }
+
+    .hero-overlay-content {
+        @apply absolute inset-0 h-full w-full z-[-1];
+        @apply bg-gradient-to-b from-transparent to-black/50;
+    }
+
+    .hero-nav {
+        @apply grid grid-cols-3 gap-2; 
+        @apply px-4 py-6;
+        @apply text-white dark:text-black;
+        @apply bg-gradient-to-b from-black/20 to-transparent;
+    }
+
+    .hero-menu {
+        @apply hidden md:flex sm:flex-col;
+        @apply absolute w-full h-full overflow-hidden;
+        @apply bg-white dark:bg-black;
+    }
+
+    .hero-menu a {
+        @apply text-center uppercase text-xl;
+    }
+
+    .hero-content {
+        @apply mt-24;
+        @apply px-4 py-6;
+        @apply flex flex-col justify-center items-end;
+
+    }
+    .hero-content h1, .hero-content p span {
+        @apply text-accent-light dark:text-white;
+    }
+
+    .hero-content h1, p {
+        @apply text-right;
+    }
+
+    .hero-content p {
+        @apply text-right;
+    }
+
+    .ojjlab {
+        @apply bg-white dark:bg-black;
+    }
+
+    .section {
+        /* Default */
+        @apply relative bg-cover bg-center w-full overflow-hidden;
+
+        /* Mobile */
+        @apply min-h-dvh;
+
+        /* Tablet */
+        @apply sm:h-[100svh];
+    }
+
+    .section-overlay {
+        @apply absolute inset-0 h-full w-full object-cover object-center z-[-1];
+    }
+
+    .section-layout {
+        /* Default */
+        @apply h-full grid;
+
+        /* Mobile */
+        @apply grid-cols-1 grid-rows-2 gap-y-0 gap-x-0;
+
+        /* Tablet */
+        @apply md:grid-cols-4 md:grid-rows-1 md:items-stretch;
+
+        /* Desktop */
+        @apply lg:grid-cols-16 lg:grid-rows-1 md:items-stretch;
+
+    }
+
+    .section-content {
+        @apply py-12 px-6;
+        /* Mobile */
+        @apply bg-pop-light/50 dark:bg-pop-dark/50; 
+    }
+
+    .section-content p {
+        @apply text-center;
+    }
+
+
+    .title-left {
+        @apply md:col-start-1 md:col-end-8 md:row-start-1 md:row-end-2;
+    }
+
+    .content-left {
+        @apply md:col-start-8 md:col-end-15 md:row-start-1 md:row-end-2;
+    }
+
+    .section-content p, .section-content strong {
+        @apply text-light dark:text-dark;
+
+        /* Mobile */
+        @apply mb-4 sm:mb-8;
+    }
+
+    .section-title {
+        @apply text-light dark:text-dark antialiased;
+        @apply text-4xl sm:text-4xl md:text-6xl uppercase;
+        @apply text-center mb-6;
+    }
+
+
+    .section-cta {
+        @apply py-12 px-4;
+        @apply text-accent-dark dark:text-accent-light antialiased;
+
+        /* Size */
+        @apply text-5xl sm:text-5xl md:text-8xl;
+        @apply uppercase text-center md:text-right z-20; 
+    }
+
+    .section-title-container {
+        @apply bg-pop-dark dark:bg-pop-light mx-auto z-2; 
+    }
 }
