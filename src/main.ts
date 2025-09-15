@@ -1,38 +1,30 @@
 // main.ts
-import { toggleCalendarView } from "./functionality/calendar";
-import { heroTitleAnimation } from "./animations/title";
-import { navAnimation } from "./animations/nav";
-import { loaderAnimation } from "./animations/load-animation"; // play(): Promise<void>
-import { copyPhone } from "./functionality/copy";
-import { heroAnimation } from "./animations/hero";
-import { whyWeExistAnimation } from "./animations/content";
+
+import { loaderAnimation } from "./animations/load-animation";
+import { themeConfiguration } from "./functionality/toggle-theme";
 
 declare global {
     interface Window { __app_booted__?: boolean }
 }
 
-const loadAnimation = loaderAnimation(document);
+// const loadAnimation = loaderAnimation(document);
 
 // One time boot logic
 const boot = async () => {
-    loadAnimation.play();
+    // loadAnimation.play();
+    themeConfiguration();
 };
 
 const init = async () => {
     /* Onload */
 
     /* Post Load */
-    await loadAnimation.onComplete().then(() => {
-        heroAnimation(document);
-    });
+    // await loadAnimation.onComplete().then(() => {
+    //     console.log('loading complete');
+    // });
 
     /* Section Animations */
-    whyWeExistAnimation();
 
-    // toggleCalendarView(document);
-    // navAnimation(document);
-    // heroTitleAnimation();
-    // copyPhone(document);
 }
 
 if (!window.__app_booted__) {
