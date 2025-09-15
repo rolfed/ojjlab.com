@@ -1,0 +1,120 @@
+<main id="main-content">
+    <header class="hero border-b">
+        <nav class="hero-nav">
+            <div class="">
+                <button aria-label="Open navigation menu" aria-expanded="false" aria-controls="hero-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        aria-hidden="true" class="w-7 h-7">
+                        <path d="M3 7h18M3 17h18" />
+                    </svg>
+                </button>
+            </div>
+
+            <img class="block dark:hidden h-8 w-auto" src="/images/brand/oregon-jiu-jitsu-lab.svg" alt="Oregon Jiu Jitsu Lab"/>
+            <img class="hidden dark:block h-8 w-auto" src="/images/brand/oregon-jiu-jitsu-lab-light.svg" alt="Oregon Jiu Jitsu Lab"/>
+
+            <nav class="hero-menu hidden sm:block" id="hero-menu" aria-label="Main navigation">
+                <ul>
+                    <li><a href="/" data-route="/">Home</a></li>
+                    <li><a href="/contact" data-route="/contact">Contact</a></li>
+                    <li><a href="/join" data-route="/join">Join</a></li>
+                    <li><a href="/try-a-class" data-route="/try-a-class">Try a Class</a></li>
+                </ul>
+            </nav>
+
+            <button id="theme-toggle" type="button"
+                aria-pressed="false"
+                aria-label="Toggle color scheme"
+                title="Toggle color scheme">
+                <span data-theme-label>Toggle Theme</span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="section-layout">
+            <div class="section-title-container">
+                <h1 class="section-title">Member Login</h1>
+                <p class="section-subtitle">Access your Oregon Jiu Jitsu Lab member portal</p>
+            </div>
+
+            <div class="section-content">
+                <div class="login-container">
+                    <div class="login-form">
+                        <h2>Sign In</h2>
+                        <form>
+                            <div class="form-group">
+                                <label for="login-email">Email Address *</label>
+                                <input type="email" id="login-email" name="email" required
+                                    placeholder="your.email@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="login-password">Password *</label>
+                                <input type="password" id="login-password" name="password" required>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="remember-me" name="remember">
+                                <label for="remember-me">Remember me</label>
+                            </div>
+
+                            <button type="submit" class="primary-btn full-width">Sign In</button>
+                        </form>
+
+                        <div class="login-links">
+                            <a href="#forgot-password" class="text-link">Forgot your password?</a>
+                        </div>
+                    </div>
+
+                    <div class="login-info">
+                        <h2>Member Portal Features</h2>
+                        <ul>
+                            <li>View class schedules and book sessions</li>
+                            <li>Track your training progress</li>
+                            <li>Access member-only content</li>
+                            <li>Manage your membership</li>
+                            <li>Connect with other members</li>
+                            <li>Receive academy updates</li>
+                        </ul>
+
+                        <div class="new-member">
+                            <h3>New to Oregon Jiu Jitsu Lab?</h3>
+                            <p>Join our community and start your martial arts journey today.</p>
+                            <div class="cta-buttons">
+                                <a href="/try-a-class" data-route="/try-a-class" class="primary-btn">Try a Free Class</a>
+                                <a href="/join" data-route="/join" class="secondary-btn">View Memberships</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forgot-password-section" id="forgot-password" style="display: none;">
+                    <h2>Reset Your Password</h2>
+                    <p>Enter your email address and we'll send you a link to reset your password.</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="reset-email">Email Address *</label>
+                            <input type="email" id="reset-email" name="email" required
+                                placeholder="your.email@example.com">
+                        </div>
+                        <button type="submit" class="primary-btn">Send Reset Link</button>
+                        <a href="#sign-in" class="text-link">Back to Sign In</a>
+                    </form>
+                </div>
+
+                <div class="support-info">
+                    <h2>Need Help?</h2>
+                    <p>If you're having trouble accessing your account, please contact us:</p>
+                    <div class="contact-methods">
+                        <p><strong>Email:</strong> <a href="mailto:support@ojjlab.com">support@ojjlab.com</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:+15033088455">(503) 308-8455</a></p>
+                        <p><strong>In Person:</strong> Visit us during academy hours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

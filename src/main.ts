@@ -1,27 +1,61 @@
 // main.ts
 
-import { loaderAnimation } from "./animations/load-animation";
 import { themeConfiguration } from "./functionality/toggle-theme";
+import { createRouter } from "./router/router";
 
 declare global {
     interface Window { __app_booted__?: boolean }
 }
 
-// const loadAnimation = loaderAnimation(document);
 
-// One time boot logic
-const boot = async () => {
-    // loadAnimation.play();
-    themeConfiguration();
+const handleContactRoute = (): void => {
+    console.log('Navigated to Contact page');
+    document.title = 'Contact - Oregon Jiu Jitsu Lab';
 };
 
-const init = async () => {
+const handleJoinRoute = (): void => {
+    console.log('Navigated to Join page');
+    document.title = 'Join - Oregon Jiu Jitsu Lab';
+};
+
+const handleTryAClassRoute = (): void => {
+    console.log('Navigated to Try a Class page');
+    document.title = 'Try a Class - Oregon Jiu Jitsu Lab';
+};
+
+const handleLoginRoute = (): void => {
+    console.log('Navigated to Login page');
+    document.title = 'Login - Oregon Jiu Jitsu Lab';
+};
+
+const handleHomeRoute = (): void => {
+    console.log('Navigated to Home page');
+    document.title = 'Oregon Jiu Jitsu Lab | Jiu Jitsu, Wrestling & Kickboxing in Hillsboro';
+};
+
+// One time boot logic
+const boot = async (): Promise<void> => {
+    themeConfiguration();
+
+    const router = createRouter({ mode: 'history' });
+
+    router
+        .add('/', handleHomeRoute, 'Oregon Jiu Jitsu Lab | Jiu Jitsu, Wrestling & Kickboxing in Hillsboro', '/src/templates/home.html')
+        .add('/contact', handleContactRoute, 'Contact - Oregon Jiu Jitsu Lab', '/src/templates/contact.html')
+        .add('/join', handleJoinRoute, 'Join - Oregon Jiu Jitsu Lab', '/src/templates/join.html')
+        .add('/try-a-class', handleTryAClassRoute, 'Try a Class - Oregon Jiu Jitsu Lab', '/src/templates/try-a-class.html')
+        .add('/login', handleLoginRoute, 'Login - Oregon Jiu Jitsu Lab', '/src/templates/login.html');
+
+    // Ensure home template loads on initial page load
+    if (router.getCurrentPath() === '/') {
+        router.navigate('/');
+    }
+};
+
+const init = async (): Promise<void> => {
     /* Onload */
 
     /* Post Load */
-    // await loadAnimation.onComplete().then(() => {
-    //     console.log('loading complete');
-    // });
 
     /* Section Animations */
 
