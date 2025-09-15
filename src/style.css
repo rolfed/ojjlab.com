@@ -51,6 +51,16 @@
 
 @layer components {
 
+    /* Skip Navigation Link for Accessibility */
+    .skip-link {
+        @apply absolute top-0 left-0 z-50;
+        @apply bg-brand text-white py-2 px-4 rounded-b-md;
+        @apply transform -translate-y-full opacity-0;
+        @apply transition-all duration-200 ease-in-out;
+        @apply focus:translate-y-0 focus:opacity-100;
+        @apply text-sm font-medium uppercase tracking-wide;
+    }
+
     a, button {
         @apply text-black dark:text-white;
     }
@@ -144,8 +154,17 @@
         @apply bg-white dark:bg-black;
     }
 
+    .hero-menu ul {
+        @apply list-none p-0 m-0 flex flex-col w-full h-full;
+    }
+
+    .hero-menu li {
+        @apply flex-1;
+    }
+
     .hero-menu a {
         @apply text-center uppercase text-xl;
+        @apply w-full h-full flex items-center justify-center;
     }
 
     .hero-content {
