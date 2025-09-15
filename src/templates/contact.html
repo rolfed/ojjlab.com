@@ -1,0 +1,117 @@
+<main id="main-content">
+    <header class="hero border-b">
+        <nav class="hero-nav">
+            <div class="">
+                <button aria-label="Open navigation menu" aria-expanded="false" aria-controls="hero-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        aria-hidden="true" class="w-7 h-7">
+                        <path d="M3 7h18M3 17h18" />
+                    </svg>
+                </button>
+            </div>
+
+            <img class="block dark:hidden h-8 w-auto" src="/images/brand/oregon-jiu-jitsu-lab.svg" alt="Oregon Jiu Jitsu Lab"/>
+            <img class="hidden dark:block h-8 w-auto" src="/images/brand/oregon-jiu-jitsu-lab-light.svg" alt="Oregon Jiu Jitsu Lab"/>
+
+            <nav class="hero-menu hidden sm:block" id="hero-menu" aria-label="Main navigation">
+                <ul>
+                    <li><a href="/" data-route="/">Home</a></li>
+                    <li><a href="/join" data-route="/join">Join</a></li>
+                    <li><a href="/try-a-class" data-route="/try-a-class">Try a Class</a></li>
+                    <li><a href="/login" data-route="/login">Login</a></li>
+                </ul>
+            </nav>
+
+            <button id="theme-toggle" type="button"
+                aria-pressed="false"
+                aria-label="Toggle color scheme"
+                title="Toggle color scheme">
+                <span data-theme-label>Toggle Theme</span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="section-layout">
+            <div class="section-title-container">
+                <h1 class="section-title">Contact Us</h1>
+                <p class="section-subtitle">Get in touch with Oregon Jiu Jitsu Lab</p>
+            </div>
+
+            <div class="section-content">
+                <div class="contact-info">
+                    <h2>Visit Our Academy</h2>
+                    <address>
+                        <p>
+                            Oregon Jiu Jitsu Lab<br>
+                            3691 NE John Olsen Ave<br>
+                            Hillsboro, OR 97124
+                        </p>
+                        <p>
+                            <strong>Phone:</strong> <a href="tel:+15033088455">+1 (503) 308-8455</a><br>
+                            <strong>Email:</strong> <a href="mailto:hello@ojjlab.com">hello@ojjlab.com</a>
+                        </p>
+                        <p>
+                            <strong>Hours:</strong><br>
+                            Monday–Friday: 4:00–9:00 PM<br>
+                            Saturday: 10:00 AM–12:00 PM<br>
+                            Sunday: 10:00 AM–12:00 PM
+                        </p>
+                    </address>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Send us a Message</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="program">Interested Program</label>
+                            <select id="program" name="program">
+                                <option value="">Select a program</option>
+                                <option value="jiu-jitsu-kids">Jiu Jitsu - Kids</option>
+                                <option value="jiu-jitsu-adults">Jiu Jitsu - Adults</option>
+                                <option value="wrestling">Wrestling</option>
+                                <option value="kickboxing">Kickboxing</option>
+                                <option value="competition-team">Competition Team</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="primary-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="map-container">
+                    <h2>Find Us</h2>
+                    <div class="map-placeholder">
+                        <p>Interactive map will be embedded here</p>
+                        <a href="https://maps.google.com/?q=3691+NE+John+Olsen+Ave,+Hillsboro,+OR+97124"
+                           target="_blank" rel="noopener">
+                            View on Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

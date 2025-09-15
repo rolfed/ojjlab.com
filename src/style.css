@@ -142,29 +142,33 @@
     }
 
     .hero-nav {
-        @apply grid grid-cols-3 gap-2; 
+        @apply flex items-center justify-between;
         @apply px-4 py-6;
-        @apply text-white dark:text-black;
-        @apply bg-gradient-to-b from-black/20 to-transparent;
+        @apply text-black dark:text-black;
+        @apply backdrop-blur-md bg-white/70;
+        @apply dark:bg-white;
+        @apply sticky top-0 z-50;
     }
 
     .hero-menu {
-        @apply hidden md:flex sm:flex-col;
-        @apply absolute w-full h-full overflow-hidden;
-        @apply bg-white dark:bg-black;
+        @apply hidden sm:flex;
+        @apply relative;
     }
 
     .hero-menu ul {
-        @apply list-none p-0 m-0 flex flex-col w-full h-full;
+        @apply list-none p-0 m-0 flex flex-row space-x-6;
     }
 
     .hero-menu li {
-        @apply flex-1;
+        @apply flex;
     }
 
     .hero-menu a {
-        @apply text-center uppercase text-xl;
-        @apply w-full h-full flex items-center justify-center;
+        @apply uppercase text-sm font-medium tracking-wide;
+        @apply px-3 py-2 rounded-md;
+        @apply transition-colors duration-200;
+        @apply hover:bg-white/10 dark:hover:bg-black/10;
+        @apply text-white dark:text-black;
     }
 
     .hero-content {
@@ -262,6 +266,20 @@
     }
 
     .section-title-container {
-        @apply bg-pop-dark dark:bg-pop-light mx-auto z-2; 
+        @apply bg-pop-dark dark:bg-pop-light mx-auto z-2;
+    }
+
+    /* Theme Toggle Button */
+    #theme-toggle {
+        @apply p-2 rounded-md transition-colors duration-200;
+        @apply bg-black text-white hover:bg-gray-800;
+        @apply dark:bg-transparent dark:text-black dark:hover:bg-black/10;
+    }
+
+    /* Utility Classes */
+    .sr-only {
+        @apply absolute w-px h-px p-0 -m-px overflow-hidden;
+        @apply whitespace-nowrap border-0;
+        clip: rect(0, 0, 0, 0);
     }
 }
