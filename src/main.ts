@@ -38,6 +38,13 @@ const handleHomeRoute = (): void => {
 const boot = async (): Promise<void> => {
     themeConfiguration();
 
+    // Update static image paths for production
+    const { getAssetUrl } = await import('./utils/base-path');
+    const footerLogo = document.querySelector('footer img[src="/images/brand/oregon-jiu-jitsu-lab.svg"]');
+    if (footerLogo) {
+        footerLogo.setAttribute('src', getAssetUrl('/images/brand/oregon-jiu-jitsu-lab.svg'));
+    }
+
     const router = createRouter({ mode: 'hash' });
 
     router

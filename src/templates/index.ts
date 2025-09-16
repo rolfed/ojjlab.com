@@ -5,7 +5,10 @@ import joinTemplate from './join.html?raw';
 import tryAClassTemplate from './try-a-class.html?raw';
 import loginTemplate from './login.html?raw';
 
-export const templates = {
+// Import base path utility
+import { replaceImagePaths } from '../utils/base-path';
+
+const templates = {
   '/': homeTemplate,
   '/home': homeTemplate,
   '/contact': contactTemplate,
@@ -17,5 +20,6 @@ export const templates = {
 export type TemplatePath = keyof typeof templates;
 
 export const getTemplate = (path: string): string | null => {
-  return templates[path as TemplatePath] || null;
+  const template = templates[path as TemplatePath];
+  return template ? replaceImagePaths(template) : null;
 };
