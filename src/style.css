@@ -312,33 +312,23 @@
         @apply dark:bg-transparent dark:text-black dark:hover:bg-black/10;
     }
 
-    /* Contact Form Styles */
-    .contact-form {
-        @apply max-w-2xl mx-auto p-6;
+    /* Contact Page Styles */
+    .contact-cta {
+        @apply max-w-2xl mx-auto p-6 text-center;
     }
 
-    .form-group {
-        @apply mb-4;
-    }
-
-    .form-group label {
-        @apply block text-sm font-medium mb-2;
+    .contact-cta h2 {
+        @apply text-2xl font-bold mb-4;
         @apply text-black dark:text-white;
     }
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        @apply w-full px-3 py-2 rounded-md border;
-        @apply border-gray-300 dark:border-gray-600;
-        @apply bg-white dark:bg-gray-800;
+    .contact-cta p {
+        @apply mb-6 text-lg;
         @apply text-black dark:text-white;
-        @apply focus:ring-2 focus:ring-brand focus:border-transparent;
-        @apply transition-colors duration-200;
     }
 
-    .form-group textarea {
-        resize: vertical;
+    .contact-buttons {
+        @apply flex flex-col sm:flex-row gap-4 justify-center;
     }
 
     /* Utility Classes */

@@ -12,11 +12,6 @@ declare global {
 const handleContactRoute = (): void => {
     console.log('Navigated to Contact page');
     document.title = 'Contact - Oregon Jiu Jitsu Lab';
-
-    // Initialize contact form functionality
-    import('./functionality/contact-form').then(({ initializeContactForm }) => {
-        initializeContactForm();
-    });
 };
 
 const handleJoinRoute = (): void => {
