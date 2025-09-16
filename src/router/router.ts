@@ -122,12 +122,19 @@ export class Router {
 
     private async loadTemplate(templatePath: string): Promise<void> {
         try {
-            const response = await fetch(templatePath);
-            if (!response.ok) {
-                throw new Error(`Failed to load template: ${response.status} ${response.statusText}`);
+            // Import templates from bundled module
+            const { getTemplate } = await import('../templates');
+
+            // Convert template path to route path for template lookup
+            const routePath = templatePath.replace('/src/templates', '').replace('.html', '');
+            const normalizedPath = routePath === '/home' ? '/' : routePath;
+
+            const html = getTemplate(normalizedPath);
+
+            if (!html) {
+                throw new Error(`Template not found for path: ${normalizedPath}`);
             }
 
-            const html = await response.text();
             const appElement = document.getElementById('app');
 
             if (!appElement) {
@@ -175,6 +182,6 @@ export class Router {
     }
 }
 
-export function createRouter(options?: RouterOptions): Router {
+export const createRouter = (options?: RouterOptions): Router => {
     return new Router(options);
 }
