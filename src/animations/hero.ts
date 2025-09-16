@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import type { Timeline } from "../model/gsap";
 import { getElementByDataAnimation } from "./data-animation";
 
-export const heroAnimation = (doc: Document): Timeline => {
+export const heroAnimation = (_doc: Document): Timeline => {
   const location = 'hero';
 
   const container = getElementByDataAnimation<HTMLElement>(location, 'hero');
@@ -82,13 +82,13 @@ const titleAnimation = (location: string): Timeline => {
     const titleElement = getElementByDataAnimation<HTMLElement>(location, "hero-title-cta");
     gsap.set(titleElement, { opacity: "100%" });
     const children = titleElement?.querySelectorAll('div');
-    return _textAnimation(children);
+    return _textAnimation(Array.from(children || []));
 };
 
 const contentAnimation = (location: string): Timeline => {
   const contentElement = getElementByDataAnimation<HTMLElement>(location, "hero-content-cta");
   const children = contentElement?.querySelectorAll('span');
-  return _textAnimation(children);
+  return _textAnimation(Array.from(children || []));
 };
 
 const heroEnterLayout = (location: string): Timeline => {

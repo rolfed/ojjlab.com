@@ -1,6 +1,5 @@
-import { loaderAnimation } from "../animations/load-animation";
+// import { loaderAnimation } from "../animations/load-animation";
 
-
-
-export const loader = (doc: Document, loader: () => void) => {
-}
+// TODO: Implement loader functionality
+// export const loader = (doc: Document, loader: () => void) => {
+// }
