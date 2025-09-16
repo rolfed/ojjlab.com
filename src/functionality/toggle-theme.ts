@@ -5,9 +5,9 @@ export const themeConfiguration = () => {
 }
 
 const setFooterYear = () => {
-    let _year: HTMLElement = document.getElementById('year') || null;
+    let _year: HTMLElement | null = document.getElementById('year');
     if (_year) {
-        _year.textContent = new Date().getFullYear();
+        _year.textContent = new Date().getFullYear().toString();
     }
 }
 

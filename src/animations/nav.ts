@@ -34,7 +34,7 @@ export const navAnimation = (document: Document): void => {
     navContainer.querySelectorAll<HTMLElement>('li>a')
   );
 
-  navElements.map((el: HTMLLinkElement) => {
-    el.addEventListener('mouseover', () => animateNavElementOnHover(el).play());
+  navElements.map((el) => {
+    el.addEventListener('mouseover', () => animateNavElementOnHover(el as HTMLLinkElement).play());
   });
 };

@@ -269,11 +269,66 @@
         @apply bg-pop-dark dark:bg-pop-light mx-auto z-2;
     }
 
+    /* Simple Site Navigation */
+    .site-nav {
+        @apply flex items-center justify-between;
+        @apply px-6 py-4;
+        @apply bg-white dark:bg-black;
+        @apply border-b border-gray-200 dark:border-gray-800;
+        @apply sticky top-0 z-50;
+    }
+
+    .nav-logo a {
+        @apply flex items-center;
+        @apply transition-opacity duration-200;
+        @apply hover:opacity-80;
+    }
+
+    .nav-menu {
+        @apply hidden md:flex;
+    }
+
+    .nav-menu ul {
+        @apply flex items-center space-x-8;
+        @apply list-none p-0 m-0;
+    }
+
+    .nav-menu a {
+        @apply text-sm font-medium uppercase tracking-wide;
+        @apply text-black dark:text-white;
+        @apply transition-colors duration-200;
+        @apply hover:text-brand dark:hover:text-brand-light;
+        @apply py-2;
+    }
+
+    .nav-theme-toggle {
+        @apply flex items-center;
+    }
+
     /* Theme Toggle Button */
     #theme-toggle {
         @apply p-2 rounded-md transition-colors duration-200;
         @apply bg-black text-white hover:bg-gray-800;
         @apply dark:bg-transparent dark:text-black dark:hover:bg-black/10;
+    }
+
+    /* Contact Page Styles */
+    .contact-cta {
+        @apply max-w-2xl mx-auto p-6 text-center;
+    }
+
+    .contact-cta h2 {
+        @apply text-2xl font-bold mb-4;
+        @apply text-black dark:text-white;
+    }
+
+    .contact-cta p {
+        @apply mb-6 text-lg;
+        @apply text-black dark:text-white;
+    }
+
+    .contact-buttons {
+        @apply flex flex-col sm:flex-row gap-4 justify-center;
     }
 
     /* Utility Classes */

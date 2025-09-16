@@ -14,13 +14,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const LOCATION = 'whyWeExistSection';
 
-const contentAnimation = <T extends Element>(element: T) => {
-}
+// TODO: Implement content animation functionality
+// const contentAnimation = <T extends Element>(element: T) => {
+// }
 
 export const whyWeExistAnimation = () => {
     const element = getElementByDataAnimation(LOCATION, 'why-we-exist');
     if (!element) { return; };
-    contentAnimation<HTMLElement>(element)
+    // contentAnimation<HTMLElement>(element)
 
     const box = getElementByDataAnimation(LOCATION, 'why-we-exist-content');
     const title = getElementByDataAnimation(LOCATION, 'why-we-exist-title');
@@ -28,7 +29,7 @@ export const whyWeExistAnimation = () => {
 
     if (!box || !title || !paragraphs) { return; }
 
-    splitIntoChars<HTMLHeadingElement>(title);
+    splitIntoChars(title as HTMLHeadingElement);
     const chars = title.querySelectorAll<HTMLElement>(".char")
 
     // Grow Box On Scroll: height first, then width (scrubbed)

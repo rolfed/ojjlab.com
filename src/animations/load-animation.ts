@@ -116,7 +116,7 @@ export const loaderAnimation = (doc: Document): LoaderControls => {
         render();
 
         // when entrance (0-100) finishes, start the fade out
-        entrance.eventCallback("onComplete", () => timeline.restart());
+        entrance.eventCallback("onComplete", () => { timeline.restart(); });
         entrance.restart();
 
         return finished;
