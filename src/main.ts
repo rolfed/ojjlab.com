@@ -2,6 +2,7 @@
 
 import { themeConfiguration } from "./functionality/toggle-theme";
 import { createRouter } from "./router/router";
+import "./components/navigation";
 
 declare global {
     interface Window { __app_booted__?: boolean }
@@ -11,6 +12,11 @@ declare global {
 const handleContactRoute = (): void => {
     console.log('Navigated to Contact page');
     document.title = 'Contact - Oregon Jiu Jitsu Lab';
+
+    // Initialize contact form functionality
+    import('./functionality/contact-form').then(({ initializeContactForm }) => {
+        initializeContactForm();
+    });
 };
 
 const handleJoinRoute = (): void => {
@@ -37,7 +43,7 @@ const handleHomeRoute = (): void => {
 const boot = async (): Promise<void> => {
     themeConfiguration();
 
-    const router = createRouter({ mode: 'history' });
+    const router = createRouter({ mode: 'hash' });
 
     router
         .add('/', handleHomeRoute, 'Oregon Jiu Jitsu Lab | Jiu Jitsu, Wrestling & Kickboxing in Hillsboro', '/src/templates/home.html')
