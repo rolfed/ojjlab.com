@@ -1,21 +1,21 @@
 import gsap from 'gsap';
-import { getAnimationSelector } from "./data-animation";
+import { getAnimationSelector } from './data-animation';
 
 type Timeline = gsap.core.Timeline;
 
-const animateNavElementOnHover = (element: HTMLLinkElement): Timeline  => {
-  const timeline = gsap.timeline({ paused: true })
+const animateNavElementOnHover = (element: HTMLLinkElement): Timeline => {
+  const timeline = gsap.timeline({ paused: true });
 
   if (!element) {
     console.warn('Nav animation: nav element not defined');
     return timeline;
-  } 
+  }
 
   console.log(element);
 
   timeline.to(element, {
-    scale: .2,
-    ease: 'power2.ou'
+    scale: 0.2,
+    ease: 'power2.ou',
   });
 
   return timeline;
@@ -35,6 +35,8 @@ export const navAnimation = (document: Document): void => {
   );
 
   navElements.map((el) => {
-    el.addEventListener('mouseover', () => animateNavElementOnHover(el as HTMLLinkElement).play());
+    el.addEventListener('mouseover', () =>
+      animateNavElementOnHover(el as HTMLLinkElement).play()
+    );
   });
 };

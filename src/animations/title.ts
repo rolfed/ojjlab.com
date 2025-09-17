@@ -3,10 +3,10 @@ import { getAnimationSelector } from './data-animation';
 import type { Timeline } from '../model/gsap';
 
 export interface TitleSelectors {
-    containerSelector: string;
-    barSelector: string;
-    textSelector: string;
-};
+  containerSelector: string;
+  barSelector: string;
+  textSelector: string;
+}
 
 // const titleAnimation = (elements: TitleSelectors): Timeline => {
 //     const { containerSelector, barSelector, textSelector } = elements;
@@ -91,76 +91,81 @@ export interface TitleSelectors {
 // };
 
 const heroOnLoadAnimation = (): Timeline => {
-    const timeline: Timeline = gsap.timeline({ defaults: { ease: "power2.out"}});
+  const timeline: Timeline = gsap.timeline({
+    defaults: { ease: 'power2.out' },
+  });
 
-    /* Hide Elements on load */
-    const navSelector = getAnimationSelector('nav');
-    const heroCtaSelector = getAnimationSelector('hero-cta');
-    const heroContentSelector = getAnimationSelector('hero-content'); 
-    const heroRevealContainerSelector = getAnimationSelector('hero-reveal-container');
-    // const barSelector = getAnimationSelector('hero-reveal-bar');
-    // const textSelector = getAnimationSelector('hero-title');
-    const heroRevealLogoSelector = getAnimationSelector('hero-reveal-logo');
+  /* Hide Elements on load */
+  const navSelector = getAnimationSelector('nav');
+  const heroCtaSelector = getAnimationSelector('hero-cta');
+  const heroContentSelector = getAnimationSelector('hero-content');
+  const heroRevealContainerSelector = getAnimationSelector(
+    'hero-reveal-container'
+  );
+  // const barSelector = getAnimationSelector('hero-reveal-bar');
+  // const textSelector = getAnimationSelector('hero-title');
+  const heroRevealLogoSelector = getAnimationSelector('hero-reveal-logo');
 
-    const navElement = validateElement<HTMLElement>(navSelector);
-    const heroCtaElement = validateElement<HTMLElement>(heroCtaSelector);
-    const heroContentElement = validateElement<HTMLElement>(heroContentSelector);
-    const heroRevealElement = validateElement<HTMLElement>(heroRevealContainerSelector);
-    const heroRevealLogoElement = validateElement<HTMLElement>(heroRevealLogoSelector);
+  const navElement = validateElement<HTMLElement>(navSelector);
+  const heroCtaElement = validateElement<HTMLElement>(heroCtaSelector);
+  const heroContentElement = validateElement<HTMLElement>(heroContentSelector);
+  const heroRevealElement = validateElement<HTMLElement>(
+    heroRevealContainerSelector
+  );
+  const heroRevealLogoElement = validateElement<HTMLElement>(
+    heroRevealLogoSelector
+  );
 
-    const elements = [
-        navElement, 
-        heroCtaElement,
-        heroContentElement,
-        heroRevealElement,
-        heroRevealLogoElement
-    ];
+  const elements = [
+    navElement,
+    heroCtaElement,
+    heroContentElement,
+    heroRevealElement,
+    heroRevealLogoElement,
+  ];
 
-    elements.forEach((element) => {
-        timeline.set(element, { autoAlpha: 0 }, 0);
-    });
+  elements.forEach((element) => {
+    timeline.set(element, { autoAlpha: 0 }, 0);
+  });
 
-    /* Hero configuration on load */
-    const containerSelector = getAnimationSelector('hero-container');
-    const heroContainerElement = validateElement<HTMLElement>(containerSelector);
-    timeline.set(heroContainerElement, { width: '100%', height: '100vh'});
-    timeline.set('.hero-overlay', {
-        alignItems: "center",
-        textAlign: "center",
-        minHeight: "100vh"
-    });
+  /* Hero configuration on load */
+  const containerSelector = getAnimationSelector('hero-container');
+  const heroContainerElement = validateElement<HTMLElement>(containerSelector);
+  timeline.set(heroContainerElement, { width: '100%', height: '100vh' });
+  timeline.set('.hero-overlay', {
+    alignItems: 'center',
+    textAlign: 'center',
+    minHeight: '100vh',
+  });
 
-    // const heroTitle: TitleSelectors = {
-    //     containerSelector,
-    //     barSelector,
-    //     textSelector
-    // };
+  // const heroTitle: TitleSelectors = {
+  //     containerSelector,
+  //     barSelector,
+  //     textSelector
+  // };
 
-    // const revealTitleAnimation = () =>  titleAnimation(heroTitle);
+  // const revealTitleAnimation = () =>  titleAnimation(heroTitle);
 
-    /* Start Animation */
-    timeline
-        .addLabel('onLoad')
-        .to(heroRevealLogoElement, { autoAlpha: 1 }, 'start')
-        // .to(heroRevealElement, { autoAlpha: 1}, 'start')
-        // .add(revealTitleAnimation(), '+=0.5');  
+  /* Start Animation */
+  timeline
+    .addLabel('onLoad')
+    .to(heroRevealLogoElement, { autoAlpha: 1 }, 'start');
+  // .to(heroRevealElement, { autoAlpha: 1}, 'start')
+  // .add(revealTitleAnimation(), '+=0.5');
 
-    return timeline;
+  return timeline;
 };
 
+const validateElement = <T extends Element>(selector: string): T | null => {
+  const navElement = document.querySelector<T>(selector);
 
-const validateElement = <T extends Element>(
-    selector: string,
-): T | null => {
-    const navElement = document.querySelector<T>(selector);
+  if (!navElement) {
+    console.error(`Hero Animation: unable to fine ${selector}`);
+    return null;
+  }
 
-    if (!navElement) {
-        console.error(`Hero Animation: unable to fine ${selector}`)
-        return null;
-    }
-
-    return navElement;
-}
+  return navElement;
+};
 
 // const heroImageAnimation = (selector: string): Timeline => {
 //     const timeline: Timeline = gsap.timeline({
@@ -176,7 +181,6 @@ const validateElement = <T extends Element>(
 //     timeline.set(image, { transformOrigin: 'center center', force3D: true });
 
 //     timeline.fromTo(image, { scale: 1 }, { scale: 2, duration: 100, ease: 'power1.out' })
-
 
 //     return timeline;
 // }
@@ -205,37 +209,36 @@ const validateElement = <T extends Element>(
 // }
 
 export const heroTitleAnimation = (): void => {
+  // const heroImage = getAnimationSelector('hero-image');
+  // const heroContainer = getAnimationSelector('hero-container');
+  // const heroImageSelector = getAnimationSelector('hero-content');
 
-    // const heroImage = getAnimationSelector('hero-image');
-    // const heroContainer = getAnimationSelector('hero-container');
-    // const heroImageSelector = getAnimationSelector('hero-content');
+  // const containerSelector = getAnimationSelector('hero-reveal-container');
+  // const textSelector = getAnimationSelector('hero-title');
+  // const barSelector = getAnimationSelector('hero-reveal-bar');
+  // const ctaSelector = getAnimationSelector('hero-cta');
 
-    // const containerSelector = getAnimationSelector('hero-reveal-container');
-    // const textSelector = getAnimationSelector('hero-title');
-    // const barSelector = getAnimationSelector('hero-reveal-bar');
-    // const ctaSelector = getAnimationSelector('hero-cta');
+  // const heroTitle: TitleSelectors = {
+  //     containerSelector,
+  //     barSelector,
+  //     textSelector
+  // };
 
-    // const heroTitle: TitleSelectors = {
-    //     containerSelector,
-    //     barSelector,
-    //     textSelector
-    // };
+  const master = gsap.timeline({
+    defaults: { ease: 'power2.out' },
+    smoothChildTiming: true,
+  });
+  // const revealTitleAnimation = () =>  titleAnimation(heroTitle);
+  const onLoad = () => heroOnLoadAnimation();
+  // const heroImageAnimaton = () => heroImageAnimation(heroImage);
+  // const heroTitleStaggerAnimation = () => titleStaggerAnimation(heroTitle);
+  // const heroSubTitleAnimation = () => subTitleAnimation(heroImageSelector);
+  // const heroCtaAnimation = () => ctaAnimation(ctaSelector);
 
-    const master = gsap.timeline({ defaults: { ease: 'power2.out' }, smoothChildTiming: true });
-    // const revealTitleAnimation = () =>  titleAnimation(heroTitle);
-    const onLoad = () => heroOnLoadAnimation();
-    // const heroImageAnimaton = () => heroImageAnimation(heroImage);
-    // const heroTitleStaggerAnimation = () => titleStaggerAnimation(heroTitle);
-    // const heroSubTitleAnimation = () => subTitleAnimation(heroImageSelector);
-    // const heroCtaAnimation = () => ctaAnimation(ctaSelector);
-
-    master
-        .addLabel('start', 0)
-        .add(onLoad(), 'start')
-        // .add(revealTitleAnimation(), 'start')
-        // .add(heroTitleStaggerAnimation(), 'start+=0.75')
-        // .add(heroSubTitleAnimation(), 'start+=2')
-        // .add(heroCtaAnimation(), 'start+=3.5')
-        // .add(heroImageAnimaton(), 'start');
-
+  master.addLabel('start', 0).add(onLoad(), 'start');
+  // .add(revealTitleAnimation(), 'start')
+  // .add(heroTitleStaggerAnimation(), 'start+=0.75')
+  // .add(heroSubTitleAnimation(), 'start+=2')
+  // .add(heroCtaAnimation(), 'start+=3.5')
+  // .add(heroImageAnimaton(), 'start');
 };
