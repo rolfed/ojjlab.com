@@ -1,1 +1,8 @@
-echo "Pre-commit hook placeholder - will be configured later"
+# Run linting
+npm run lint
+
+# Run formatting check
+npm run format:check
+
+# Run type checking
+npm run build

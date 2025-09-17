@@ -102,7 +102,7 @@ export class MobileNavAnimation {
 
     return {
       isOpen: isVisible && opacity > 0,
-      isAnimating: this.timeline ? this.timeline.isActive() : false
+      isAnimating: this.timeline ? this.timeline.isActive() : false,
     };
   }
 

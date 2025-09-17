@@ -202,8 +202,12 @@ export class MobileNavigationComponent extends HTMLElement {
   private updateButtonState(isOpen: boolean): void {
     if (!this.hamburgerButton) return;
 
-    const hamburgerIcon = this.hamburgerButton.querySelector('[data-animation="hamburger-icon"]');
-    const closeIcon = this.hamburgerButton.querySelector('[data-animation="close-icon"]');
+    const hamburgerIcon = this.hamburgerButton.querySelector(
+      '[data-animation="hamburger-icon"]'
+    );
+    const closeIcon = this.hamburgerButton.querySelector(
+      '[data-animation="close-icon"]'
+    );
 
     if (hamburgerIcon && closeIcon) {
       if (isOpen) {
@@ -218,12 +222,16 @@ export class MobileNavigationComponent extends HTMLElement {
     this.hamburgerButton.setAttribute('aria-expanded', isOpen.toString());
   }
 
-  private async openMobileMenu(): Promise<import('../animations/mobile-nav').MenuState> {
+  private async openMobileMenu(): Promise<
+    import('../animations/mobile-nav').MenuState
+  > {
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
     return await this.mobileNavAnimation.openMenu();
   }
 
-  private async closeMobileMenu(): Promise<import('../animations/mobile-nav').MenuState> {
+  private async closeMobileMenu(): Promise<
+    import('../animations/mobile-nav').MenuState
+  > {
     document.body.style.overflow = ''; // Restore scrolling
     return await this.mobileNavAnimation.closeMenu();
   }
@@ -236,8 +244,12 @@ export class MobileNavigationComponent extends HTMLElement {
   }
 
   private setButtonsDisabled(disabled: boolean): void {
-    const hamburgerButton = this.querySelector('[data-element="menu-toggle"]') as HTMLButtonElement;
-    const closeButton = this.querySelector('[data-element="close-button"]') as HTMLButtonElement;
+    const hamburgerButton = this.querySelector(
+      '[data-element="menu-toggle"]'
+    ) as HTMLButtonElement;
+    const closeButton = this.querySelector(
+      '[data-element="close-button"]'
+    ) as HTMLButtonElement;
 
     if (hamburgerButton) {
       hamburgerButton.disabled = disabled;
@@ -248,7 +260,9 @@ export class MobileNavigationComponent extends HTMLElement {
   }
 
   private initializeMobileThemeToggle(): void {
-    const mobileThemeToggle = this.querySelector('[data-element="theme-toggle"]');
+    const mobileThemeToggle = this.querySelector(
+      '[data-element="theme-toggle"]'
+    );
     if (mobileThemeToggle) {
       // Sync with existing theme toggle functionality
       import('../functionality/toggle-theme').then(({ themeConfiguration }) => {
