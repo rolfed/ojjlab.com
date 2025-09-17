@@ -1,4 +1,4 @@
-export function initScrollNavigation(): void {
+export const initScrollNavigation = (): void => {
     const heroNav = document.querySelector('.hero-nav') as HTMLElement;
     const heroSection = document.querySelector('.hero') as HTMLElement;
 
