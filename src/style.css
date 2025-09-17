@@ -220,8 +220,8 @@
     /* Default */
     @apply relative bg-cover bg-center w-full overflow-hidden;
 
-    /* Mobile */
-    @apply min-h-dvh;
+    /* Mobile - responsive height for landscape */
+    @apply min-h-dvh landscape:min-h-screen;
 
     /* Tablet */
     @apply sm:h-[100svh];
@@ -246,7 +246,8 @@
   }
 
   .section-content {
-    @apply py-12 px-6;
+    /* Responsive padding for landscape */
+    @apply py-8 landscape:py-6 sm:py-12 px-6 landscape:px-4 sm:px-6;
     /* Mobile */
     @apply bg-pop-light/50 dark:bg-pop-dark/50;
   }
@@ -281,8 +282,10 @@
     @apply py-12 px-4;
     @apply text-accent-dark dark:text-accent-light antialiased;
 
-    /* Size */
-    @apply text-5xl sm:text-5xl md:text-8xl;
+    /* Size - responsive with landscape adjustments */
+    @apply text-2xl landscape:text-2xl sm:text-5xl sm:landscape:text-3xl md:text-8xl;
+    @apply py-6 landscape:py-6 sm:py-12;
+    @apply leading-tight landscape:leading-tight sm:leading-normal;
     @apply uppercase text-center md:text-right z-20;
   }
 
