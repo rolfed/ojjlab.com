@@ -32,6 +32,11 @@ const handleLoginRoute = (): void => {
 const handleHomeRoute = (): void => {
     console.log('Navigated to Home page');
     document.title = 'Oregon Jiu Jitsu Lab | Jiu Jitsu, Wrestling & Kickboxing in Hillsboro';
+
+    // Initialize scroll navigation for hero section
+    import('./functionality/scroll-nav').then(({ initScrollNavigation }) => {
+        initScrollNavigation();
+    });
 };
 
 // One time boot logic
