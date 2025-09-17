@@ -555,12 +555,22 @@
     @apply px-6 py-4;
     @apply overflow-hidden;
     @apply min-h-0;
+    /* Ensure content area can accommodate scrolling */
+    @apply max-h-full;
   }
 
   .mobile-nav-items {
     @apply flex flex-col;
     @apply space-y-4;
     @apply text-center;
+    /* Enable scrolling when content overflows */
+    @apply overflow-y-auto;
+    /* iOS smooth scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Set max height to allow for header and footer space */
+    max-height: calc(100vh - 8rem);
+    /* Padding for scroll area */
+    @apply py-2;
   }
 
   .mobile-nav-item {
