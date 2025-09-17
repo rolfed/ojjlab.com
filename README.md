@@ -38,6 +38,7 @@ src/
 ### Overview
 
 The custom TypeScript router provides:
+
 - **Clean URLs**: `/contact`, `/join`, `/try-a-class`, `/login`
 - **Template Loading**: Fetches HTML templates dynamically
 - **Error Handling**: 404 handling and graceful fallbacks
@@ -53,7 +54,12 @@ const router = createRouter({ mode: 'history' });
 
 router
   .add('/', handleHomeRoute, 'Page Title', '/src/templates/home.html')
-  .add('/contact', handleContactRoute, 'Contact - Oregon Jiu Jitsu Lab', '/src/templates/contact.html');
+  .add(
+    '/contact',
+    handleContactRoute,
+    'Contact - Oregon Jiu Jitsu Lab',
+    '/src/templates/contact.html'
+  );
 ```
 
 ### Route Configuration
@@ -62,11 +68,36 @@ Routes are configured in `src/main.ts`:
 
 ```typescript
 router
-  .add('/', handleHomeRoute, 'Oregon Jiu Jitsu Lab | Jiu Jitsu, Wrestling & Kickboxing in Hillsboro', '/src/templates/home.html')
-  .add('/contact', handleContactRoute, 'Contact - Oregon Jiu Jitsu Lab', '/src/templates/contact.html')
-  .add('/join', handleJoinRoute, 'Join - Oregon Jiu Jitsu Lab', '/src/templates/join.html')
-  .add('/try-a-class', handleTryAClassRoute, 'Try a Class - Oregon Jiu Jitsu Lab', '/src/templates/try-a-class.html')
-  .add('/login', handleLoginRoute, 'Login - Oregon Jiu Jitsu Lab', '/src/templates/login.html');
+  .add(
+    '/',
+    handleHomeRoute,
+    'Oregon Jiu Jitsu Lab | Jiu Jitsu, Wrestling & Kickboxing in Hillsboro',
+    '/src/templates/home.html'
+  )
+  .add(
+    '/contact',
+    handleContactRoute,
+    'Contact - Oregon Jiu Jitsu Lab',
+    '/src/templates/contact.html'
+  )
+  .add(
+    '/join',
+    handleJoinRoute,
+    'Join - Oregon Jiu Jitsu Lab',
+    '/src/templates/join.html'
+  )
+  .add(
+    '/try-a-class',
+    handleTryAClassRoute,
+    'Try a Class - Oregon Jiu Jitsu Lab',
+    '/src/templates/try-a-class.html'
+  )
+  .add(
+    '/login',
+    handleLoginRoute,
+    'Login - Oregon Jiu Jitsu Lab',
+    '/src/templates/login.html'
+  );
 ```
 
 ### Navigation Links
@@ -81,6 +112,7 @@ Add `data-route` attribute to links for SPA navigation:
 ### Router API
 
 **Methods:**
+
 - `add(path, handler, title?, template?)` - Add a route
 - `remove(path)` - Remove a route
 - `navigate(path)` - Navigate to a path
@@ -90,6 +122,7 @@ Add `data-route` attribute to links for SPA navigation:
 - `destroy()` - Clean up router
 
 **Features:**
+
 - **Type Safety**: Full TypeScript support with interfaces
 - **Method Chaining**: Fluent API for route configuration
 - **Access Modifiers**: Proper encapsulation with public/private methods
@@ -131,6 +164,7 @@ npm run preview
 ### Code Quality
 
 The project uses:
+
 - **ESLint**: TypeScript-specific linting rules
 - **Prettier**: Code formatting
 - **TypeScript**: Strict type checking
@@ -151,6 +185,7 @@ The router follows clean code best practices:
 ### Template System
 
 Templates are standalone HTML files that:
+
 - Include navigation with proper `data-route` attributes
 - Maintain consistent structure across pages
 - Support theme integration
@@ -159,6 +194,7 @@ Templates are standalone HTML files that:
 ### Theme Integration
 
 The router automatically reinitializes theme functionality when loading templates:
+
 - Detects theme toggle buttons
 - Reinitializes theme configuration
 - Maintains theme state across navigation
@@ -166,6 +202,7 @@ The router automatically reinitializes theme functionality when loading template
 ## Deployment
 
 The application is built as a static site that can be deployed to:
+
 - Netlify
 - Vercel
 - GitHub Pages

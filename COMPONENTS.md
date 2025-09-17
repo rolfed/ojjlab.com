@@ -3,16 +3,19 @@
 ## Navigation Component (`<ojj-navigation>`)
 
 ### Overview
+
 A reusable TypeScript web component that provides consistent, simplified navigation across all pages of the Oregon Jiu Jitsu Lab website.
 
 ### Usage
+
 ```html
 <header>
-    <ojj-navigation></ojj-navigation>
+  <ojj-navigation></ojj-navigation>
 </header>
 ```
 
 ### Features
+
 - **Clean, Simple Design**: Minimal navigation without hero styling
 - **TypeScript Architecture**: Proper public/private modifiers and type safety
 - **Responsive Layout**: Desktop horizontal navigation (mobile version pending)
@@ -29,15 +32,17 @@ A reusable TypeScript web component that provides consistent, simplified navigat
 - **Router Integration**: Uses `data-route` attributes for SPA navigation
 
 ### TypeScript Implementation
+
 ```typescript
 export class NavigationComponent extends HTMLElement {
-    public connectedCallback(): void
-    private getTemplate(): string
-    private initializeThemeToggle(): void
+  public connectedCallback(): void;
+  private getTemplate(): string;
+  private initializeThemeToggle(): void;
 }
 ```
 
 ### Architecture Details
+
 - **File**: `src/components/navigation.ts`
 - **Custom Element**: `<ojj-navigation>`
 - **Access Modifiers**: Proper TypeScript public/private separation
@@ -46,7 +51,9 @@ export class NavigationComponent extends HTMLElement {
 - **Template Consistency**: Used in all non-home templates
 
 ### Styling Classes
+
 The component uses dedicated CSS classes:
+
 - `.site-nav` - Main navigation container with sticky positioning
 - `.nav-logo` - Logo container with hover effects
 - `.nav-menu` - Desktop menu styling with responsive visibility
@@ -54,6 +61,7 @@ The component uses dedicated CSS classes:
 - `#theme-toggle` - Theme toggle button styles
 
 ### Design Philosophy
+
 - **Simple & Clean**: Removed hero styling for cleaner appearance
 - **Sticky Navigation**: Always visible at top of page
 - **Professional Appearance**: Clean borders and spacing
@@ -61,6 +69,7 @@ The component uses dedicated CSS classes:
 - **Performance**: Lightweight component with minimal overhead
 
 ### Router Compatibility
+
 - Uses `data-route` attributes for internal navigation
 - Compatible with hash-based routing for GitHub Pages
 - Anchor links work for same-page navigation on home page
