@@ -563,22 +563,30 @@
     @apply flex flex-col;
     @apply space-y-4;
     @apply text-center;
-    /* Enable scrolling when content overflows */
-    @apply overflow-y-auto;
-    /* iOS smooth scrolling */
-    -webkit-overflow-scrolling: touch;
-    /* Set max height to allow for header and footer space */
-    max-height: calc(100vh - 8rem);
-    /* Padding for scroll area */
+    /* Default: no scrolling in portrait */
+    @apply overflow-visible;
+    /* Padding for content */
     @apply py-2;
-    /* Hide scrollbar while maintaining functionality */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
   }
 
-  /* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
-  .mobile-nav-items::-webkit-scrollbar {
-    display: none;
+  /* Enable scrolling only in landscape orientation */
+  @media screen and (orientation: landscape) and (max-height: 500px) {
+    .mobile-nav-items {
+      /* Enable scrolling when content overflows in landscape */
+      @apply overflow-y-auto;
+      /* iOS smooth scrolling */
+      -webkit-overflow-scrolling: touch;
+      /* Set max height to allow for header and footer space */
+      max-height: calc(100vh - 8rem);
+      /* Hide scrollbar while maintaining functionality */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+
+    /* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) in landscape */
+    .mobile-nav-items::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .mobile-nav-item {
