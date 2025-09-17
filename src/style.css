@@ -220,8 +220,8 @@
     /* Default */
     @apply relative bg-cover bg-center w-full overflow-hidden;
 
-    /* Mobile - responsive height for landscape */
-    @apply min-h-dvh landscape:min-h-screen;
+    /* Mobile - adjust height for landscape to accommodate content */
+    @apply min-h-dvh landscape:min-h-fit;
 
     /* Tablet */
     @apply sm:h-[100svh];
@@ -235,8 +235,9 @@
     /* Default */
     @apply h-full grid;
 
-    /* Mobile */
+    /* Mobile - adjust grid height for landscape content flow */
     @apply grid-cols-1 grid-rows-2 gap-y-0 gap-x-0;
+    @apply landscape:h-auto landscape:min-h-full;
 
     /* Tablet */
     @apply md:grid-cols-4 md:grid-rows-1 md:items-stretch;
@@ -282,15 +283,15 @@
     @apply py-12 px-4;
     @apply text-accent-dark dark:text-accent-light antialiased;
 
-    /* Size - responsive with landscape adjustments */
-    @apply text-2xl landscape:text-2xl sm:text-5xl sm:landscape:text-3xl md:text-8xl;
-    @apply py-6 landscape:py-6 sm:py-12;
-    @apply leading-tight landscape:leading-tight sm:leading-normal;
+    /* Size - keep large impactful text as designed */
+    @apply text-5xl sm:text-5xl md:text-8xl;
     @apply uppercase text-center md:text-right z-20;
   }
 
   .section-title-container {
     @apply bg-pop-dark dark:bg-pop-light mx-auto z-2;
+    /* Allow container to flex with content in landscape */
+    @apply landscape:h-auto landscape:flex landscape:items-center;
   }
 
   /* Simple Site Navigation */
