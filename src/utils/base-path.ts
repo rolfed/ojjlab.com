@@ -21,5 +21,7 @@ export const getAssetUrl = (path: string): string => {
  * Replace image paths in HTML with correct base path
  */
 export const replaceImagePaths = (html: string): string => {
-  return html.replace(/src="\/images\//g, `src="${getAssetUrl('/images/')}`);
+  return html
+    .replace(/src="\/images\//g, `src="${getAssetUrl('/images/')}`)
+    .replace(/url\('\/images\//g, `url('${getAssetUrl('/images/')}`);
 };

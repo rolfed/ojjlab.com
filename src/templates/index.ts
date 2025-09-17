@@ -14,7 +14,7 @@ const templates = {
   '/contact': contactTemplate,
   '/join': joinTemplate,
   '/try-a-class': tryAClassTemplate,
-  '/login': loginTemplate
+  '/login': loginTemplate,
 } as const;
 
 export type TemplatePath = keyof typeof templates;

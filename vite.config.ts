@@ -9,7 +9,5 @@ export default defineConfig({
   preview: {
     open: true,
   },
-  plugins: [
-    tailwindcss()
-  ]
+  plugins: [tailwindcss()],
 });

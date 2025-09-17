@@ -1,52 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Oregon Jiu Jitsu Lab | Jiu Jitsu, Wrestling & Kickboxing in Hillsboro
+    </title>
+    <meta
+      name="description"
+      content="American Jiu Jitsu, Wrestling, and Kickboxing for kids (5+) and adults. Train smarter with systems-based coaching in Hillsboro, Oregon."
+    />
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Oregon Jiu Jitsu Lab | Jiu Jitsu, Wrestling & Kickboxing in Hillsboro</title>
-        <meta name="description" content="American Jiu Jitsu, Wrestling, and Kickboxing for kids (5+) and adults. Train smarter with systems-based coaching in Hillsboro, Oregon." />
+    <!-- Canonical & robots -->
+    <link rel="canonical" href="https://ojjlab.com/" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
 
-        <!-- Canonical & robots -->
-        <link rel="canonical" href="https://ojjlab.com/" />
-        <meta name="robots" content="index,follow,max-image-preview:large" />
+    <!-- Theme & color scheme -->
+    <meta
+      name="theme-color"
+      content="#0b0b0b"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta name="color-scheme" content="light dark" />
 
-        <!-- Theme & color scheme -->
-        <meta name="theme-color" content="#0b0b0b" media="(prefers-color-scheme: dark)">
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-        <meta name="color-scheme" content="light dark" />
+    <!-- Preload LCP hero (same srcset as <img>) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero-1280.avif"
+      imagesrcset="/images/hero-480.avif 480w, /images/hero-768.avif 768w, /images/hero-1280.avif 1280w"
+      imagesizes="(min-width:1024px) 900px, (min-width:640px) 70vw, 100vw"
+      fetchpriority="high"
+    />
 
-        <!-- Preload LCP hero (same srcset as <img>) -->
-        <link rel="preload" as="image" href="/images/hero-1280.avif"
-            imagesrcset="/images/hero-480.avif 480w, /images/hero-768.avif 768w, /images/hero-1280.avif 1280w"
-            imagesizes="(min-width:1024px) 900px, (min-width:640px) 70vw, 100vw"
-            fetchpriority="high" />
+    <!-- CSS (critical file only) -->
+    <link rel="stylesheet" href="/src/style.css" />
 
-        <!-- CSS (critical file only) -->
-        <link rel="stylesheet" href="/src/style.css" />
+    <!-- Fonts (remove duplicates; swap to prevent FOIT). Consider self-hosting later. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@0,6..96;1,6..96&family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
+      rel="stylesheet"
+    />
 
-        <!-- Fonts (remove duplicates; swap to prevent FOIT). Consider self-hosting later. -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@0,6..96;1,6..96&family=Hind:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
+    <!-- Social -->
+    <meta property="og:title" content="Oregon Jiu Jitsu Lab" />
+    <meta
+      property="og:description"
+      content="High-performance training for kids and adults in Hillsboro, Oregon."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ojjlab.com/" />
+    <meta
+      property="og:image"
+      content="https://ojjlab.com/og/ojjlab-1200x630.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Oregon Jiu Jitsu Lab" />
+    <meta
+      name="twitter:description"
+      content="American Jiu Jitsu, Wrestling, and Kickboxing for kids and adults."
+    />
+    <meta
+      name="twitter:image"
+      content="https://ojjlab.com/og/ojjlab-1200x630.jpg"
+    />
 
-        <!-- Social -->
-        <meta property="og:title" content="Oregon Jiu Jitsu Lab" />
-        <meta property="og:description" content="High-performance training for kids and adults in Hillsboro, Oregon." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ojjlab.com/" />
-        <meta property="og:image" content="https://ojjlab.com/og/ojjlab-1200x630.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Oregon Jiu Jitsu Lab" />
-        <meta name="twitter:description" content="American Jiu Jitsu, Wrestling, and Kickboxing for kids and adults." />
-        <meta name="twitter:image" content="https://ojjlab.com/og/ojjlab-1200x630.jpg" />
-
-        <!-- Structured Data: LocalBusiness (customize values) -->
-        <script type="application/ld+json">
-        {
+    <!-- Structured Data: LocalBusiness (customize values) -->
+    <script type="application/ld+json">
+      {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
         "name": "Oregon Jiu Jitsu Lab",
@@ -54,155 +88,216 @@
         "url": "https://ojjlab.com/",
         "telephone": "+1-503-308-8455",
         "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "3691 NE John Olsen Ave",
-        "addressLocality": "Hillsboro",
-        "addressRegion": "OR",
-        "postalCode": "97124",
-        "addressCountry": "US"
+          "@type": "PostalAddress",
+          "streetAddress": "3691 NE John Olsen Ave",
+          "addressLocality": "Hillsboro",
+          "addressRegion": "OR",
+          "postalCode": "97124",
+          "addressCountry": "US"
         },
-        "geo": { "@type": "GeoCoordinates", "latitude": 45.5458031, "longitude": -122.8833989},
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 45.5458031,
+          "longitude": -122.8833989
+        },
         "openingHours": "Mo-Fr 16:00-21:00, Sa 10:00-12:00, Su 10:00-12:00",
         "priceRange": "$$"
-        }
-        </script>
-        <script rel="modulepreload" type="module" src="/src/main.ts"></script>
-    </head>
+      }
+    </script>
+    <script rel="modulepreload" type="module" src="/src/main.ts"></script>
+  </head>
 
+  <body class="ojjlab" data-animation="root">
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="app"></div>
 
-    <body class="ojjlab" data-animation="root">
-        <!-- Skip to main content link -->
-        <a href="#main-content" class="skip-link">Skip to main content</a>
-        <div id="app">
-            <div class="loading-state">
-                <p>Loading...</p>
-            </div>
+    <!-- Loader overlay: visible by default before any JS runs -->
+    <div
+      data-animation="loader-container"
+      class="loader"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <div class="text-center select-none">
+        <h1 data-animation="loader-count" class="loader-title">0%</h1>
+        <div class="loader-text" id="loader-subtext">
+          <p>Loading…</p>
         </div>
 
-
-        <!-- Loader overlay: visible by default before any JS runs -->
-        <div data-animation="loader-container" 
-            class="loader"
-            role="status" aria-live="polite" aria-atomic="true">
-            <div class="text-center select-none">
-                <h1 data-animation="loader-count" 
-                    class="loader-title">
-                    0%
-                </h1>
-                <div class="loader-text" id="loader-subtext">
-                    <p>Loading…</p>
-                </div>
-
-                <!-- progress bar -->
-                <div class="loader-bar">
-                    <div data-animation="loader-bar" class="h-full w-0 bg-alert"></div>
-                </div>
-            </div>
+        <!-- progress bar -->
+        <div class="loader-bar">
+          <div data-animation="loader-bar" class="h-full w-0 bg-alert"></div>
         </div>
+      </div>
+    </div>
 
-        <footer role="contentinfo" aria-labelledby="site-footer-title">
-            <h2 id="site-footer-title">Oregon Jiu Jitsu Lab — Site Footer</h2>
+    <footer role="contentinfo" aria-labelledby="site-footer-title">
+      <h2 id="site-footer-title">Oregon Jiu Jitsu Lab — Site Footer</h2>
 
-            <!-- Brand / Contact -->
-            <section aria-labelledby="footer-contact-title">
-                <h3 id="footer-contact-title">Contact</h3>
-                <a href="/" aria-label="Oregon Jiu Jitsu Lab home">
-                    <img src="/images/brand/oregon-jiu-jitsu-lab.svg" alt="Oregon Jiu Jitsu Lab logo">
-                </a>
-                <address>
-                    <p>
-                        Oregon Jiu Jitsu Lab<br>
-                        <span>1234 Example St</span><br>
-                        <span>[City], OR 97xxx</span><br>
-                        <a href="https://maps.google.com/?q=Oregon+Jiu+Jitsu+Lab" target="_blank" rel="noopener">View on Google Maps</a>
-                    </p>
-                    <p>
-                        <a href="tel:+15555555555" aria-label="Call Oregon Jiu Jitsu Lab">+1 (555) 555-5555</a><br>
-                        <a href="mailto:hello@ojjlab.com" aria-label="Email Oregon Jiu Jitsu Lab">hello@ojjlab.com</a>
-                    </p>
-                    <p aria-label="Opening hours">
-                        <span>Hours:</span> Mon–Fri 4:00–9:00 PM, Sat 10:00 AM–2:00 PM
-                    </p>
-                </address>
-            </section>
+      <!-- Brand / Contact -->
+      <section aria-labelledby="footer-contact-title">
+        <h3 id="footer-contact-title">Contact</h3>
+        <a href="/" aria-label="Oregon Jiu Jitsu Lab home">
+          <img
+            src="/images/brand/oregon-jiu-jitsu-lab.svg"
+            alt="Oregon Jiu Jitsu Lab logo"
+          />
+        </a>
+        <address>
+          <p>
+            Oregon Jiu Jitsu Lab<br />
+            <span>1234 Example St</span><br />
+            <span>[City], OR 97xxx</span><br />
+            <a
+              href="https://maps.google.com/?q=Oregon+Jiu+Jitsu+Lab"
+              target="_blank"
+              rel="noopener"
+              >View on Google Maps</a
+            >
+          </p>
+          <p>
+            <a href="tel:+15555555555" aria-label="Call Oregon Jiu Jitsu Lab"
+              >+1 (555) 555-5555</a
+            ><br />
+            <a
+              href="mailto:hello@ojjlab.com"
+              aria-label="Email Oregon Jiu Jitsu Lab"
+              >hello@ojjlab.com</a
+            >
+          </p>
+          <p aria-label="Opening hours">
+            <span>Hours:</span> Mon–Fri 4:00–9:00 PM, Sat 10:00 AM–2:00 PM
+          </p>
+        </address>
+      </section>
 
-            <!-- New People -->
-            <section aria-labelledby="footer-new-people-title">
-                <h3 id="footer-new-people-title">New People</h3>
-                <nav aria-label="New People">
-                    <ul>
-                        <li><a href="/try-a-class" data-route="/try-a-class" data-cta="trial">Try a Class</a></li>
-                        <li><a href="/waiver" data-cta="waiver">Sign Waiver</a></li>
-                        <li><a href="/join" data-route="/join" data-cta="join">Join the Academy</a></li>
-                    </ul>
-                </nav>
-                <p>Questions about getting started? <a href="/contact" data-route="/contact">Contact us</a> or <a href="/schedule">see the schedule</a>.</p>
-            </section>
+      <!-- New People -->
+      <section aria-labelledby="footer-new-people-title">
+        <h3 id="footer-new-people-title">New People</h3>
+        <nav aria-label="New People">
+          <ul>
+            <li>
+              <a href="/try-a-class" data-route="/try-a-class" data-cta="trial"
+                >Try a Class</a
+              >
+            </li>
+            <li><a href="/waiver" data-cta="waiver">Sign Waiver</a></li>
+            <li>
+              <a href="/join" data-route="/join" data-cta="join"
+                >Join the Academy</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <p>
+          Questions about getting started?
+          <a href="/contact" data-route="/contact">Contact us</a> or
+          <a href="/schedule">see the schedule</a>.
+        </p>
+      </section>
 
-            <!-- Programs -->
-            <section aria-labelledby="footer-programs-title">
-                <h3 id="footer-programs-title">Programs</h3>
-                <nav aria-label="Programs">
-                    <ul>
-                        <li><a href="/programs/jiu-jitsu">Jiu Jitsu — Kids &amp; Adults</a></li>
-                        <li><a href="/programs/wrestling">Wrestling — Kids &amp; Adults</a></li>
-                        <li><a href="/programs/kickboxing">Kickboxing — Adults</a></li>
-                        <li><a href="/programs/competition-team">Competition Team</a></li>
-                    </ul>
-                </nav>
-            </section>
+      <!-- Programs -->
+      <section aria-labelledby="footer-programs-title">
+        <h3 id="footer-programs-title">Programs</h3>
+        <nav aria-label="Programs">
+          <ul>
+            <li>
+              <a href="/programs/jiu-jitsu">Jiu Jitsu — Kids &amp; Adults</a>
+            </li>
+            <li>
+              <a href="/programs/wrestling">Wrestling — Kids &amp; Adults</a>
+            </li>
+            <li><a href="/programs/kickboxing">Kickboxing — Adults</a></li>
+            <li><a href="/programs/competition-team">Competition Team</a></li>
+          </ul>
+        </nav>
+      </section>
 
-            <!-- Company -->
-            <section aria-labelledby="footer-company-title">
-                <h3 id="footer-company-title">Company</h3>
-                <nav aria-label="Company">
-                    <ul>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/instructors">Instructors</a></li>
-                        <li><a href="/schedule">Schedule</a></li>
-                        <li><a href="/shop">Shop</a></li>
-                        <li><a href="/contact" data-route="/contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </section>
+      <!-- Company -->
+      <section aria-labelledby="footer-company-title">
+        <h3 id="footer-company-title">Company</h3>
+        <nav aria-label="Company">
+          <ul>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/instructors">Instructors</a></li>
+            <li><a href="/schedule">Schedule</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact" data-route="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </section>
 
-            <!-- Resources / Policies -->
-            <section aria-labelledby="footer-resources-title">
-                <h3 id="footer-resources-title">Resources</h3>
-                <nav aria-label="Resources and Policies">
-                    <ul>
-                        <li><a href="/policies/membership">Membership Policy</a></li>
-                        <li><a href="/policies/faq">FAQ</a></li>
-                        <li><a href="/legal/privacy">Privacy Policy</a></li>
-                        <li><a href="/legal/terms">Terms of Service</a></li>
-                        <li><a href="/accessibility">Accessibility Statement</a></li>
-                    </ul>
-                </nav>
-            </section>
+      <!-- Resources / Policies -->
+      <section aria-labelledby="footer-resources-title">
+        <h3 id="footer-resources-title">Resources</h3>
+        <nav aria-label="Resources and Policies">
+          <ul>
+            <li><a href="/policies/membership">Membership Policy</a></li>
+            <li><a href="/policies/faq">FAQ</a></li>
+            <li><a href="/legal/privacy">Privacy Policy</a></li>
+            <li><a href="/legal/terms">Terms of Service</a></li>
+            <li><a href="/accessibility">Accessibility Statement</a></li>
+          </ul>
+        </nav>
+      </section>
 
-            <!-- Social -->
-            <section aria-labelledby="footer-social-title">
-                <h3 id="footer-social-title">Connect</h3>
-                <ul>
-                    <li><a href="https://www.instagram.com/ojjlab" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a></li>
-                    <li><a href="https://www.youtube.com/@ojjlab" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a></li>
-                    <li><a href="https://www.tiktok.com/@ojjlab" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a></li>
-                    <li><a href="https://www.facebook.com/ojjlab" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a></li>
-                </ul>
-            </section>
+      <!-- Social -->
+      <section aria-labelledby="footer-social-title">
+        <h3 id="footer-social-title">Connect</h3>
+        <ul>
+          <li>
+            <a
+              href="https://www.instagram.com/ojjlab"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              >Instagram</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/@ojjlab"
+              target="_blank"
+              rel="noopener"
+              aria-label="YouTube"
+              >YouTube</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.tiktok.com/@ojjlab"
+              target="_blank"
+              rel="noopener"
+              aria-label="TikTok"
+              >TikTok</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/ojjlab"
+              target="_blank"
+              rel="noopener"
+              aria-label="Facebook"
+              >Facebook</a
+            >
+          </li>
+        </ul>
+      </section>
 
-            <!-- Legal -->
-            <section aria-label="Legal and attributions">
-                <p>
-                    © <span id="current-year">2025</span> Oregon Jiu Jitsu Lab. All rights reserved.
-                </p>
-                <p>
-                    For accessibility help, email <a href="mailto:dan@ojjlab.com">access@ojjlab.com</a> or call
-                    <a href="tel:+1503308455">+1 (555) 555-5555</a>.
-                </p>
-            </section>
-        </footer>
-
-    </body>
-
+      <!-- Legal -->
+      <section aria-label="Legal and attributions">
+        <p>
+          © <span id="current-year">2025</span> Oregon Jiu Jitsu Lab. All
+          rights reserved.
+        </p>
+        <p>
+          For accessibility help, email
+          <a href="mailto:dan@ojjlab.com">access@ojjlab.com</a> or call
+          <a href="tel:+1503308455">+1 (555) 555-5555</a>.
+        </p>
+      </section>
+    </footer>
+  </body>
 </html>
