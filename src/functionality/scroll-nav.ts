@@ -8,7 +8,7 @@ export const initScrollNavigation = (): void => {
 
   let isScrolled = false;
 
-  function handleScroll(): void {
+  const handleScroll = ():void => {
     // Calculate hero content height
     const heroContentHeight = heroSection.offsetHeight;
     const scrollY = window.scrollY;
@@ -25,7 +25,7 @@ export const initScrollNavigation = (): void => {
 
   // Add scroll event listener with throttling for performance
   let ticking = false;
-  function requestTick(): void {
+  const requestTick = ():void => {
     if (!ticking) {
       requestAnimationFrame(() => {
         handleScroll();

@@ -1,8 +1,8 @@
 # Run linting
 npm run lint
 
-# Run formatting check
-npm run format:check
+# Auto-fix formatting issues
+npm run format
 
 # Run type checking
 npm run build
