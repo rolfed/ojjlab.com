@@ -1,11 +1,11 @@
 export class NavigationComponent extends HTMLElement {
-    public connectedCallback(): void {
-        this.innerHTML = this.getTemplate();
-        this.initializeThemeToggle();
-    }
+  public connectedCallback(): void {
+    this.innerHTML = this.getTemplate();
+    this.initializeThemeToggle();
+  }
 
-    private getTemplate(): string {
-        return `
+  private getTemplate(): string {
+    return `
             <nav class="site-nav">
                 <!-- Logo -->
                 <div class="nav-logo">
@@ -30,7 +30,7 @@ export class NavigationComponent extends HTMLElement {
 
                 <!-- Theme Toggle -->
                 <div class="nav-theme-toggle">
-                    <button id="theme-toggle" type="button"
+                    <button id="nav-theme-toggle" type="button"
                         aria-pressed="false"
                         aria-label="Toggle color scheme"
                         title="Toggle color scheme">
@@ -42,13 +42,13 @@ export class NavigationComponent extends HTMLElement {
                 </div>
             </nav>
         `;
-    }
+  }
 
-    private initializeThemeToggle(): void {
-        import('../functionality/toggle-theme').then(({ themeConfiguration }) => {
-            themeConfiguration();
-        });
-    }
+  private initializeThemeToggle(): void {
+    import('../functionality/toggle-theme').then(({ themeConfiguration }) => {
+      themeConfiguration();
+    });
+  }
 }
 
 // Define the custom element
