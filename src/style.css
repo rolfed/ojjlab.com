@@ -172,7 +172,7 @@
   }
 
   .hero-menu {
-    @apply hidden sm:flex;
+    @apply hidden lg:flex;
     @apply relative;
   }
 
