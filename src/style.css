@@ -458,6 +458,91 @@
     @apply text-gray-200;
   }
 
+  /* Instructors Section */
+  .instructors-header {
+    @apply text-center mb-12;
+  }
+
+  .instructors-title {
+    @apply text-brand-dark dark:text-brand-light antialiased;
+    @apply font-title font-bold uppercase;
+    @apply text-center mb-2 mt-32;
+    @apply text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem];
+  }
+
+  .instructors-subtitle {
+    @apply text-accent-dark dark:text-accent-light antialiased;
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
+    @apply uppercase text-center font-content;
+    @apply max-w-3xl mx-auto;
+  }
+
+  .instructors-grid {
+    @apply w-full flex flex-col gap-4;
+    @apply px-4 pb-16;
+  }
+
+  .instructor-row {
+    @apply flex justify-center gap-4;
+  }
+
+  .instructor-row-1 {
+    /* Single card centered */
+    @apply justify-center;
+  }
+
+  .instructor-row-2,
+  .instructor-row-3 {
+    /* Two cards side by side */
+    @apply justify-center flex-wrap;
+  }
+
+  .instructor-card {
+    @apply relative bg-cover bg-center;
+    @apply border border-gray-300 dark:border-gray-700;
+    @apply overflow-hidden;
+    @apply w-full max-w-xs h-80;
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .instructor-card-overlay {
+    @apply absolute inset-0;
+    @apply bg-black/40;
+    @apply transition-opacity duration-300;
+  }
+
+  .instructor-card:hover .instructor-card-overlay {
+    @apply bg-black/20;
+  }
+
+  .instructor-card-content {
+    @apply absolute inset-0 flex flex-col justify-end;
+    @apply p-6 text-white;
+    @apply relative z-10;
+  }
+
+  .instructor-name {
+    @apply text-white font-title font-bold;
+    @apply text-xl mb-1;
+  }
+
+  .instructor-title {
+    @apply text-accent-light font-content;
+    @apply text-sm uppercase tracking-wide;
+  }
+
+  .instructor-svg-title {
+    @apply absolute top-4 right-4;
+    @apply w-8 h-32 hidden;
+  }
+
+  .instructor-svg-text {
+    @apply font-title font-bold uppercase tracking-wider;
+    @apply text-2xl;
+    fill: white;
+    opacity: 0.8;
+  }
+
   /* Mobile Menu Button */
   .mobile-menu-button {
     @apply p-2 rounded-md;
