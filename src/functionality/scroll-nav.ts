@@ -8,7 +8,7 @@ export const initScrollNavigation = (): void => {
 
   let isScrolled = false;
 
-  const handleScroll = ():void => {
+  const handleScroll = (): void => {
     // Calculate hero content height
     const heroContentHeight = heroSection.offsetHeight;
     const scrollY = window.scrollY;
@@ -21,11 +21,11 @@ export const initScrollNavigation = (): void => {
       heroNav.classList.remove('scrolled');
       isScrolled = false;
     }
-  }
+  };
 
   // Add scroll event listener with throttling for performance
   let ticking = false;
-  const requestTick = ():void => {
+  const requestTick = (): void => {
     if (!ticking) {
       requestAnimationFrame(() => {
         handleScroll();
@@ -33,7 +33,7 @@ export const initScrollNavigation = (): void => {
       });
       ticking = true;
     }
-  }
+  };
 
   window.addEventListener('scroll', requestTick, { passive: true });
 
