@@ -17,7 +17,10 @@ export const initScrollNavigation = (): void => {
     if (scrollY > heroContentHeight && !isScrolled) {
       heroNav.classList.add('scrolled');
       isScrolled = true;
-    } else if (scrollY <= heroContentHeight && isScrolled) {
+    }
+
+    // Remove scrolled class when user scrolls back up
+    if (scrollY <= heroContentHeight && isScrolled) {
       heroNav.classList.remove('scrolled');
       isScrolled = false;
     }

@@ -4,6 +4,8 @@ import { themeConfiguration } from './functionality/toggle-theme';
 import { createRouter } from './router/router';
 import './components/navigation';
 import './components/mobile-navigation';
+import './components/loader';
+import './components/footer-form';
 
 declare global {
   interface Window {
@@ -40,6 +42,12 @@ const handleHomeRoute = (): void => {
   import('./functionality/scroll-nav').then(({ initScrollNavigation }) => {
     initScrollNavigation();
   });
+
+  // Initialize gallery web component
+  import('./components/gallery');
+
+  // Initialize location web component
+  import('./components/location');
 };
 
 // One time boot logic
