@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import type { Timeline } from '../model/gsap';
+import { getAssetUrl } from '../utils/base-path';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -83,9 +84,10 @@ class OJJGallery extends HTMLElement {
 
     // Generate exactly 36 items (6x6 grid)
     for (let i = 1; i <= 36; i++) {
+      const imagePath = getAssetUrl(`/images/gallery/${i}.svg`);
       items.push(`
-        <button class="gallery-item" data-image="/images/gallery/${i}.svg" aria-label="Open gallery image ${i}">
-          <img src="/images/gallery/${i}.svg" alt="Gallery image ${i}" class="gallery-image">
+        <button class="gallery-item" data-image="${imagePath}" aria-label="Open gallery image ${i}">
+          <img src="${imagePath}" alt="Gallery image ${i}" class="gallery-image">
         </button>
       `);
     }
@@ -316,7 +318,9 @@ class OJJGallery extends HTMLElement {
   private updateModalImage(): void {
     if (!this.modalImage) return;
 
-    const newImageSrc = `/images/gallery/${this.currentImageIndex + 1}.svg`;
+    const newImageSrc = getAssetUrl(
+      `/images/gallery/${this.currentImageIndex + 1}.svg`
+    );
     const newImageAlt = `Gallery image ${this.currentImageIndex + 1}`;
 
     // Animate image transition

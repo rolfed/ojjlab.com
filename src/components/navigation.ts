@@ -1,3 +1,5 @@
+import { getAssetUrl } from '../utils/base-path';
+
 export class NavigationComponent extends HTMLElement {
   public connectedCallback(): void {
     this.innerHTML = this.getTemplate();
@@ -10,8 +12,8 @@ export class NavigationComponent extends HTMLElement {
                 <!-- Logo -->
                 <div class="nav-logo">
                     <a href="/" data-route="/">
-                        <img class="block dark:hidden h-8 w-auto" src="/images/brand/oregon-jiu-jitsu-lab-light.svg" alt="Oregon Jiu Jitsu Lab"/>
-                        <img class="hidden dark:block h-8 w-auto" src="/images/brand/oregon-jiu-jitsu-lab.svg" alt="Oregon Jiu Jitsu Lab"/>
+                        <img class="block dark:hidden h-8 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab-light.svg')}" alt="Oregon Jiu Jitsu Lab"/>
+                        <img class="hidden dark:block h-8 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab.svg')}" alt="Oregon Jiu Jitsu Lab"/>
                     </a>
                 </div>
 

@@ -1,4 +1,5 @@
 import { MobileNavAnimation } from '../animations/mobile-nav';
+import { getAssetUrl } from '../utils/base-path';
 
 export class MobileNavigationComponent extends HTMLElement {
   private mobileNavAnimation: MobileNavAnimation;
@@ -28,8 +29,8 @@ export class MobileNavigationComponent extends HTMLElement {
                     <!-- Logo -->
                     <div class="mobile-nav-logo">
                         <a href="/" data-route="/">
-                            <img class="block dark:hidden h-6 w-auto" src="/images/brand/oregon-jiu-jitsu-lab.svg" alt="Oregon Jiu Jitsu Lab"/>
-                            <img class="hidden dark:block h-6 w-auto" src="/images/brand/oregon-jiu-jitsu-lab-light.svg" alt="Oregon Jiu Jitsu Lab"/>
+                            <img class="block dark:hidden h-6 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab.svg')}" alt="Oregon Jiu Jitsu Lab"/>
+                            <img class="hidden dark:block h-6 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab-light.svg')}" alt="Oregon Jiu Jitsu Lab"/>
                         </a>
                     </div>
 
