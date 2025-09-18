@@ -1294,7 +1294,7 @@
   }
 
   .location-phone-actions {
-    @apply flex gap-3;
+    @apply flex gap-3 justify-center md:justify-start;
   }
 
   .location-phone-btn {
