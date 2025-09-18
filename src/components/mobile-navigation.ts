@@ -152,9 +152,28 @@ export class MobileNavigationComponent extends HTMLElement {
       const rect = mainNav.getBoundingClientRect();
       const isMainNavVisible = rect.bottom > 0;
 
+      // Check if footer social section is visible
+      const footerSocial = document.querySelector(
+        '.footer-social'
+      ) as HTMLElement;
+      let isFooterSocialVisible = false;
+
+      if (footerSocial) {
+        const footerRect = footerSocial.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        // Consider footer visible if it's within the bottom 20% of the viewport
+        isFooterSocialVisible = footerRect.top < viewportHeight * 0.8;
+      }
+
+      // Show bottom nav only if main nav is hidden AND footer social is not visible
+      const shouldShowBottomNav = !isMainNavVisible && !isFooterSocialVisible;
+
       if (isMainNavVisible !== this.isMainNavVisible) {
         this.isMainNavVisible = isMainNavVisible;
-        this.toggleBottomNav(!isMainNavVisible);
+        this.toggleBottomNav(shouldShowBottomNav);
+      } else if (!isMainNavVisible) {
+        // If main nav is already hidden, just update based on footer visibility
+        this.toggleBottomNav(shouldShowBottomNav);
       }
     };
 
