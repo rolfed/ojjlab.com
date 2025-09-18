@@ -58,6 +58,24 @@ class OJJLocation extends HTMLElement {
               3691 NE John Olsen Ave<br>
               Hillsboro, OR 97124
             </a>
+
+            <!-- Get Directions Button -->
+            <button class="location-directions-btn" id="get-directions-btn">
+              Get Directions
+            </button>
+
+            <!-- Phone Number -->
+            <div class="location-phone-container">
+              <span class="location-phone">(503) 555-0123</span>
+              <div class="location-phone-actions">
+                <a href="tel:+15035550123" class="location-phone-btn call-btn">
+                  Call Us
+                </a>
+                <a href="sms:+15035550123" class="location-phone-btn text-btn">
+                  Text Us
+                </a>
+              </div>
+            </div>
           </div>
 
           <div class="location-hours-container">
@@ -123,6 +141,37 @@ class OJJLocation extends HTMLElement {
               '_system'
             );
           }
+        }
+      });
+    }
+
+    // Get Directions button functionality
+    const directionsBtn = this.querySelector('#get-directions-btn') as HTMLButtonElement;
+
+    if (directionsBtn) {
+      directionsBtn.addEventListener('click', () => {
+        const userAgent = navigator.userAgent.toLowerCase();
+        const isIOS = /iphone|ipad|ipod/.test(userAgent);
+        const isAndroid = /android/.test(userAgent);
+
+        if (isIOS) {
+          // iOS - Use Apple Maps
+          window.open(
+            'maps://maps.apple.com/?daddr=3691%20NE%20John%20Olsen%20Ave%2C%20Hillsboro%2C%20OR%2097124',
+            '_system'
+          );
+        } else if (isAndroid) {
+          // Android - Use Google Maps
+          window.open(
+            'google.navigation:q=3691%20NE%20John%20Olsen%20Ave%2C%20Hillsboro%2C%20OR%2097124',
+            '_system'
+          );
+        } else {
+          // Desktop/other - Use Google Maps web
+          window.open(
+            'https://www.google.com/maps/dir/?api=1&destination=3691%20NE%20John%20Olsen%20Ave%2C%20Hillsboro%2C%20OR%2097124',
+            '_blank'
+          );
         }
       });
     }
