@@ -5,7 +5,7 @@ import { createRouter } from './router/router';
 import './components/navigation';
 import './components/mobile-navigation';
 import './components/loader';
-import './components/footer-form';
+import './components/footer';
 
 declare global {
   interface Window {
@@ -57,18 +57,6 @@ const handleHomeRoute = (): void => {
 // One time boot logic
 const boot = async (): Promise<void> => {
   themeConfiguration();
-
-  // Update static image paths for production
-  const { getAssetUrl } = await import('./utils/base-path');
-  const footerLogo = document.querySelector(
-    'footer img[src="/images/brand/oregon-jiu-jitsu-lab.svg"]'
-  );
-  if (footerLogo) {
-    footerLogo.setAttribute(
-      'src',
-      getAssetUrl('/images/brand/oregon-jiu-jitsu-lab.svg')
-    );
-  }
 
   const router = createRouter({ mode: 'hash' });
   window.router = router;
