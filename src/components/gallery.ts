@@ -182,19 +182,12 @@ class OJJGallery extends HTMLElement {
 
   private animateGalleryItems(): void {
     const galleryItems = this.querySelectorAll('.gallery-item');
-    const title = this.querySelector('.gallery-title');
-    const subtitle = this.querySelector('.gallery-subtitle');
 
     // Set initial states
     gsap.set(galleryItems, {
       opacity: 0,
       scale: 0.8,
       y: 20,
-    });
-
-    gsap.set([title, subtitle], {
-      opacity: 0,
-      y: 30,
     });
 
     // Create timeline
@@ -206,31 +199,19 @@ class OJJGallery extends HTMLElement {
       },
     });
 
-    // Animate title and subtitle first
-    tl.to([title, subtitle], {
+    // Animate gallery items with stagger
+    tl.to(galleryItems, {
       opacity: 1,
+      scale: 1,
       y: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: 'power2.out',
-    })
-      // Then animate gallery items with stagger
-      .to(
-        galleryItems,
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: {
-            amount: 1.2,
-            grid: [6, 6],
-            from: 'start',
-          },
-          ease: 'back.out(1.7)',
-        },
-        '-=0.4'
-      );
+      duration: 0.6,
+      stagger: {
+        amount: 1.2,
+        grid: [6, 6],
+        from: 'start',
+      },
+      ease: 'back.out(1.7)',
+    });
   }
 
   private openModal(imageSrc: string, imageAlt: string): void {

@@ -139,17 +139,32 @@
     /* Mobile - full viewport height */
     @apply h-screen relative;
 
+    /* Mobile landscape - adjust for horizontal phones like 932x430 */
+    @apply landscape:h-auto landscape:min-h-screen landscape:pt-16;
+
     /* Tablet/Desktop - 70% of viewport height */
-    @apply md:h-[70vh];
+    @apply md:h-[70vh] md:pt-0;
   }
 
   .hero-overlay {
     @apply absolute inset-0 h-full w-full object-cover object-center z-[-1];
+
+    /* Mobile landscape - position below nav and ensure full coverage */
+    @apply landscape:top-16 landscape:h-[calc(100%-4rem)];
+
+    /* Reset for tablet/desktop */
+    @apply md:top-0 md:h-full;
   }
 
   .hero-overlay-content {
     @apply absolute inset-0 h-full w-full z-[-1];
     @apply bg-gradient-to-b from-transparent to-black/50;
+
+    /* Mobile landscape - position below nav */
+    @apply landscape:top-16 landscape:h-[calc(100%-4rem)];
+
+    /* Reset for tablet/desktop */
+    @apply md:top-0 md:h-full;
   }
 
   .hero-nav {
@@ -158,7 +173,7 @@
     @apply text-black dark:text-white;
     @apply bg-white dark:bg-black;
     @apply sticky top-0 z-50;
-    @apply border-b border-gray-200 dark:border-gray-800;
+    @apply border-b border-white dark:border-accent-light;
     @apply transition-all duration-300 ease-in-out;
   }
 
@@ -192,6 +207,12 @@
     @apply px-4 py-6;
     @apply flex flex-col justify-center items-end;
     @apply z-10;
+
+    /* Mobile landscape - position below nav with extra padding */
+    @apply landscape:top-16 landscape:pb-8 landscape:h-[calc(100%-4rem)];
+
+    /* Reset for tablet/desktop */
+    @apply md:top-0 md:pb-6 md:h-full;
   }
   .hero-content h1,
   .hero-content p span {
@@ -289,12 +310,57 @@
     @apply landscape:h-auto landscape:flex landscape:items-center;
   }
 
+  /* Why We Exist Section - Standalone section without overlay */
+  .why-we-exist-section {
+    @apply w-full bg-white dark:bg-black pb-16;
+  }
+
+  .why-we-exist-container {
+    /* Mobile/Tablet: Standard padding - no top padding */
+    @apply pb-8 px-6 sm:pb-12 sm:px-6;
+
+    /* Desktop: Full width container for 12-column grid - no top padding */
+    @apply lg:pb-16 lg:px-0;
+  }
+
+  .why-we-exist-content {
+    /* Mobile/Tablet: Same as original */
+    @apply max-w-none;
+
+    /* Desktop: Create 10-column grid with title left, content right */
+    @apply lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-10 lg:gap-8 lg:items-center;
+  }
+
+  .why-we-exist-content .programs-title {
+    /* Mobile/Tablet: Default centered layout */
+    @apply text-center mb-6;
+
+    /* Desktop: 5 columns on the left, left-aligned, vertically centered */
+    @apply lg:col-span-5 lg:text-left lg:mb-0 lg:flex lg:items-center lg:h-full;
+  }
+
+  .why-we-exist-text {
+    /* Mobile/Tablet: Default layout */
+    @apply text-center;
+
+    /* Desktop: 4 columns on the right, vertically centered */
+    @apply lg:col-span-4 lg:text-left lg:flex lg:flex-col lg:justify-center;
+  }
+
+  .why-we-exist-text p {
+    /* Mobile/Tablet: Dark text on light background */
+    @apply text-dark dark:text-light mb-4 sm:mb-8;
+
+    /* Desktop: Consistent styling */
+    @apply lg:text-center lg:mb-6 lg:last:mb-0;
+  }
+
   /* Simple Site Navigation */
   .site-nav {
     @apply flex items-center justify-between;
     @apply px-6 py-4;
     @apply bg-white dark:bg-black;
-    @apply border-b border-gray-200 dark:border-gray-800;
+    @apply border-b border-white dark:border-accent-light;
     @apply sticky top-0 z-50;
   }
 
@@ -360,7 +426,7 @@
   .programs-title {
     @apply text-brand-dark dark:text-brand-light antialiased;
     @apply font-title font-bold uppercase;
-    @apply text-center mb-2 mt-32;
+    @apply text-center mb-2 mt-16 sm:mt-32;
 
     /* Mobile - very large */
     @apply text-6xl;
@@ -435,7 +501,7 @@
 
   .program-svg-text {
     @apply font-title font-bold uppercase tracking-wider;
-    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl;
+    @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl;
     fill: white;
   }
 
@@ -461,7 +527,7 @@
   .coaches-title {
     @apply text-brand-dark dark:text-brand-light antialiased;
     @apply font-title font-bold uppercase;
-    @apply text-center mb-2 mt-32;
+    @apply text-center mb-2 mt-16 sm:mt-32;
     @apply text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem];
   }
 
@@ -544,7 +610,19 @@
 
   .coach-title-text {
     @apply font-content text-base;
+    fill: var(--color-accent-dark);
+  }
+
+  .dark .coach-title-text {
     fill: var(--color-accent-light);
+  }
+
+  .coach-circle-border {
+    stroke: var(--color-accent-dark);
+  }
+
+  .dark .coach-circle-border {
+    stroke: var(--color-accent-light);
   }
 
   /* Gallery Styles */
@@ -555,7 +633,7 @@
   .gallery-title {
     @apply text-brand-dark dark:text-brand-light antialiased;
     @apply font-title font-bold uppercase;
-    @apply text-center mb-2 mt-32;
+    @apply text-center mb-2 mt-16 sm:mt-32;
     @apply text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem];
   }
 
@@ -567,12 +645,11 @@
   }
 
   .gallery-grid {
-    @apply grid grid-cols-6 gap-2;
+    @apply grid grid-cols-6 gap-0;
   }
 
   .gallery-item {
     @apply relative aspect-square overflow-hidden;
-    @apply rounded border border-gray-200 dark:border-gray-700;
     @apply hover:scale-105 transition-transform duration-200;
     @apply focus:outline-none focus:ring-2 focus:ring-accent-light;
   }
@@ -663,7 +740,7 @@
   .mobile-bottom-nav {
     @apply fixed bottom-0 left-0 right-0 z-40;
     @apply bg-white dark:bg-black;
-    @apply border-t border-gray-200 dark:border-gray-800;
+    @apply border-t border-accent-dark dark:border-accent-light;
     @apply transform translate-y-full opacity-0;
     @apply transition-all duration-300 ease-out;
     @apply md:hidden;
@@ -715,13 +792,13 @@
   .mobile-menu-header {
     @apply flex justify-center items-center;
     @apply p-4;
-    @apply border-b border-gray-200 dark:border-gray-800;
+    @apply border-b border-accent-dark dark:border-accent-light;
   }
 
   .mobile-menu-footer {
     @apply flex justify-center items-center;
     @apply p-6 pb-8;
-    @apply border-t border-gray-200 dark:border-gray-800;
+    @apply border-t border-accent-dark dark:border-accent-light;
   }
 
   .mobile-close-btn {
@@ -923,7 +1000,7 @@
   /* Footer Styles */
   .footer {
     @apply bg-pop-dark dark:bg-pop-light;
-    @apply border-t border-gray-200 dark:border-gray-700;
+    @apply border-t border-accent-dark dark:border-accent-light;
     @apply pt-16 pb-8;
     @apply mt-32;
   }
@@ -960,9 +1037,8 @@
   }
 
   .footer-form-description {
-    @apply text-pop-light dark:text-pop-dark;
+    @apply text-pop-light dark:text-pop-dark text-left;
     @apply font-content text-sm sm:text-base;
-    @apply opacity-75;
     @apply mb-4;
     @apply max-w-sm mx-auto lg:mx-0;
   }
@@ -974,9 +1050,9 @@
 
   .footer-form-input {
     @apply flex-1;
-    @apply bg-pop-light dark:bg-pop-dark;
-    @apply border border-gray-300 dark:border-gray-600;
-    @apply text-pop-dark dark:text-pop-light;
+    @apply bg-white dark:bg-black;
+    @apply border border-black dark:border-white;
+    @apply text-black dark:text-white;
     @apply font-content;
     @apply px-4 py-3;
     @apply rounded-md;
@@ -1023,13 +1099,13 @@
   }
 
   .footer-address-line {
-    @apply text-pop-light dark:text-pop-dark;
+    @apply text-pop-light dark:text-pop-dark text-left;
     @apply font-content text-sm sm:text-base;
     @apply leading-relaxed;
   }
 
   .footer-contact-info {
-    @apply space-y-1;
+    @apply space-y-1 text-left;
   }
 
   .footer-contact-link {
@@ -1042,7 +1118,7 @@
   .footer-bottom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
     @apply pt-8;
-    @apply border-t border-gray-200 dark:border-gray-700;
+    @apply border-t border-gray-200 dark:border-gray-800;
     @apply flex flex-col lg:flex-row lg:justify-between lg:items-center;
     @apply gap-6;
   }
@@ -1118,7 +1194,7 @@
   .location-title {
     @apply text-brand-dark dark:text-brand-light antialiased;
     @apply font-title font-bold uppercase;
-    @apply text-center mb-2 mt-32;
+    @apply text-center mb-2 mt-16 sm:mt-32;
     @apply text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem];
   }
 
@@ -1136,7 +1212,7 @@
 
   .location-map {
     @apply w-full rounded-lg shadow-lg;
-    @apply border border-gray-200 dark:border-gray-700;
+    @apply border border-accent-dark dark:border-accent-light;
     filter: grayscale(20%) contrast(1.1);
   }
 
@@ -1169,6 +1245,17 @@
     display: block;
   }
 
+  .location-directions-btn {
+    @apply mt-4 px-4 py-2 rounded-md;
+    @apply bg-accent-dark dark:bg-accent-light;
+    @apply text-light dark:text-dark;
+    @apply font-content font-medium text-sm;
+    @apply hover:bg-accent-light dark:hover:bg-accent-dark;
+    @apply transition-colors duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-offset-2;
+    @apply cursor-pointer border-0;
+  }
+
   .location-hours {
     @apply space-y-2;
   }
@@ -1193,6 +1280,45 @@
     @apply text-accent-dark dark:text-accent-light;
     @apply font-content;
     @apply text-base sm:text-lg;
+  }
+
+  .location-phone-container {
+    @apply mt-6 pt-4;
+    @apply border-t border-gray-200 dark:border-gray-700;
+  }
+
+  .location-phone {
+    @apply block text-dark dark:text-light;
+    @apply font-content font-semibold;
+    @apply text-xl mb-4;
+  }
+
+  .location-phone-actions {
+    @apply flex gap-3;
+  }
+
+  .location-phone-btn {
+    @apply inline-flex items-center justify-center;
+    @apply px-4 py-2 rounded-md;
+    @apply font-content font-medium text-sm;
+    @apply transition-colors duration-200;
+    @apply border;
+  }
+
+  .call-btn {
+    @apply bg-accent-dark dark:bg-accent-light;
+    @apply text-light dark:text-dark border-accent-dark dark:border-accent-light;
+    @apply hover:bg-accent-light dark:hover:bg-accent-dark;
+    @apply hover:border-accent-light dark:hover:border-accent-dark;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-offset-2;
+  }
+
+  .text-btn {
+    @apply bg-transparent text-accent-dark dark:text-accent-light;
+    @apply border-accent-dark dark:border-accent-light;
+    @apply hover:bg-accent-dark dark:hover:bg-accent-light;
+    @apply hover:text-light dark:hover:text-dark;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-offset-2;
   }
 
   /* Utility Classes */
