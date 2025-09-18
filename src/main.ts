@@ -10,6 +10,7 @@ import './components/footer-form';
 declare global {
   interface Window {
     __app_booted__?: boolean;
+    router?: import('./router/router').Router;
   }
 }
 
@@ -43,6 +44,9 @@ const handleHomeRoute = (): void => {
     initScrollNavigation();
   });
 
+  // Initialize hero web component
+  import('./components/hero');
+
   // Initialize gallery web component
   import('./components/gallery');
 
@@ -67,6 +71,7 @@ const boot = async (): Promise<void> => {
   }
 
   const router = createRouter({ mode: 'hash' });
+  window.router = router;
 
   router
     .add(
