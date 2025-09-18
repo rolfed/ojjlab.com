@@ -1,5 +1,5 @@
-import { MobileNavAnimation } from '../animations/mobile-nav';
-import { getAssetUrl } from '../utils/base-path';
+import { MobileNavAnimation } from '../../animations/mobile-nav';
+import { getAssetUrl } from '../../utils/base-path';
 
 export class MobileNavigationComponent extends HTMLElement {
   private mobileNavAnimation: MobileNavAnimation;
@@ -141,57 +141,66 @@ export class MobileNavigationComponent extends HTMLElement {
   }
 
   private initializeScrollDetection(): void {
-    const mainNav = document.querySelector(
-      '.hero-nav, .site-nav'
-    ) as HTMLElement;
-
-    if (!mainNav || !this.bottomNav) return;
-
-    let ticking = false;
-
-    const handleScroll = (): void => {
-      const rect = mainNav.getBoundingClientRect();
-      const isMainNavVisible = rect.bottom > 0;
-
-      // Check if footer social section is visible
-      const footerSocial = document.querySelector(
-        '.footer-social'
+    const findAndInitializeScrollDetection = () => {
+      const mainNav = document.querySelector(
+        '.hero-nav, .site-nav'
       ) as HTMLElement;
-      let isFooterSocialVisible = false;
 
-      if (footerSocial) {
-        const footerRect = footerSocial.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        // Consider footer visible if it's within the bottom 20% of the viewport
-        isFooterSocialVisible = footerRect.top < viewportHeight * 0.8;
+      if (!mainNav || !this.bottomNav) {
+        // If navigation not found, retry after a short delay
+        setTimeout(findAndInitializeScrollDetection, 100);
+        return;
       }
 
-      // Show bottom nav only if main nav is hidden AND footer social is not visible
-      const shouldShowBottomNav = !isMainNavVisible && !isFooterSocialVisible;
+      let ticking = false;
 
-      if (isMainNavVisible !== this.isMainNavVisible) {
-        this.isMainNavVisible = isMainNavVisible;
-        this.toggleBottomNav(shouldShowBottomNav);
-      } else if (!isMainNavVisible) {
-        // If main nav is already hidden, just update based on footer visibility
-        this.toggleBottomNav(shouldShowBottomNav);
-      }
+      const handleScroll = (): void => {
+        const rect = mainNav.getBoundingClientRect();
+        const isMainNavVisible = rect.bottom > 0;
+
+        // Check if footer social section is visible
+        const footerSocial = document.querySelector(
+          '.footer-social'
+        ) as HTMLElement;
+        let isFooterSocialVisible = false;
+
+        if (footerSocial) {
+          const footerRect = footerSocial.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+          // Consider footer visible if it's within the bottom 20% of the viewport
+          isFooterSocialVisible = footerRect.top < viewportHeight * 0.8;
+        }
+
+        // Show bottom nav only if main nav is hidden AND footer social is not visible
+        const shouldShowBottomNav = !isMainNavVisible && !isFooterSocialVisible;
+
+        if (isMainNavVisible !== this.isMainNavVisible) {
+          this.isMainNavVisible = isMainNavVisible;
+          this.toggleBottomNav(shouldShowBottomNav);
+        } else if (!isMainNavVisible) {
+          // If main nav is already hidden, just update based on footer visibility
+          this.toggleBottomNav(shouldShowBottomNav);
+        }
+      };
+
+      const requestTick = (): void => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', requestTick, { passive: true });
+
+      // Initial check
+      handleScroll();
     };
 
-    const requestTick = (): void => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', requestTick, { passive: true });
-
-    // Initial check
-    handleScroll();
+    // Start the initialization process
+    findAndInitializeScrollDetection();
   }
 
   private toggleBottomNav(show: boolean): void {
@@ -243,14 +252,14 @@ export class MobileNavigationComponent extends HTMLElement {
   }
 
   private async openMobileMenu(): Promise<
-    import('../animations/mobile-nav').MenuState
+    import('../../animations/mobile-nav').MenuState
   > {
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
     return await this.mobileNavAnimation.openMenu();
   }
 
   private async closeMobileMenu(): Promise<
-    import('../animations/mobile-nav').MenuState
+    import('../../animations/mobile-nav').MenuState
   > {
     document.body.style.overflow = ''; // Restore scrolling
     return await this.mobileNavAnimation.closeMenu();
@@ -285,13 +294,17 @@ export class MobileNavigationComponent extends HTMLElement {
     );
     if (mobileThemeToggle) {
       // Sync with existing theme toggle functionality
-      import('../functionality/toggle-theme').then(({ themeConfiguration }) => {
-        // Re-run theme configuration to include the mobile button
-        themeConfiguration();
-      });
+      import('../../functionality/toggle-theme').then(
+        ({ themeConfiguration }) => {
+          // Re-run theme configuration to include the mobile button
+          themeConfiguration();
+        }
+      );
     }
   }
 }
 
 // Define the custom element
 customElements.define('ojj-mobile-navigation', MobileNavigationComponent);
+
+export default MobileNavigationComponent;

@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import type { Timeline } from '../model/gsap';
-import { getAssetUrl } from '../utils/base-path';
+import type { Timeline } from '../../model/gsap';
+import { getAssetUrl } from '../../utils/base-path';
 
 gsap.registerPlugin(ScrollTrigger);
 
