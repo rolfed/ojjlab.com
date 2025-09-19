@@ -6,6 +6,9 @@ import './components/navigation';
 import './components/mobile-navigation';
 import './components/loader';
 import './components/footer';
+import './components/page';
+import './components/section-title';
+import './components/section';
 
 declare global {
   interface Window {

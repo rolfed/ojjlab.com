@@ -16,12 +16,10 @@ class OJJLocation extends HTMLElement {
   private render(): void {
     this.innerHTML = `
       <section class="section" id="location">
-        <header class="location-header">
-          <h2 class="location-title">Visit Us</h2>
-          <p class="location-subtitle">
-            Find us in Hillsboro, Oregon.
-          </p>
-        </header>
+        <ojj-section-title
+          title="Visit Us"
+          subtitle="Find us in Hillsboro, Oregon.">
+        </ojj-section-title>
 
         <!-- Google Map -->
         <div class="location-map-container">

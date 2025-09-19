@@ -1321,6 +1321,113 @@
     @apply focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-offset-2;
   }
 
+  /* Section Title Component Styles */
+  .section-title-header {
+    @apply mb-8 lg:mb-12;
+  }
+
+  .section-title-center {
+    @apply text-center;
+  }
+
+  .section-title-left {
+    @apply text-left;
+  }
+
+  .section-title-right {
+    @apply text-right;
+  }
+
+  .section-title {
+    @apply text-brand-dark dark:text-brand-light antialiased;
+    @apply font-title font-bold uppercase;
+    @apply text-center mb-2 mt-16 sm:mt-32;
+    @apply text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem];
+  }
+
+  .section-title-left .section-title {
+    @apply text-left;
+  }
+
+  .section-title-right .section-title {
+    @apply text-right;
+  }
+
+  .section-subtitle {
+    @apply text-accent-dark dark:text-accent-light antialiased;
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
+    @apply uppercase text-center font-content;
+    @apply max-w-3xl mx-auto;
+  }
+
+  .section-title-left .section-subtitle {
+    @apply text-left mx-0;
+  }
+
+  .section-title-right .section-subtitle {
+    @apply text-right mx-0;
+  }
+
+  /* Section Component Styles */
+  .ojj-section {
+    @apply relative;
+  }
+
+  .ojj-section-full-height {
+    @apply min-h-dvh;
+  }
+
+  .ojj-section-content {
+    @apply relative z-10;
+  }
+
+  /* Page Component Styles */
+  .page-wrapper {
+    @apply min-h-screen flex flex-col;
+  }
+
+  .page-main {
+    @apply flex-1 flex flex-col;
+  }
+
+  .page-layout-centered {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-layout-full-width {
+    @apply w-full;
+  }
+
+  .page-layout-narrow {
+    @apply max-w-2xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-header {
+    @apply py-8 lg:py-12;
+  }
+
+  .page-header-content {
+    @apply text-center;
+  }
+
+  .page-title-container {
+    @apply mb-4;
+  }
+
+  .page-title-container h1 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-title font-bold;
+    @apply text-pop-light dark:text-pop-dark;
+  }
+
+  .page-subtitle-container {
+    @apply text-lg sm:text-xl text-gray-600 dark:text-gray-300;
+    @apply font-content;
+  }
+
+  .page-content {
+    @apply flex-1 pb-8 lg:pb-12;
+  }
+
   /* Utility Classes */
   .sr-only {
     @apply absolute w-px h-px p-0 -m-px overflow-hidden;
