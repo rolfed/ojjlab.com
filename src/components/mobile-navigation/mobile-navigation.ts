@@ -85,8 +85,8 @@ export class MobileNavigationComponent extends HTMLElement {
                         <a href="/join" data-route="/join" class="mobile-nav-item" data-animation="nav-item">
                             <span>Join</span>
                         </a>
-                        <a href="/try-a-class" data-route="/try-a-class" class="mobile-nav-item" data-animation="nav-item">
-                            <span>Try a Class</span>
+                        <a href="/login" data-route="/login" class="mobile-nav-item" data-animation="nav-item">
+                            <span>Login</span>
                         </a>
                     </nav>
                 </div>

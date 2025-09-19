@@ -31,52 +31,56 @@ class OJJGallery extends HTMLElement {
   }
 
   private render(): void {
-    this.innerHTML = `
-      <section class="section" id="gallery">
-        <header class="gallery-header">
-          <h2 class="gallery-title">Gallery</h2>
-          <p class="gallery-subtitle">
-            See our community in action.
-          </p>
-        </header>
+    // Create the section element
+    const sectionElement = document.createElement('ojj-section');
+    sectionElement.setAttribute('title', 'Gallery');
+    sectionElement.setAttribute('subtitle', 'See our community in action.');
+    sectionElement.setAttribute('id', 'gallery');
 
-        <!-- Gallery Grid -->
-        <div class="gallery-grid">
-          ${this.generateGalleryItems()}
-        </div>
+    // Create the content div
+    const contentDiv = document.createElement('div');
+    contentDiv.setAttribute('slot', 'content');
+    contentDiv.innerHTML = `
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        ${this.generateGalleryItems()}
+      </div>
 
-        <!-- Gallery Modal -->
-        <div class="gallery-modal" id="gallery-modal" aria-hidden="true">
-          <div class="gallery-modal-backdrop" id="gallery-modal-backdrop"></div>
-          <div class="gallery-modal-content">
-            <button class="gallery-modal-close" id="gallery-modal-close" aria-label="Close gallery">
-              <span class="sr-only">Close</span>
-              <svg class="gallery-close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Gallery Modal -->
+      <div class="gallery-modal" id="gallery-modal" aria-hidden="true">
+        <div class="gallery-modal-backdrop" id="gallery-modal-backdrop"></div>
+        <div class="gallery-modal-content">
+          <button class="gallery-modal-close" id="gallery-modal-close" aria-label="Close gallery">
+            <span class="sr-only">Close</span>
+            <svg class="gallery-close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <img class="gallery-modal-image" id="gallery-modal-image" src="" alt="">
+          <div class="gallery-modal-nav">
+            <button class="gallery-nav-btn gallery-prev-btn" id="gallery-prev-btn" aria-label="Previous image">
+              <svg class="gallery-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="gallery-nav-btn gallery-close-btn" id="gallery-modal-close-2" aria-label="Close gallery">
+              <svg class="gallery-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
-            <img class="gallery-modal-image" id="gallery-modal-image" src="" alt="">
-            <div class="gallery-modal-nav">
-              <button class="gallery-nav-btn gallery-prev-btn" id="gallery-prev-btn" aria-label="Previous image">
-                <svg class="gallery-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <button class="gallery-nav-btn gallery-close-btn" id="gallery-modal-close-2" aria-label="Close gallery">
-                <svg class="gallery-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <button class="gallery-nav-btn gallery-next-btn" id="gallery-next-btn" aria-label="Next image">
-                <svg class="gallery-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
+            <button class="gallery-nav-btn gallery-next-btn" id="gallery-next-btn" aria-label="Next image">
+              <svg class="gallery-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
-      </section>
+      </div>
     `;
+
+    // Append content to section and section to this element
+    sectionElement.appendChild(contentDiv);
+    this.appendChild(sectionElement);
   }
 
   private generateGalleryItems(): string {
