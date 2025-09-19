@@ -152,7 +152,6 @@ const init = async (): Promise<void> => {
   /* Onload */
   /* Post Load */
   /* Section Animations */
-
 };
 
 if (!window.__app_booted__) {

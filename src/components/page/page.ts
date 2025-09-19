@@ -48,7 +48,9 @@ class OJJPage extends HTMLElement {
     // Check for required title slot and update section-title component
     const titleSlot = this.querySelector('[slot="title"]');
     const subtitleSlot = this.querySelector('[slot="subtitle"]');
-    const sectionTitle = this.querySelector('#page-section-title') as HTMLElement;
+    const sectionTitle = this.querySelector(
+      '#page-section-title'
+    ) as HTMLElement;
 
     if (titleSlot && sectionTitle) {
       const titleText = titleSlot.textContent?.trim() || '';
@@ -71,7 +73,9 @@ class OJJPage extends HTMLElement {
   }
 
   private addDefaultTitle(): void {
-    const sectionTitle = this.querySelector('#page-section-title') as HTMLElement;
+    const sectionTitle = this.querySelector(
+      '#page-section-title'
+    ) as HTMLElement;
     if (sectionTitle) {
       sectionTitle.setAttribute('title', 'Page Title');
     }
@@ -93,7 +97,10 @@ class OJJPage extends HTMLElement {
     const mainElement = this.querySelector('.page-main');
     if (mainElement) {
       // Remove old layout classes
-      mainElement.className = mainElement.className.replace(/page-layout-\w+/g, '');
+      mainElement.className = mainElement.className.replace(
+        /page-layout-\w+/g,
+        ''
+      );
       // Add new layout class
       mainElement.classList.add(`page-layout-${layout}`);
     }

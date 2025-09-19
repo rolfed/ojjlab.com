@@ -19,7 +19,9 @@ class OJJSection extends HTMLElement {
     const fullHeight = this.getAttribute('full-height') === 'true';
     const id = this.getAttribute('id') || '';
 
-    const sectionClass = fullHeight ? 'ojj-section ojj-section-full-height' : 'ojj-section';
+    const sectionClass = fullHeight
+      ? 'ojj-section ojj-section-full-height'
+      : 'ojj-section';
 
     // Clear existing content but preserve any slotted elements
     const existingSlottedContent = this.querySelector('[slot="content"]');

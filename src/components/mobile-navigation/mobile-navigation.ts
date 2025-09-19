@@ -158,7 +158,9 @@ export class MobileNavigationComponent extends HTMLElement {
     }
 
     // Close menu when clicking navigation items (except programs trigger and back button)
-    const navItems = this.querySelectorAll('[data-animation="nav-item"]:not([data-element="programs-trigger"]):not([data-element="back-button"])');
+    const navItems = this.querySelectorAll(
+      '[data-animation="nav-item"]:not([data-element="programs-trigger"]):not([data-element="back-button"])'
+    );
     navItems.forEach((item) => {
       item.addEventListener('click', (e) => {
         const currentState = this.mobileNavAnimation.getCurrentState();
@@ -335,7 +337,9 @@ export class MobileNavigationComponent extends HTMLElement {
 
   private setupSubmenuEventListeners(): void {
     // Programs trigger button
-    const programsTrigger = this.querySelector('[data-element="programs-trigger"]');
+    const programsTrigger = this.querySelector(
+      '[data-element="programs-trigger"]'
+    );
     if (programsTrigger) {
       programsTrigger.addEventListener('click', async () => {
         const currentState = this.mobileNavAnimation.getCurrentState();
@@ -356,7 +360,6 @@ export class MobileNavigationComponent extends HTMLElement {
       });
     }
   }
-
 
   private initializeMobileThemeToggle(): void {
     const mobileThemeToggle = this.querySelector(
