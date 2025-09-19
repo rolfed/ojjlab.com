@@ -9,6 +9,7 @@ import './components/footer';
 import './components/page';
 import './components/section-title';
 import './components/section';
+import './components/coach';
 
 declare global {
   interface Window {
@@ -24,7 +25,7 @@ const handleContactRoute = (): void => {
 
 const handleJoinRoute = (): void => {
   console.log('Navigated to Join page');
-  document.title = 'Join - Oregon Jiu Jitsu Lab';
+  document.title = 'Join';
 };
 
 const handleTryAClassRoute = (): void => {
@@ -94,6 +95,51 @@ const boot = async (): Promise<void> => {
       handleLoginRoute,
       'Login - Oregon Jiu Jitsu Lab',
       '/src/templates/login.html'
+    )
+    .add(
+      '/jiu-jitsu',
+      () => {
+        console.log('Navigated to Jiu Jitsu page');
+        document.title = 'Jiu Jitsu - Oregon Jiu Jitsu Lab';
+      },
+      'Jiu Jitsu - Oregon Jiu Jitsu Lab',
+      '/src/templates/jiu-jitsu.html'
+    )
+    .add(
+      '/wrestling',
+      () => {
+        console.log('Navigated to Wrestling page');
+        document.title = 'Wrestling - Oregon Jiu Jitsu Lab';
+      },
+      'Wrestling - Oregon Jiu Jitsu Lab',
+      '/src/templates/wrestling.html'
+    )
+    .add(
+      '/kickboxing',
+      () => {
+        console.log('Navigated to Kickboxing page');
+        document.title = 'Kickboxing - Oregon Jiu Jitsu Lab';
+      },
+      'Kickboxing - Oregon Jiu Jitsu Lab',
+      '/src/templates/kickboxing.html'
+    )
+    .add(
+      '/competition-team',
+      () => {
+        console.log('Navigated to Competition Team page');
+        document.title = 'Competition Team - Oregon Jiu Jitsu Lab';
+      },
+      'Competition Team - Oregon Jiu Jitsu Lab',
+      '/src/templates/competition-team.html'
+    )
+    .add(
+      '/schedule',
+      () => {
+        console.log('Navigated to Schedule page');
+        document.title = 'Schedule - Oregon Jiu Jitsu Lab';
+      },
+      'Schedule - Oregon Jiu Jitsu Lab',
+      '/src/templates/schedule.html'
     );
 
   // Ensure home template loads on initial page load
@@ -106,6 +152,7 @@ const init = async (): Promise<void> => {
   /* Onload */
   /* Post Load */
   /* Section Animations */
+
 };
 
 if (!window.__app_booted__) {

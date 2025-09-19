@@ -66,29 +66,61 @@ export class MobileNavigationComponent extends HTMLElement {
 
                 <!-- Main Content -->
                 <div class="mobile-menu-content">
-                    <nav class="mobile-nav-items" aria-label="Mobile menu navigation" data-element="nav-items">
-                        <a href="/" data-route="/" class="mobile-nav-item" data-animation="nav-item">
-                            <span>Home</span>
-                        </a>
-                        <a href="#about" class="mobile-nav-item" data-animation="nav-item">
-                            <span>About</span>
-                        </a>
-                        <a href="#programs" class="mobile-nav-item" data-animation="nav-item">
-                            <span>Programs</span>
-                        </a>
-                        <a href="#instructors" class="mobile-nav-item" data-animation="nav-item">
-                            <span>Instructors</span>
-                        </a>
-                        <a href="/contact" data-route="/contact" class="mobile-nav-item" data-animation="nav-item">
-                            <span>Contact</span>
-                        </a>
-                        <a href="/join" data-route="/join" class="mobile-nav-item" data-animation="nav-item">
-                            <span>Join</span>
-                        </a>
-                        <a href="/login" data-route="/login" class="mobile-nav-item" data-animation="nav-item">
-                            <span>Login</span>
-                        </a>
-                    </nav>
+                    <!-- Navigation Container -->
+                    <div class="mobile-nav-container">
+                        <!-- Main Navigation -->
+                        <nav class="mobile-nav-items mobile-nav-main" aria-label="Mobile menu navigation" data-element="nav-items" data-nav-level="main">
+                            <a href="/" data-route="/" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Home</span>
+                            </a>
+                            <a href="#about" class="mobile-nav-item" data-animation="nav-item">
+                                <span>About</span>
+                            </a>
+                            <button class="mobile-nav-item mobile-nav-programs-trigger" data-animation="nav-item" data-element="programs-trigger">
+                                <span>Programs</span>
+                                <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                            <a href="#instructors" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Instructors</span>
+                            </a>
+                            <a href="/contact" data-route="/contact" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Contact</span>
+                            </a>
+                            <a href="/join" data-route="/join" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Join</span>
+                            </a>
+                            <a href="/login" data-route="/login" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Login</span>
+                            </a>
+                        </nav>
+
+                        <!-- Programs Submenu -->
+                        <nav class="mobile-nav-items mobile-nav-submenu" aria-label="Programs submenu" data-element="programs-submenu" data-nav-level="programs">
+                            <button class="mobile-nav-item mobile-nav-back" data-animation="nav-item" data-element="back-button">
+                                <svg class="mobile-nav-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                                <span>Back</span>
+                            </button>
+                            <a href="/jiu-jitsu" data-route="/jiu-jitsu" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Jiu Jitsu</span>
+                            </a>
+                            <a href="/wrestling" data-route="/wrestling" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Wrestling</span>
+                            </a>
+                            <a href="/kickboxing" data-route="/kickboxing" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Kickboxing</span>
+                            </a>
+                            <a href="/competition-team" data-route="/competition-team" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Competition Team</span>
+                            </a>
+                            <a href="/schedule" data-route="/schedule" class="mobile-nav-item" data-animation="nav-item">
+                                <span>Schedule</span>
+                            </a>
+                        </nav>
+                    </div>
                 </div>
 
                 <!-- Close Button at Bottom Center -->
@@ -125,19 +157,32 @@ export class MobileNavigationComponent extends HTMLElement {
       });
     }
 
-    // Close menu when clicking navigation items
-    const navItems = this.querySelectorAll('[data-animation="nav-item"]');
+    // Close menu when clicking navigation items (except programs trigger and back button)
+    const navItems = this.querySelectorAll('[data-animation="nav-item"]:not([data-element="programs-trigger"]):not([data-element="back-button"])');
     navItems.forEach((item) => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', (e) => {
         const currentState = this.mobileNavAnimation.getCurrentState();
         if (currentState.isOpen) {
-          this.closeMobileMenuWithIconUpdate();
+          // If it's a navigation link with data-route, allow navigation first then close menu
+          const link = (e.target as HTMLElement).closest('a[data-route]');
+          if (link) {
+            // Small delay to allow router to handle navigation first
+            setTimeout(() => {
+              this.closeMobileMenuWithIconUpdate();
+            }, 50);
+          } else {
+            // For non-navigation items, close immediately
+            this.closeMobileMenuWithIconUpdate();
+          }
         }
       });
     });
 
     // Initialize mobile theme toggle
     this.initializeMobileThemeToggle();
+
+    // Initialize submenu navigation
+    this.setupSubmenuEventListeners();
   }
 
   private initializeScrollDetection(): void {
@@ -287,6 +332,31 @@ export class MobileNavigationComponent extends HTMLElement {
       closeButton.disabled = disabled;
     }
   }
+
+  private setupSubmenuEventListeners(): void {
+    // Programs trigger button
+    const programsTrigger = this.querySelector('[data-element="programs-trigger"]');
+    if (programsTrigger) {
+      programsTrigger.addEventListener('click', async () => {
+        const currentState = this.mobileNavAnimation.getCurrentState();
+        if (currentState.isOpen && currentState.currentLevel === 'main') {
+          await this.mobileNavAnimation.showProgramsSubmenu();
+        }
+      });
+    }
+
+    // Back button
+    const backButton = this.querySelector('[data-element="back-button"]');
+    if (backButton) {
+      backButton.addEventListener('click', async () => {
+        const currentState = this.mobileNavAnimation.getCurrentState();
+        if (currentState.isOpen && currentState.currentLevel === 'programs') {
+          await this.mobileNavAnimation.showMainNavigation();
+        }
+      });
+    }
+  }
+
 
   private initializeMobileThemeToggle(): void {
     const mobileThemeToggle = this.querySelector(

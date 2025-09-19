@@ -625,6 +625,15 @@
     stroke: var(--color-accent-light);
   }
 
+  .coach-description {
+    @apply mt-4 px-4 text-center;
+  }
+
+  .coach-description p {
+    @apply text-sm text-gray-600 dark:text-gray-300;
+    @apply font-content leading-relaxed;
+  }
+
   /* Gallery Styles */
   .gallery-header {
     @apply text-center mb-8;
@@ -828,6 +837,12 @@
     @apply max-h-full;
   }
 
+  /* Navigation container for proper positioning */
+  .mobile-nav-container {
+    @apply relative w-full max-w-xs;
+    @apply flex flex-col;
+  }
+
   .mobile-nav-items {
     @apply flex flex-col;
     @apply space-y-4;
@@ -836,6 +851,25 @@
     @apply overflow-visible;
     /* Padding for content */
     @apply py-2;
+    @apply w-full;
+  }
+
+  /* Main navigation */
+  .mobile-nav-main {
+    @apply relative;
+  }
+
+  /* Submenu positioned absolutely */
+  .mobile-nav-submenu {
+    @apply absolute top-0 left-0 w-full;
+    @apply opacity-0 invisible;
+    @apply transform translate-x-full;
+    @apply transition-none; /* Disable CSS transitions since we use GSAP */
+  }
+
+  .mobile-nav-submenu.active {
+    @apply opacity-100 visible;
+    @apply transform translate-x-0;
   }
 
   /* Enable scrolling only in landscape orientation */
@@ -890,6 +924,53 @@
     @apply text-black dark:text-white;
   }
 
+  /* Programs trigger button with arrow */
+  .mobile-nav-programs-trigger {
+    @apply flex items-center justify-center;
+    @apply relative;
+  }
+
+  .mobile-nav-programs-trigger span {
+    @apply flex items-center justify-center;
+  }
+
+  .mobile-nav-arrow {
+    @apply w-4 h-4 ml-2;
+    @apply text-black dark:text-white;
+    @apply transition-transform duration-200;
+    @apply flex-shrink-0;
+  }
+
+  .mobile-nav-programs-trigger:hover .mobile-nav-arrow {
+    @apply transform translate-x-1;
+  }
+
+  /* Back button styling */
+  .mobile-nav-back {
+    @apply flex items-center;
+    @apply text-lg font-medium;
+    @apply text-gray-600 dark:text-gray-400;
+    @apply hover:text-brand dark:hover:text-brand-light;
+    @apply mb-4 pb-4 border-b border-gray-200 dark:border-gray-700;
+  }
+
+  .mobile-nav-back-icon {
+    @apply w-5 h-5 mr-2;
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  .mobile-nav-back:hover .mobile-nav-back-icon {
+    @apply text-brand dark:text-brand-light;
+    @apply transform -translate-x-1;
+    @apply transition-transform duration-200;
+  }
+
+  /* Submenu styling */
+  .mobile-nav-submenu {
+    @apply flex-col;
+  }
+
+
   /* Hide mobile nav on desktop */
   @media (min-width: 768px) {
     .mobile-bottom-nav,
@@ -897,6 +978,7 @@
       @apply hidden;
     }
   }
+
 
   /* Loader Styles */
   .loader-overlay {
