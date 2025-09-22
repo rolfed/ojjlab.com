@@ -9,6 +9,7 @@ This is a premium brand website built with modern web technologies, emphasizing 
 ## Commands
 
 ### Development Commands
+
 - `npm run dev` - Start Vite development server with hot reload
 - `npm run build` - Build for production (includes TypeScript compilation)
 - `npm run preview` - Preview production build locally
@@ -24,7 +25,9 @@ This is a premium brand website built with modern web technologies, emphasizing 
 - `npm run pre-commit` - Run pre-commit hooks (lint + format + build)
 
 ### Quality Assurance
+
 Before committing any changes, ALWAYS run:
+
 ```bash
 npm run lint && npm run format:check && npm run build && npm test
 ```
@@ -32,15 +35,19 @@ npm run lint && npm run format:check && npm run build && npm test
 **Note**: TypeScript type checking is included in the build process. The build command runs `tsc && vite build` which performs type checking before building.
 
 ### Git Workflow
+
 Use conventional commits with Commitizen:
+
 ```bash
 npm run commit
 ```
+
 This ensures consistent commit messages and enables automated changelog generation.
 
 ## Architecture Overview
 
 ### Key Architecture Patterns
+
 - Component-based architecture with reusable UI elements
 - Type-safe development with TypeScript
 - Modern CSS architecture with design tokens
@@ -48,6 +55,7 @@ This ensures consistent commit messages and enables automated changelog generati
 - Accessibility-first approach
 
 ### Technology Stack
+
 - **Frontend Framework**: Vanilla TypeScript with Web Components
 - **Build System**: Vite 7.x (fast build tool with hot reload)
 - **Styling**:
@@ -66,9 +74,11 @@ This ensures consistent commit messages and enables automated changelog generati
 - **Node Version**: Modern Node.js (ES modules enabled)
 
 ### MDX Configuration
+
 **Status**: Not yet implemented - planned for future blog functionality
 
 When implementing MDX for blog content:
+
 - **Content Structure**: Organize blog posts in `/content/blog/` directory
 - **Frontmatter**: Include title, date, description, tags, author
 - **Components**: Create reusable MDX components for rich content
@@ -83,7 +93,9 @@ When implementing MDX for blog content:
 ## Code Quality & Reviews
 
 ### Automated Code Review
+
 Every code change should be evaluated for:
+
 - **Syntax & Standards**: Adherence to coding standards and best practices
 - **Completeness**: All features fully implemented and tested
 - **Performance**: Optimized for speed and efficiency
@@ -91,6 +103,7 @@ Every code change should be evaluated for:
 - **Maintainability**: Clean, readable, and well-documented code
 
 ### Code Review Checklist
+
 - [ ] Code follows established patterns and conventions
 - [ ] All TypeScript types are properly defined
 - [ ] No console.log statements in production code
@@ -103,7 +116,9 @@ Every code change should be evaluated for:
 ## Security Review
 
 ### Security Standards
+
 Follow OWASP Top 10 security practices:
+
 - [ ] **Input Validation**: All user inputs properly sanitized
 - [ ] **Authentication**: Secure authentication mechanisms
 - [ ] **Authorization**: Proper access controls implemented
@@ -114,13 +129,16 @@ Follow OWASP Top 10 security practices:
 - [ ] **Dependencies**: Regular security updates and vulnerability scanning
 
 ### Secret Management
+
 - Never commit API keys, passwords, or sensitive data
 - Use environment variables for configuration
 - Regularly rotate secrets and access tokens
 - Scan for accidentally committed secrets
 
 ### Security Review Process
+
 Before any deployment:
+
 1. Scan for exposed secrets or credentials
 2. Review authentication and authorization logic
 3. Check for injection vulnerabilities
@@ -130,12 +148,15 @@ Before any deployment:
 ## Visual Development
 
 ### Design System References
+
 - **Design Principles**: Comprehensive design checklist in `/context/design-principles.md`
 - **Style Guide**: Brand standards and visual guidelines in `/context/style-guide.md`
 - When making visual (front-end, UI/UX) changes, ALWAYS refer to these files for guidance
 
 ### Design Review Process
+
 IMMEDIATELY after implementing any front-end change:
+
 1. **Identify what changed** - Review the modified components/pages
 2. **Check design principles** - Ensure alignment with `/context/design-principles.md`
 3. **Validate brand consistency** - Confirm adherence to `/context/style-guide.md`
@@ -144,6 +165,7 @@ IMMEDIATELY after implementing any front-end change:
 6. **Performance impact** - Measure and optimize loading times
 
 ### Visual Quality Standards
+
 - [ ] Pixel-perfect implementation of designs
 - [ ] Consistent spacing and typography
 - [ ] Proper color usage per brand guidelines
@@ -153,9 +175,11 @@ IMMEDIATELY after implementing any front-end change:
 - [ ] Dark mode support (if applicable)
 
 ### Quick Visual Check
+
 After any visual change:
 
 IMMEDIATELY after implementing any front-end change:
+
 1.  **Identify what changed** - Review the modified components/pages
 2.  **Navigate to affected pages** - Use `mcp_playwright_browser_navigate` to visit each changed view
 3.  **Verify Design compliance** - Compare against `context/design-principles.md` and `/context/style-guide.md`
@@ -165,7 +189,9 @@ IMMEDIATELY after implementing any front-end change:
 7.  **Check for errors** - Run `mpc_playwright_browser_console_messages`
 
 ### Comprehensive Design Review
+
 Invoke the `@agent-design-review` subagent for thorough design validation when:
+
 - Completing significant UI/UX features
 - Before finalizing PRs with visual changes
 - Needing comprehensive accessibility and responsiveness testing
@@ -173,6 +199,7 @@ Invoke the `@agent-design-review` subagent for thorough design validation when:
 ## Testing Strategy
 
 ### Testing Requirements
+
 - [ ] Unit tests for utility functions and business logic
 - [ ] Component tests for UI elements
 - [ ] Integration tests for user workflows
@@ -181,7 +208,9 @@ Invoke the `@agent-design-review` subagent for thorough design validation when:
 - [ ] Visual regression tests for UI consistency
 
 ### Test Before Commit
+
 Always run the full test suite before committing:
+
 ```bash
 npm test
 ```
@@ -189,12 +218,14 @@ npm test
 ## Documentation Standards
 
 ### Code Documentation
+
 - Use JSDoc comments for functions and components
 - Include examples in complex utility functions
 - Document API endpoints and data structures
 - Maintain up-to-date README files
 
 ### Change Documentation
+
 - Clear commit messages following conventional commits
 - Update relevant documentation with code changes
 - Include migration guides for breaking changes
@@ -202,12 +233,14 @@ npm test
 ## Performance Standards
 
 ### Performance Targets
+
 - First Contentful Paint: < 1.5s
 - Largest Contentful Paint: < 2.5s
 - Cumulative Layout Shift: < 0.1
 - First Input Delay: < 100ms
 
 ### Performance Checklist
+
 - [ ] Images optimized and properly sized
 - [ ] Critical CSS inlined
 - [ ] JavaScript bundles optimized
@@ -218,6 +251,7 @@ npm test
 ## Accessibility Standards
 
 ### WCAG AA Compliance
+
 - [ ] Color contrast ratios meet standards
 - [ ] Keyboard navigation fully functional
 - [ ] Screen reader compatibility
@@ -229,6 +263,7 @@ npm test
 ## Deployment & Release
 
 ### Pre-deployment Checklist
+
 - [ ] All tests passing
 - [ ] Code review completed
 - [ ] Security review passed
@@ -238,6 +273,7 @@ npm test
 - [ ] Environment variables configured
 
 ### Release Process
+
 1. Create feature branch from main
 2. Implement changes following all guidelines
 3. Run complete test suite
@@ -251,7 +287,9 @@ npm test
 ## Emergency Procedures
 
 ### Rollback Process
+
 If issues are discovered in production:
+
 1. Immediately assess impact and severity
 2. Communicate with stakeholders
 3. Execute rollback to previous stable version
@@ -259,6 +297,7 @@ If issues are discovered in production:
 5. Re-deploy with proper testing
 
 ### Incident Response
+
 - Document all incidents
 - Perform post-mortem analysis
 - Update procedures to prevent recurrence
@@ -269,6 +308,7 @@ If issues are discovered in production:
 ### Complete Feature Development Workflow
 
 #### 1. New Feature Implementation
+
 ```bash
 # 1. Create feature branch
 git checkout -b feature/new-component
@@ -298,6 +338,7 @@ git push origin feature/new-component
 ```
 
 #### 2. Bug Fix Workflow
+
 ```bash
 # 1. Create hotfix branch
 git checkout -b hotfix/fix-navigation-issue
@@ -321,6 +362,7 @@ git push origin hotfix/fix-navigation-issue
 ```
 
 #### 3. Design System Update Workflow
+
 ```bash
 # 1. Update design system files
 # - Modify `/context/style-guide.md`
@@ -344,6 +386,7 @@ npm run commit
 ### Daily Development Workflow
 
 #### Morning Setup
+
 ```bash
 # 1. Pull latest changes
 git pull origin main
@@ -359,6 +402,7 @@ npm run lint
 ```
 
 #### Before Each Commit
+
 ```bash
 # 1. Quality assurance pipeline
 npm run lint && npm run format:check && npm run build && npm test
@@ -375,6 +419,7 @@ git push
 ### Component Development Pattern
 
 #### 1. New Component Creation
+
 ```typescript
 // 1. Create component file: src/components/new-component/new-component.ts
 // 2. Follow established patterns from existing components
@@ -385,6 +430,7 @@ git push
 ```
 
 #### 2. CSS/Styling Pattern
+
 ```css
 /* 1. Add component styles to src/style.css */
 /* 2. Use @layer components for organization */
@@ -395,6 +441,7 @@ git push
 ```
 
 #### 3. Testing Pattern
+
 ```typescript
 // 1. Create test file: tests/component-name.spec.ts
 // 2. Test component functionality
@@ -408,8 +455,10 @@ git push
 ### Build Issues
 
 #### TypeScript Errors
+
 **Problem**: Build fails with TypeScript errors
 **Solution**:
+
 ```bash
 # 1. Check TypeScript configuration
 cat tsconfig.json
@@ -422,8 +471,10 @@ npx tsc --noEmit
 ```
 
 #### Vite Build Failures
+
 **Problem**: Vite build process fails
 **Solution**:
+
 ```bash
 # 1. Clear Vite cache
 rm -rf node_modules/.vite
@@ -440,16 +491,20 @@ npm run build
 ### CSS/Styling Issues
 
 #### Design System Conflicts
+
 **Problem**: Colors or typography don't match design system
 **Solution**:
+
 1. Check `/context/style-guide.md` for correct values
 2. Verify CSS custom properties in `src/style.css`
 3. Use design system variables instead of hardcoded values
 4. Test in both light and dark modes
 
 #### Responsive Design Issues
+
 **Problem**: Layout breaks on mobile/tablet
 **Solution**:
+
 ```bash
 # 1. Test in development server
 npm run dev
@@ -463,8 +518,10 @@ npm run dev
 ### Testing Issues
 
 #### Playwright Test Failures
+
 **Problem**: Tests fail or are flaky
 **Solution**:
+
 ```bash
 # 1. Run tests in headed mode to see what's happening
 npm run test:headed
@@ -477,8 +534,10 @@ npm run test:debug
 ```
 
 #### Performance Test Failures
+
 **Problem**: Performance benchmarks not met
 **Solution**:
+
 1. Use browser dev tools to profile performance
 2. Check image optimization and compression
 3. Review JavaScript bundle sizes
@@ -488,8 +547,10 @@ npm run test:debug
 ### Development Server Issues
 
 #### Hot Reload Not Working
+
 **Problem**: Changes don't reflect in browser
 **Solution**:
+
 ```bash
 # 1. Restart development server
 npm run dev
@@ -500,8 +561,10 @@ npm run dev
 ```
 
 #### Port Conflicts
+
 **Problem**: Development server can't start
 **Solution**:
+
 ```bash
 # 1. Check what's running on port 5173
 lsof -ti:5173
@@ -513,8 +576,10 @@ lsof -ti:5173
 ### Git and Deployment Issues
 
 #### Commit Hook Failures
+
 **Problem**: Pre-commit hooks fail
 **Solution**:
+
 ```bash
 # 1. Run the failing command manually
 npm run lint
@@ -527,8 +592,10 @@ npm run commit
 ```
 
 #### Merge Conflicts
+
 **Problem**: Git merge conflicts in generated files
 **Solution**:
+
 ```bash
 # 1. For package-lock.json conflicts
 npm install
@@ -542,6 +609,7 @@ npm run build
 ### Emergency Procedures
 
 #### Production Issue Response
+
 1. **Immediate Assessment**: Determine severity and user impact
 2. **Communication**: Notify stakeholders of the issue
 3. **Quick Fix or Rollback**: Choose fastest path to resolution
@@ -549,6 +617,7 @@ npm run build
 5. **Post-Mortem**: Document lessons learned and prevent recurrence
 
 #### Rollback Checklist
+
 - [ ] Database migrations backed up (if applicable)
 - [ ] Previous version tested and verified
 - [ ] Rollback script prepared and tested
@@ -558,7 +627,9 @@ npm run build
 ## Code Quality Enforcement
 
 ### Automated Quality Gates
+
 Every commit must pass:
+
 1. **Linting**: ESLint with TypeScript rules
 2. **Formatting**: Prettier code style
 3. **Type Checking**: TypeScript compilation
@@ -566,7 +637,9 @@ Every commit must pass:
 5. **Tests**: All Playwright tests passing
 
 ### Manual Quality Checks
+
 For every feature:
+
 - [ ] Cross-browser testing (Chrome, Firefox, Safari, Edge)
 - [ ] Mobile device testing (iOS Safari, Android Chrome)
 - [ ] Accessibility testing with screen readers
@@ -574,6 +647,7 @@ For every feature:
 - [ ] Security review for new functionality
 
 ### Performance Monitoring
+
 - **Core Web Vitals**: Monitor FCP, LCP, CLS, FID
 - **Bundle Size**: Track JavaScript and CSS bundle sizes
 - **Load Times**: Measure page load performance
@@ -594,6 +668,7 @@ For every feature:
 - **Vite Config**: Build tool configuration
 
 ### External Documentation
+
 - [Vite Documentation](https://vitejs.dev/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/)
 - [Playwright Documentation](https://playwright.dev/)
@@ -601,6 +676,7 @@ For every feature:
 - [GSAP Documentation](https://greensock.com/docs/)
 
 ### Quick Reference Commands
+
 ```bash
 # Development
 npm run dev              # Start development server
@@ -622,7 +698,4 @@ npm run lint && npm run format:check && npm run build && npm test
 
 Remember: **Quality is not negotiable. Take time to do things right the first time.**
 
-*Every line of code should serve the user's needs while maintaining the highest standards of performance, accessibility, and brand excellence.*
-
-
-
+_Every line of code should serve the user's needs while maintaining the highest standards of performance, accessibility, and brand excellence._
