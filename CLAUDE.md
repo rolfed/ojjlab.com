@@ -6,6 +6,62 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a premium brand website built with modern web technologies, emphasizing performance, accessibility, and sophisticated design. The codebase follows industry best practices for maintainability, security, and user experience.
 
+### Project Structure
+
+```
+/
+├── CLAUDE.md                 # This file - Claude Code guidance
+├── context/                  # Design system and brand guidelines
+│   ├── design-principles.md  # Premium brand design checklist
+│   └── style-guide.md       # Brand identity and implementation guide
+├── src/                     # Source code
+│   ├── components/          # Reusable UI components
+│   ├── functionality/       # Business logic and utilities
+│   ├── templates/           # HTML page templates
+│   ├── animations/          # GSAP animation modules
+│   └── style.css           # Design system CSS with tokens
+├── tests/                   # Playwright test suites
+│   ├── router.spec.ts       # SPA navigation tests
+│   └── style-guide-validation.spec.ts # Brand compliance tests
+├── playwright.config.ts     # Testing configuration
+└── package.json            # Dependencies and scripts
+```
+
+### Core Files and Utilities
+
+**Key Configuration Files:**
+
+- `src/style.css` - Design system with CSS custom properties
+- `src/router/router.ts` - SPA routing system
+- `src/main.ts` - Application entry point
+- `playwright.config.ts` - Testing framework configuration
+
+**Important Utilities:**
+
+- `src/functionality/toggle-theme.ts` - Light/dark mode switching
+- `src/animations/` - GSAP animation modules for brand interactions
+- `src/components/` - Reusable UI components following design system
+
+### Unexpected Behaviors
+
+**Build System:**
+
+- TypeScript checking is integrated into build process (no separate typecheck command)
+- Vite may warn about dynamic imports (this is expected, not an error)
+- Pre-commit hooks automatically run linting, formatting, and build
+
+**Testing:**
+
+- Playwright tests require dev server to be running (auto-started via webServer config)
+- Style guide validation tests check actual CSS values against brand standards
+- Some tests may timeout on slower machines (adjust in playwright.config.ts if needed)
+
+**Theme System:**
+
+- Theme switching affects CSS custom properties dynamically
+- Dark mode detection uses data-theme attribute, not media queries
+- Some components have different layouts for mobile landscape orientation
+
 ## Commands
 
 ### Development Commands
@@ -190,11 +246,34 @@ IMMEDIATELY after implementing any front-end change:
 
 ### Comprehensive Design Review
 
-Invoke the `@agent-design-review` subagent for thorough design validation when:
+Use the `agent-design-review` subagent for thorough design validation when:
 
 - Completing significant UI/UX features
 - Before finalizing PRs with visual changes
 - Needing comprehensive accessibility and responsiveness testing
+- Conducting systematic brand compliance reviews
+
+**How to invoke:**
+Use the Task tool to launch the design review agent:
+
+```typescript
+// Example usage in Claude Code
+await Task({
+  subagent_type: 'general-purpose',
+  description: 'Design review validation',
+  prompt:
+    'Act as the agent-design-review specialist from /context/agent-design-review.md. Conduct a comprehensive design review of the current home page, testing all 7 phases: preparation, user flow, responsive design, accessibility, brand compliance, robustness, and code health. Provide detailed findings categorized by priority level.',
+});
+```
+
+**Agent Capabilities (see `/context/agent-design-review.md`):**
+
+- **7-Phase Systematic Review**: Preparation → User Flow → Responsive → Accessibility → Brand → Robustness → Code Health
+- **Cross-Viewport Testing**: Mobile (375px) → Tablet (768px) → Desktop (1440px) → Large Desktop (1920px+)
+- **WCAG 2.1 AA Compliance**: Keyboard navigation, focus management, color contrast, semantic HTML
+- **Brand Standards Validation**: Colors, typography, spacing, component consistency against style guide
+- **Performance & Robustness**: Loading states, error handling, edge cases
+- **Evidence-Based Reporting**: Screenshots, accessibility tree analysis, triage matrix (Blockers/High/Medium/Low)
 
 ## Testing Strategy
 
@@ -695,6 +774,134 @@ npm run pre-commit     # Pre-commit checks
 # Full Quality Pipeline
 npm run lint && npm run format:check && npm run build && npm test
 ```
+
+## Repository Etiquette
+
+### Code Standards
+
+- **Follow established patterns**: Study existing components before creating new ones
+- **Use design tokens**: Always reference CSS custom properties instead of hardcoded values
+- **Component reusability**: Prefer enhancing existing components over creating duplicates
+- **Accessibility first**: Every interactive element must be keyboard navigable and screen reader accessible
+- **Performance conscious**: Consider loading times and runtime performance in every decision
+
+### Commit Practices
+
+- **Conventional commits**: Always use `npm run commit` for standardized messages
+- **Atomic commits**: Each commit should represent a single logical change
+- **Quality gates**: Never commit without passing `npm run lint && npm run format:check && npm run build && npm test`
+- **Descriptive messages**: Explain the 'why' behind changes, not just the 'what'
+
+### Branch Management
+
+- **Feature branches**: Use descriptive names like `feature/navigation-enhancement` or `fix/mobile-scroll-issue`
+- **Small PRs**: Keep pull requests focused and reviewable
+- **Clean history**: Squash commits when merging to maintain clean main branch history
+
+### Documentation
+
+- **Update context files**: Modify `/context/style-guide.md` or `/context/design-principles.md` when adding new patterns
+- **Component documentation**: Add JSDoc comments for complex components
+- **README updates**: Keep project documentation current with changes
+
+## Developer Environment Setup
+
+### Prerequisites
+
+```bash
+# Node.js 18+ required
+node --version  # Should be 18.0.0 or higher
+
+# npm 9+ recommended
+npm --version   # Should be 9.0.0 or higher
+```
+
+### Initial Setup
+
+```bash
+# 1. Clone repository
+git clone [repository-url]
+cd ojjlab.com
+
+# 2. Install dependencies
+npm install
+
+# 3. Install Playwright browsers
+npx playwright install
+
+# 4. Start development server
+npm run dev
+
+# 5. Verify setup by running tests
+npm test
+```
+
+### IDE Configuration
+
+**Recommended VS Code Extensions:**
+
+- ESLint (`dbaeumer.vscode-eslint`)
+- Prettier (`esbenp.prettier-vscode`)
+- Tailwind CSS IntelliSense (`bradlc.vscode-tailwindcss`)
+- TypeScript Importer (`pmneo.tsimporter`)
+
+**VS Code Settings (`.vscode/settings.json`):**
+
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.preferences.importModuleSpecifier": "relative"
+}
+```
+
+### Environment Variables
+
+Create `.env.local` for local development:
+
+```bash
+# Add any necessary environment variables
+# (None required for basic development)
+```
+
+### Troubleshooting Common Setup Issues
+
+**Playwright Installation Issues:**
+
+```bash
+# If browser download fails
+npx playwright install --force
+
+# For M1 Macs, may need Rosetta
+arch -x86_64 npx playwright install
+```
+
+**Port Conflicts:**
+
+```bash
+# If port 5173 is in use
+lsof -ti:5173 | xargs kill -9
+# Or modify vite.config.ts to use different port
+```
+
+**Node Version Issues:**
+
+```bash
+# Use nvm to manage Node versions
+nvm install 18
+nvm use 18
+```
+
+### Development Workflow
+
+1. **Morning routine**: `git pull origin main && npm install && npm run dev`
+2. **Before coding**: Check `/context/` files for design guidance
+3. **During development**: Use `npm run lint:fix` to auto-fix issues
+4. **Before committing**: Run full quality pipeline
+5. **For visual changes**: Use design review agent for validation
 
 Remember: **Quality is not negotiable. Take time to do things right the first time.**
 
