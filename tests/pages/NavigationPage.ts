@@ -164,7 +164,9 @@ export class NavigationPage extends BasePage {
   async clickMobileInstructorsLink(): Promise<void> {
     await this.expectElementToBeVisible('mobile-fullscreen-menu');
     await this.page.waitForTimeout(500);
-    await this.page.getByTestId('mobile-nav-instructors').click({ force: true });
+    await this.page
+      .getByTestId('mobile-nav-instructors')
+      .click({ force: true });
   }
 
   // Mobile Programs Submenu
@@ -214,7 +216,9 @@ export class NavigationPage extends BasePage {
         localStorage.setItem('theme', newTheme);
 
         // Dispatch a custom event to trigger any theme change listeners
-        window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: newTheme } }));
+        window.dispatchEvent(
+          new CustomEvent('themeChanged', { detail: { theme: newTheme } })
+        );
       });
       // Add a small delay to let theme change take effect
       await this.page.waitForTimeout(100);

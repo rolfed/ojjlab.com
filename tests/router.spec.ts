@@ -71,7 +71,10 @@ test.describe('Theme Switching', () => {
 
     // Skip theme tests on mobile for now as the mobile menu is complex
     if (await navigationPage.isMobileDevice()) {
-      test.skip(true, 'Theme tests skipped on mobile due to complex mobile menu');
+      test.skip(
+        true,
+        'Theme tests skipped on mobile due to complex mobile menu'
+      );
       return;
     }
 
@@ -94,7 +97,10 @@ test.describe('Theme Switching', () => {
 
     // Skip theme tests on mobile for now
     if (await navigationPage.isMobileDevice()) {
-      test.skip(true, 'Theme tests skipped on mobile due to complex mobile menu');
+      test.skip(
+        true,
+        'Theme tests skipped on mobile due to complex mobile menu'
+      );
       return;
     }
 

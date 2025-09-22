@@ -25,7 +25,10 @@ export abstract class BasePage {
     return this.page.url();
   }
 
-  async waitForElement(selector: string, timeout: number = 10000): Promise<Locator> {
+  async waitForElement(
+    selector: string,
+    timeout: number = 10000
+  ): Promise<Locator> {
     return this.page.locator(selector).first();
   }
 
@@ -41,7 +44,10 @@ export abstract class BasePage {
     await expect(this.page.getByTestId(testId)).toBeVisible();
   }
 
-  async expectElementToHaveText(testId: string, text: string | RegExp): Promise<void> {
+  async expectElementToHaveText(
+    testId: string,
+    text: string | RegExp
+  ): Promise<void> {
     await expect(this.page.getByTestId(testId)).toHaveText(text);
   }
 
