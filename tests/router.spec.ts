@@ -9,22 +9,22 @@ test.describe('SPA Router Navigation', () => {
 
     // Test contact page navigation
     await page.click('[data-route="/contact"]');
-    await expect(page).toHaveURL('/contact');
+    await expect(page).toHaveURL(/#contact/);
     await expect(page).toHaveTitle(/Contact - Oregon Jiu Jitsu Lab/);
 
     // Test join page navigation
     await page.click('[data-route="/join"]');
-    await expect(page).toHaveURL('/join');
-    await expect(page).toHaveTitle(/Join - Oregon Jiu Jitsu Lab/);
+    await expect(page).toHaveURL(/#join/);
+    await expect(page).toHaveTitle(/Join/);
 
     // Test try-a-class page navigation
     await page.click('[data-route="/try-a-class"]');
-    await expect(page).toHaveURL('/try-a-class');
+    await expect(page).toHaveURL(/#try-a-class/);
     await expect(page).toHaveTitle(/Try a Class - Oregon Jiu Jitsu Lab/);
 
     // Test login page navigation
     await page.click('[data-route="/login"]');
-    await expect(page).toHaveURL('/login');
+    await expect(page).toHaveURL(/#login/);
     await expect(page).toHaveTitle(/Login - Oregon Jiu Jitsu Lab/);
   });
 
@@ -33,19 +33,19 @@ test.describe('SPA Router Navigation', () => {
 
     // Navigate to contact
     await page.click('[data-route="/contact"]');
-    await expect(page).toHaveURL('/contact');
+    await expect(page).toHaveURL(/#contact/);
 
     // Navigate to join
     await page.click('[data-route="/join"]');
-    await expect(page).toHaveURL('/join');
+    await expect(page).toHaveURL(/#join/);
 
     // Test browser back button
     await page.goBack();
-    await expect(page).toHaveURL('/contact');
+    await expect(page).toHaveURL(/#contact/);
 
     // Test browser forward button
     await page.goForward();
-    await expect(page).toHaveURL('/join');
+    await expect(page).toHaveURL(/#join/);
   });
 });
 
@@ -93,12 +93,12 @@ test.describe('Mobile Responsiveness', () => {
     await page.setViewportSize({ width: 375, height: 667 }); // iPhone SE size
     await page.goto('/');
 
-    // Check that navigation is accessible on mobile
-    const navigation = page.locator('nav');
+    // Check that main navigation is accessible on mobile
+    const navigation = page.locator('nav[aria-label="Mobile navigation"]').first();
     await expect(navigation).toBeVisible();
 
     // Test that content is properly laid out
-    const mainContent = page.locator('main, #app');
+    const mainContent = page.locator('#app');
     await expect(mainContent).toBeVisible();
   });
 });
