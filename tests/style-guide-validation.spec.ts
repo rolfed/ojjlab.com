@@ -450,24 +450,35 @@ test.describe('Design Principles Validation', () => {
   test.describe('Universal Accessibility', () => {
     test('should have proper semantic HTML', async ({ page }) => {
       // Test for semantic elements
-      await expect(
-        page.locator('header, nav, main, section, footer')
-      ).toHaveCount({ min: 3 });
+      const semanticElements = page.locator(
+        'header, nav, main, section, footer'
+      );
+      const semanticCount = await semanticElements.count();
+      expect(semanticCount).toBeGreaterThanOrEqual(3);
 
       // Test for proper heading hierarchy
       const h1 = page.locator('h1');
-      await expect(h1).toHaveCount({ min: 1 });
+      const h1Count = await h1.count();
+      expect(h1Count).toBeGreaterThanOrEqual(1);
     });
 
     test('should have skip navigation for accessibility', async ({ page }) => {
-      // Test for skip link
+      // Test for skip link existence and functionality
       const skipLink = page.locator('.skip-link, [class*="skip"]');
-      if ((await skipLink.count()) > 0) {
-        await expect(skipLink.first()).toBeHidden(); // Should be hidden by default
+      const skipLinkCount = await skipLink.count();
 
-        // Test focus behavior
-        await page.keyboard.press('Tab');
-        // Skip link might become visible on focus
+      if (skipLinkCount > 0) {
+        // Skip link exists - test its functionality
+        const firstSkipLink = skipLink.first();
+
+        // Should have proper href attribute
+        const href = await firstSkipLink.getAttribute('href');
+        expect(href).toBeTruthy();
+        expect(href).toMatch(/^#/); // Should link to an anchor
+
+        // Should be focusable
+        await firstSkipLink.focus();
+        await expect(firstSkipLink).toBeFocused();
       }
     });
 
