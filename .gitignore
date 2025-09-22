@@ -17,6 +17,10 @@ test-results/
 playwright-report/
 playwright/.cache/
 
+# Environment
+.envrc
+.direnv/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
