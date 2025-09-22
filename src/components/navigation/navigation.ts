@@ -9,37 +9,39 @@ export class NavigationComponent extends HTMLElement {
 
   private getTemplate(): string {
     return `
-            <nav class="hero-nav">
+            <nav class="hero-nav" data-testid="desktop-navigation">
                 <!-- Logo -->
-                <div class="flex items-center">
+                <div class="flex items-center" data-testid="desktop-logo-container">
                     <img
                         class="block dark:hidden h-8 w-auto"
                         src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab.svg')}"
                         alt="Oregon Jiu Jitsu Lab"
+                        data-testid="desktop-logo-light"
                     />
                     <img
                         class="hidden dark:block h-8 w-auto"
                         src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab-light.svg')}"
                         alt="Oregon Jiu Jitsu Lab"
+                        data-testid="desktop-logo-dark"
                     />
                 </div>
 
                 <!-- Desktop navigation -->
-                <nav class="hero-menu" id="hero-menu" aria-label="Main navigation">
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#programs">Programs</a></li>
-                        <li><a href="#coaches">Coaches</a></li>
-                        <li><a href="#schedule">Schedule</a></li>
-                        <li><a href="/contact" data-route="/contact">Contact</a></li>
-                        <li><a href="/shop">Shop</a></li>
-                        <li><a href="/join" data-route="/join">Join</a></li>
-                        <li><a href="/login" data-route="/login">Login</a></li>
+                <nav class="hero-menu" id="hero-menu" aria-label="Main navigation" data-testid="desktop-nav-menu">
+                    <ul data-testid="desktop-nav-list">
+                        <li><a href="#about" data-testid="nav-about">About Us</a></li>
+                        <li><a href="#programs" data-testid="nav-programs">Programs</a></li>
+                        <li><a href="#coaches" data-testid="nav-coaches">Coaches</a></li>
+                        <li><a href="#schedule" data-testid="nav-schedule">Schedule</a></li>
+                        <li><a href="/contact" data-route="/contact" data-testid="nav-contact">Contact</a></li>
+                        <li><a href="/shop" data-testid="nav-shop">Shop</a></li>
+                        <li><a href="/join" data-route="/join" data-testid="nav-join">Join</a></li>
+                        <li><a href="/login" data-route="/login" data-testid="nav-login">Login</a></li>
                     </ul>
                 </nav>
 
                 <!-- Theme toggle -->
-                <div class="flex items-center">
+                <div class="flex items-center" data-testid="desktop-theme-container">
                     <button
                         class="theme-toggle"
                         id="theme-toggle"
@@ -47,6 +49,8 @@ export class NavigationComponent extends HTMLElement {
                         aria-pressed="false"
                         aria-label="Toggle color scheme"
                         title="Toggle color scheme"
+                        data-testid="desktop-theme-toggle"
+                        data-theme-toggle
                     >
                         <span data-theme-label class="sr-only">Toggle Theme</span>
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

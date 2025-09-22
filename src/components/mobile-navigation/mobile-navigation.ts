@@ -24,22 +24,22 @@ export class MobileNavigationComponent extends HTMLElement {
   private getTemplate(): string {
     return `
             <!-- Bottom Navigation Bar (appears when main nav is scrolled out of view) -->
-            <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
-                <div class="mobile-bottom-nav-container">
+            <nav class="mobile-bottom-nav" aria-label="Mobile navigation" data-testid="mobile-bottom-nav">
+                <div class="mobile-bottom-nav-container" data-testid="mobile-nav-container">
                     <!-- Logo -->
-                    <div class="mobile-nav-logo">
-                        <a href="/" data-route="/">
-                            <img class="block dark:hidden h-6 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab.svg')}" alt="Oregon Jiu Jitsu Lab"/>
-                            <img class="hidden dark:block h-6 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab-light.svg')}" alt="Oregon Jiu Jitsu Lab"/>
+                    <div class="mobile-nav-logo" data-testid="mobile-logo-container">
+                        <a href="/" data-route="/" data-testid="mobile-logo-link">
+                            <img class="block dark:hidden h-6 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab.svg')}" alt="Oregon Jiu Jitsu Lab" data-testid="mobile-logo-light"/>
+                            <img class="hidden dark:block h-6 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab-light.svg')}" alt="Oregon Jiu Jitsu Lab" data-testid="mobile-logo-dark"/>
                         </a>
                     </div>
 
                     <!-- Hamburger Menu Button -->
-                    <button class="mobile-hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false" data-element="menu-toggle">
-                        <svg data-animation="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <button class="mobile-hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false" data-element="menu-toggle" data-testid="mobile-menu-toggle">
+                        <svg data-animation="hamburger-icon" data-testid="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18"/>
                         </svg>
-                        <svg data-animation="close-icon" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <svg data-animation="close-icon" data-testid="close-icon" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
@@ -47,15 +47,17 @@ export class MobileNavigationComponent extends HTMLElement {
             </nav>
 
             <!-- Fullscreen Mobile Menu -->
-            <div class="mobile-fullscreen-menu" data-element="mobile-menu">
+            <div class="mobile-fullscreen-menu" data-element="mobile-menu" data-testid="mobile-fullscreen-menu">
                 <!-- Theme Toggle at Top -->
-                <div class="mobile-menu-header">
-                    <div class="mobile-theme-toggle">
+                <div class="mobile-menu-header" data-testid="mobile-menu-header">
+                    <div class="mobile-theme-toggle" data-testid="mobile-theme-toggle-container">
                         <button id="mobile-theme-toggle" type="button"
                             aria-pressed="false"
                             aria-label="Toggle color scheme"
                             title="Toggle color scheme"
-                            data-element="theme-toggle">
+                            data-element="theme-toggle"
+                            data-testid="mobile-theme-toggle"
+                            data-theme-toggle>
                             <span class="sr-only">Toggle Theme</span>
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
@@ -65,58 +67,58 @@ export class MobileNavigationComponent extends HTMLElement {
                 </div>
 
                 <!-- Main Content -->
-                <div class="mobile-menu-content">
+                <div class="mobile-menu-content" data-testid="mobile-menu-content">
                     <!-- Navigation Container -->
-                    <div class="mobile-nav-container">
+                    <div class="mobile-nav-container" data-testid="mobile-nav-container">
                         <!-- Main Navigation -->
-                        <nav class="mobile-nav-items mobile-nav-main" aria-label="Mobile menu navigation" data-element="nav-items" data-nav-level="main">
-                            <a href="/" data-route="/" class="mobile-nav-item" data-animation="nav-item">
+                        <nav class="mobile-nav-items mobile-nav-main" aria-label="Mobile menu navigation" data-element="nav-items" data-nav-level="main" data-testid="mobile-main-nav">
+                            <a href="/" data-route="/" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-home">
                                 <span>Home</span>
                             </a>
-                            <a href="#about" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="#about" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-about">
                                 <span>About</span>
                             </a>
-                            <button class="mobile-nav-item mobile-nav-programs-trigger" data-animation="nav-item" data-element="programs-trigger">
+                            <button class="mobile-nav-item mobile-nav-programs-trigger" data-animation="nav-item" data-element="programs-trigger" data-testid="mobile-nav-programs-trigger">
                                 <span>Programs</span>
                                 <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                                 </svg>
                             </button>
-                            <a href="#instructors" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="#instructors" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-instructors">
                                 <span>Instructors</span>
                             </a>
-                            <a href="/contact" data-route="/contact" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="/contact" data-route="/contact" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-contact">
                                 <span>Contact</span>
                             </a>
-                            <a href="/join" data-route="/join" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="/join" data-route="/join" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-join">
                                 <span>Join</span>
                             </a>
-                            <a href="/login" data-route="/login" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="/login" data-route="/login" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-login">
                                 <span>Login</span>
                             </a>
                         </nav>
 
                         <!-- Programs Submenu -->
-                        <nav class="mobile-nav-items mobile-nav-submenu" aria-label="Programs submenu" data-element="programs-submenu" data-nav-level="programs">
-                            <button class="mobile-nav-item mobile-nav-back" data-animation="nav-item" data-element="back-button">
+                        <nav class="mobile-nav-items mobile-nav-submenu" aria-label="Programs submenu" data-element="programs-submenu" data-nav-level="programs" data-testid="mobile-programs-submenu">
+                            <button class="mobile-nav-item mobile-nav-back" data-animation="nav-item" data-element="back-button" data-testid="mobile-nav-back">
                                 <svg class="mobile-nav-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                                 </svg>
                                 <span>Back</span>
                             </button>
-                            <a href="/jiu-jitsu" data-route="/jiu-jitsu" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="/jiu-jitsu" data-route="/jiu-jitsu" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-jiu-jitsu">
                                 <span>Jiu Jitsu</span>
                             </a>
-                            <a href="/wrestling" data-route="/wrestling" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="/wrestling" data-route="/wrestling" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-wrestling">
                                 <span>Wrestling</span>
                             </a>
-                            <a href="/kickboxing" data-route="/kickboxing" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="/kickboxing" data-route="/kickboxing" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-kickboxing">
                                 <span>Kickboxing</span>
                             </a>
-                            <a href="/competition-team" data-route="/competition-team" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="/competition-team" data-route="/competition-team" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-competition-team">
                                 <span>Competition Team</span>
                             </a>
-                            <a href="/schedule" data-route="/schedule" class="mobile-nav-item" data-animation="nav-item">
+                            <a href="/schedule" data-route="/schedule" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-schedule">
                                 <span>Schedule</span>
                             </a>
                         </nav>
@@ -124,8 +126,8 @@ export class MobileNavigationComponent extends HTMLElement {
                 </div>
 
                 <!-- Close Button at Bottom Center -->
-                <div class="mobile-menu-footer">
-                    <button class="mobile-close-btn" aria-label="Close mobile menu" data-element="close-button">
+                <div class="mobile-menu-footer" data-testid="mobile-menu-footer">
+                    <button class="mobile-close-btn" aria-label="Close mobile menu" data-element="close-button" data-testid="mobile-menu-close">
                         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
