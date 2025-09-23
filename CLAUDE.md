@@ -105,6 +105,30 @@ npm run commit
 
 This ensures consistent commit messages and enables automated changelog generation.
 
+### Development Workflow Rules
+
+**🚨 CRITICAL WORKFLOW REQUIREMENTS 🚨**
+
+#### Pull Request Size Limits
+- **Maximum 14 files per PR** - Keep changes focused and reviewable
+- **One task at a time** - Complete single items from next-steps.md
+- **Small, atomic changes** - Easier to review, test, and rollback if needed
+
+#### Task Management Process
+1. **Always check `/context/next-steps.md`** before starting work
+2. **Select ONE task** from the current sprint priorities
+3. **Create feature branch** for the specific task
+4. **Implement, test, and document** the single feature/fix
+5. **Verify functionality** before creating PR
+6. **User verification required** - Wait for approval before next task
+
+#### Branch Naming Convention
+- `feature/task-description` (e.g., `feature/desktop-nav-dropdown`)
+- `fix/issue-description` (e.g., `fix/mobile-scroll-issue`)
+- `refactor/component-name` (e.g., `refactor/navigation-component`)
+
+🚨 **NEVER PUSH DIRECTLY TO MAIN BRANCH** 🚨
+
 ## Architecture Overview
 
 ### Key Architecture Patterns
@@ -290,6 +314,38 @@ await Task({
 - [ ] Accessibility tests for WCAG compliance
 - [ ] Performance tests for core user journeys
 - [ ] Visual regression tests for UI consistency
+
+### Unit Testing Best Practices
+
+**🔧 PUBLIC INTERFACE TESTING**
+
+- **Test public APIs only** - Focus on what consumers of your code use
+- **Avoid testing implementation details** - Test behavior, not internal structure
+- **Test inputs and outputs** - What goes in, what comes out
+- **Test user-facing functionality** - How users interact with components/functions
+
+**Examples:**
+```typescript
+// ✅ Good - Testing public interface
+test('Calculator.add() returns sum of two numbers', () => {
+  const calculator = new Calculator();
+  expect(calculator.add(2, 3)).toBe(5);
+});
+
+// ❌ Avoid - Testing internal implementation
+test('Calculator._validateInput() is called', () => {
+  const calculator = new Calculator();
+  const spy = jest.spyOn(calculator, '_validateInput');
+  calculator.add(2, 3);
+  expect(spy).toHaveBeenCalled();
+});
+```
+
+**Component Testing:**
+- Test component props and events
+- Test user interactions (clicks, form submissions)
+- Test accessibility features (keyboard navigation, ARIA)
+- Avoid testing internal state or private methods
 
 ### Test Before Commit
 
@@ -742,6 +798,7 @@ For every feature:
 ## Additional Resources
 
 ### Claude Context Files
+
 - **Next Steps**: `/context/next-steps.md` - Structured task management and immediate priorities for Claude
 - **Roadmap**: `/context/roadmap.md` - Long-term project vision and strategic planning
 - **Components**: `/context/COMPONENTS.md` - Component development guidelines and patterns
@@ -749,10 +806,12 @@ For every feature:
 - **Development**: `/context/DEVELOPMENT.md` - Development environment setup and tools
 
 ### Design System Files
+
 - **Design Principles**: `/context/design-principles.md` - Comprehensive design checklist and guidelines
 - **Style Guide**: `/context/style-guide.md` - Brand standards, colors, typography, and component specifications
 
 ### Configuration Files
+
 - **Package Configuration**: `package.json` - All available scripts and dependencies
 - **TypeScript Config**: `tsconfig.json` - TypeScript compilation settings
 - **Playwright Config**: `playwright.config.ts` - Testing framework configuration
