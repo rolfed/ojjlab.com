@@ -11,11 +11,16 @@ This is a premium brand website built with modern web technologies, emphasizing 
 ```
 /
 ├── CLAUDE.md                 # This file - Claude Code guidance
-├── GIT_FLOW.md              # Git Flow workflow guide for Claude
-├── TDD_WORKFLOW.md          # Test-Driven Development guide
-├── context/                  # Design system and brand guidelines
+├── context/                  # Claude context files and design system
 │   ├── design-principles.md  # Premium brand design checklist
-│   └── style-guide.md       # Brand identity and implementation guide
+│   ├── style-guide.md       # Brand identity and implementation guide
+│   ├── GIT_FLOW.md          # Git Flow workflow guide for Claude
+│   ├── TDD_WORKFLOW.md      # Test-Driven Development guide
+│   ├── next-steps.md        # Structured task management for Claude
+│   ├── roadmap.md           # Long-term project planning and vision
+│   ├── COMPONENTS.md        # Component development guidelines
+│   ├── DEPLOYMENT.md        # Deployment procedures and guidelines
+│   └── DEVELOPMENT.md       # Development environment setup
 ├── src/                     # Source code
 │   ├── components/          # Reusable UI components
 │   │   └── */              # Each component has .ts and .test.ts files
@@ -45,8 +50,8 @@ This is a premium brand website built with modern web technologies, emphasizing 
 - `src/main.ts` - Application entry point
 - `jest.config.js` - Unit testing framework configuration (Jest)
 - `playwright.config.ts` - Integration testing framework configuration (Playwright)
-- `GIT_FLOW.md` - Git workflow guidelines for Claude
-- `TDD_WORKFLOW.md` - Test-Driven Development methodology guide
+- `context/GIT_FLOW.md` - Git workflow guidelines for Claude
+- `context/TDD_WORKFLOW.md` - Test-Driven Development methodology guide
 
 **Important Utilities:**
 
@@ -902,11 +907,27 @@ For every feature:
 
 ## Additional Resources
 
+### Claude Context Files
+
+- **Next Steps**: `/context/next-steps.md` - Structured task management and immediate priorities for Claude
+- **Roadmap**: `/context/roadmap.md` - Long-term project vision and strategic planning
+- **Git Flow**: `/context/GIT_FLOW.md` - Source control workflow and TDD integration guide
+- **TDD Workflow**: `/context/TDD_WORKFLOW.md` - Test-Driven Development methodology and examples
+- **Components**: `/context/COMPONENTS.md` - Component development guidelines and patterns
+- **Deployment**: `/context/DEPLOYMENT.md` - Deployment procedures and environment management
+- **Development**: `/context/DEVELOPMENT.md` - Development environment setup and tools
+
+### Design System Files
+
 - **Design Principles**: `/context/design-principles.md` - Comprehensive design checklist and guidelines
 - **Style Guide**: `/context/style-guide.md` - Brand standards, colors, typography, and component specifications
+
+### Configuration Files
+
 - **Package Configuration**: `package.json` - All available scripts and dependencies
 - **TypeScript Config**: `tsconfig.json` - TypeScript compilation settings
-- **Playwright Config**: `playwright.config.ts` - Test configuration and settings
+- **Jest Config**: `jest.config.js` - Unit testing framework configuration
+- **Playwright Config**: `playwright.config.ts` - Integration testing framework configuration
 - **ESLint Config**: ESLint configuration for code quality
 - **Prettier Config**: Code formatting standards
 - **Tailwind Config**: CSS framework configuration

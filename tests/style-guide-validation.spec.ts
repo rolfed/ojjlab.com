@@ -30,17 +30,6 @@ test.describe('Style Guide Validation', () => {
           };
         });
 
-        // Convert rgb to hex for validation
-        const rgbToHex = (rgb: string) => {
-          const match = rgb.match(/rgb\\((\\d+),\\s*(\\d+),\\s*(\\d+)\\)/);
-          if (match) {
-            const r = parseInt(match[1]).toString(16).padStart(2, '0');
-            const g = parseInt(match[2]).toString(16).padStart(2, '0');
-            const b = parseInt(match[3]).toString(16).padStart(2, '0');
-            return `#${r}${g}${b}`;
-          }
-          return rgb;
-        };
 
         // Check if brand color is being used
         expect([styles.backgroundColor, styles.color]).toContain(
