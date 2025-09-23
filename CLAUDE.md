@@ -110,11 +110,13 @@ This ensures consistent commit messages and enables automated changelog generati
 **🚨 CRITICAL WORKFLOW REQUIREMENTS 🚨**
 
 #### Pull Request Size Limits
+
 - **Maximum 14 files per PR** - Keep changes focused and reviewable
 - **One task at a time** - Complete single items from next-steps.md
 - **Small, atomic changes** - Easier to review, test, and rollback if needed
 
 #### Task Management Process
+
 1. **Always check `/context/next-steps.md`** before starting work
 2. **Select ONE task** from the current sprint priorities
 3. **Create feature branch** for the specific task
@@ -123,6 +125,7 @@ This ensures consistent commit messages and enables automated changelog generati
 6. **User verification required** - Wait for approval before next task
 
 #### Branch Naming Convention
+
 - `feature/task-description` (e.g., `feature/desktop-nav-dropdown`)
 - `fix/issue-description` (e.g., `fix/mobile-scroll-issue`)
 - `refactor/component-name` (e.g., `refactor/navigation-component`)
@@ -325,6 +328,7 @@ await Task({
 - **Test user-facing functionality** - How users interact with components/functions
 
 **Examples:**
+
 ```typescript
 // ✅ Good - Testing public interface
 test('Calculator.add() returns sum of two numbers', () => {
@@ -342,6 +346,7 @@ test('Calculator._validateInput() is called', () => {
 ```
 
 **Component Testing:**
+
 - Test component props and events
 - Test user interactions (clicks, form submissions)
 - Test accessibility features (keyboard navigation, ARIA)
