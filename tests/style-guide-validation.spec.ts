@@ -30,7 +30,6 @@ test.describe('Style Guide Validation', () => {
           };
         });
 
-
         // Check if brand color is being used
         expect([styles.backgroundColor, styles.color]).toContain(
           expect.stringMatching(/(rgb\\(242,\\s*56,\\s*56\\)|#f23838)/i)
