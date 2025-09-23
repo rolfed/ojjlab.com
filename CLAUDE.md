@@ -11,9 +11,14 @@ This is a premium brand website built with modern web technologies, emphasizing 
 ```
 /
 ├── CLAUDE.md                 # This file - Claude Code guidance
-├── context/                  # Design system and brand guidelines
+├── context/                  # Claude context files and design system
 │   ├── design-principles.md  # Premium brand design checklist
-│   └── style-guide.md       # Brand identity and implementation guide
+│   ├── style-guide.md       # Brand identity and implementation guide
+│   ├── next-steps.md        # Structured task management for Claude
+│   ├── roadmap.md           # Long-term project planning and vision
+│   ├── COMPONENTS.md        # Component development guidelines
+│   ├── DEPLOYMENT.md        # Deployment procedures and guidelines
+│   └── DEVELOPMENT.md       # Development environment setup
 ├── src/                     # Source code
 │   ├── components/          # Reusable UI components
 │   ├── functionality/       # Business logic and utilities
@@ -736,11 +741,21 @@ For every feature:
 
 ## Additional Resources
 
+### Claude Context Files
+- **Next Steps**: `/context/next-steps.md` - Structured task management and immediate priorities for Claude
+- **Roadmap**: `/context/roadmap.md` - Long-term project vision and strategic planning
+- **Components**: `/context/COMPONENTS.md` - Component development guidelines and patterns
+- **Deployment**: `/context/DEPLOYMENT.md` - Deployment procedures and environment management
+- **Development**: `/context/DEVELOPMENT.md` - Development environment setup and tools
+
+### Design System Files
 - **Design Principles**: `/context/design-principles.md` - Comprehensive design checklist and guidelines
 - **Style Guide**: `/context/style-guide.md` - Brand standards, colors, typography, and component specifications
+
+### Configuration Files
 - **Package Configuration**: `package.json` - All available scripts and dependencies
 - **TypeScript Config**: `tsconfig.json` - TypeScript compilation settings
-- **Playwright Config**: `playwright.config.ts` - Test configuration and settings
+- **Playwright Config**: `playwright.config.ts` - Testing framework configuration
 - **ESLint Config**: ESLint configuration for code quality
 - **Prettier Config**: Code formatting standards
 - **Tailwind Config**: CSS framework configuration
