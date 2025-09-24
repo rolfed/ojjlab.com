@@ -399,6 +399,34 @@
     @apply hover:bg-black/10;
   }
 
+  /* Version Badge Component */
+  .version-badge {
+    @apply flex items-center justify-center;
+    @apply px-2 py-1 rounded-md;
+    @apply bg-white/80 dark:bg-black/80 backdrop-blur-sm;
+    @apply border border-accent-dark/20 dark:border-accent-light/20;
+    @apply transition-all duration-200 ease-in-out;
+    @apply hover:bg-white dark:hover:bg-black;
+    @apply hover:border-accent-dark/40 dark:hover:border-accent-light/40;
+    @apply hover:shadow-sm;
+  }
+
+  .version-text {
+    @apply text-xs font-mono font-medium tracking-wide;
+    @apply text-accent-dark dark:text-accent-light;
+    @apply cursor-help;
+    @apply select-none;
+    @apply transition-colors duration-200;
+    @apply hover:text-brand-dark dark:hover:text-brand-light;
+  }
+
+  /* Hide version badge on smaller screens to save space */
+  @media (max-width: 768px) {
+    .version-badge {
+      @apply hidden;
+    }
+  }
+
   /* Contact Page Styles */
   .contact-cta {
     @apply max-w-2xl mx-auto p-6 text-center;

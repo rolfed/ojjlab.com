@@ -149,17 +149,44 @@ npm run lint && npm run format:check && npm run build && npm run test:unit && np
 
 ### Git Workflow
 
-**CRITICAL**: Follow Git Flow best practices as outlined in `GIT_FLOW.md`
+**CRITICAL**: Main branch is protected - direct pushes are blocked. All changes must go through Pull Requests.
 
 **🚨 NEVER PUSH DIRECTLY TO MAIN BRANCH 🚨**
 
-#### Basic Workflow
+#### Protected Main Branch Workflow
+
+1. **Branch Protection**: Main branch requires PR reviews and passing CI checks
+2. **PR Validation**: Automated testing runs on every PR (`pr-validation.yml`)
+3. **Deployment**: Only successful merges to main trigger deployment (`deploy.yml`)
+4. **Version Management**: Automatic version bumping and releases (`release.yml`)
+
+#### Development Workflow
 
 1. **Branch Creation**: Always create feature branches from `main`
 2. **TDD Development**: Follow Red-Green-Refactor cycle (see `TDD_WORKFLOW.md`)
 3. **Conventional Commits**: Use `npm run commit` for standardized commit messages
-4. **Quality Gates**: Ensure all tests pass before pushing
-5. **Pull Requests**: Merge features back to `main` via PR (NEVER direct push)
+4. **Quality Gates**: All PR checks must pass before merge
+5. **PR Process**: Create PR → CI validation → Code review → Merge to main
+
+#### GitHub Actions Workflows
+
+- **PR Validation** (`pr-validation.yml`): Runs on PRs
+  - Code quality checks (lint, format)
+  - Unit tests with coverage
+  - Build validation
+  - Integration tests
+  - Security audit
+  - PR summary comment
+
+- **Deployment** (`deploy.yml`): Runs on main branch push
+  - Builds and deploys to GitHub Pages
+  - Includes version info in build
+
+- **Release Management** (`release.yml`): Runs on main branch push
+  - Analyzes commits for release type (patch/minor/major)
+  - Bumps version in package.json
+  - Creates git tags and GitHub releases
+  - Generates changelog from conventional commits
 
 #### Quick Commands
 
@@ -174,12 +201,23 @@ npm run test:unit:watch  # Keep running during development
 # Commit with conventional format
 npm run commit
 
-# Pre-merge quality check
+# Pre-merge quality check (same as CI)
 npm run lint && npm run format:check && npm run build && npm run test:unit && npm test
 
-# Push to feature branch (NEVER to main)
+# Push to feature branch and create PR
 git push origin feature/TASK-123-feature-name
+# Then create PR via GitHub UI or gh CLI
 ```
+
+#### Version System
+
+- **Version Display**: Current version shown in website header (desktop/tablet only)
+- **Semantic Versioning**: Automatic bumping based on conventional commits
+  - `fix:` commits → patch version (1.0.0 → 1.0.1)
+  - `feat:` commits → minor version (1.0.0 → 1.1.0)
+  - `BREAKING CHANGE:` → major version (1.0.0 → 2.0.0)
+- **Release Notes**: Auto-generated from commit history
+- **Git Tags**: Created automatically for each release
 
 **Detailed Workflow**: See `GIT_FLOW.md` for comprehensive git workflow instructions.
 
