@@ -70,7 +70,7 @@
 
   a,
   button {
-    @apply text-black dark:text-white;
+    @apply text-black dark:text-white cursor-pointer;
   }
 
   p,
@@ -114,14 +114,14 @@
 
   /* Elements */
   .primary-btn {
-    @apply tracking-wider uppercase;
+    @apply tracking-wider uppercase cursor-pointer;
     @apply py-2 px-4 rounded-sm;
 
     @apply bg-brand dark:bg-brand-dark text-white;
   }
 
   .secondary-btn {
-    @apply tracking-wider uppercase;
+    @apply tracking-wider uppercase cursor-pointer;
     @apply py-2 px-4 rounded-sm;
 
     @apply bg-white dark:bg-white text-brand-dark;

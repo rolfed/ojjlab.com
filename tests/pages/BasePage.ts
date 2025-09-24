@@ -1,4 +1,5 @@
-import { Page, Locator, expect } from '@playwright/test';
+import type { Page, Locator } from '@playwright/test';
+import { expect } from '@playwright/test';
 
 export abstract class BasePage {
   protected page: Page;
@@ -27,7 +28,7 @@ export abstract class BasePage {
 
   async waitForElement(
     selector: string,
-    timeout: number = 10000
+    _timeout: number = 10000
   ): Promise<Locator> {
     return this.page.locator(selector).first();
   }

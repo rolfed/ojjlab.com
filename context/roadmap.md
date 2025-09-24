@@ -24,14 +24,16 @@ This document outlines the long-term strategic vision and development roadmap fo
 - GSAP animation framework integration
 - Responsive design with mobile-first approach
 - Light/dark theme system
+- Git Flow workflow with TDD methodology
 - Quality gates and automated code checks
 
 ### 🟡 In Progress
 
-- TDD workflow implementation and Jest unit testing setup
-- Git Flow workflow documentation and enforcement
+- Jest unit testing infrastructure
+- TDD workflow implementation and documentation
+- Component library organization and documentation
+- Design system refinement and validation
 - Context file organization and Claude Code optimization
-- Component library organization and testing patterns
 
 ## Roadmap Timeline
 
@@ -179,14 +181,14 @@ This document outlines the long-term strategic vision and development roadmap fo
 ### Current Stack
 
 - **Frontend**: TypeScript, Vite, Tailwind CSS 4.x
-- **Testing**: Playwright (E2E), Jest (Unit - in progress)
+- **Testing**: Playwright (E2E), Jest (Unit)
 - **Animation**: GSAP
 - **Code Quality**: ESLint, Prettier, Husky
-- **Version Control**: Git with conventional commits
+- **Version Control**: Git Flow with conventional commits
 
 ### Planned Additions
 
-- **Phase 1**: Jest unit testing, enhanced CI/CD pipeline
+- **Phase 1**: Enhanced testing tools, CI/CD pipeline
 - **Phase 2**: MDX, advanced build optimizations
 - **Phase 3**: Analytics tools, search engines
 - **Phase 4**: PWA capabilities, advanced monitoring
@@ -291,8 +293,9 @@ This document outlines the long-term strategic vision and development roadmap fo
 
 - **Next Steps**: Tactical planning derived from strategic roadmap
 - **Design Principles**: UI/UX decisions aligned with premium brand vision
+- **TDD Workflow**: Development methodology supporting quality goals
+- **Git Flow**: Source control supporting release cadence
 - **Style Guide**: Visual consistency and brand compliance
-- **Development Workflow**: Git Flow and TDD methodology support
 
 ## Milestone Dependencies
 

@@ -49,25 +49,24 @@ This file provides Claude Code with structured task management and immediate nex
 
 ### Medium Priority 🟡
 
-- [ ] **Organize Claude Context Files**
-  - Move all Claude-related documentation to `/context` directory
-  - Update CLAUDE.md to reference new directory structure
-  - Create structured planning documents (next-steps.md, roadmap.md)
-  - Improve Claude Code's ability to understand project priorities
-
 - [ ] **Fix Test Infrastructure Issues**
   - Resolve any TypeScript import errors in test files
   - Ensure Jest and Playwright work seamlessly together
   - Address ESLint warnings in existing test suite
   - Verify all quality gates pass consistently
 
-### Low Priority 🟢
-
 - [ ] **Enhance Component Testing Coverage**
   - Add unit tests for core components (router, theme toggle)
   - Implement component-level testing patterns
   - Achieve >80% unit test coverage for business logic
   - Document testing strategies for future development
+
+### Low Priority 🟢
+
+- [ ] **Create Component Library Documentation**
+  - Document existing components in `src/components/`
+  - Add usage examples and API documentation
+  - Integrate with design system guidelines
 
 ## Immediate Next Actions (This Session)
 
