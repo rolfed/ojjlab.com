@@ -17,6 +17,10 @@ test-results/
 playwright-report/
 playwright/.cache/
 
+# Jest
+coverage/
+*.lcov
+
 # Environment
 .envrc
 .direnv/
