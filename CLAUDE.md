@@ -14,6 +14,8 @@ This is a premium brand website built with modern web technologies, emphasizing 
 ├── context/                  # Claude context files and design system
 │   ├── design-principles.md  # Premium brand design checklist
 │   ├── style-guide.md       # Brand identity and implementation guide
+│   ├── GIT_FLOW.md          # Git Flow workflow guide for Claude
+│   ├── TDD_WORKFLOW.md      # Test-Driven Development guide
 │   ├── next-steps.md        # Structured task management for Claude
 │   ├── roadmap.md           # Long-term project planning and vision
 │   ├── COMPONENTS.md        # Component development guidelines
@@ -21,14 +23,21 @@ This is a premium brand website built with modern web technologies, emphasizing 
 │   └── DEVELOPMENT.md       # Development environment setup
 ├── src/                     # Source code
 │   ├── components/          # Reusable UI components
+│   │   └── */              # Each component has .ts and .test.ts files
 │   ├── functionality/       # Business logic and utilities
 │   ├── templates/           # HTML page templates
 │   ├── animations/          # GSAP animation modules
+│   ├── utils/              # Utility functions with unit tests
 │   └── style.css           # Design system CSS with tokens
-├── tests/                   # Playwright test suites
-│   ├── router.spec.ts       # SPA navigation tests
-│   └── style-guide-validation.spec.ts # Brand compliance tests
-├── playwright.config.ts     # Testing configuration
+├── tests/                   # Test suites
+│   ├── unit/               # Additional unit tests (Jest)
+│   ├── setup/              # Test setup and configuration
+│   │   └── jest.setup.ts   # Jest configuration
+│   ├── __mocks__/          # Mock files for testing
+│   ├── router.spec.ts       # SPA navigation tests (Playwright)
+│   └── style-guide-validation.spec.ts # Brand compliance tests (Playwright)
+├── jest.config.js           # Jest (unit testing) configuration
+├── playwright.config.ts     # Playwright (integration testing) configuration
 └── package.json            # Dependencies and scripts
 ```
 
@@ -39,7 +48,10 @@ This is a premium brand website built with modern web technologies, emphasizing 
 - `src/style.css` - Design system with CSS custom properties
 - `src/router/router.ts` - SPA routing system
 - `src/main.ts` - Application entry point
-- `playwright.config.ts` - Testing framework configuration
+- `jest.config.js` - Unit testing framework configuration (Jest)
+- `playwright.config.ts` - Integration testing framework configuration (Playwright)
+- `context/GIT_FLOW.md` - Git workflow guidelines for Claude
+- `context/TDD_WORKFLOW.md` - Test-Driven Development methodology guide
 
 **Important Utilities:**
 
@@ -78,32 +90,98 @@ This is a premium brand website built with modern web technologies, emphasizing 
 - `npm run lint:fix` - Auto-fix ESLint issues where possible
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting without changes
-- `npm test` - Run Playwright test suite
+
+### Testing Commands
+
+#### Unit Testing (Jest)
+
+- `npm run test:unit` - Run all unit tests
+- `npm run test:unit:watch` - Run unit tests in watch mode (for TDD development)
+- `npm run test:unit:coverage` - Run unit tests with coverage report
+- `npm run test:unit:debug` - Debug unit tests
+
+#### Integration Testing (Playwright)
+
+- `npm test` - Run Playwright integration test suite
 - `npm test:ui` - Run Playwright tests with UI mode
 - `npm test:headed` - Run Playwright tests in headed mode
 - `npm test:debug` - Debug Playwright tests
+
+#### Combined Testing
+
+- `npm run test:all` - Run both unit tests and integration tests
+
+### Git and Workflow Commands
+
 - `npm run commit` - Use Commitizen for conventional commits
-- `npm run pre-commit` - Run pre-commit hooks (lint + format + build)
+- `npm run pre-commit` - Run pre-commit hooks (lint + format + build + unit tests)
+
+### ❌ CRITICAL RULE: NEVER PUSH TO MAIN
+
+**IMPORTANT**: Direct pushes to `main` branch are STRICTLY FORBIDDEN. Always use feature branches and pull requests.
+
+```bash
+# ❌ NEVER DO THIS
+git push origin main
+
+# ✅ ALWAYS DO THIS
+git checkout -b feature/your-feature-name
+git push origin feature/your-feature-name
+# Create pull request for review
+```
 
 ### Quality Assurance
 
 Before committing any changes, ALWAYS run:
 
 ```bash
-npm run lint && npm run format:check && npm run build && npm test
+npm run lint && npm run format:check && npm run build && npm run test:unit && npm test
 ```
 
 **Note**: TypeScript type checking is included in the build process. The build command runs `tsc && vite build` which performs type checking before building.
 
+**Testing Requirements**:
+
+- All unit tests must pass (`npm run test:unit`)
+- All integration tests must pass (`npm test`)
+- Follow TDD methodology: write tests first, then implement functionality
+- Maintain test coverage thresholds (see `jest.config.js`)
+
 ### Git Workflow
 
-Use conventional commits with Commitizen:
+**CRITICAL**: Follow Git Flow best practices as outlined in `GIT_FLOW.md`
+
+**🚨 NEVER PUSH DIRECTLY TO MAIN BRANCH 🚨**
+
+#### Basic Workflow
+
+1. **Branch Creation**: Always create feature branches from `main`
+2. **TDD Development**: Follow Red-Green-Refactor cycle (see `TDD_WORKFLOW.md`)
+3. **Conventional Commits**: Use `npm run commit` for standardized commit messages
+4. **Quality Gates**: Ensure all tests pass before pushing
+5. **Pull Requests**: Merge features back to `main` via PR (NEVER direct push)
+
+#### Quick Commands
 
 ```bash
+# Create feature branch from main
+git checkout main && git pull origin main
+git checkout -b feature/TASK-123-feature-name
+
+# TDD Development cycle
+npm run test:unit:watch  # Keep running during development
+
+# Commit with conventional format
 npm run commit
+
+# Pre-merge quality check
+npm run lint && npm run format:check && npm run build && npm run test:unit && npm test
+
+# Push to feature branch (NEVER to main)
+git push origin feature/TASK-123-feature-name
 ```
 
-This ensures consistent commit messages and enables automated changelog generation.
+**Detailed Workflow**: See `GIT_FLOW.md` for comprehensive git workflow instructions.
 
 ### Development Workflow Rules
 
@@ -178,6 +256,77 @@ When implementing MDX for blog content:
 
 **Implementation Priority**: Medium - implement after core website features are complete
 
+## Test-Driven Development (TDD)
+
+### TDD Methodology
+
+This project follows strict Test-Driven Development practices. **ALL new code must be written using the TDD approach.**
+
+#### TDD Cycle: Red-Green-Refactor
+
+1. **🔴 RED**: Write a failing test before any implementation
+2. **🟢 GREEN**: Write minimal code to make the test pass
+3. **🔵 REFACTOR**: Improve the code while keeping tests green
+
+#### Testing Strategy
+
+**Two-Tier Testing Approach:**
+
+- **Unit Tests (Jest)**: Test individual functions, components, utilities in isolation
+  - Location: `src/**/*.test.ts` or `tests/unit/**/*.test.ts`
+  - Coverage Target: 90%+
+  - Fast execution, isolated testing
+
+- **Integration Tests (Playwright)**: Test user workflows and component interactions
+  - Location: `tests/**/*.spec.ts`
+  - Coverage Target: 80%+
+  - Full browser testing, user experience validation
+
+#### TDD Workflow Example
+
+```bash
+# 1. 🔴 RED: Write failing test
+git add src/components/new-feature/new-feature.test.ts
+git commit -m "test: add failing test for new feature 🔴
+
+RED: Test expects NewFeature component to initialize with default state
+- Component should have isActive property
+- Default value should be false
+- Test currently fails as component doesn't exist"
+
+# 2. 🟢 GREEN: Minimal implementation
+git add src/components/new-feature/new-feature.ts
+git commit -m "feat: implement basic NewFeature component 🟢
+
+GREEN: Minimal implementation to pass failing test
+- Add NewFeature class with isActive property
+- Set default state to false
+- Test now passes"
+
+# 3. 🔵 REFACTOR: Improve implementation
+git add src/components/new-feature/
+git commit -m "refactor: improve NewFeature with proper types 🔵
+
+REFACTOR: Enhance implementation while maintaining green tests
+- Add proper TypeScript interfaces
+- Extract logic to separate methods
+- Add JSDoc documentation
+- All tests still pass"
+```
+
+#### TDD Requirements
+
+**Before writing any implementation code:**
+
+1. Start `npm run test:unit:watch` in a terminal
+2. Write a failing test that describes the desired behavior
+3. Confirm the test fails (RED)
+4. Write minimal code to pass the test (GREEN)
+5. Refactor the code while keeping tests green (REFACTOR)
+6. Commit each phase with appropriate emoji and message
+
+**Comprehensive Guide**: See `TDD_WORKFLOW.md` for detailed TDD instructions and examples.
+
 ## Code Quality & Reviews
 
 ### Automated Code Review
@@ -192,6 +341,16 @@ Every code change should be evaluated for:
 
 ### Code Review Checklist
 
+#### TDD Requirements
+
+- [ ] **Tests written FIRST**: Tests exist before implementation
+- [ ] **Red-Green-Refactor cycle followed**: Git history shows TDD pattern
+- [ ] **Unit tests pass**: All Jest tests pass (`npm run test:unit`)
+- [ ] **Integration tests pass**: All Playwright tests pass (`npm test`)
+- [ ] **Coverage maintained**: Unit test coverage meets thresholds
+
+#### Code Quality
+
 - [ ] Code follows established patterns and conventions
 - [ ] All TypeScript types are properly defined
 - [ ] No console.log statements in production code
@@ -199,7 +358,14 @@ Every code change should be evaluated for:
 - [ ] Performance implications considered
 - [ ] Security best practices followed
 - [ ] Accessibility standards met
-- [ ] Tests written and passing
+- [ ] Proper JSDoc documentation for functions and components
+
+#### Git Flow Compliance
+
+- [ ] **Feature branch**: Created from `develop` branch
+- [ ] **Conventional commits**: Commit messages follow standard format
+- [ ] **Atomic commits**: Each commit represents single logical change
+- [ ] **TDD commit pattern**: Red-Green-Refactor cycle visible in history
 
 ## Security Review
 
@@ -806,6 +972,8 @@ For every feature:
 
 - **Next Steps**: `/context/next-steps.md` - Structured task management and immediate priorities for Claude
 - **Roadmap**: `/context/roadmap.md` - Long-term project vision and strategic planning
+- **Git Flow**: `/context/GIT_FLOW.md` - Source control workflow and TDD integration guide
+- **TDD Workflow**: `/context/TDD_WORKFLOW.md` - Test-Driven Development methodology and examples
 - **Components**: `/context/COMPONENTS.md` - Component development guidelines and patterns
 - **Deployment**: `/context/DEPLOYMENT.md` - Deployment procedures and environment management
 - **Development**: `/context/DEVELOPMENT.md` - Development environment setup and tools
@@ -819,7 +987,8 @@ For every feature:
 
 - **Package Configuration**: `package.json` - All available scripts and dependencies
 - **TypeScript Config**: `tsconfig.json` - TypeScript compilation settings
-- **Playwright Config**: `playwright.config.ts` - Testing framework configuration
+- **Jest Config**: `jest.config.js` - Unit testing framework configuration
+- **Playwright Config**: `playwright.config.ts` - Integration testing framework configuration
 - **ESLint Config**: ESLint configuration for code quality
 - **Prettier Config**: Code formatting standards
 - **Tailwind Config**: CSS framework configuration

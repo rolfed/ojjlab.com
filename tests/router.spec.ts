@@ -1,10 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import {
   HomePage,
   NavigationPage,
   ContactPage,
   JoinPage,
-  TryAClassPage,
   LoginPage,
 } from './pages';
 
