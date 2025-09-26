@@ -131,8 +131,8 @@ test.describe('Style Guide Validation', () => {
         expect(titleFont).toMatch(/Hind/i);
       }
 
-      // Test content font (Montserrat)
-      const contentElements = page.locator('p, span, [class*="font-content"]');
+      // Test content font (Montserrat) - excluding monospace elements like version
+      const contentElements = page.locator('p, [class*="font-content"]:not([class*="font-mono"]):not(.version-text)');
       if ((await contentElements.count()) > 0) {
         const contentFont = await contentElements.first().evaluate((el) => {
           return window.getComputedStyle(el).fontFamily;
