@@ -154,7 +154,7 @@ jobs:
     name: PR Summary
     runs-on: ubuntu-latest
     needs: [code-quality, unit-tests, build, integration-tests, security-audit]
-    if: always()
+    if: false # Temporarily disabled due to permissions issue
     steps:
       - name: Create PR Summary Comment
         uses: actions/github-script@v7
