@@ -1,4 +1,5 @@
 import { getAssetUrl } from '../../utils/base-path';
+import '../version/version';
 
 export class NavigationComponent extends HTMLElement {
   public connectedCallback(): void {
@@ -40,8 +41,12 @@ export class NavigationComponent extends HTMLElement {
                     </ul>
                 </nav>
 
-                <!-- Theme toggle -->
-                <div class="flex items-center" data-testid="desktop-theme-container">
+                <!-- Version and Theme toggle -->
+                <div class="flex items-center gap-4" data-testid="desktop-controls-container">
+                    <!-- Version Badge -->
+                    <version-component data-testid="desktop-version"></version-component>
+
+                    <!-- Theme Toggle -->
                     <button
                         class="theme-toggle"
                         id="theme-toggle"

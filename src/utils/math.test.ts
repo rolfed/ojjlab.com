@@ -25,9 +25,16 @@ describe('Calculator', () => {
       expect(result).toBe(1);
     });
 
+    test('should add negative numbers correctly', () => {
+      const result = calculator.add(-2, -3);
+      expect(result).toBe(-5);
+    });
+
     test('should handle zero', () => {
       const result = calculator.add(0, 5);
       expect(result).toBe(5);
+      const result2 = calculator.add(5, 0);
+      expect(result2).toBe(5);
     });
   });
 
@@ -37,9 +44,23 @@ describe('Calculator', () => {
       expect(result).toBe(12);
     });
 
+    test('should multiply positive numbers correctly', () => {
+      const result = calculator.multiply(2, 3);
+      expect(result).toBe(6);
+    });
+
     test('should return zero when multiplying by zero', () => {
       const result = calculator.multiply(5, 0);
       expect(result).toBe(0);
+      const result2 = calculator.multiply(0, 5);
+      expect(result2).toBe(0);
+    });
+
+    test('should multiply negative numbers correctly', () => {
+      const result1 = calculator.multiply(-2, 3);
+      expect(result1).toBe(-6);
+      const result2 = calculator.multiply(-2, -3);
+      expect(result2).toBe(6);
     });
   });
 

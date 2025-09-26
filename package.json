@@ -1,7 +1,7 @@
 {
   "name": "ojjlab.com",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -19,16 +19,18 @@
     "test:unit": "jest",
     "test:unit:watch": "jest --watch",
     "test:unit:coverage": "jest --coverage",
+    "test:unit:ci": "jest --ci --coverage --watchAll=false",
     "test:unit:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "test:all": "npm run test:unit && npm run test",
+    "test:all": "npm run test:unit:ci && npm run test",
     "commit": "git-cz",
-    "pre-commit": "npm run lint && npm run format:check && npm run build && npm run test:unit",
+    "pre-commit": "npm run lint && npm run format:check && npm run test:unit:ci && npm run build",
     "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.33.0",
+    "@jest/types": "^30.0.5",
     "@playwright/test": "^1.49.0",
     "@squoosh/cli": "^0.7.1",
     "@tailwindcss/vite": "^4.1.12",
