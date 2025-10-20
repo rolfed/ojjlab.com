@@ -774,6 +774,14 @@
   }
 
   /* Mobile Navigation Styles */
+  /* Hide default LeadConnector chat widget */
+  chat-widget {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
   .mobile-bottom-nav {
     @apply fixed bottom-0 left-0 right-0 z-40;
     @apply bg-white dark:bg-black;
@@ -816,6 +824,24 @@
     @apply w-6 h-6;
     @apply stroke-black dark:stroke-white;
     fill: none !important;
+  }
+
+  /* Chat Button Styles (Mobile & Desktop) */
+  .chat-btn {
+    @apply p-2 rounded-md;
+    @apply hover:bg-gray-100 dark:hover:bg-gray-800;
+    @apply transition-colors duration-200;
+    @apply relative;
+  }
+
+  .chat-btn svg {
+    @apply w-6 h-6;
+    @apply fill-black dark:fill-white;
+  }
+
+  .chat-btn:disabled,
+  .chat-btn.hidden {
+    @apply hidden;
   }
 
   /* Fullscreen Mobile Menu */

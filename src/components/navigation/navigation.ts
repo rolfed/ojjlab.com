@@ -6,6 +6,7 @@ export class NavigationComponent extends HTMLElement {
     this.innerHTML = this.getTemplate();
     this.initializeThemeToggle();
     this.initializeNavigation();
+    this.initializeChatButton();
   }
 
   private getTemplate(): string {
@@ -41,10 +42,24 @@ export class NavigationComponent extends HTMLElement {
                     </ul>
                 </nav>
 
-                <!-- Version and Theme toggle -->
+                <!-- Version, Chat, and Theme toggle -->
                 <div class="flex items-center gap-4" data-testid="desktop-controls-container">
                     <!-- Version Badge -->
                     <version-component data-testid="desktop-version"></version-component>
+
+                    <!-- Chat Button -->
+                    <button
+                        class="chat-btn"
+                        type="button"
+                        aria-label="Open chat"
+                        title="Open chat"
+                        data-element="chat-toggle"
+                        data-testid="desktop-chat-toggle"
+                    >
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                        </svg>
+                    </button>
 
                     <!-- Theme Toggle -->
                     <button
@@ -85,11 +100,35 @@ export class NavigationComponent extends HTMLElement {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const route = (e.target as HTMLElement).getAttribute('data-route');
-        if (route && window.router) {
-          window.router.navigate(route);
-        }
+        if (!route || !window.router) return;
+
+        window.router.navigate(route);
       });
     });
+  }
+
+  private initializeChatButton(): void {
+    const chatButton = this.querySelector('[data-element="chat-toggle"]');
+    if (!chatButton) return;
+
+    chatButton.addEventListener('click', this.openChat.bind(this));
+  }
+
+  private openChat(): void {
+    const hasLeadConnector =
+      typeof window !== 'undefined' &&
+      (window as any).leadConnector?.chatWidget;
+
+    if (!hasLeadConnector) {
+      console.warn('Chat widget not loaded yet');
+      return;
+    }
+
+    try {
+      (window as any).leadConnector.chatWidget.openWidget();
+    } catch (error) {
+      console.warn('Failed to open chat widget:', error);
+    }
   }
 }
 

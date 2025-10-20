@@ -34,6 +34,13 @@ export class MobileNavigationComponent extends HTMLElement {
                         </a>
                     </div>
 
+                    <!-- Chat Button -->
+                    <button class="chat-btn" aria-label="Open chat" data-element="chat-toggle" data-testid="mobile-chat-toggle">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                        </svg>
+                    </button>
+
                     <!-- Hamburger Menu Button -->
                     <button class="mobile-hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false" data-element="menu-toggle" data-testid="mobile-menu-toggle">
                         <svg data-animation="hamburger-icon" data-testid="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -149,6 +156,12 @@ export class MobileNavigationComponent extends HTMLElement {
         'click',
         this.toggleMobileMenu.bind(this)
       );
+    }
+
+    // Chat button event listener
+    const chatButton = this.querySelector('[data-element="chat-toggle"]');
+    if (chatButton) {
+      chatButton.addEventListener('click', this.openChat.bind(this));
     }
 
     // Close button event listener
@@ -360,6 +373,23 @@ export class MobileNavigationComponent extends HTMLElement {
           await this.mobileNavAnimation.showMainNavigation();
         }
       });
+    }
+  }
+
+  private openChat(): void {
+    const hasLeadConnector =
+      typeof window !== 'undefined' &&
+      (window as any).leadConnector?.chatWidget;
+
+    if (!hasLeadConnector) {
+      console.warn('Chat widget not loaded yet');
+      return;
+    }
+
+    try {
+      (window as any).leadConnector.chatWidget.openWidget();
+    } catch (error) {
+      console.warn('Failed to open chat widget:', error);
     }
   }
 
