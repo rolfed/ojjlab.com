@@ -1,5 +1,4 @@
 import { getAssetUrl } from '../../utils/base-path';
-import '../version/version';
 
 export class NavigationComponent extends HTMLElement {
   public connectedCallback(): void {
@@ -41,11 +40,8 @@ export class NavigationComponent extends HTMLElement {
                     </ul>
                 </nav>
 
-                <!-- Version and Theme toggle -->
+                <!-- Theme toggle -->
                 <div class="flex items-center gap-4" data-testid="desktop-controls-container">
-                    <!-- Version Badge -->
-                    <version-component data-testid="desktop-version"></version-component>
-
                     <!-- Theme Toggle -->
                     <button
                         class="theme-toggle"
@@ -85,9 +81,9 @@ export class NavigationComponent extends HTMLElement {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const route = (e.target as HTMLElement).getAttribute('data-route');
-        if (route && window.router) {
-          window.router.navigate(route);
-        }
+        if (!route || !window.router) return;
+
+        window.router.navigate(route);
       });
     });
   }

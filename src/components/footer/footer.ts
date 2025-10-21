@@ -1,4 +1,5 @@
 import { getAssetUrl } from '../../utils/base-path';
+import '../version/version';
 
 class OJJFooter extends HTMLElement {
   private isInitialized = false;
@@ -258,6 +259,8 @@ class OJJFooter extends HTMLElement {
             <p class="footer-copyright">
               © <span id="current-year">2025</span> Oregon Jiu Jitsu Lab. All
               rights reserved.
+              <!-- Version Badge (debug mode only) -->
+              <version-component data-testid="footer-version"></version-component>
             </p>
             <div class="footer-legal-links">
               <a href="/legal/privacy" class="footer-legal-link"

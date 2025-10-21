@@ -216,8 +216,8 @@ export class MobileNavigationComponent extends HTMLElement {
         if (footerSocial) {
           const footerRect = footerSocial.getBoundingClientRect();
           const viewportHeight = window.innerHeight;
-          // Consider footer visible if it's within the bottom 20% of the viewport
-          isFooterSocialVisible = footerRect.top < viewportHeight * 0.8;
+          // Hide mobile nav when footer social section enters viewport
+          isFooterSocialVisible = footerRect.top < viewportHeight;
         }
 
         // Show bottom nav only if main nav is hidden AND footer social is not visible

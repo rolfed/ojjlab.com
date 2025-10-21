@@ -186,6 +186,22 @@
     @apply relative;
   }
 
+  /* Show desktop menu in landscape mobile mode */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .hero-menu {
+      @apply flex;
+    }
+
+    /* Hide secondary menu items in landscape mobile to prevent crowding */
+    /* Keep only: Programs, Schedule, Join, Login */
+    .hero-menu li:has([data-testid='nav-about']),
+    .hero-menu li:has([data-testid='nav-coaches']),
+    .hero-menu li:has([data-testid='nav-contact']),
+    .hero-menu li:has([data-testid='nav-shop']) {
+      @apply hidden;
+    }
+  }
+
   .hero-menu ul {
     @apply list-none p-0 m-0 flex flex-row space-x-6;
   }
@@ -420,12 +436,7 @@
     @apply hover:text-brand-dark dark:hover:text-brand-light;
   }
 
-  /* Hide version badge on smaller screens to save space */
-  @media (max-width: 768px) {
-    .version-badge {
-      @apply hidden;
-    }
-  }
+  /* Version badge is intentionally visible on all screen sizes for debugging */
 
   /* Contact Page Styles */
   .contact-cta {
@@ -783,14 +794,25 @@
     @apply md:hidden;
   }
 
+  /* Hide mobile nav in landscape mode (desktop nav shows instead) */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .mobile-bottom-nav {
+      @apply hidden;
+    }
+  }
+
   .mobile-bottom-nav.visible {
     @apply translate-y-0 opacity-100;
   }
 
   .mobile-bottom-nav-container {
-    @apply flex items-center justify-between;
+    @apply flex items-center justify-center;
     @apply px-4 py-3;
     @apply max-w-screen-xl mx-auto;
+  }
+
+  .mobile-nav-logo {
+    @apply absolute left-4;
   }
 
   .mobile-nav-logo img {
@@ -826,6 +848,13 @@
     @apply invisible opacity-0;
   }
 
+  /* Hide fullscreen menu in landscape mode (use desktop nav instead) */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .mobile-fullscreen-menu {
+      @apply hidden;
+    }
+  }
+
   .mobile-menu-header {
     @apply flex justify-center items-center;
     @apply p-4;
@@ -834,12 +863,12 @@
 
   .mobile-menu-footer {
     @apply flex justify-center items-center;
-    @apply p-6 pb-8;
+    @apply px-4 py-3;
     @apply border-t border-accent-dark dark:border-accent-light;
   }
 
   .mobile-close-btn {
-    @apply p-3 rounded-full;
+    @apply p-2 rounded-full;
     @apply bg-gray-100 dark:bg-gray-800;
     @apply hover:bg-gray-200 dark:hover:bg-gray-700;
     @apply transition-colors duration-200;
