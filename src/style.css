@@ -191,6 +191,15 @@
     .hero-menu {
       @apply flex;
     }
+
+    /* Hide secondary menu items in landscape mobile to prevent crowding */
+    /* Keep only: Programs, Schedule, Join, Login */
+    .hero-menu li:has([data-testid='nav-about']),
+    .hero-menu li:has([data-testid='nav-coaches']),
+    .hero-menu li:has([data-testid='nav-contact']),
+    .hero-menu li:has([data-testid='nav-shop']) {
+      @apply hidden;
+    }
   }
 
   .hero-menu ul {
