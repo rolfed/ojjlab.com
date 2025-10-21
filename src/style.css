@@ -843,7 +843,7 @@
   }
 
   .mobile-close-btn {
-    @apply p-3 rounded-full;
+    @apply p-2 rounded-full;
     @apply bg-gray-100 dark:bg-gray-800;
     @apply hover:bg-gray-200 dark:hover:bg-gray-700;
     @apply transition-colors duration-200;
