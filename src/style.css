@@ -788,9 +788,13 @@
   }
 
   .mobile-bottom-nav-container {
-    @apply flex items-center justify-between;
+    @apply flex items-center justify-center;
     @apply px-4 py-3;
     @apply max-w-screen-xl mx-auto;
+  }
+
+  .mobile-nav-logo {
+    @apply absolute left-4;
   }
 
   .mobile-nav-logo img {
