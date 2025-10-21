@@ -33,18 +33,7 @@ export class VersionComponent extends HTMLElement {
     const displayVersion = getDisplayVersion();
     const detailedVersion = getDetailedVersion();
 
-    return `
-      <div class="version-badge" data-testid="version-badge">
-        <span
-          class="version-text"
-          title="${detailedVersion}"
-          data-testid="version-text"
-          aria-label="Application version ${displayVersion}"
-        >
-          ${displayVersion}
-        </span>
-      </div>
-    `;
+    return `<div class="version-badge" data-testid="version-badge"><span class="version-text" title="${detailedVersion}" data-testid="version-text" aria-label="Application version ${displayVersion}">${displayVersion}</span></div>`;
   }
 
   private initializeTooltip(): void {

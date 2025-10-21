@@ -436,12 +436,7 @@
     @apply hover:text-brand-dark dark:hover:text-brand-light;
   }
 
-  /* Hide version badge on smaller screens to save space */
-  @media (max-width: 768px) {
-    .version-badge {
-      @apply hidden;
-    }
-  }
+  /* Version badge is intentionally visible on all screen sizes for debugging */
 
   /* Contact Page Styles */
   .contact-cta {

@@ -199,6 +199,43 @@ The router automatically reinitializes theme functionality when loading template
 - Reinitializes theme configuration
 - Maintains theme state across navigation
 
+## Debug Mode
+
+The application includes a debug mode that displays the current version in the footer. This is useful for verifying deployments and troubleshooting issues.
+
+### Enabling Debug Mode
+
+To enable debug mode, set the `debug` cookie to `on`:
+
+```javascript
+// In browser console
+document.cookie = 'debug=on; path=/';
+```
+
+After setting the cookie, refresh the page. The version badge will appear in the footer showing the current application version (e.g., "v1.0.0").
+
+### Disabling Debug Mode
+
+To disable debug mode, either:
+
+1. **Delete the cookie:**
+
+```javascript
+document.cookie = 'debug=off; path=/; max-age=0';
+```
+
+2. **Clear browser cookies** for the site
+
+### Version Information
+
+When debug mode is enabled:
+
+- **Display Version**: Shows in the footer (e.g., "v1.0.0")
+- **Detailed Version**: Hover over the version badge to see full version details including build information
+- **Location**: Bottom of the page in the footer legal section
+
+The version is automatically updated during deployment based on conventional commit messages.
+
 ## Deployment
 
 The application is built as a static site that can be deployed to:
