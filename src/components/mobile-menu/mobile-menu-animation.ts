@@ -90,7 +90,9 @@ export class MobileMenuAnimation {
         '[data-nav-level="programs"] [data-animation="nav-item"]'
       )
     );
-    this.programsSubmenu = container.querySelector('[data-nav-level="programs"]');
+    this.programsSubmenu = container.querySelector(
+      '[data-nav-level="programs"]'
+    );
 
     // Validate required elements
     if (
@@ -160,55 +162,55 @@ export class MobileMenuAnimation {
     // Set menu visible immediately
     tl.set(this.fullscreenMenu, { visibility: 'visible' });
 
-    // Hamburger animation (0s - 0.4s)
-    // Middle bar fades out
+    // Hamburger animation (0s - 0.8s) - More pronounced and slower
+    // Middle bar fades out quickly
     tl.to(
       this.hamburgerMiddle,
       {
         opacity: 0,
-        duration: 0.15,
+        duration: 0.3,
         ease: this.options.ease,
       },
       0
     );
 
-    // Top bar rotates to 45deg and moves down
+    // Top bar rotates to 45deg and moves down - slower and more dramatic
     tl.to(
       this.hamburgerTop,
       {
         rotation: 45,
         y: 6,
-        duration: 0.4,
+        duration: 0.8,
         ease: this.options.ease,
       },
       0
     );
 
-    // Bottom bar rotates to -45deg and moves up
+    // Bottom bar rotates to -45deg and moves up - slower and more dramatic
     tl.to(
       this.hamburgerBottom,
       {
         rotation: -45,
         y: -6,
-        duration: 0.4,
+        duration: 0.8,
         ease: this.options.ease,
       },
       0
     );
 
-    // Menu animation (0.1s - 0.7s)
-    // Slight delay for smoother transition
+    // Menu animation (0.3s - 0.9s) - Delayed to let hamburger finish
+    // Wait for hamburger to mostly complete before showing menu
     tl.to(
       this.fullscreenMenu,
       {
         opacity: 1,
-        duration: 0.1,
+        duration: 0.2,
         ease: this.options.ease,
       },
-      0.1
+      0.3
     );
 
-    // Stagger in nav items
+    // Stagger in nav items - start after menu background is visible
     tl.to(
       this.mainNavItems,
       {
@@ -218,7 +220,7 @@ export class MobileMenuAnimation {
         stagger: this.options.stagger,
         ease: this.options.ease,
       },
-      0.2
+      0.4
     );
 
     return tl;
@@ -296,8 +298,8 @@ export class MobileMenuAnimation {
         resolve(this.getState());
       });
 
-      // Faster close animation (2.4x speed)
-      this.masterTimeline!.timeScale(2.4);
+      // Same speed for close animation (1.0x = normal speed, matching open)
+      this.masterTimeline!.timeScale(1.0);
       this.masterTimeline!.reverse();
     });
   }

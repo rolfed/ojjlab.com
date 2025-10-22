@@ -868,12 +868,10 @@
   }
 
   .mobile-close-btn {
-    @apply p-2 rounded-full;
-    @apply bg-gray-100 dark:bg-gray-800;
-    @apply hover:bg-gray-200 dark:hover:bg-gray-700;
+    @apply p-2 rounded-md;
+    @apply hover:bg-gray-100 dark:hover:bg-gray-800;
     @apply transition-colors duration-200;
     @apply text-black dark:text-white;
-    @apply shadow-lg;
   }
 
   .mobile-close-btn:disabled {
@@ -881,7 +879,7 @@
   }
 
   .mobile-close-btn:disabled:hover {
-    @apply bg-gray-100 dark:bg-gray-800;
+    @apply bg-transparent;
   }
 
   .mobile-menu-content {

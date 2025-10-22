@@ -189,9 +189,14 @@ export class MobileMenuComponent extends HTMLElement {
     });
 
     // Programs trigger
-    const programsTrigger = this.querySelector('[data-element="programs-trigger"]');
+    const programsTrigger = this.querySelector(
+      '[data-element="programs-trigger"]'
+    );
     if (programsTrigger) {
-      programsTrigger.addEventListener('click', this.handleProgramsTrigger.bind(this));
+      programsTrigger.addEventListener(
+        'click',
+        this.handleProgramsTrigger.bind(this)
+      );
     }
 
     // Back button
@@ -208,7 +213,9 @@ export class MobileMenuComponent extends HTMLElement {
    * Handle menu toggle button click
    */
   private async handleMenuToggle(): Promise<void> {
-    const button = this.querySelector('[data-element="menu-toggle"]') as HTMLButtonElement;
+    const button = this.querySelector(
+      '[data-element="menu-toggle"]'
+    ) as HTMLButtonElement;
     if (!button) return;
 
     // Disable button during animation
@@ -292,7 +299,9 @@ export class MobileMenuComponent extends HTMLElement {
    */
   private initializeScrollDetection(): void {
     const findAndInitializeScrollDetection = () => {
-      const mainNav = document.querySelector('.hero-nav, .site-nav') as HTMLElement;
+      const mainNav = document.querySelector(
+        '.hero-nav, .site-nav'
+      ) as HTMLElement;
 
       if (!mainNav) {
         // Retry after a short delay if navigation not found
@@ -305,7 +314,9 @@ export class MobileMenuComponent extends HTMLElement {
         const isMainNavVisible = rect.bottom > 0;
 
         // Check if footer social section is visible
-        const footerSocial = document.querySelector('.footer-social') as HTMLElement;
+        const footerSocial = document.querySelector(
+          '.footer-social'
+        ) as HTMLElement;
         let isFooterSocialVisible = false;
 
         if (footerSocial) {
@@ -360,13 +371,17 @@ export class MobileMenuComponent extends HTMLElement {
    * Initialize mobile theme toggle functionality
    */
   private initializeMobileThemeToggle(): void {
-    const mobileThemeToggle = this.querySelector('[data-element="theme-toggle"]');
+    const mobileThemeToggle = this.querySelector(
+      '[data-element="theme-toggle"]'
+    );
     if (mobileThemeToggle) {
       // Sync with existing theme toggle functionality
-      import('../../functionality/toggle-theme').then(({ themeConfiguration }) => {
-        // Re-run theme configuration to include the mobile button
-        themeConfiguration();
-      });
+      import('../../functionality/toggle-theme').then(
+        ({ themeConfiguration }) => {
+          // Re-run theme configuration to include the mobile button
+          themeConfiguration();
+        }
+      );
     }
   }
 
