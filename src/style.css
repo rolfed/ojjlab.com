@@ -237,11 +237,11 @@
 
   .hero-content h1,
   p {
-    @apply text-center;
+    @apply text-right;
   }
 
   .hero-content p {
-    @apply text-center;
+    @apply text-right;
   }
 
   .ojjlab {
