@@ -3,7 +3,7 @@
 import { themeConfiguration } from './functionality/toggle-theme';
 import { createRouter } from './router/router';
 import './components/navigation';
-import './components/mobile-navigation';
+import './components/mobile-menu'; // Unified mobile menu component
 import './components/loader';
 import './components/footer';
 import './components/page';
