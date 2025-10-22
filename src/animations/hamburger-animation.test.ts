@@ -4,11 +4,28 @@ import { gsap } from 'gsap';
 // Mock GSAP
 jest.mock('gsap', () => ({
   gsap: {
-    timeline: jest.fn(() => ({
-      to: jest.fn().mockReturnThis(),
-      play: jest.fn().mockResolvedValue(undefined),
-      reverse: jest.fn().mockResolvedValue(undefined),
-    })),
+    timeline: jest.fn(() => {
+      let onCompleteCallback: (() => void) | null = null;
+
+      return {
+        to: jest.fn().mockReturnThis(),
+        play: jest.fn(function(this: any) {
+          // Simulate async completion
+          if (onCompleteCallback) {
+            setTimeout(() => onCompleteCallback!(), 0);
+          }
+          return this;
+        }),
+        reverse: jest.fn().mockReturnThis(),
+        eventCallback: jest.fn(function(this: any, event: string, callback: () => void) {
+          if (event === 'onComplete') {
+            onCompleteCallback = callback;
+          }
+          return this;
+        }),
+        kill: jest.fn(),
+      };
+    }),
     set: jest.fn(),
   },
 }));

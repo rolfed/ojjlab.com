@@ -108,10 +108,14 @@ export class HamburgerAnimation {
         '<' // Start at the same time as top bar
       );
 
-    await this.timeline.play();
-
-    this.state.isOpen = true;
-    this.state.isAnimating = false;
+    return new Promise<void>((resolve) => {
+      this.timeline!.eventCallback('onComplete', () => {
+        this.state.isOpen = true;
+        this.state.isAnimating = false;
+        resolve();
+      });
+      this.timeline!.play();
+    });
   }
 
   /**
@@ -148,10 +152,14 @@ export class HamburgerAnimation {
         '-=0.05'
       );
 
-    await this.timeline.play();
-
-    this.state.isOpen = false;
-    this.state.isAnimating = false;
+    return new Promise<void>((resolve) => {
+      this.timeline!.eventCallback('onComplete', () => {
+        this.state.isOpen = false;
+        this.state.isAnimating = false;
+        resolve();
+      });
+      this.timeline!.play();
+    });
   }
 
   /**
