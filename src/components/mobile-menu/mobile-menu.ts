@@ -33,6 +33,7 @@ export class MobileMenuComponent extends HTMLElement {
     this.animation.init(this);
     this.setupEventListeners();
     this.initializeScrollDetection();
+    this.updateActiveNavItem();
   }
 
   public disconnectedCallback(): void {
@@ -274,6 +275,7 @@ export class MobileMenuComponent extends HTMLElement {
     if (link) {
       // Small delay to allow router to handle navigation first
       setTimeout(() => {
+        this.updateActiveNavItem();
         this.handleMenuClose();
       }, 50);
     } else {
@@ -373,6 +375,23 @@ export class MobileMenuComponent extends HTMLElement {
     } else {
       this.animation.hideBottomNav();
     }
+  }
+
+  /**
+   * Update active nav item based on current route
+   */
+  private updateActiveNavItem(): void {
+    const currentPath = window.location.pathname;
+    const navItems = this.querySelectorAll('.mobile-nav-item[data-route]');
+
+    navItems.forEach((item) => {
+      const route = item.getAttribute('data-route');
+      if (route === currentPath) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
   }
 
   /**

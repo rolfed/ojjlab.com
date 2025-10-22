@@ -225,7 +225,7 @@ export class MobileMenuAnimation {
       0
     );
 
-    // Menu animation (0.24s - 0.72s) - Delayed to let hamburger finish
+    // Menu background fades in (0.24s - 0.40s)
     // Wait for hamburger to mostly complete before showing menu
     tl.to(
       this.fullscreenMenu,
@@ -237,7 +237,8 @@ export class MobileMenuAnimation {
       0.24
     );
 
-    // Menu logo fades in (0.24s - 0.48s) - Same timing as menu background
+    // Menu logo fades in first (0.32s - 0.56s)
+    // Starts after menu background is visible
     tl.to(
       this.menuLogo,
       {
@@ -245,10 +246,11 @@ export class MobileMenuAnimation {
         duration: 0.24,
         ease: this.options.ease,
       },
-      0.24
+      0.32
     );
 
-    // Stagger in nav items - start after menu background is visible
+    // Nav items slide in after logo (0.56s onwards)
+    // Start after logo animation completes
     tl.to(
       this.mainNavItems,
       {
@@ -258,7 +260,7 @@ export class MobileMenuAnimation {
         stagger: this.options.stagger,
         ease: this.options.ease,
       },
-      0.32
+      0.56
     );
 
     return tl;

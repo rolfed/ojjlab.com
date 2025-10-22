@@ -970,6 +970,11 @@
     @apply hover:text-brand dark:hover:text-brand-light;
   }
 
+  /* Active page styling */
+  .mobile-nav-item.active {
+    @apply text-brand dark:text-brand-light;
+  }
+
   .mobile-nav-item span {
     @apply inline-block;
     @apply py-2 px-4;
