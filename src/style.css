@@ -237,11 +237,11 @@
 
   .hero-content h1,
   p {
-    @apply text-right;
+    @apply text-center;
   }
 
   .hero-content p {
-    @apply text-right;
+    @apply text-center;
   }
 
   .ojjlab {
@@ -317,7 +317,7 @@
 
     /* Size - keep large impactful text as designed */
     @apply text-5xl sm:text-5xl md:text-8xl;
-    @apply uppercase text-center md:text-right z-20;
+    @apply uppercase text-center z-20;
   }
 
   .section-title-container {
