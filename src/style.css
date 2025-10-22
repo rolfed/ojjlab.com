@@ -1495,6 +1495,7 @@
     @apply text-sm sm:text-base md:text-lg lg:text-xl;
     @apply uppercase text-center font-content;
     @apply max-w-3xl mx-auto;
+    @apply landscape:px-8;
   }
 
   .section-title-left .section-subtitle {
