@@ -95,6 +95,14 @@ export class MobileMenuComponent extends HTMLElement {
 
         <!-- Main Content -->
         <div class="mobile-menu-content" data-testid="mobile-menu-content">
+          <!-- Logo in Menu -->
+          <div class="mobile-menu-logo" data-animation="menu-logo" data-testid="mobile-menu-logo">
+            <a href="/" data-route="/" data-testid="mobile-menu-logo-link">
+              <img class="block dark:hidden h-8 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab.svg')}" alt="Oregon Jiu Jitsu Lab" data-testid="mobile-menu-logo-light"/>
+              <img class="hidden dark:block h-8 w-auto" src="${getAssetUrl('/images/brand/oregon-jiu-jitsu-lab-light.svg')}" alt="Oregon Jiu Jitsu Lab" data-testid="mobile-menu-logo-dark"/>
+            </a>
+          </div>
+
           <!-- Navigation Container -->
           <div class="mobile-nav-container" data-testid="mobile-nav-container">
             <!-- Main Navigation -->

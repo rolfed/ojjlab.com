@@ -892,6 +892,20 @@
     @apply max-h-full;
   }
 
+  /* Logo in fullscreen menu */
+  .mobile-menu-logo {
+    @apply mb-8;
+    @apply opacity-0;
+  }
+
+  .mobile-menu-logo a {
+    @apply block;
+  }
+
+  .mobile-menu-logo img {
+    @apply h-8 w-auto mx-auto;
+  }
+
   /* Navigation container for proper positioning */
   .mobile-nav-container {
     @apply relative w-full max-w-xs;

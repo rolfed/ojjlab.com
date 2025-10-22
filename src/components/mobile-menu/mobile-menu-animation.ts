@@ -35,7 +35,9 @@ export interface MobileMenuAnimationOptions {
 export class MobileMenuAnimation {
   // DOM elements
   private bottomNav: HTMLElement | null = null;
+  private bottomNavLogo: HTMLElement | null = null;
   private fullscreenMenu: HTMLElement | null = null;
+  private menuLogo: HTMLElement | null = null;
   private hamburgerTop: SVGElement | null = null;
   private hamburgerMiddle: SVGElement | null = null;
   private hamburgerBottom: SVGElement | null = null;
@@ -72,7 +74,9 @@ export class MobileMenuAnimation {
   public init(container: HTMLElement): void {
     // Find bottom nav and fullscreen menu
     this.bottomNav = container.querySelector('.mobile-bottom-nav');
+    this.bottomNavLogo = container.querySelector('.mobile-nav-logo');
     this.fullscreenMenu = container.querySelector('.mobile-fullscreen-menu');
+    this.menuLogo = container.querySelector('[data-animation="menu-logo"]');
 
     // Find hamburger bars
     this.hamburgerTop = container.querySelector('.hamburger-top');
@@ -97,7 +101,9 @@ export class MobileMenuAnimation {
     // Validate required elements
     if (
       !this.bottomNav ||
+      !this.bottomNavLogo ||
       !this.fullscreenMenu ||
+      !this.menuLogo ||
       !this.hamburgerTop ||
       !this.hamburgerMiddle ||
       !this.hamburgerBottom
@@ -122,9 +128,19 @@ export class MobileMenuAnimation {
       opacity: 1,
     });
 
+    // Bottom nav logo initial state (visible)
+    gsap.set(this.bottomNavLogo, {
+      opacity: 1,
+    });
+
     // Fullscreen menu initial state
     gsap.set(this.fullscreenMenu, {
       visibility: 'hidden',
+      opacity: 0,
+    });
+
+    // Menu logo initial state (hidden)
+    gsap.set(this.menuLogo, {
       opacity: 0,
     });
 
@@ -162,52 +178,74 @@ export class MobileMenuAnimation {
     // Set menu visible immediately
     tl.set(this.fullscreenMenu, { visibility: 'visible' });
 
-    // Hamburger animation (0s - 0.8s) - More pronounced and slower
+    // Logo crossfade (0s - 0.24s) - Bottom nav logo fades out
+    tl.to(
+      this.bottomNavLogo,
+      {
+        opacity: 0,
+        duration: 0.24,
+        ease: this.options.ease,
+      },
+      0
+    );
+
+    // Hamburger animation (0s - 0.64s) - 20% faster
     // Middle bar fades out quickly
     tl.to(
       this.hamburgerMiddle,
       {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.24,
         ease: this.options.ease,
       },
       0
     );
 
-    // Top bar rotates to 45deg and moves down - slower and more dramatic
+    // Top bar rotates to 45deg and moves down
     tl.to(
       this.hamburgerTop,
       {
         rotation: 45,
         y: 6,
-        duration: 0.8,
+        duration: 0.64,
         ease: this.options.ease,
       },
       0
     );
 
-    // Bottom bar rotates to -45deg and moves up - slower and more dramatic
+    // Bottom bar rotates to -45deg and moves up
     tl.to(
       this.hamburgerBottom,
       {
         rotation: -45,
         y: -6,
-        duration: 0.8,
+        duration: 0.64,
         ease: this.options.ease,
       },
       0
     );
 
-    // Menu animation (0.3s - 0.9s) - Delayed to let hamburger finish
+    // Menu animation (0.24s - 0.72s) - Delayed to let hamburger finish
     // Wait for hamburger to mostly complete before showing menu
     tl.to(
       this.fullscreenMenu,
       {
         opacity: 1,
-        duration: 0.2,
+        duration: 0.16,
         ease: this.options.ease,
       },
-      0.3
+      0.24
+    );
+
+    // Menu logo fades in (0.24s - 0.48s) - Same timing as menu background
+    tl.to(
+      this.menuLogo,
+      {
+        opacity: 1,
+        duration: 0.24,
+        ease: this.options.ease,
+      },
+      0.24
     );
 
     // Stagger in nav items - start after menu background is visible
@@ -220,7 +258,7 @@ export class MobileMenuAnimation {
         stagger: this.options.stagger,
         ease: this.options.ease,
       },
-      0.4
+      0.32
     );
 
     return tl;
@@ -484,7 +522,9 @@ export class MobileMenuAnimation {
 
     // Clear element references
     this.bottomNav = null;
+    this.bottomNavLogo = null;
     this.fullscreenMenu = null;
+    this.menuLogo = null;
     this.hamburgerTop = null;
     this.hamburgerMiddle = null;
     this.hamburgerBottom = null;
