@@ -80,30 +80,30 @@ export class HamburgerAnimation {
 
     this.timeline = gsap.timeline();
 
-    // Animate to X shape
+    // Animate to X shape (timing synced with menu animation)
     this.timeline
       .to(this.middleBar, {
         opacity: 0,
-        duration: 0.2,
-        ease: 'power2.inOut',
+        duration: 0.15,
+        ease: 'power3.out',
       })
       .to(
         this.topBar,
         {
           rotation: 45,
           y: 6,
-          duration: 0.3,
-          ease: 'power2.inOut',
+          duration: 0.4,
+          ease: 'power3.out',
         },
-        '-=0.1'
+        '-=0.05'
       )
       .to(
         this.bottomBar,
         {
           rotation: -45,
           y: -6,
-          duration: 0.3,
-          ease: 'power2.inOut',
+          duration: 0.4,
+          ease: 'power3.out',
         },
         '<' // Start at the same time as top bar
       );
@@ -130,22 +130,22 @@ export class HamburgerAnimation {
 
     this.timeline = gsap.timeline();
 
-    // Animate back to hamburger
+    // Animate back to hamburger (timing synced with menu animation)
     this.timeline
       .to([this.topBar, this.bottomBar], {
         rotation: 0,
         y: 0,
-        duration: 0.3,
-        ease: 'power2.inOut',
+        duration: 0.4,
+        ease: 'power3.out',
       })
       .to(
         this.middleBar,
         {
           opacity: 1,
-          duration: 0.2,
-          ease: 'power2.inOut',
+          duration: 0.15,
+          ease: 'power3.out',
         },
-        '-=0.1'
+        '-=0.05'
       );
 
     await this.timeline.play();

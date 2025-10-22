@@ -1,8 +1,10 @@
 import { MobileNavAnimation } from '../../animations/mobile-nav';
+import { HamburgerAnimation } from '../../animations/hamburger-animation';
 import { getAssetUrl } from '../../utils/base-path';
 
 export class MobileNavigationComponent extends HTMLElement {
   private mobileNavAnimation: MobileNavAnimation;
+  private hamburgerAnimation: HamburgerAnimation;
   private bottomNav: HTMLElement | null = null;
   private fullscreenMenu: HTMLElement | null = null;
   private hamburgerButton: HTMLElement | null = null;
@@ -11,6 +13,7 @@ export class MobileNavigationComponent extends HTMLElement {
   constructor() {
     super();
     this.mobileNavAnimation = new MobileNavAnimation();
+    this.hamburgerAnimation = new HamburgerAnimation();
   }
 
   public connectedCallback(): void {
@@ -19,6 +22,12 @@ export class MobileNavigationComponent extends HTMLElement {
     this.setupEventListeners();
     this.initializeScrollDetection();
     this.mobileNavAnimation.init(this.fullscreenMenu!);
+
+    // Initialize hamburger animation
+    const hamburgerContainer = this.querySelector('[data-element="hamburger-container"]') as HTMLElement;
+    if (hamburgerContainer) {
+      this.hamburgerAnimation.init(hamburgerContainer);
+    }
   }
 
   private getTemplate(): string {
@@ -34,13 +43,12 @@ export class MobileNavigationComponent extends HTMLElement {
                         </a>
                     </div>
 
-                    <!-- Hamburger Menu Button -->
+                    <!-- Animated Hamburger Menu Button -->
                     <button class="mobile-hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false" data-element="menu-toggle" data-testid="mobile-menu-toggle">
-                        <svg data-animation="hamburger-icon" data-testid="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18"/>
-                        </svg>
-                        <svg data-animation="close-icon" data-testid="close-icon" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        <svg data-element="hamburger-container" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6">
+                            <path class="hamburger-top" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18"/>
+                            <path class="hamburger-middle" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18"/>
+                            <path class="hamburger-bottom" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18h18"/>
                         </svg>
                     </button>
                 </div>
@@ -269,9 +277,14 @@ export class MobileNavigationComponent extends HTMLElement {
 
     this.setButtonsDisabled(true);
 
-    const newState = currentState.isOpen
-      ? await this.closeMobileMenu()
-      : await this.openMobileMenu();
+    // Animate hamburger and menu together
+    const menuPromise = currentState.isOpen
+      ? this.closeMobileMenu()
+      : this.openMobileMenu();
+
+    const hamburgerPromise = this.hamburgerAnimation.toggle();
+
+    const [newState] = await Promise.all([menuPromise, hamburgerPromise]);
 
     this.updateButtonState(newState.isOpen);
     this.setButtonsDisabled(false);
@@ -279,23 +292,6 @@ export class MobileNavigationComponent extends HTMLElement {
 
   private updateButtonState(isOpen: boolean): void {
     if (!this.hamburgerButton) return;
-
-    const hamburgerIcon = this.hamburgerButton.querySelector(
-      '[data-animation="hamburger-icon"]'
-    );
-    const closeIcon = this.hamburgerButton.querySelector(
-      '[data-animation="close-icon"]'
-    );
-
-    if (hamburgerIcon && closeIcon) {
-      if (isOpen) {
-        hamburgerIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
-      } else {
-        hamburgerIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-      }
-    }
 
     this.hamburgerButton.setAttribute('aria-expanded', isOpen.toString());
   }
@@ -316,7 +312,13 @@ export class MobileNavigationComponent extends HTMLElement {
 
   private async closeMobileMenuWithIconUpdate(): Promise<void> {
     this.setButtonsDisabled(true);
-    const newState = await this.closeMobileMenu();
+
+    // Animate both menu and hamburger
+    const menuPromise = this.closeMobileMenu();
+    const hamburgerPromise = this.hamburgerAnimation.animateToHamburger();
+
+    const [newState] = await Promise.all([menuPromise, hamburgerPromise]);
+
     this.updateButtonState(newState.isOpen);
     this.setButtonsDisabled(false);
   }

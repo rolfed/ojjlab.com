@@ -840,6 +840,11 @@
     fill: none !important;
   }
 
+  .mobile-hamburger-btn svg path {
+    @apply visible;
+    stroke: inherit;
+  }
+
   /* Fullscreen Mobile Menu */
   .mobile-fullscreen-menu {
     @apply fixed inset-0 z-50;
