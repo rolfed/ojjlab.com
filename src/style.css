@@ -820,7 +820,7 @@
   }
 
   .mobile-hamburger-btn {
-    @apply p-2 rounded-md;
+    @apply p-3 rounded-md;
     @apply hover:bg-gray-100 dark:hover:bg-gray-800;
     @apply transition-colors duration-200;
     @apply relative;
@@ -868,7 +868,7 @@
   }
 
   .mobile-close-btn {
-    @apply p-2 rounded-md;
+    @apply p-3 rounded-md;
     @apply hover:bg-gray-100 dark:hover:bg-gray-800;
     @apply transition-colors duration-200;
     @apply text-black dark:text-white;
