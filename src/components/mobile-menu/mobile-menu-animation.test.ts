@@ -68,15 +68,15 @@ describe('MobileMenuAnimation', () => {
     container = document.createElement('div');
     container.innerHTML = `
       <div class="mobile-bottom-nav">
-        <div class="mobile-nav-logo">
-          <svg class="hamburger-icon">
-            <path class="hamburger-top" d="M3 6h18" />
-            <path class="hamburger-middle" d="M3 12h18" />
-            <path class="hamburger-bottom" d="M3 18h18" />
-          </svg>
-        </div>
+        <div class="mobile-nav-logo">Logo</div>
+        <svg class="hamburger-icon">
+          <path class="hamburger-top" d="M3 6h18" />
+          <path class="hamburger-middle" d="M3 12h18" />
+          <path class="hamburger-bottom" d="M3 18h18" />
+        </svg>
       </div>
       <div class="mobile-fullscreen-menu">
+        <div data-animation="menu-logo">Menu Logo</div>
         <div data-nav-level="main">
           <div data-animation="nav-item">Home</div>
           <div data-animation="nav-item">About</div>
