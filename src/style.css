@@ -177,6 +177,24 @@
     @apply transition-all duration-300 ease-in-out;
   }
 
+  /* Mobile portrait: center logo, hide desktop controls */
+  @media (max-width: 767px) and (orientation: portrait) {
+    .hero-nav {
+      @apply justify-center;
+    }
+
+    /* Hide desktop theme toggle on mobile portrait */
+    .hero-nav .theme-toggle,
+    .hero-nav [data-testid="desktop-controls-container"] {
+      @apply hidden;
+    }
+
+    /* Hide desktop menu items on mobile portrait */
+    .hero-nav .hero-menu {
+      @apply hidden;
+    }
+  }
+
   .hero-nav.scrolled {
     @apply py-3;
   }
@@ -771,6 +789,108 @@
     @apply transition-transform duration-200;
   }
 
+  /* Mobile Portrait Top Bar */
+  .mobile-portrait-top-bar {
+    /* Positioned in document flow, above the sticky nav */
+    @apply w-full flex justify-around items-center gap-1;
+    @apply py-1.5 px-2;
+    @apply bg-white dark:bg-black;
+    @apply border-b border-accent-dark/30 dark:border-accent-light/30;
+    @apply hidden;
+  }
+
+  /* Show top bar only on mobile portrait */
+  @media (max-width: 767px) and (orientation: portrait) {
+    .mobile-portrait-top-bar {
+      @apply flex;
+    }
+  }
+
+  .mobile-top-bar-btn {
+    @apply flex flex-col items-center justify-center gap-0.5;
+    @apply px-2 py-2;
+    @apply bg-transparent;
+    @apply text-black dark:text-white;
+    @apply font-content font-normal text-[10px];
+    @apply transition-all duration-200;
+    @apply hover:text-brand dark:hover:text-brand-light;
+    @apply rounded;
+    @apply no-underline;
+    /* WCAG AAA minimum touch target: 44px height */
+    min-height: 44px;
+    min-width: 44px;
+    /* Remove all outlines */
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-top-bar-btn:focus,
+  .mobile-top-bar-btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .mobile-top-bar-btn:active {
+    @apply scale-95;
+  }
+
+  .mobile-top-bar-btn svg {
+    @apply w-4 h-4 flex-shrink-0;
+    /* Icons inherit text color */
+    color: currentColor;
+    stroke: currentColor;
+  }
+
+  /* Highlight Schedule Trial button in red */
+  .mobile-top-bar-schedule {
+    @apply text-brand dark:text-brand;
+    @apply font-semibold;
+  }
+
+  .mobile-top-bar-schedule svg {
+    stroke: currentColor;
+  }
+
+  .mobile-phone-menu {
+    @apply fixed left-0 right-0;
+    @apply w-full px-4;
+    @apply bg-white dark:bg-black;
+    @apply border-b border-accent-dark/30 dark:border-accent-light/30;
+    @apply shadow-lg;
+    @apply flex flex-col;
+    @apply overflow-hidden;
+    /* Position below the top bar */
+    top: calc(var(--button-height, 60px) + 0.5rem);
+    z-index: 70;
+  }
+
+  .phone-menu-option {
+    @apply flex items-center gap-3;
+    @apply px-4 py-3;
+    @apply text-black dark:text-white;
+    @apply font-content font-medium text-base;
+    @apply transition-all duration-200;
+    @apply hover:bg-gray-100 dark:hover:bg-gray-800;
+    @apply hover:text-brand dark:hover:text-brand-light;
+    @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand;
+    @apply border-b border-gray-200 dark:border-gray-700;
+    @apply no-underline;
+    /* WCAG AAA minimum touch target: 44px height */
+    min-height: 44px;
+  }
+
+  .phone-menu-option:last-child {
+    @apply border-b-0;
+  }
+
+  .phone-menu-option:active {
+    @apply bg-gray-200 dark:bg-gray-700;
+  }
+
+  .phone-menu-option svg {
+    @apply w-5 h-5 flex-shrink-0;
+  }
+
   /* Mobile Menu Button */
   .mobile-menu-button {
     @apply p-2 rounded-md;
@@ -820,7 +940,7 @@
   }
 
   .mobile-hamburger-btn {
-    @apply p-2 rounded-md;
+    @apply p-3 rounded-md;
     @apply hover:bg-gray-100 dark:hover:bg-gray-800;
     @apply transition-colors duration-200;
     @apply relative;
@@ -868,12 +988,10 @@
   }
 
   .mobile-close-btn {
-    @apply p-2 rounded-full;
-    @apply bg-gray-100 dark:bg-gray-800;
-    @apply hover:bg-gray-200 dark:hover:bg-gray-700;
+    @apply p-3 rounded-md;
+    @apply hover:bg-gray-100 dark:hover:bg-gray-800;
     @apply transition-colors duration-200;
     @apply text-black dark:text-white;
-    @apply shadow-lg;
   }
 
   .mobile-close-btn:disabled {
@@ -881,7 +999,7 @@
   }
 
   .mobile-close-btn:disabled:hover {
-    @apply bg-gray-100 dark:bg-gray-800;
+    @apply bg-transparent;
   }
 
   .mobile-menu-content {
@@ -892,6 +1010,20 @@
     @apply min-h-0;
     /* Ensure content area can accommodate scrolling */
     @apply max-h-full;
+  }
+
+  /* Logo in fullscreen menu */
+  .mobile-menu-logo {
+    @apply mb-8;
+    @apply opacity-0;
+  }
+
+  .mobile-menu-logo a {
+    @apply block;
+  }
+
+  .mobile-menu-logo img {
+    @apply h-8 w-auto mx-auto;
   }
 
   /* Navigation container for proper positioning */
@@ -956,6 +1088,11 @@
     @apply transform translate-x-24 opacity-0;
     @apply transition-colors duration-200;
     @apply hover:text-brand dark:hover:text-brand-light;
+  }
+
+  /* Active page styling */
+  .mobile-nav-item.active {
+    @apply text-brand dark:text-brand-light;
   }
 
   .mobile-nav-item span {

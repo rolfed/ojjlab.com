@@ -135,13 +135,37 @@
     <!-- Functional Loader Component (will replace static loader) -->
     <ojj-loader id="page-loader" style="display: none"></ojj-loader>
 
+    <!-- Mobile Menu Component -->
+    <mobile-menu></mobile-menu>
+
     <!-- Footer Component -->
     <ojj-footer></ojj-footer>
 
-    <script
-      src="https://widgets.leadconnectorhq.com/loader.js"
-      data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-      data-widget-id="68cc59c31eb3ad57420e8bfa"
-    ></script>
+    <!-- Chatbot - Load after page loader completes -->
+    <script>
+      // Wait for loader to complete before loading chatbot
+      window.addEventListener('DOMContentLoaded', () => {
+        const loader = document.getElementById('page-loader');
+        if (loader && loader.onComplete) {
+          loader.onComplete(() => {
+            // Load chatbot script after loader animation completes
+            const chatbotScript = document.createElement('script');
+            chatbotScript.src = 'https://widgets.leadconnectorhq.com/loader.js';
+            chatbotScript.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+            chatbotScript.setAttribute('data-widget-id', '68cc59c31eb3ad57420e8bfa');
+            document.body.appendChild(chatbotScript);
+          });
+        } else {
+          // Fallback: load chatbot after a delay if loader not found
+          setTimeout(() => {
+            const chatbotScript = document.createElement('script');
+            chatbotScript.src = 'https://widgets.leadconnectorhq.com/loader.js';
+            chatbotScript.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+            chatbotScript.setAttribute('data-widget-id', '68cc59c31eb3ad57420e8bfa');
+            document.body.appendChild(chatbotScript);
+          }, 2000);
+        }
+      });
+    </script>
   </body>
 </html>
