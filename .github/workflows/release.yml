@@ -176,7 +176,7 @@ jobs:
       - name: Commit version bump
         run: |
           git add package.json package-lock.json
-          git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }}"
+          git commit -m "chore: Bump version to ${{ steps.version.outputs.new_version }}" --no-verify
           git push origin main
 
       - name: Create Git tag
