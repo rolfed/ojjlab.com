@@ -29,9 +29,13 @@ const setupThemeToggle = () => {
   const homeBtn = document.getElementById('theme-toggle');
   const navBtn = document.getElementById('nav-theme-toggle');
   const mobileBtn = document.getElementById('mobile-theme-toggle');
-  const mobilePortraitBtn = document.getElementById('mobile-portrait-theme-toggle');
+  const mobilePortraitBtn = document.getElementById(
+    'mobile-portrait-theme-toggle'
+  );
 
-  const buttons = [homeBtn, navBtn, mobileBtn, mobilePortraitBtn].filter(Boolean);
+  const buttons = [homeBtn, navBtn, mobileBtn, mobilePortraitBtn].filter(
+    Boolean
+  );
 
   const getCurrentTheme = () => {
     return localStorage.getItem('theme') || 'system';

@@ -157,7 +157,9 @@ export class NavigationComponent extends HTMLElement {
     routeLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const route = (e.currentTarget as HTMLElement).getAttribute('data-route');
+        const route = (e.currentTarget as HTMLElement).getAttribute(
+          'data-route'
+        );
         if (!route || !window.router) return;
 
         window.router.navigate(route);
@@ -166,8 +168,12 @@ export class NavigationComponent extends HTMLElement {
   }
 
   private initializePhoneButton(): void {
-    const phoneButton = this.querySelector('[data-testid="mobile-phone-button"]') as HTMLButtonElement;
-    const phoneMenu = this.querySelector('[data-testid="mobile-phone-menu"]') as HTMLElement;
+    const phoneButton = this.querySelector(
+      '[data-testid="mobile-phone-button"]'
+    ) as HTMLButtonElement;
+    const phoneMenu = this.querySelector(
+      '[data-testid="mobile-phone-menu"]'
+    ) as HTMLElement;
 
     if (!phoneButton || !phoneMenu) return;
 
@@ -188,15 +194,19 @@ export class NavigationComponent extends HTMLElement {
           opacity: 1,
           y: 0,
           duration: 0.3,
-          ease: 'power2.out'
+          ease: 'power2.out',
         })
-        .to(menuOptions, {
-          opacity: 1,
-          x: 0,
-          duration: 0.3,
-          stagger: 0.1,
-          ease: 'power2.out'
-        }, '-=0.2');
+        .to(
+          menuOptions,
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.3,
+            stagger: 0.1,
+            ease: 'power2.out',
+          },
+          '-=0.2'
+        );
     };
 
     const closeMenu = () => {
@@ -206,18 +216,22 @@ export class NavigationComponent extends HTMLElement {
       const tl = gsap.timeline();
 
       tl.to(menuOptions, {
-          opacity: 0,
-          x: -20,
-          duration: 0.2,
-          stagger: 0.05,
-          ease: 'power2.in'
-        })
-        .to(phoneMenu, {
-          opacity: 0,
-          y: -10,
-          duration: 0.2,
-          ease: 'power2.in'
-        }, '-=0.1')
+        opacity: 0,
+        x: -20,
+        duration: 0.2,
+        stagger: 0.05,
+        ease: 'power2.in',
+      })
+        .to(
+          phoneMenu,
+          {
+            opacity: 0,
+            y: -10,
+            duration: 0.2,
+            ease: 'power2.in',
+          },
+          '-=0.1'
+        )
         .set(phoneMenu, { display: 'none' });
     };
 
@@ -241,7 +255,11 @@ export class NavigationComponent extends HTMLElement {
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (this.phoneMenuOpen && !phoneMenu.contains(e.target as Node) && e.target !== phoneButton) {
+      if (
+        this.phoneMenuOpen &&
+        !phoneMenu.contains(e.target as Node) &&
+        e.target !== phoneButton
+      ) {
         closeMenu();
       }
     });
