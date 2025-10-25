@@ -185,7 +185,7 @@
 
     /* Hide desktop theme toggle on mobile portrait */
     .hero-nav .theme-toggle,
-    .hero-nav [data-testid="desktop-controls-container"] {
+    .hero-nav [data-testid='desktop-controls-container'] {
       @apply hidden;
     }
 
