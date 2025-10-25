@@ -11,7 +11,10 @@ test.describe('Mobile Phone Button', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
     // Wait for page loader to finish
-    await page.waitForSelector('#page-loader', { state: 'hidden', timeout: 10000 });
+    await page.waitForSelector('#page-loader', {
+      state: 'hidden',
+      timeout: 10000,
+    });
   });
 
   test.describe('Visibility', () => {
@@ -115,10 +118,15 @@ test.describe('Mobile Phone Button', () => {
       await page.setViewportSize({ width: 375, height: 667 });
     });
 
-    test('should have accessible button with proper aria label', async ({ page }) => {
+    test('should have accessible button with proper aria label', async ({
+      page,
+    }) => {
       const phoneButton = page.locator('[data-testid="mobile-phone-button"]');
 
-      await expect(phoneButton).toHaveAttribute('aria-label', 'Contact us by phone');
+      await expect(phoneButton).toHaveAttribute(
+        'aria-label',
+        'Contact us by phone'
+      );
       await expect(phoneButton).toHaveAttribute('type', 'button');
     });
 
@@ -179,7 +187,9 @@ test.describe('Mobile Phone Button', () => {
       await page.setViewportSize({ width: 375, height: 667 });
     });
 
-    test('should be positioned above the nav in hero section', async ({ page }) => {
+    test('should be positioned above the nav in hero section', async ({
+      page,
+    }) => {
       const phoneButton = page.locator('[data-testid="mobile-phone-button"]');
       const heroNav = page.locator('.hero-nav');
 
