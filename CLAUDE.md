@@ -212,6 +212,7 @@ Feature Branch → Create PR → ci.yml (all quality checks in one job)
 - ✅ **180 lines total**: Down from 878 lines (79.5% reduction)
 
 **Metrics:**
+
 - **Before**: 878 lines, 4 workflows, 13 jobs
 - **After**: 180 lines, 2 workflows, 2 jobs
 - **CI time**: ~3-5 minutes (single job, no parallelization overhead)
