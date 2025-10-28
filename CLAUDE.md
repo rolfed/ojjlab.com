@@ -170,23 +170,47 @@ npm run lint && npm run format:check && npm run build && npm run test:unit && np
 
 #### GitHub Actions Workflows
 
-- **PR Validation** (`pr-validation.yml`): Runs on PRs
-  - Code quality checks (lint, format)
-  - Unit tests with coverage
-  - Build validation
-  - Integration tests
-  - Security audit
-  - PR summary comment
+**Simplified CI/CD Pipeline (Best Practices)**
 
-- **Deployment** (`deploy.yml`): Runs on main branch push
-  - Builds and deploys to GitHub Pages
-  - Includes version info in build
+- **PR Validation** (`pr-validation.yml`): Single source of truth for all quality checks
+  - Runs on: Pull requests to main
+  - Setup & dependency caching (shared across all jobs)
+  - Code quality checks (lint, format) in parallel
+  - Unit tests with coverage reporting
+  - Build validation with artifact caching
+  - Integration tests across multiple browsers (Chromium, Firefox, WebKit)
+  - Security audit with vulnerability scanning
+  - Intelligent PR summary comment with all results
 
-- **Release Management** (`release.yml`): Runs on main branch push
+- **Release Management** (`release.yml`): Automated versioning
+  - Runs on: Push to main branch
   - Analyzes commits for release type (patch/minor/major)
   - Bumps version in package.json
   - Creates git tags and GitHub releases
   - Generates changelog from conventional commits
+  - Triggers deployment workflow
+
+- **Deployment** (`deploy.yml`): Production deployment
+  - Runs on: Release publication (triggered by release.yml)
+  - Builds production-optimized bundle
+  - Deploys to GitHub Pages
+  - Manual deployment option available via workflow_dispatch
+
+- **Dependabot Auto-Merge** (`dependabot-auto-merge.yml`): Automated dependency updates
+  - Runs on: Dependabot pull requests
+  - Auto-merges patch and minor updates for non-critical dependencies
+  - Waits for all checks to pass before merging
+
+**Workflow Execution Flow:**
+```
+Feature Branch → PR Created → pr-validation.yml (all quality gates)
+                              ↓
+                         PR Approved & Merged to Main
+                              ↓
+                         release.yml (version bump + tag)
+                              ↓
+                         deploy.yml (GitHub Pages deployment)
+```
 
 #### Quick Commands
 
