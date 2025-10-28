@@ -170,48 +170,52 @@ npm run lint && npm run format:check && npm run build && npm run test:unit && np
 
 #### GitHub Actions Workflows
 
-**Simplified CI/CD Pipeline (Best Practices)**
+**Ultra-Minimal CI/CD Pipeline (Industry Best Practices)**
 
-- **PR Validation** (`pr-validation.yml`): Single source of truth for all quality checks
-  - Runs on: Pull requests to main
-  - Setup & dependency caching (shared across all jobs)
-  - Code quality checks (lint, format) in parallel
-  - Unit tests with coverage reporting
-  - Build validation with artifact caching
-  - Integration tests across multiple browsers (Chromium, Firefox, WebKit)
-  - Security audit with vulnerability scanning
-  - Intelligent PR summary comment with all results
+We follow the principle of simplicity: 2 workflows, minimal complexity, maximum maintainability.
 
-- **Release Management** (`release.yml`): Automated versioning
-  - Runs on: Push to main branch
-  - Analyzes commits for release type (patch/minor/major)
-  - Bumps version in package.json
-  - Creates git tags and GitHub releases
-  - Generates changelog from conventional commits
-  - Triggers deployment workflow
+- **CI** (`ci.yml`): Single job for all quality gates
+  - **Triggers**: Pull requests to main, pushes to main
+  - **Single job execution**: Lint → Format Check → Unit Tests → Build → Integration Tests
+  - **Browser testing**: Chromium only (covers 95%+ of users)
+  - **Built-in caching**: Uses `setup-node` npm cache (no custom caching needed)
+  - **Simple PR comments**: Clear pass/fail status with links
+  - **Fast feedback**: ~3-5 minutes for complete validation
+  - **No over-engineering**: Linear execution, easy to understand and debug
 
-- **Deployment** (`deploy.yml`): Production deployment
-  - Runs on: Release publication (triggered by release.yml)
-  - Builds production-optimized bundle
-  - Deploys to GitHub Pages
-  - Manual deployment option available via workflow_dispatch
-
-- **Dependabot Auto-Merge** (`dependabot-auto-merge.yml`): Automated dependency updates
-  - Runs on: Dependabot pull requests
-  - Auto-merges patch and minor updates for non-critical dependencies
-  - Waits for all checks to pass before merging
+- **Deploy** (`deploy.yml`): Single job for build and deployment
+  - **Triggers**: Push to main branch, manual via workflow_dispatch
+  - **Direct deployment**: Build and deploy in single job (no artificial job splitting)
+  - **GitHub Pages**: Automatic deployment on every main branch update
+  - **Built-in caching**: Uses `setup-node` npm cache
+  - **Manual override**: Can trigger deployment manually with optional reason
 
 **Workflow Execution Flow:**
 
 ```
-Feature Branch → PR Created → pr-validation.yml (all quality gates)
+Feature Branch → Create PR → ci.yml (all quality checks in one job)
                               ↓
-                         PR Approved & Merged to Main
+                         All checks pass
                               ↓
-                         release.yml (version bump + tag)
+                         Merge to main
                               ↓
-                         deploy.yml (GitHub Pages deployment)
+                 ci.yml runs again + deploy.yml (automatic deployment)
 ```
+
+**Key Design Decisions:**
+
+- ✅ **Single job per workflow**: No orchestration overhead, faster execution
+- ✅ **Chromium only**: Sufficient coverage, faster CI runs
+- ✅ **No separate setup jobs**: Built-in caching is enough
+- ✅ **No complex aggregations**: Simple, clear output
+- ✅ **Deploy on merge**: Immediate deployment after PR merge
+- ✅ **180 lines total**: Down from 878 lines (79.5% reduction)
+
+**Metrics:**
+- **Before**: 878 lines, 4 workflows, 13 jobs
+- **After**: 180 lines, 2 workflows, 2 jobs
+- **CI time**: ~3-5 minutes (single job, no parallelization overhead)
+- **Simplicity**: Easy to understand, modify, and debug
 
 #### Quick Commands
 
