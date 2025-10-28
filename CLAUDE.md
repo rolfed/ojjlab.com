@@ -202,6 +202,7 @@ npm run lint && npm run format:check && npm run build && npm run test:unit && np
   - Waits for all checks to pass before merging
 
 **Workflow Execution Flow:**
+
 ```
 Feature Branch → PR Created → pr-validation.yml (all quality gates)
                               ↓
