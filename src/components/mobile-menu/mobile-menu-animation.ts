@@ -312,6 +312,37 @@ export class MobileMenuAnimation {
 
     this.state.isAnimating = true;
 
+    // If we're currently showing the programs submenu, animate it out first
+    if (this.state.currentLevel === 'programs' && this.programsSubmenu) {
+      const submenuTl = gsap.timeline();
+
+      // Quickly animate programs submenu out
+      submenuTl.to(this.programsNavItems, {
+        x: 100,
+        opacity: 0,
+        duration: 0.2,
+        stagger: 0.02,
+        ease: 'power2.in',
+      });
+
+      submenuTl.to(
+        this.programsSubmenu,
+        {
+          x: '100%',
+          opacity: 0,
+          duration: 0.2,
+          ease: 'power2.in',
+        },
+        '-=0.15'
+      );
+
+      await submenuTl.then();
+
+      // Reset submenu state
+      this.state.currentLevel = 'main';
+      gsap.set(this.programsSubmenu, { visibility: 'hidden' });
+    }
+
     return new Promise((resolve) => {
       this.masterTimeline!.eventCallback('onReverseComplete', () => {
         // Hide menu
@@ -319,7 +350,7 @@ export class MobileMenuAnimation {
           gsap.set(this.fullscreenMenu, { visibility: 'hidden' });
         }
 
-        // Reset navigation level
+        // Reset navigation level and programs submenu
         this.state.currentLevel = 'main';
         if (this.programsSubmenu) {
           gsap.set(this.programsSubmenu, {

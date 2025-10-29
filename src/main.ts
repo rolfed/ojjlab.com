@@ -140,6 +140,15 @@ const boot = async (): Promise<void> => {
       },
       'Schedule - Oregon Jiu Jitsu Lab',
       '/src/templates/schedule.html'
+    )
+    .add(
+      '/shop',
+      () => {
+        console.log('Navigated to Shop page');
+        document.title = 'Shop - Oregon Jiu Jitsu Lab';
+      },
+      'Shop - Oregon Jiu Jitsu Lab',
+      '/src/templates/shop.html'
     );
 
   // Ensure home template loads on initial page load
