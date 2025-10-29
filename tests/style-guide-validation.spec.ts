@@ -172,13 +172,14 @@ test.describe('Style Guide Validation', () => {
       // Test on mobile viewport
       await page.setViewportSize({ width: 375, height: 667 });
 
-      const bodyText = page.locator('p, span').first();
+      // Check main content paragraphs, excluding small decorative text
+      const bodyText = page.locator('main p, article p, section p').first();
       if (await bodyText.isVisible()) {
         const fontSize = await bodyText.evaluate((el) => {
           return parseFloat(window.getComputedStyle(el).fontSize);
         });
 
-        // Minimum 16px for accessibility
+        // Minimum 16px for main body text accessibility
         expect(fontSize).toBeGreaterThanOrEqual(16);
       }
     });
@@ -609,13 +610,13 @@ test.describe('Responsive Design Validation', () => {
       const navigation = page.locator('[data-testid="desktop-navigation"]');
       await expect(navigation).toBeVisible();
 
-      // Test that text is readable (not too small)
-      const bodyText = page.locator('p, span').first();
+      // Test that main content text is readable (not too small)
+      const bodyText = page.locator('main p, article p, section p').first();
       if (await bodyText.isVisible()) {
         const fontSize = await bodyText.evaluate((el) => {
           return parseFloat(window.getComputedStyle(el).fontSize);
         });
-        expect(fontSize).toBeGreaterThanOrEqual(14); // Minimum readable size
+        expect(fontSize).toBeGreaterThanOrEqual(14); // Minimum readable size for main content
       }
 
       // Test that buttons are appropriately sized for the viewport

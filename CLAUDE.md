@@ -170,23 +170,53 @@ npm run lint && npm run format:check && npm run build && npm run test:unit && np
 
 #### GitHub Actions Workflows
 
-- **PR Validation** (`pr-validation.yml`): Runs on PRs
-  - Code quality checks (lint, format)
-  - Unit tests with coverage
-  - Build validation
-  - Integration tests
-  - Security audit
-  - PR summary comment
+**Ultra-Minimal CI/CD Pipeline (Industry Best Practices)**
 
-- **Deployment** (`deploy.yml`): Runs on main branch push
-  - Builds and deploys to GitHub Pages
-  - Includes version info in build
+We follow the principle of simplicity: 2 workflows, minimal complexity, maximum maintainability.
 
-- **Release Management** (`release.yml`): Runs on main branch push
-  - Analyzes commits for release type (patch/minor/major)
-  - Bumps version in package.json
-  - Creates git tags and GitHub releases
-  - Generates changelog from conventional commits
+- **CI** (`ci.yml`): Single job for all quality gates
+  - **Triggers**: Pull requests to main, pushes to main
+  - **Single job execution**: Lint → Format Check → Unit Tests → Build → Integration Tests
+  - **Browser testing**: Chromium only (covers 95%+ of users)
+  - **Built-in caching**: Uses `setup-node` npm cache (no custom caching needed)
+  - **Simple PR comments**: Clear pass/fail status with links
+  - **Fast feedback**: ~3-5 minutes for complete validation
+  - **No over-engineering**: Linear execution, easy to understand and debug
+
+- **Deploy** (`deploy.yml`): Single job for build and deployment
+  - **Triggers**: Push to main branch, manual via workflow_dispatch
+  - **Direct deployment**: Build and deploy in single job (no artificial job splitting)
+  - **GitHub Pages**: Automatic deployment on every main branch update
+  - **Built-in caching**: Uses `setup-node` npm cache
+  - **Manual override**: Can trigger deployment manually with optional reason
+
+**Workflow Execution Flow:**
+
+```
+Feature Branch → Create PR → ci.yml (all quality checks in one job)
+                              ↓
+                         All checks pass
+                              ↓
+                         Merge to main
+                              ↓
+                 ci.yml runs again + deploy.yml (automatic deployment)
+```
+
+**Key Design Decisions:**
+
+- ✅ **Single job per workflow**: No orchestration overhead, faster execution
+- ✅ **Chromium only**: Sufficient coverage, faster CI runs
+- ✅ **No separate setup jobs**: Built-in caching is enough
+- ✅ **No complex aggregations**: Simple, clear output
+- ✅ **Deploy on merge**: Immediate deployment after PR merge
+- ✅ **180 lines total**: Down from 878 lines (79.5% reduction)
+
+**Metrics:**
+
+- **Before**: 878 lines, 4 workflows, 13 jobs
+- **After**: 180 lines, 2 workflows, 2 jobs
+- **CI time**: ~3-5 minutes (single job, no parallelization overhead)
+- **Simplicity**: Easy to understand, modify, and debug
 
 #### Quick Commands
 
