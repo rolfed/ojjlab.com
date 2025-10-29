@@ -111,7 +111,7 @@ export class MobileMenuComponent extends HTMLElement {
               <a href="/" data-route="/" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-home">
                 <span>Home</span>
               </a>
-              <a href="#about" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-about">
+              <a href="/about" data-route="/about" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-about">
                 <span>About</span>
               </a>
               <button class="mobile-nav-item mobile-nav-programs-trigger" data-animation="nav-item" data-element="programs-trigger" data-testid="mobile-nav-programs-trigger">
@@ -120,7 +120,7 @@ export class MobileMenuComponent extends HTMLElement {
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
               </button>
-              <a href="#instructors" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-instructors">
+              <a href="/instructors" data-route="/instructors" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-instructors">
                 <span>Instructors</span>
               </a>
               <a href="/contact" data-route="/contact" class="mobile-nav-item" data-animation="nav-item" data-testid="mobile-nav-contact">
