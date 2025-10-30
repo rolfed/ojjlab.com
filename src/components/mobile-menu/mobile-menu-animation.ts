@@ -315,9 +315,6 @@ export class MobileMenuAnimation {
     // If we're on the programs submenu, animate it out first
     // then close without showing main menu
     if (this.state.currentLevel === 'programs' && this.programsSubmenu) {
-      // Hide main nav items immediately so they never appear
-      gsap.set(this.mainNavItems, { x: -100, opacity: 0 });
-
       // Animate submenu exit
       const submenuExitTl = gsap.timeline();
       submenuExitTl.to(this.programsNavItems, {
@@ -343,6 +340,11 @@ export class MobileMenuAnimation {
       // Now hide submenu and reset state
       gsap.set(this.programsSubmenu, { visibility: 'hidden' });
       this.state.currentLevel = 'main';
+
+      // Kill all tweens on main nav items to prevent them from animating during timeline reverse
+      gsap.killTweensOf(this.mainNavItems);
+      // Lock main nav items in hidden state
+      gsap.set(this.mainNavItems, { x: -100, opacity: 0 });
     }
 
     return new Promise((resolve) => {
