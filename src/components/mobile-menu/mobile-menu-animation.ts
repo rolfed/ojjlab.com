@@ -312,20 +312,36 @@ export class MobileMenuAnimation {
 
     this.state.isAnimating = true;
 
-    // If we're on the programs submenu, instantly hide both menus
-    // This prevents any menu items from appearing during the reverse animation
+    // If we're on the programs submenu, animate it out first
+    // then close without showing main menu
     if (this.state.currentLevel === 'programs' && this.programsSubmenu) {
-      // Hide submenu
-      gsap.set(this.programsSubmenu, {
-        x: '100%',
-        opacity: 0,
-        visibility: 'hidden',
-      });
-      gsap.set(this.programsNavItems, { x: 100, opacity: 0 });
-
-      // Also hide main nav items so they don't appear during timeline reverse
+      // Hide main nav items immediately so they never appear
       gsap.set(this.mainNavItems, { x: -100, opacity: 0 });
 
+      // Animate submenu exit
+      const submenuExitTl = gsap.timeline();
+      submenuExitTl.to(this.programsNavItems, {
+        x: 100,
+        opacity: 0,
+        duration: 0.2,
+        stagger: 0.02,
+        ease: 'power2.in',
+      });
+      submenuExitTl.to(
+        this.programsSubmenu,
+        {
+          x: '100%',
+          opacity: 0,
+          duration: 0.2,
+          ease: 'power2.in',
+        },
+        '-=0.15'
+      );
+
+      await submenuExitTl.then();
+
+      // Now hide submenu and reset state
+      gsap.set(this.programsSubmenu, { visibility: 'hidden' });
       this.state.currentLevel = 'main';
     }
 
