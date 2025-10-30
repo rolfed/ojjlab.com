@@ -264,24 +264,15 @@ export class MobileMenuComponent extends HTMLElement {
 
   /**
    * Handle navigation item click
+   * Closes menu and allows router to handle navigation
    */
-  private async handleNavItemClick(event: Event): Promise<void> {
+  private async handleNavItemClick(): Promise<void> {
     const state = this.animation.getState();
     if (!state.isOpen) return;
 
-    const target = event.target as HTMLElement;
-    const link = target.closest('a[data-route]');
-
-    if (link) {
-      // Small delay to allow router to handle navigation first
-      setTimeout(() => {
-        this.updateActiveNavItem();
-        this.handleMenuClose();
-      }, 50);
-    } else {
-      // For non-navigation items, close immediately
-      await this.handleMenuClose();
-    }
+    // Close menu immediately - router will handle navigation
+    await this.handleMenuClose();
+    this.updateActiveNavItem();
   }
 
   /**

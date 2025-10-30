@@ -312,35 +312,16 @@ export class MobileMenuAnimation {
 
     this.state.isAnimating = true;
 
-    // If we're currently showing the programs submenu, animate it out first
+    // If we're on the programs submenu, instantly hide it without animation
+    // This prevents the main menu from flashing during close
     if (this.state.currentLevel === 'programs' && this.programsSubmenu) {
-      const submenuTl = gsap.timeline();
-
-      // Quickly animate programs submenu out
-      submenuTl.to(this.programsNavItems, {
-        x: 100,
+      gsap.set(this.programsSubmenu, {
+        x: '100%',
         opacity: 0,
-        duration: 0.2,
-        stagger: 0.02,
-        ease: 'power2.in',
+        visibility: 'hidden',
       });
-
-      submenuTl.to(
-        this.programsSubmenu,
-        {
-          x: '100%',
-          opacity: 0,
-          duration: 0.2,
-          ease: 'power2.in',
-        },
-        '-=0.15'
-      );
-
-      await submenuTl.then();
-
-      // Reset submenu state
+      gsap.set(this.programsNavItems, { x: 100, opacity: 0 });
       this.state.currentLevel = 'main';
-      gsap.set(this.programsSubmenu, { visibility: 'hidden' });
     }
 
     return new Promise((resolve) => {
