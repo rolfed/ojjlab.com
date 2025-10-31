@@ -303,45 +303,158 @@ export class MobileMenuAnimation {
   }
 
   /**
-   * Close the mobile menu
+   * Create close animation for main menu level
+   */
+  private createMainMenuCloseTimeline(): gsap.core.Timeline {
+    const tl = gsap.timeline();
+
+    // Main nav items out
+    tl.to(this.mainNavItems, {
+      x: -100,
+      opacity: 0,
+      duration: 0.4,
+      stagger: 0.04,
+      ease: 'power2.in',
+    });
+
+    return tl;
+  }
+
+  /**
+   * Create close animation for programs submenu level
+   */
+  private createSubmenuCloseTimeline(): gsap.core.Timeline {
+    const tl = gsap.timeline();
+
+    // Submenu items out
+    tl.to(this.programsNavItems, {
+      x: 100,
+      opacity: 0,
+      duration: 0.2,
+      stagger: 0.02,
+      ease: 'power2.in',
+    });
+
+    // Submenu container out
+    tl.to(
+      this.programsSubmenu,
+      {
+        x: '100%',
+        opacity: 0,
+        duration: 0.2,
+        ease: 'power2.in',
+      },
+      '-=0.15'
+    );
+
+    return tl;
+  }
+
+  /**
+   * Create common menu close animation (background, hamburger, logo)
+   */
+  private createCommonCloseTimeline(): gsap.core.Timeline {
+    const tl = gsap.timeline();
+
+    // Logo out
+    tl.to(this.menuLogo, {
+      opacity: 0,
+      duration: 0.24,
+      ease: 'power2.in',
+    });
+
+    // Background out
+    tl.to(
+      this.fullscreenMenu,
+      {
+        opacity: 0,
+        duration: 0.16,
+        ease: 'power2.in',
+      },
+      '-=0.08'
+    );
+
+    // Hamburger back to bars
+    tl.to(
+      [this.hamburgerTop, this.hamburgerBottom],
+      {
+        rotation: 0,
+        y: 0,
+        duration: 0.4,
+        ease: 'power2.inOut',
+      },
+      '-=0.32'
+    );
+
+    tl.to(
+      this.hamburgerMiddle,
+      {
+        opacity: 1,
+        duration: 0.24,
+        ease: 'power2.in',
+      },
+      '-=0.24'
+    );
+
+    // Bottom nav logo in
+    tl.to(
+      this.bottomNavLogo,
+      {
+        opacity: 1,
+        duration: 0.24,
+        ease: 'power2.in',
+      },
+      '-=0.24'
+    );
+
+    return tl;
+  }
+
+  /**
+   * Strategy map: menu level -> close animation factory
+   */
+  private readonly closeStrategies: Record<
+    'main' | 'programs',
+    () => gsap.core.Timeline
+  > = {
+    main: () => this.createMainMenuCloseTimeline(),
+    programs: () => this.createSubmenuCloseTimeline(),
+  };
+
+  /**
+   * Close the mobile menu - declarative, strategy-based
    */
   public async close(): Promise<MenuState> {
-    if (!this.state.isOpen || this.state.isAnimating || !this.masterTimeline) {
+    if (!this.state.isOpen || this.state.isAnimating) {
       return this.getState();
     }
 
     this.state.isAnimating = true;
 
-    return new Promise((resolve) => {
-      this.masterTimeline!.eventCallback('onReverseComplete', () => {
-        // Hide menu
-        if (this.fullscreenMenu) {
-          gsap.set(this.fullscreenMenu, { visibility: 'hidden' });
-        }
+    // Declaratively select and execute close strategy for current level
+    const levelCloseAnimation = this.closeStrategies[this.state.currentLevel]();
+    const commonCloseAnimation = this.createCommonCloseTimeline();
 
-        // Reset navigation level
-        this.state.currentLevel = 'main';
-        if (this.programsSubmenu) {
-          gsap.set(this.programsSubmenu, {
-            x: '100%',
-            opacity: 0,
-            visibility: 'hidden',
-          });
-        }
+    // Compose: level-specific animation, then common close
+    await levelCloseAnimation.then();
+    await commonCloseAnimation.then();
 
-        // Restore body scroll
-        document.body.style.overflow = '';
-
-        this.state.isOpen = false;
-        this.state.isAnimating = false;
-
-        resolve(this.getState());
-      });
-
-      // Same speed for close animation (1.0x = normal speed, matching open)
-      this.masterTimeline!.timeScale(1.0);
-      this.masterTimeline!.reverse();
+    // Reset state
+    gsap.set(this.fullscreenMenu, { visibility: 'hidden' });
+    gsap.set(this.mainNavItems, { x: -100, opacity: 0 });
+    gsap.set(this.programsSubmenu, {
+      x: '100%',
+      opacity: 0,
+      visibility: 'hidden',
     });
+    gsap.set(this.programsNavItems, { x: 100, opacity: 0 });
+
+    document.body.style.overflow = '';
+    this.state.currentLevel = 'main';
+    this.state.isOpen = false;
+    this.state.isAnimating = false;
+
+    return this.getState();
   }
 
   /**

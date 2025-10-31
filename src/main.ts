@@ -38,6 +38,16 @@ const handleLoginRoute = (): void => {
   document.title = 'Login - Oregon Jiu Jitsu Lab';
 };
 
+const handleAboutRoute = (): void => {
+  console.log('Navigated to About page');
+  document.title = 'About - Oregon Jiu Jitsu Lab';
+};
+
+const handleInstructorsRoute = (): void => {
+  console.log('Navigated to Instructors page');
+  document.title = 'Coaches - Oregon Jiu Jitsu Lab';
+};
+
 const handleHomeRoute = (): void => {
   console.log('Navigated to Home page');
   document.title =
@@ -140,6 +150,27 @@ const boot = async (): Promise<void> => {
       },
       'Schedule - Oregon Jiu Jitsu Lab',
       '/src/templates/schedule.html'
+    )
+    .add(
+      '/shop',
+      () => {
+        console.log('Navigated to Shop page');
+        document.title = 'Shop - Oregon Jiu Jitsu Lab';
+      },
+      'Shop - Oregon Jiu Jitsu Lab',
+      '/src/templates/shop.html'
+    )
+    .add(
+      '/about',
+      handleAboutRoute,
+      'About - Oregon Jiu Jitsu Lab',
+      '/src/templates/about.html'
+    )
+    .add(
+      '/instructors',
+      handleInstructorsRoute,
+      'Coaches - Oregon Jiu Jitsu Lab',
+      '/src/templates/instructors.html'
     );
 
   // Ensure home template loads on initial page load

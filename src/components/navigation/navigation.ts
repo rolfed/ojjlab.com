@@ -109,9 +109,9 @@ export class NavigationComponent extends HTMLElement {
                         <li><a href="#about" data-testid="nav-about">About Us</a></li>
                         <li><a href="#programs" data-testid="nav-programs">Programs</a></li>
                         <li><a href="#coaches" data-testid="nav-coaches">Coaches</a></li>
-                        <li><a href="#schedule" data-testid="nav-schedule">Schedule</a></li>
+                        <li><a href="/schedule" data-route="/schedule" data-testid="nav-schedule">Schedule</a></li>
                         <li><a href="/contact" data-route="/contact" data-testid="nav-contact">Contact</a></li>
-                        <li><a href="/shop" data-testid="nav-shop">Shop</a></li>
+                        <li><a href="/shop" data-route="/shop" data-testid="nav-shop">Shop</a></li>
                         <li><a href="/join" data-route="/join" data-testid="nav-join">Join</a></li>
                         <li><a href="/login" data-route="/login" data-testid="nav-login">Login</a></li>
                     </ul>

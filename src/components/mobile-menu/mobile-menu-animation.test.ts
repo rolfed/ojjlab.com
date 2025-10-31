@@ -51,6 +51,18 @@ jest.mock('gsap', () => ({
           }
           return currentTimeScale;
         }),
+        then: jest.fn(function (this: any) {
+          return new Promise<void>((resolve) => {
+            if (onCompleteCallback) {
+              setTimeout(() => {
+                onCompleteCallback!();
+                resolve();
+              }, 10);
+            } else {
+              setTimeout(() => resolve(), 10);
+            }
+          });
+        }),
         kill: jest.fn(),
         isActive: jest.fn(() => false),
       };
